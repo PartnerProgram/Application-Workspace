@@ -116,6 +116,19 @@
           opacity: 1;
         }
       }
+      /* New keyframes for token movement */
+      @keyframes tokenMove {
+        0% { left: 0%; }
+        33% { left: 33%; }
+        66% { left: 66%; }
+        100% { left: 100%; }
+      }
+      /* New keyframe for pulse */
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
       .animate-cardPop {
         animation: cardPop 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
       }
@@ -158,6 +171,61 @@
         transform: scale(1.05);
         background: #ffffff;
         border-color: #10b981;
+      }
+      /* New styles for top flow token */
+      .flow-header {
+        position: relative;
+      }
+      .flow-token {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background-color: #2563eb;
+        border-radius: 50%;
+        transition: left 3s linear;
+        z-index: 10;
+      }
+      .flow-token.animating {
+        animation: tokenMove 3s linear 3;
+      }
+      /* New styles for hub */
+      .recast-hub {
+        position: relative;
+        display: inline-block;
+      }
+      .recast-hub::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 24px;
+        height: 24px;
+        background-color: rgba(37, 99, 235, 0.1);
+        border-radius: 50%;
+      }
+      .recast-hub.pulsing::before {
+        animation: pulse 0.5s ease-in-out;
+      }
+      /* New styles for cascade active */
+      .active {
+        border-color: #2563eb;
+        box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+        transition: all 0.3s ease;
+      }
+      /* New styles for delivered app in devices */
+      .delivered-app {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .delivered-app.visible {
+        opacity: 1;
       }
       /* New styles for 2x2 grid on Current State tab */
       .display-grid {
@@ -867,6 +935,7 @@
         `;
       }
       function renderFlow() {
+        const sampleAppSvg = logo("Sample App", "S", "#2563eb").svg; // Use a sample app icon for fan-out
         return `
           <div class="relative rounded-2xl bg-white shadow-md hover:shadow-lg hover:-translate-y-[2px] transition-shadow duration-300 transition-transform p-6 mx-auto max-w-4xl">
             <div class="flex items-center justify-between gap-2">
@@ -881,21 +950,22 @@
                 <button type="button" data-action="reset-flow" class="bg-transparent text-gray-900 border-2 border-gray-900 px-2 py-1 rounded-full hover:text-blue-600 hover:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">Reset</button>
               </div>
             </div>
-            <div class="mt-1 flex items-center justify-center gap-3 text-[13px] font-medium">
-              <div class="flex items-center gap-1">
+            <div class="mt-1 flex items-center justify-center gap-3 text-[13px] font-medium flow-header">
+              <div class="flex items-center gap-1" id="label-managers">
                 <i data-lucide="building" class="w-4.5 h-4.5 text-gray-700"></i>
                 <span>Existing App Managers (SCCM, Intune, etc.)</span>
               </div>
               <i data-lucide="arrow-right" class="w-4.5 h-4.5 text-gray-500"></i>
-              <div class="flex items-center gap-1">
+              <div class="flex items-center gap-1 recast-hub" id="label-recast">
                 <i data-lucide="truck" class="w-4.5 h-4.5 text-blue-600"></i>
                 <span>Application Delivery (Recast)</span>
               </div>
               <i data-lucide="arrow-right" class="w-4.5 h-4.5 text-gray-500"></i>
-              <div class="flex items-center gap-1">
+              <div class="flex items-center gap-1" id="label-user">
                 <i data-lucide="user" class="w-4.5 h-4.5 text-gray-700"></i>
                 <span>User</span>
               </div>
+              <div class="flow-token"></div>
             </div>
             <div class="mt-1 text-center bg-blue-50 p-1.5 rounded-lg text-[12px]">
               Users get one consistent app experience—while IT standardizes delivery behind the scenes across every platform.
@@ -967,6 +1037,7 @@
                     <div id="flowDev${k}" class="mt-0.5 grid grid-cols-6 gap-1"></div>
                     <div class="mt-0.5 text-[10px] text-gray-700">${["Windows & macOS", "VDI / Web", "Mobile"][i]}</div>
                     <i data-lucide="check-circle" class="opacity-0 absolute top-0.5 right-0.5 w-3.5 h-3.5 text-green-500 animate-fadeInOut" style="--d:${8 + 0.5 * i}s"></i>
+                    <div class="delivered-app hidden">${sampleAppSvg}</div>
                   </div>
                 `
                   )
@@ -979,7 +1050,7 @@
                     <div id="endUserAvatar" class="h-8 w-8 grid place-items-center font-semibold rounded-full bg-red-600 text-white">U</div>
                     <div class="text-[13px]">
                       <div class="font-medium">End user</div>
-                      <div id="endUserMessage" class="text-gray-700">Apps on demand — no waiting, no tickets.</div>
+                      <div id="endUserMessage" class="text-gray-700">Same workspace for the user — even as IT changes platforms behind the scenes.</div>
                     </div>
                   </div>
                   <div data-anim="barGrow" class="mt-2 h-[0.38rem] rounded-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 to-blue-700" style="--d:10s"></div>
@@ -2016,6 +2087,7 @@
       /* =========================
          FLOW BUILD + ANIMATION (V1 VERSION)
          ========================= */
+      let flowTimeouts = [];
       function buildFlow() {
         let base = 0;
         CATALOG.forEach((section) => {
@@ -2075,7 +2147,7 @@
           badge.style.transform = "translateY(-6px) scale(0.9)";
         }
         const message = document.getElementById("endUserMessage");
-        if (message) message.textContent = "Apps on demand — no waiting, no tickets.";
+        if (message) message.textContent = "Same workspace for the user — even as IT changes platforms behind the scenes.";
         const mini = document.getElementById("miniWorkspace");
         if (mini) mini.classList.add("hidden");
         const counters = document.getElementById("progressCounters");
@@ -2086,6 +2158,12 @@
         }
         const endCard = document.getElementById("endUserCard");
         if (endCard) endCard.classList.remove("end-user-expand");
+        const token = document.querySelector(".flow-token");
+        if (token) token.classList.remove("animating");
+        document.querySelectorAll(".active").forEach(el => el.classList.remove("active"));
+        document.querySelectorAll(".delivered-app").forEach(el => el.classList.remove("visible"));
+        const hub = document.querySelector(".recast-hub");
+        if (hub) hub.classList.remove("pulsing");
         STATE.progress = { apps: 0, time: 0, tickets: 0 };
         updateProgress();
         const success = document.getElementById("flowSuccess");
@@ -2103,6 +2181,8 @@
         }
       }
       function startFlow() {
+        flowTimeouts.forEach(clearTimeout);
+        flowTimeouts = [];
         const card = document.getElementById("flowCard");
         if (!card) return;
         card.classList.remove("run");
@@ -2118,11 +2198,54 @@
         const endCard = document.getElementById("endUserCard");
         if (flash) {
           flash.classList.remove("hidden");
-          setTimeout(() => flash.classList.add("hidden"), 2000);
+          flowTimeouts.push(setTimeout(() => flash.classList.add("hidden"), 2000));
         }
         if (success) success.classList.add("hidden");
         if (counters) counters.classList.remove("hidden");
         let interval = setInterval(updateProgress, 100);
+        flowTimeouts.push(setTimeout(() => clearInterval(interval), 11000));
+        // New: Top flow token animation
+        const token = document.querySelector(".flow-token");
+        if (token) {
+          token.classList.add("animating");
+          // Highlight labels as token passes
+          flowTimeouts.push(setTimeout(() => {
+            document.getElementById("label-managers").classList.add("highlight");
+            setTimeout(() => document.getElementById("label-managers").classList.remove("highlight"), 300);
+          }, 1000)); // At 33%
+          flowTimeouts.push(setTimeout(() => {
+            document.getElementById("label-recast").classList.add("highlight");
+            setTimeout(() => document.getElementById("label-recast").classList.remove("highlight"), 300);
+            // Pulse hub
+            const hub = document.querySelector(".recast-hub");
+            if (hub) hub.classList.add("pulsing");
+          }, 2000)); // At 66%
+          flowTimeouts.push(setTimeout(() => {
+            document.getElementById("label-user").classList.add("highlight");
+            setTimeout(() => document.getElementById("label-user").classList.remove("highlight"), 300);
+          }, 3000)); // At 100%
+          // Repeat logic if needed, but since animation-iteration-count=3, highlights can be timed accordingly
+        }
+        // New: Backend cascade
+        const cascadeSections = [
+          ...document.querySelectorAll("#platformsSection > div"),
+          ...document.querySelectorAll("#groupsSection > div"),
+          ...document.querySelectorAll("#devicesSection > div")
+        ];
+        cascadeSections.forEach((section, i) => {
+          flowTimeouts.push(setTimeout(() => {
+            section.classList.add("active");
+            flowTimeouts.push(setTimeout(() => section.classList.remove("active"), 400));
+          }, 4000 + i * 400)); // Start after ~4s, 400ms per
+        });
+        // New: Fan-out to devices after cascade (approx 4s + 4*400ms = 5.6s)
+        const deviceBoxes = document.querySelectorAll("#devicesSection > div");
+        deviceBoxes.forEach((box, i) => {
+          flowTimeouts.push(setTimeout(() => {
+            const app = box.querySelector(".delivered-app");
+            if (app) app.classList.add("visible");
+          }, 6000 + i * 300));
+        });
         setTimeout(() => {
           if (avatar) {
             avatar.style.background = 'var(--re-green)';
@@ -2135,7 +2258,6 @@
           if (mini) mini.classList.remove("hidden");
           if (endCard) endCard.classList.add("end-user-expand");
           if (success) success.classList.remove("hidden");
-          clearInterval(interval);
         }, 11000);
         setTimeout(() => card.classList.remove("run"), 12000);
       }
@@ -2155,6 +2277,8 @@
         if (el) el.textContent = String(value);
       }
       function resetFlow() {
+        flowTimeouts.forEach(clearTimeout);
+        flowTimeouts = [];
         STATE.progress = { apps: 0, time: 0, tickets: 0 };
         STATE.showLabels = false;
         buildFlow();
