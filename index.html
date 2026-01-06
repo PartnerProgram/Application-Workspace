@@ -648,9 +648,9 @@
               ${pressures
                 .map(
                   (p) => `
-                <div class="rounded-2xl bg-white shadow-md hover:shadow-lg hover:-translate-y-[2px] transition-shadow duration-300 transition-transform p-4 flex flex-col space-y-1 h-full">
-                  <h3 class="text-[14px] font-semibold mb-1">${p.title}</h3>
-                  <ul class="list-disc list-inside space-y-1 text-[12px] text-gray-700">
+                <div class="rounded-2xl bg-white shadow-md hover:shadow-lg hover:-translate-y-[2px] transition-shadow duration-300 transition-transform p-6 flex flex-col space-y-2 h-full">
+                  <h3 class="text-[16px] font-semibold mb-1">${p.title}</h3>
+                  <ul class="list-disc list-inside space-y-2 text-[14px] text-gray-700">
                     ${p.bullets
                       .map((b, i) => {
                         const selected = (STATE.selectedBullets[p.id] || []).includes(i);
@@ -1122,19 +1122,6 @@
               </button>
             </div>
             <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 relative">
-              ${STATE.isValueEditing ? `
-              <div class="edit-toolbar flex flex-wrap gap-2 mb-6 p-2 bg-gray-100 rounded-lg">
-                <button type="button" data-action="bold" class="p-2 hover:bg-gray-200 rounded" aria-label="Bold"><i data-lucide="bold" class="w-5 h-5"></i></button>
-                <button type="button" data-action="italic" class="p-2 hover:bg-gray-200 rounded" aria-label="Italic"><i data-lucide="italic" class="w-5 h-5"></i></button>
-                <button type="button" data-action="underline" class="p-2 hover:bg-gray-200 rounded" aria-label="Underline"><i data-lucide="underline" class="w-5 h-5"></i></button>
-                <button type="button" data-action="bullet-list" class="p-2 hover:bg-gray-200 rounded" aria-label="Bullet List"><i data-lucide="list" class="w-5 h-5"></i></button>
-                <button type="button" data-action="number-list" class="p-2 hover:bg-gray-200 rounded" aria-label="Numbered List"><i data-lucide="list-ordered" class="w-5 h-5"></i></button>
-                <button type="button" data-action="insert-link" class="p-2 hover:bg-gray-200 rounded" aria-label="Insert Link"><i data-lucide="link" class="w-5 h-5"></i></button>
-                <button type="button" data-action="insert-image" class="p-2 hover:bg-gray-200 rounded" aria-label="Insert Image"><i data-lucide="image" class="w-5 h-5"></i></button>
-                <button type="button" data-action="insert-table" class="p-2 hover:bg-gray-200 rounded" aria-label="Insert Table"><i data-lucide="table" class="w-5 h-5"></i></button>
-              </div>
-              <input type="file" id="imageInsert" accept="image/*" class="hidden">
-              ` : ''}
               <div id="customerTab" class="tabcontent ${STATE.valueTab === 'customer' ? '' : 'hidden'}" role="tabpanel" aria-labelledby="customer-tab">
                 <div class="flex flex-col md:flex-row gap-6">
                   <div class="flex-1">
@@ -1144,10 +1131,10 @@
                   <div class="flex-1">
                     <h3 class="text-lg font-medium">Quantifiable Metrics</h3>
                     <ul class="mt-2 space-y-2">
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="custMetric1" class="editable flex-1">Reduce app-related support tickets</span></li>
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="custMetric2" class="editable flex-1">Decrease manual packaging and deployment effort</span></li>
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="custMetric3" class="editable flex-1">Accelerate platform migrations without retraining users</span></li>
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="custMetric4" class="editable flex-1">Improve audit readiness through standardized delivery</span></li>
+                      <li id="custMetric1" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Reduce app-related support tickets</li>
+                      <li id="custMetric2" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Decrease manual packaging and deployment effort</li>
+                      <li id="custMetric3" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Accelerate platform migrations without retraining users</li>
+                      <li id="custMetric4" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Improve audit readiness through standardized delivery</li>
                     </ul>
                   </div>
                 </div>
@@ -1195,10 +1182,10 @@
                   <div class="flex-1">
                     <h3 class="text-lg font-medium">Quantifiable Metrics</h3>
                     <ul class="mt-2 space-y-2">
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="partMetric1" class="editable flex-1">Faster, more predictable deployments across customers</span></li>
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="partMetric2" class="editable flex-1">Reduced post-deployment support and escalations</span></li>
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="partMetric3" class="editable flex-1">Improved customer satisfaction through consistent outcomes</span></li>
-                      <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span id="partMetric4" class="editable flex-1">Ability to scale services without linear headcount growth</span></li>
+                      <li id="partMetric1" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Faster, more predictable deployments across customers</li>
+                      <li id="partMetric2" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Reduced post-deployment support and escalations</li>
+                      <li id="partMetric3" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Improved customer satisfaction through consistent outcomes</li>
+                      <li id="partMetric4" class="flex items-center gap-2 editable"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Ability to scale services without linear headcount growth</li>
                     </ul>
                   </div>
                 </div>
@@ -2024,51 +2011,10 @@
           if (activePanel) {
             activePanel.querySelectorAll('.editable').forEach(el => {
               el.contentEditable = 'true';
+              el.focus(); // Optional: focus first for UX
             });
           }
         }
-        // Rich text toolbar events
-        root.querySelectorAll('[data-action="bold"]').forEach(b => b.addEventListener('click', () => document.execCommand('bold')));
-        root.querySelectorAll('[data-action="italic"]').forEach(b => b.addEventListener('click', () => document.execCommand('italic')));
-        root.querySelectorAll('[data-action="underline"]').forEach(b => b.addEventListener('click', () => document.execCommand('underline')));
-        root.querySelectorAll('[data-action="bullet-list"]').forEach(b => b.addEventListener('click', () => document.execCommand('insertUnorderedList')));
-        root.querySelectorAll('[data-action="number-list"]').forEach(b => b.addEventListener('click', () => document.execCommand('insertOrderedList')));
-        root.querySelectorAll('[data-action="insert-link"]').forEach(b => b.addEventListener('click', () => {
-          const url = prompt('Enter the URL:');
-          if (url) document.execCommand('createLink', false, url);
-        }));
-        root.querySelectorAll('[data-action="insert-image"]').forEach(b => b.addEventListener('click', () => {
-          const input = document.getElementById('imageInsert');
-          if (input) input.click();
-        }));
-        const imageInsert = document.getElementById('imageInsert');
-        if (imageInsert) {
-          imageInsert.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-              document.execCommand('insertImage', false, ev.target.result);
-            };
-            reader.readAsDataURL(file);
-            e.target.value = '';
-          });
-        }
-        root.querySelectorAll('[data-action="insert-table"]').forEach(b => b.addEventListener('click', () => {
-          const rows = parseInt(prompt('Number of rows:'), 10);
-          const cols = parseInt(prompt('Number of columns:'), 10);
-          if (isNaN(rows) || isNaN(cols) || rows < 1 || cols < 1) return;
-          let html = '<table style="border-collapse: collapse; width: 100%;">';
-          for (let r = 0; r < rows; r++) {
-            html += '<tr>';
-            for (let c = 0; c < cols; c++) {
-              html += '<td style="border: 1px solid #ddd; padding: 8px;">&nbsp;</td>';
-            }
-            html += '</tr>';
-          }
-          html += '</table>';
-          document.execCommand('insertHTML', false, html);
-        }));
         // New: Solution modal openers
         root.querySelectorAll('[data-action="open-solution-modal"]').forEach((b) =>
           b.addEventListener("click", (e) => {
