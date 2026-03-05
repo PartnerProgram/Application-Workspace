@@ -192,81 +192,81 @@
           {
             id: "more_apps",
             label: "App & Platform Sprawl",
-            subtext: "More apps × more platforms = exponential workload",
+            subtext: "More platforms means more work for every app",
             markerYear: 2025.6,
             bullets: [
-              "The average enterprise manages 1,000+ applications across multiple delivery environments.",
-              "Every new platform multiplies every existing application — add a platform and you add packaging jobs for everything already in the catalog.",
-              "App sprawl and platform sprawl compound each other. The math turns against the team quietly, then all at once."
+              "Most teams manage hundreds of apps across multiple platforms.",
+              "Add a new platform and every app has to be repackaged for it.",
+              "More platforms means a faster-growing backlog."
             ],
-            short: "More apps × more platforms = exponential maintenance burden.",
+            short: "Add a platform. Repackage every app.",
             state: 'off'
           },
           {
             id: "constant_updates",
-            label: "Continuous Change Pressure",
-            subtext: "Security patches, vendor releases, SaaS update cycles",
+            label: "Updates Never Stop",
+            subtext: "Patches and fixes land every week",
             markerYear: 2026.2,
             bullets: [
-              "Application updates are no longer occasional — they are continuous. Vendor release cycles, security patches, and SaaS updates create a queue that never fully clears.",
-              "SaaS adoption shifted the workload, it did not eliminate it. Teams now manage constant integration testing and compatibility validation after every vendor release.",
-              "Release velocity has permanently outpaced the manual packaging and validation model most teams are still running."
+              "App updates used to be occasional. Now they arrive every week.",
+              "Every update has to be tested and deployed across every platform.",
+              "The queue never fully clears. Teams are always working from behind."
             ],
-            short: "Updates are continuous. The manual model was built for scheduled change.",
+            short: "Constant updates. Manual process can't keep up.",
             state: 'off'
           },
           {
             id: "too_many_tools",
-            label: "Multi-Environment Fragmentation",
-            subtext: "Same app, rebuilt for every delivery environment",
+            label: "Too Many Environments",
+            subtext: "Same app, rebuilt for each platform",
             markerYear: 2026.8,
             bullets: [
-              "Most enterprises now manage five or more delivery environments simultaneously — on-prem, cloud, hybrid, VDI, SaaS — each requiring its own packaging and deployment logic.",
-              "Teams rebuild the same application for every environment rather than defining it once. The duplication is not accidental — the current model requires it.",
-              "Tool fragmentation creates handoffs, inconsistencies, and compounding rework that grows with every environment added."
+              "Most teams manage on-prem, cloud, VDI, and SaaS at the same time.",
+              "The same app has to be packaged differently for each one.",
+              "Every environment added means more duplication and more ways things can break."
             ],
-            short: "Same app, different platforms, rebuilt logic everywhere.",
+            short: "Same app. Rebuilt for every platform, every time.",
             state: 'off'
           },
           {
             id: "manual_rework",
-            label: "Senior Engineers in the Wrong Work",
-            subtext: "Best people buried in the most repetitive tasks",
+            label: "Engineers on the Wrong Work",
+            subtext: "Best people stuck on the most repetitive tasks",
             markerYear: 2027.3,
             bullets: [
-              "30–40% of IT engineering capacity in most organizations goes to repetitive packaging, patching, and troubleshooting work that produces no new capability.",
-              "During large deployments, senior engineers are regularly pulled into basic support tasks — the people who should be architecting the future are handling the support queue.",
-              "The AI rollout, cloud migration, and platform consolidation leadership is asking for require the same engineering capacity that the maintenance backlog is consuming."
+              "About 40% of IT engineering time goes to packaging, patching, and troubleshooting.",
+              "When something breaks, senior engineers get pulled in to fix basic problems.",
+              "The AI and cloud projects leadership wants need the same people buried in the backlog."
             ],
-            short: "Senior engineering capacity consumed by repetitive work that scales with platform count.",
+            short: "40% of engineering time is routine work.",
             state: 'off'
           },
           {
             id: "security_compliance",
-            label: "Security Urgency vs. Manual Speed",
-            subtext: "Compliance expects days. Manual processes take weeks.",
+            label: "Patches Are Too Slow",
+            subtext: "Security expects days. Delivery takes weeks.",
             markerYear: 2027.7,
             bullets: [
-              "Compliance frameworks and security teams now expect critical patches deployed within days of CVE disclosure. The manual per-platform packaging model cannot reliably hit that bar.",
-              "Backend infrastructure changes frequently cause front-end user disruption — broken app installs, version conflicts, missing integrations — creating ticket spikes that pull teams into reactive mode.",
-              "Inconsistent application versions across environments increase security exposure and make audit evidence difficult to produce without significant manual effort."
+              "Security teams expect patches out within days. Manual processes rarely hit that.",
+              "When infrastructure changes, apps break for users — and engineers spend days on fixes.",
+              "Tracking compliance across multiple environments manually is slow and easy to get wrong."
             ],
-            short: "Security urgency is measured in days. Manual delivery is measured in weeks.",
+            short: "Security expects days. Manual delivery takes weeks.",
             state: 'off'
           }
         ],
 
         tippingPointYear: 2027.5,
         tippingPoint: {
-          title: "IT Inflection Point",
+          title: "The Breaking Point",
           bullets: [
-            "Changes take longer as platform count grows",
-            "Security risk increases as patch windows widen",
-            "Senior engineers burn out handling reactive work",
-            "Strategic initiatives stall — AI, cloud, modernization",
-            "Budget pressure intensifies as complexity grows without proportional staffing"
+            "Every change takes longer than it should",
+            "Security patches are falling behind",
+            "Engineers are stuck doing repetitive work",
+            "AI and cloud projects keep getting pushed back",
+            "More work, same team, flat budget"
           ],
-          closing: "This is not failure — it is the limit of a model that no longer scales."
+          closing: "This isn't a people problem. It's a model problem."
         },
 
         // ─── CHANGE 2: chartConfig — labels and tipping updated ───
@@ -287,73 +287,72 @@
         // ─── CHANGE 5: STATE.currentState — all three sections replaced ───
         currentState: {
           change: {
-            intro: "Most IT organizations are not failing. They are running hard inside a model that was built for a simpler era — fewer platforms, slower update cycles, more predictable change. That model has not kept pace. The work has multiplied. The team has not.",
+            intro: "App delivery still works the way it did a decade ago.",
             bullets: [
-              "Every platform multiplies every application. The same app has to be packaged, tested, and maintained separately for every environment it runs on. Add a platform and you have not added work — you have multiplied it against everything that already exists.",
-              "Deployment tools are not built for the speed security requires. Intune and similar tools operate on scheduled cycles. Security vulnerabilities do not. The gap between when a patch is available and when it is fully deployed across every environment is documented exposure.",
-              "Backend changes are creating front-end crises. Every infrastructure update carries real risk of breaking something users can see — and the resulting ticket spikes pull senior engineers away from strategic work to handle basic support.",
-              "SaaS shifted the burden. It did not remove it. Moving to cloud and SaaS traded infrastructure management for constant integration testing, compatibility validation, and policy updates that follow every vendor release cycle.",
-              "The engineers who should be leading AI adoption are maintaining the backlog. 30–40% of senior engineering capacity goes to repetitive application maintenance — the same capacity leadership is asking for to implement AI, automation, and modernization."
+              "Add a platform and every app has to be repackaged for it.",
+              "Patches run on weekly tool cycles. Security problems don't wait.",
+              "Back-end changes break things users see. Engineers spend days fixing it.",
+              "SaaS moved the workload. It didn't remove it.",
+              "40% of engineering time goes to routine maintenance."
             ],
-            analyst: "The organizations moving fastest on AI, cloud consolidation, and platform modernization share one thing: they solved the application layer first. Teams still building for every platform separately are not standing still — they are falling further behind every quarter, one new environment at a time."
+            analyst: "Teams winning on AI and cloud fixed app delivery first."
           },
           now: {
-            intro: "The gap between what IT is asked to deliver and what it can sustain is widening. Three forces are colliding right now that make the current model genuinely unsustainable — not eventually, but this year.",
+            intro: "There's no slack left.",
             bullets: [
-              "Platform count is accelerating, not stabilizing. Windows 11, Intune consolidation, Azure Virtual Desktop adoption, macOS expansion, and AI tooling rollouts are all landing simultaneously — each one a new multiplication event against every application already in the environment.",
-              "Security urgency has permanently increased. A decade ago, patching within 30 days was responsible. Compliance frameworks today expect days. The manual model that was merely inefficient before is now a documented liability every time a CVE drops.",
-              "AI initiatives are being pushed by leadership, but teams lack the bandwidth to implement them. The application maintenance backlog is consuming the exact engineering capacity the business is asking for. Until the model changes, those two demands stay in permanent conflict.",
-              "Operational budgets are flat while IT responsibilities grow. Headcount stays constant while platform count, application portfolio size, and update frequency all increase. The only resolution that does not require something breaking is changing the model — not adding resources to it."
+              "Every new platform adds work across every app you already manage.",
+              "Patching windows have shrunk from weeks to days.",
+              "Leadership wants AI tools deployed. The team is buried in the backlog.",
+              "Platform count grows every year. Team size doesn't."
             ],
-            analyst: "Organizations that succeed with AI, cloud, and new platforms over the next few years will be the ones that stabilized application delivery first. Everyone else hits a capacity wall where progress stalls regardless of strategy or budget."
+            analyst: "Fix it now or spend years catching up."
           },
           recast: {
-            intro: "Application Workspace changes the fundamental model — from building per platform to defining once and delivering everywhere. Every other layer of modern IT has already made this shift. Application delivery is the last one.",
+            intro: "Package an app once. It goes everywhere — automatically.",
             bullets: [
-              "Define an application once. Application Workspace delivers it consistently across ConfigMgr, Intune, Citrix, AVD, Windows 365, and macOS — automatically. No repackaging. No per-platform rebuild.",
-              "8,000+ pre-tested enterprise applications ready to deploy without custom packaging. For the majority of a typical third-party portfolio, the work is already done before the team starts.",
-              "Context-aware delivery assigns the right app to the right user based on identity, device, location, and network — automatically. A contractor on a personal laptop gets a different experience than a full-time employee on a managed device at headquarters, with no manual provisioning.",
-              "Automated ring-based patching closes CVE gaps in days, not weeks, and produces compliance audit evidence automatically — without an engineer manually managing every environment every time a patch lands.",
-              "Application Workspace integrates with existing tools. It amplifies ConfigMgr and Intune rather than replacing them. No rip-and-replace. No large migration project before value is realized."
+              "One package works across ConfigMgr, Intune, Citrix, AVD, macOS, and more.",
+              "8,000+ apps are pre-built and ready to deploy.",
+              "The right app gets to the right person automatically.",
+              "Patches roll out on schedule. Compliance is tracked automatically.",
+              "Works alongside your existing tools. Nothing gets replaced."
             ],
-            analyst: "Leading IT organizations are shifting from device-centric management to user-centric delivery to reduce operational friction and keep pace with constant platform change. The teams making this shift are building IT organizations that scale with demand — not headcount."
+            analyst: "The best teams aren't bigger. They've stopped repeating the same work."
           }
         },
 
-        // ─── CHANGE 6: defaultsCurrentState — mirrors STATE.currentState exactly ───
         defaultsCurrentState() {
           return JSON.parse(JSON.stringify({
             change: {
-              intro: "Most IT organizations are not failing. They are running hard inside a model that was built for a simpler era — fewer platforms, slower update cycles, more predictable change. That model has not kept pace. The work has multiplied. The team has not.",
+              intro: "App delivery still works the way it did a decade ago.",
               bullets: [
-                "Every platform multiplies every application. The same app has to be packaged, tested, and maintained separately for every environment it runs on. Add a platform and you have not added work — you have multiplied it against everything that already exists.",
-                "Deployment tools are not built for the speed security requires. Intune and similar tools operate on scheduled cycles. Security vulnerabilities do not. The gap between when a patch is available and when it is fully deployed across every environment is documented exposure.",
-                "Backend changes are creating front-end crises. Every infrastructure update carries real risk of breaking something users can see — and the resulting ticket spikes pull senior engineers away from strategic work to handle basic support.",
-                "SaaS shifted the burden. It did not remove it. Moving to cloud and SaaS traded infrastructure management for constant integration testing, compatibility validation, and policy updates that follow every vendor release cycle.",
-                "The engineers who should be leading AI adoption are maintaining the backlog. 30–40% of senior engineering capacity goes to repetitive application maintenance — the same capacity leadership is asking for to implement AI, automation, and modernization."
+                "Add a platform and every app has to be repackaged for it.",
+                "Patches run on weekly tool cycles. Security problems don't wait.",
+                "Back-end changes break things users see. Engineers spend days fixing it.",
+                "SaaS moved the workload. It didn't remove it.",
+                "40% of engineering time goes to routine maintenance."
               ],
-              analyst: "The organizations moving fastest on AI, cloud consolidation, and platform modernization share one thing: they solved the application layer first. Teams still building for every platform separately are not standing still — they are falling further behind every quarter, one new environment at a time."
+              analyst: "Teams winning on AI and cloud fixed app delivery first."
             },
             now: {
-              intro: "The gap between what IT is asked to deliver and what it can sustain is widening. Three forces are colliding right now that make the current model genuinely unsustainable — not eventually, but this year.",
+              intro: "There's no slack left.",
               bullets: [
-                "Platform count is accelerating, not stabilizing. Windows 11, Intune consolidation, Azure Virtual Desktop adoption, macOS expansion, and AI tooling rollouts are all landing simultaneously — each one a new multiplication event against every application already in the environment.",
-                "Security urgency has permanently increased. A decade ago, patching within 30 days was responsible. Compliance frameworks today expect days. The manual model that was merely inefficient before is now a documented liability every time a CVE drops.",
-                "AI initiatives are being pushed by leadership, but teams lack the bandwidth to implement them. The application maintenance backlog is consuming the exact engineering capacity the business is asking for. Until the model changes, those two demands stay in permanent conflict.",
-                "Operational budgets are flat while IT responsibilities grow. Headcount stays constant while platform count, application portfolio size, and update frequency all increase. The only resolution that does not require something breaking is changing the model — not adding resources to it."
+                "Every new platform adds work across every app you already manage.",
+                "Patching windows have shrunk from weeks to days.",
+                "Leadership wants AI tools deployed. The team is buried in the backlog.",
+                "Platform count grows every year. Team size doesn't."
               ],
-              analyst: "Organizations that succeed with AI, cloud, and new platforms over the next few years will be the ones that stabilized application delivery first. Everyone else hits a capacity wall where progress stalls regardless of strategy or budget."
+              analyst: "Fix it now or spend years catching up."
             },
             recast: {
-              intro: "Application Workspace changes the fundamental model — from building per platform to defining once and delivering everywhere. Every other layer of modern IT has already made this shift. Application delivery is the last one.",
+              intro: "Package an app once. It goes everywhere — automatically.",
               bullets: [
-                "Define an application once. Application Workspace delivers it consistently across ConfigMgr, Intune, Citrix, AVD, Windows 365, and macOS — automatically. No repackaging. No per-platform rebuild.",
-                "8,000+ pre-tested enterprise applications ready to deploy without custom packaging. For the majority of a typical third-party portfolio, the work is already done before the team starts.",
-                "Context-aware delivery assigns the right app to the right user based on identity, device, location, and network — automatically. A contractor on a personal laptop gets a different experience than a full-time employee on a managed device at headquarters, with no manual provisioning.",
-                "Automated ring-based patching closes CVE gaps in days, not weeks, and produces compliance audit evidence automatically — without an engineer manually managing every environment every time a patch lands.",
-                "Application Workspace integrates with existing tools. It amplifies ConfigMgr and Intune rather than replacing them. No rip-and-replace. No large migration project before value is realized."
+                "One package works across ConfigMgr, Intune, Citrix, AVD, macOS, and more.",
+                "8,000+ apps are pre-built and ready to deploy.",
+                "The right app gets to the right person automatically.",
+                "Patches roll out on schedule. Compliance is tracked automatically.",
+                "Works alongside your existing tools. Nothing gets replaced."
               ],
-              analyst: "Leading IT organizations are shifting from device-centric management to user-centric delivery to reduce operational friction and keep pace with constant platform change. The teams making this shift are building IT organizations that scale with demand — not headcount."
+              analyst: "The best teams aren't bigger. They've stopped repeating the same work."
             }
           }));
         },
@@ -375,66 +374,66 @@
             {
               id: "more_apps",
               label: "App & Platform Sprawl",
-              subtext: "More apps × more platforms = exponential workload",
+              subtext: "More platforms means more work for every app",
               markerYear: 2025.6,
               bullets: [
-                "The average enterprise manages 1,000+ applications across multiple delivery environments.",
-                "Every new platform multiplies every existing application — add a platform and you add packaging jobs for everything already in the catalog.",
-                "App sprawl and platform sprawl compound each other. The math turns against the team quietly, then all at once."
+                "Most teams manage hundreds of apps across multiple platforms.",
+                "Add a new platform and every app has to be repackaged for it.",
+                "More platforms means a faster-growing backlog."
               ],
-              short: "More apps × more platforms = exponential maintenance burden.",
+              short: "Add a platform. Repackage every app.",
               state: 'off'
             },
             {
               id: "constant_updates",
-              label: "Continuous Change Pressure",
-              subtext: "Security patches, vendor releases, SaaS update cycles",
+              label: "Updates Never Stop",
+              subtext: "Patches and fixes land every week",
               markerYear: 2026.2,
               bullets: [
-                "Application updates are no longer occasional — they are continuous. Vendor release cycles, security patches, and SaaS updates create a queue that never fully clears.",
-                "SaaS adoption shifted the workload, it did not eliminate it. Teams now manage constant integration testing and compatibility validation after every vendor release.",
-                "Release velocity has permanently outpaced the manual packaging and validation model most teams are still running."
+                "App updates used to be occasional. Now they arrive every week.",
+                "Every update has to be tested and deployed across every platform.",
+                "The queue never fully clears. Teams are always working from behind."
               ],
-              short: "Updates are continuous. The manual model was built for scheduled change.",
+              short: "Constant updates. Manual process can't keep up.",
               state: 'off'
             },
             {
               id: "too_many_tools",
-              label: "Multi-Environment Fragmentation",
-              subtext: "Same app, rebuilt for every delivery environment",
+              label: "Too Many Environments",
+              subtext: "Same app, rebuilt for each platform",
               markerYear: 2026.8,
               bullets: [
-                "Most enterprises now manage five or more delivery environments simultaneously — on-prem, cloud, hybrid, VDI, SaaS — each requiring its own packaging and deployment logic.",
-                "Teams rebuild the same application for every environment rather than defining it once. The duplication is not accidental — the current model requires it.",
-                "Tool fragmentation creates handoffs, inconsistencies, and compounding rework that grows with every environment added."
+                "Most teams manage on-prem, cloud, VDI, and SaaS at the same time.",
+                "The same app has to be packaged differently for each one.",
+                "Every environment added means more duplication and more ways things can break."
               ],
-              short: "Same app, different platforms, rebuilt logic everywhere.",
+              short: "Same app. Rebuilt for every platform, every time.",
               state: 'off'
             },
             {
               id: "manual_rework",
-              label: "Senior Engineers in the Wrong Work",
-              subtext: "Best people buried in the most repetitive tasks",
+              label: "Engineers on the Wrong Work",
+              subtext: "Best people stuck on the most repetitive tasks",
               markerYear: 2027.3,
               bullets: [
-                "30–40% of IT engineering capacity in most organizations goes to repetitive packaging, patching, and troubleshooting work that produces no new capability.",
-                "During large deployments, senior engineers are regularly pulled into basic support tasks — the people who should be architecting the future are handling the support queue.",
-                "The AI rollout, cloud migration, and platform consolidation leadership is asking for require the same engineering capacity that the maintenance backlog is consuming."
+                "About 40% of IT engineering time goes to packaging, patching, and troubleshooting.",
+                "When something breaks, senior engineers get pulled in to fix basic problems.",
+                "The AI and cloud projects leadership wants need the same people buried in the backlog."
               ],
-              short: "Senior engineering capacity consumed by repetitive work that scales with platform count.",
+              short: "40% of engineering time is routine work.",
               state: 'off'
             },
             {
               id: "security_compliance",
-              label: "Security Urgency vs. Manual Speed",
-              subtext: "Compliance expects days. Manual processes take weeks.",
+              label: "Patches Are Too Slow",
+              subtext: "Security expects days. Delivery takes weeks.",
               markerYear: 2027.7,
               bullets: [
-                "Compliance frameworks and security teams now expect critical patches deployed within days of CVE disclosure. The manual per-platform packaging model cannot reliably hit that bar.",
-                "Backend infrastructure changes frequently cause front-end user disruption — broken app installs, version conflicts, missing integrations — creating ticket spikes that pull teams into reactive mode.",
-                "Inconsistent application versions across environments increase security exposure and make audit evidence difficult to produce without significant manual effort."
+                "Security teams expect patches out within days. Manual processes rarely hit that.",
+                "When infrastructure changes, apps break for users — and engineers spend days on fixes.",
+                "Tracking compliance across multiple environments manually is slow and easy to get wrong."
               ],
-              short: "Security urgency is measured in days. Manual delivery is measured in weeks.",
+              short: "Security expects days. Manual delivery takes weeks.",
               state: 'off'
             }
           ]));
@@ -460,16 +459,15 @@
         {
           id: 'core',
           icon: 'layers',
-          title: 'How Application Workspace Works.',
+          title: 'How It Works',
           bullets: [
-            'Define an application once. Application Workspace delivers it consistently across ConfigMgr, Intune, Citrix, AVD, Windows 365, and macOS — no repackaging, no per-platform rebuild required.',
-            '8,000+ pre-tested enterprise applications ready to deploy without custom packaging — covering the majority of most third-party portfolios before the team starts.',
-            'Context-aware delivery: the right app reaches the right user based on identity, device, location, and network — automatically, without a provisioning ticket.',
-            'Automated ring-based patching deploys across all environments on a controlled schedule, closing CVE gaps in days and generating compliance audit evidence automatically.',
-            'Application Workspace integrates with existing tools — it amplifies ConfigMgr and Intune rather than replacing them. No rip-and-replace.',
-            'One support model for all delivery methods. IT manages application issues from a single console regardless of how or where the app is delivered.'
+            'Set up an app once. It deploys everywhere — ConfigMgr, Intune, Citrix, AVD, Windows 365, macOS. No rebuilding for each platform.',
+            '8,000+ apps are already packaged and ready. Most of your catalog is covered before you start.',
+            'The right app reaches the right person automatically, based on who they are and what device they\'re on.',
+            'Patches go out across every environment on a schedule. Compliance reports are generated automatically.',
+            'Works alongside your existing tools. Nothing gets replaced — just connected.'
           ],
-          closer: 'Define once. Deliver everywhere. Manage from one place.',
+          closer: 'Set up once. Works everywhere.',
           timeline: false,
           bgHeader: 'bg-[#f9fafb]',
           bgContent: 'bg-[#f9fafb]'
@@ -477,15 +475,15 @@
         {
           id: 'onboarding',
           icon: 'clock',
-          title: 'Up and Running in Weeks, Not Months.',
+          title: 'Up and Running Fast',
           bullets: [
-            'Standard deployment in 4–6 weeks: Kickoff, Environment Assessment, Pilot Group, Validation, and Full Rollout.',
-            'No rip-and-replace: Application Workspace layers on top of existing ConfigMgr, Intune, or VDI infrastructure.',
-            'Dedicated Customer Success Manager guides every phase — from first import to full production.',
-            'Typical resource requirement: 1–2 IT engineers part-time. No large project teams or consultants required.',
-            'End users see the improvement on day one — the right apps appear in the right place without waiting for IT tickets.'
+            'Live in 4–6 weeks. Kickoff → Assessment → Pilot → Validation → Full rollout.',
+            'Nothing gets ripped out. Application Workspace connects to what you already have.',
+            'A dedicated success manager is with you from day one to go-live.',
+            'Takes 1–2 engineers part-time. No big project team needed.',
+            'Users notice the difference immediately — apps are there when they need them.'
           ],
-          closer: 'In production before the next patch Tuesday.',
+          closer: 'Faster than your next patch cycle.',
           timeline: true,
           bgHeader: 'bg-[#f9fafb]',
           bgContent: 'bg-[#f9fafb]'
@@ -493,15 +491,15 @@
         {
           id: 'trust',
           icon: 'shield-check',
-          title: 'Trusted at Scale Across Every Industry.',
+          title: 'Proven at Scale',
           bullets: [
-            '60M+ endpoints managed across 130+ countries — from 200-person organizations to global enterprises.',
-            'Trusted by Costco, McKinsey & Company, U.S. Air Force, FEMA, Citibank, Johns Hopkins, and the Government of Canada.',
-            '87 CSAT Score — consistently rated highest in the industry for endpoint and application management.',
-            'SOC 2 Type II and ISO 27001 certified — built for organizations with strict security and compliance requirements.',
-            'Proven across every major platform environment: Windows, macOS, Citrix, AVD, ConfigMgr, and Intune.'
+            '60M+ devices managed across 130+ countries.',
+            'Used by Costco, Citibank, McKinsey, Johns Hopkins, the U.S. Air Force, and the Government of Canada.',
+            '87 CSAT score — highest in the industry.',
+            'SOC 2 Type II and ISO 27001 certified.',
+            'Works across Windows, macOS, Citrix, AVD, ConfigMgr, and Intune.'
           ],
-          closer: 'Trusted where downtime and missed patches are not an option.',
+          closer: 'Built for teams that can\'t afford downtime.',
           timeline: false,
           bgHeader: 'bg-[#f9fafb]',
           bgContent: 'bg-[#f9fafb]'
@@ -606,48 +604,48 @@
           id: 'speed',
           icon: 'zap',
           title: 'Speed',
-          tagline: 'The business expects technology to move instantly.',
+          tagline: 'The business moves fast. App delivery doesn\'t.',
           color: '#0070F3',
           colorLight: 'rgba(0,112,243,0.07)',
           colorBorder: 'rgba(0,112,243,0.25)',
           bullets: [
-            'New hires expect applications on day one. Security teams expect patches immediately. Leadership wants AI tools deployed quickly.',
-            'Even with modern tools like Intune and cloud platforms, patch cycles still take days to fully propagate across every environment.',
-            'Application delivery pipelines were designed for a different era — one where change was planned, not continuous.'
+            'New hires wait days for apps they need on day one.',
+            'Security patches take weeks when they need to go out in days.',
+            'Leadership asks for AI tools. The team is already behind.'
           ],
-          closing: 'IT teams are not slow. The systems used to deliver applications were built for a pace that no longer exists.',
+          closing: 'The team isn\'t slow. The process is.',
           drivers: ['constant_updates', 'security_compliance']
         },
         {
           id: 'scale',
           icon: 'layers',
           title: 'Scale',
-          tagline: 'The environment has exploded. The team has not.',
+          tagline: 'More platforms. Same team size.',
           color: '#7c3aed',
           colorLight: 'rgba(124,58,237,0.07)',
           colorBorder: 'rgba(124,58,237,0.25)',
           bullets: [
-            'Most IT teams now support cloud and on-prem systems, SaaS platforms, VDI environments, Windows and Mac devices, and mobile endpoints — simultaneously.',
-            'Each platform introduces another deployment path. The same application must be packaged, tested, and deployed multiple times.',
-            'Engineers spend more time maintaining delivery pipelines than delivering value to the business.'
+            'Most teams now manage Windows, Mac, VDI, cloud, and mobile together.',
+            'Add one platform and every app has to be repackaged for it.',
+            'The work multiplies. The team doesn\'t.'
           ],
-          closing: 'The workload has scaled with platform count. The headcount has not. That gap is where capacity disappears.',
+          closing: 'Engineers spend most of their time on upkeep, not on progress.',
           drivers: ['more_apps', 'too_many_tools']
         },
         {
           id: 'risk',
           icon: 'shield-alert',
           title: 'Risk',
-          tagline: 'Operational fragility grows quietly, then becomes a crisis.',
+          tagline: 'Too much depends on too few people.',
           color: '#dc2626',
           colorLight: 'rgba(220,38,38,0.07)',
           colorBorder: 'rgba(220,38,38,0.25)',
           bullets: [
-            'Application delivery often depends on manual processes, internal scripts, and knowledge held by a small number of key engineers.',
-            'Security patching can fall behind. Compliance tracking becomes manual. Delivery capability depends on specific individuals being present.',
-            'Backend infrastructure changes frequently cause front-end user disruption — triggering ticket spikes that pull senior engineers into reactive support.'
+            'App delivery runs on manual steps that only a few people know.',
+            'One person out. Delivery slows down or stops.',
+            'Patches fall behind. Compliance gaps build up quietly.'
           ],
-          closing: 'IT leaders know this risk exists. Solving it with more headcount is not realistic. Solving it requires changing the model.',
+          closing: 'You can\'t hire your way out of this. The model has to change.',
           drivers: ['manual_rework', 'security_compliance']
         }
       ];
@@ -658,22 +656,14 @@
         return `
           <section id="panel-problems" class="space-y-5">
 
-            <!-- ── ROW 1: Context banner ── -->
-            <div class="section-card px-6 py-5">
-              <div class="flex items-start gap-4">
-                <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-[#0070F3]/10 grid place-items-center mt-0.5">
-                  <i data-lucide="globe" class="w-5 h-5 text-[#0070F3]"></i>
+            <!-- ROW 1: Context -->
                 </div>
                 <div>
-                  <h2 class="text-[17px] font-semibold text-[#0A1C60] mb-1">The Reality IT Teams Are Facing</h2>
-                  <p class="text-sm text-[#4A5568] leading-relaxed max-w-3xl">
-                    Over the last decade, IT environments have changed more than at any time in history — from on-prem infrastructure and a handful of enterprise apps to SaaS platforms, cloud and hybrid infrastructure, VDI environments, multiple operating systems, remote workforces, and now AI tools landing across the organization. But while the environment changed dramatically, the core operational model for delivering applications hasn't. That gap is why IT teams everywhere are feeling pressure from three converging forces.
-                  </p>
                 </div>
               </div>
             </div>
 
-            <!-- ── ROW 2: Three force cards ── -->
+            <!-- ROW 2: Three force cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
               ${FORCES.map(f => {
                 const isActive = af === f.id;
@@ -698,8 +688,8 @@
                       </div>
                       ${isActive ? `<span class="h-2.5 w-2.5 rounded-full flex-shrink-0" style="background:${f.color}"></span>` : ''}
                     </div>
-                    <p class="text-[13px] font-medium text-[#0A1C60] mb-2 leading-snug">${f.tagline}</p>
-                    <ul class="space-y-1.5">
+                    <p class="text-[13px] font-medium text-[#0A1C60] mb-3 leading-snug">${f.tagline}</p>
+                    <ul class="space-y-2">
                       ${f.bullets.map(b=>`
                         <li class="flex items-start gap-2 text-[12px] text-[#4A5568] leading-relaxed">
                           <span class="h-1.5 w-1.5 rounded-full flex-shrink-0" style="background:${f.color}; margin-top:5px"></span>
@@ -712,7 +702,7 @@
               }).join('')}
             </div>
 
-            <!-- ── ROW 3: Chart + Why Change / Why Now / Why Recast sidebar ── -->
+            <!-- ROW 3: Chart + sidebar -->
             <div class="section-card p-6">
               ${af ? `
                 <div class="mb-4 flex items-center justify-between">
@@ -727,13 +717,12 @@
                   </button>
                 </div>
               ` : ''}
-              <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
+              <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-6 items-start">
                 <div class="chart-container relative">
                   <svg id="capacity-gap-chart" viewBox="0 0 800 400"></svg>
                 </div>
                 <div class="w-full bg-white/70 backdrop-blur-lg rounded-2xl shadow-md p-5 border border-slate-200">
-                  <h3 class="text-base font-semibold text-[#0A1C60] mb-1">Understand the Story</h3>
-                  <p class="text-[12px] text-[#4A5568] mb-4 leading-relaxed">Walk through why change is necessary, why the urgency is now, and how Recast addresses it.</p>
+                  <h3 class="text-sm font-semibold text-[#0A1C60] mb-4">Dig deeper</h3>
                   <div class="grid grid-cols-1 gap-3 items-stretch">
                     ${calloutDropdown('change','alert-triangle','Why Change','bg-slate-50')}
                     ${calloutDropdown('now','clock-4','Why Now','bg-slate-50', false, "")}
@@ -743,7 +732,7 @@
               </div>
             </div>
 
-            <!-- ── ROW 4: The Hidden Bottleneck ── -->
+            <!-- ROW 4: The bottleneck -->
             <div class="rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#0A1C60 0%,#0070F3 100%)">
               <div class="px-6 py-6 md:px-8 md:py-7">
                 <div class="flex items-start gap-4">
@@ -751,15 +740,15 @@
                     <i data-lucide="alert-octagon" class="w-5 h-5 text-white"></i>
                   </div>
                   <div class="flex-1">
-                    <div class="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">Where It All Converges</div>
-                    <h3 class="text-xl font-bold text-white mb-2">The Hidden Bottleneck</h3>
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">The result</div>
+                    <h3 class="text-xl font-bold text-white mb-2">It all backs up in the same place</h3>
                     <p class="text-[14px] text-white/85 leading-relaxed mb-4 max-w-2xl">
-                      Across almost every organization, Speed, Scale, and Risk converge in the same place: the application layer. This is where IT teams must package applications, maintain updates, deliver patches, and deploy software across environments. As the pace of change accelerates, this layer becomes the operational bottleneck that everything else waits on.
+                      Speed, Scale, and Risk all hit the same spot — the application layer. Packaging, patching, deploying. This is where the queue builds. This is why everything else waits.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                      ${['Package applications','Maintain updates','Deliver patches','Deploy across environments','Track compliance'].map(task=>`
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-white text-[12px] font-medium border border-white/20">
-                          <i data-lucide="arrow-right" class="w-3 h-3"></i>${task}
+                      ${['Packaging','Patching','Deploying','Updates','Compliance'].map(task=>`
+                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 text-white text-[12px] font-medium border border-white/20">
+                          ${task}
                         </span>
                       `).join('')}
                     </div>
@@ -768,18 +757,16 @@
               </div>
             </div>
 
-            <!-- ── ROW 5: What IT Leaders Are Really Trying to Do ── -->
+            <!-- ROW 5: What teams actually need -->
             <div class="section-card p-6">
-              <div class="mb-4">
-                <h3 class="text-base font-semibold text-[#0A1C60]">What IT Leaders Are Really Trying to Do</h3>
-                <p class="text-[13px] text-[#4A5568] mt-1">The goal is not just faster application delivery. It is eliminating the operational complexity that makes delivery slow in the first place.</p>
-              </div>
+              <h3 class="text-base font-semibold text-[#0A1C60] mb-1">What IT teams actually need</h3>
+              <p class="text-[13px] text-[#4A5568] mb-4">Not more headcount. A better way to work.</p>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 ${[
-                  {icon:'copy-minus', title:'Reduce Duplicate Work', body:'Stop packaging, testing, and deploying the same application separately for every platform it runs on.'},
-                  {icon:'user-check', title:'Free Up Engineers', body:'Return the 30–40% of senior engineering capacity consumed by repetitive maintenance to strategic work.'},
-                  {icon:'rocket', title:'Deliver Instantly', body:'Give new hires their applications on day one. Deploy AI tools when leadership asks. Close patches in days, not weeks.'},
-                  {icon:'cpu', title:'Support AI Without Overwhelm', body:'Roll out new AI tooling across the organization without overwhelming the same team already managing the backlog.'}
+                  {icon:'copy-minus', title:'Stop repeating the same work', body:'Package an app once. It should work everywhere — not need rebuilding for every platform.'},
+                  {icon:'user-check', title:'Free up your best people', body:'About 40% of engineering time goes to routine upkeep. That time belongs on better work.'},
+                  {icon:'rocket', title:'Deliver when it matters', body:'Apps on day one. Fast patches. New tools without a growing queue.'},
+                  {icon:'cpu', title:'Have room for what\'s next', body:'AI tools, new platforms, new demands — teams need capacity to keep up.'}
                 ].map(g=>`
                   <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-4 hover:border-[#0070F3]/30 hover:bg-blue-50/30 transition-colors">
                     <div class="h-8 w-8 rounded-lg bg-[#0070F3]/10 grid place-items-center mb-3">
@@ -789,9 +776,6 @@
                     <p class="text-[12px] text-[#4A5568] leading-relaxed">${g.body}</p>
                   </div>
                 `).join('')}
-              </div>
-              <div class="mt-4 pt-4 border-t border-slate-200">
-                <p class="text-[13px] text-[#4A5568] italic">In other words: IT leaders need a way to scale application delivery without scaling operational complexity. That is what Application Workspace is built to solve.</p>
               </div>
             </div>
 
@@ -1245,11 +1229,9 @@
           <section id="panel-roi" class="space-y-6">
 
             <div class="section-card p-6">
-              <h3 class="text-xl font-semibold text-[#0A1C60] mb-2">Application Workspace — Time &amp; Cost Calculator</h3>
+              <h3 class="text-xl font-semibold text-[#0A1C60] mb-2">See How Much Time You Get Back</h3>
               <p class="text-sm text-[#4A5568] leading-relaxed max-w-2xl">
-                Most application work is not hard. It is just repeated — once for every platform the app has to run on.
-                This calculator shows how much of your team's time disappears when you stop rebuilding per platform
-                and start defining once.
+                Right now, every app change gets rebuilt for each platform it runs on. Enter your numbers below to see how many hours that's costing your team — and what you get back when you stop.
               </p>
             </div>
 
@@ -1259,35 +1241,35 @@
                 <div class="text-[11px] font-semibold uppercase tracking-widest text-[#0070F3]">Your Environment</div>
 
                 <label class="flex flex-col gap-1">
-                  <span class="text-sm font-medium text-[#0A1C60]">How many delivery platforms do your apps run on?</span>
-                  <span class="text-xs text-[#4A5568]">ConfigMgr, Intune, Citrix, AVD, macOS, Windows 365 each count as one.</span>
+                  <span class="text-sm font-medium text-[#0A1C60]">How many platforms do your apps run on?</span>
+                  <span class="text-xs text-[#4A5568]">Count each separately: ConfigMgr, Intune, Citrix, AVD, macOS, Windows 365.</span>
                   <input type="number" id="calc-envs" min="1" max="10" value="${STATE.calcInputs.envs}"
                     class="mt-1 w-full rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm focus-ring">
-                  <span class="text-[11px] text-[#9ca3af] italic">Industry typical: 3–5 platforms</span>
+                  <span class="text-[11px] text-[#9ca3af] italic">Most teams: 3–5 platforms</span>
                 </label>
 
                 <label class="flex flex-col gap-1">
-                  <span class="text-sm font-medium text-[#0A1C60]">How many application changes do you push per month?</span>
-                  <span class="text-xs text-[#4A5568]">Include vendor updates, security patches, internal releases, and urgent fixes.</span>
+                  <span class="text-sm font-medium text-[#0A1C60]">How many app changes do you make per month?</span>
+                  <span class="text-xs text-[#4A5568]">Include patches, vendor updates, new releases, and urgent fixes.</span>
                   <input type="number" id="calc-changes" min="1" max="500" value="${STATE.calcInputs.changes}"
                     class="mt-1 w-full rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm focus-ring">
-                  <span class="text-[11px] text-[#9ca3af] italic">Industry typical: 10–30 changes/month</span>
+                  <span class="text-[11px] text-[#9ca3af] italic">Most teams: 10–30 changes/month</span>
                 </label>
 
                 <label class="flex flex-col gap-1">
-                  <span class="text-sm font-medium text-[#0A1C60]">How long does one change take per platform (hours)?</span>
-                  <span class="text-xs text-[#4A5568]">Include packaging, testing, validation, deployment coordination, and troubleshooting fallout.</span>
+                  <span class="text-sm font-medium text-[#0A1C60]">Hours to complete one change on one platform?</span>
+                  <span class="text-xs text-[#4A5568]">Include packaging, testing, deployment, and fixing anything that breaks.</span>
                   <input type="number" id="calc-time" min="1" max="100" value="${STATE.calcInputs.time}"
                     class="mt-1 w-full rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm focus-ring">
-                  <span class="text-[11px] text-[#9ca3af] italic">Recast benchmark: 4 hours per app per platform (standard complexity)</span>
+                  <span class="text-[11px] text-[#9ca3af] italic">Recast benchmark: ~4 hours per app per platform</span>
                 </label>
 
                 <label class="flex flex-col gap-1">
-                  <span class="text-sm font-medium text-[#0A1C60]">Average IT admin annual salary (USD)</span>
-                  <span class="text-xs text-[#4A5568]">Used to calculate dollar value of recovered capacity. Use fully-loaded cost if known.</span>
+                  <span class="text-sm font-medium text-[#0A1C60]">Average IT admin salary (USD/year)</span>
+                  <span class="text-xs text-[#4A5568]">Used to put a dollar value on the time saved.</span>
                   <input type="number" id="calc-salary" min="50000" max="300000" step="5000" value="${STATE.calcInputs.salary || 110000}"
                     class="mt-1 w-full rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm focus-ring">
-                  <span class="text-[11px] text-[#9ca3af] italic">US market typical: $90,000–$130,000</span>
+                  <span class="text-[11px] text-[#9ca3af] italic">Typical range: $90,000–$130,000</span>
                 </label>
 
                 <button type="button" data-action="calculate-impact"
@@ -1300,7 +1282,7 @@
                 ${STATE.calcResult ? renderCalcResult() : `
                   <div class="flex flex-col items-center justify-center h-full gap-3 py-12 text-center">
                     <i data-lucide="calculator" class="w-8 h-8 text-[#0070F3]"></i>
-                    <p class="text-sm text-[#4A5568]">Enter your numbers and click Calculate to see the impact.</p>
+                    <p class="text-sm text-[#4A5568]">Fill in your numbers and hit Calculate.</p>
                   </div>
                 `}
               </div>
@@ -1308,7 +1290,7 @@
             </div>
 
             <div class="rounded-xl border border-slate-200 bg-white/60 p-3 text-[11px] text-[#9ca3af] leading-relaxed">
-              <strong class="text-[#6b7280]">How to read this:</strong> The hour savings shown represent packaging work eliminated by defining applications once instead of per platform. Dollar values use the hourly rate derived from your salary input. FTE equivalent reflects capacity returned, not headcount reduction. Packaging time benchmark sourced from Recast Software research (4 hrs/app/platform, standard complexity).
+              <strong class="text-[#6b7280]">How this works:</strong> Hours saved = the time currently spent repackaging the same app for each platform. With Application Workspace that work happens once. Dollar values are based on your salary input. The FTE number shows what that recovered time is worth — not a suggestion to reduce headcount.
             </div>
 
             <div class="flex justify-start">
@@ -1329,35 +1311,35 @@
 
         return `
           <div class="rounded-xl bg-gradient-to-br from-[#0070F3] to-[#0A1C60] p-5 text-white">
-            <div class="text-[10px] font-semibold uppercase tracking-widest opacity-70 mb-1">Engineering Hours Recovered Per Year</div>
+            <div class="text-[10px] font-semibold uppercase tracking-widest opacity-70 mb-1">Hours Saved Per Year</div>
             <div class="text-[36px] font-bold tabular-nums leading-none">${fmtHr(r.h_saved_year)}</div>
-            <div class="text-sm opacity-75 mt-1">hours your team stops spending on per-platform rebuilds</div>
+            <div class="text-sm opacity-75 mt-1">hours your team stops spending on repeat work</div>
           </div>
 
           <div class="grid grid-cols-3 gap-2">
             <div class="rounded-xl bg-blue-50 border border-blue-100 p-3 text-center">
-              <div class="text-[10px] uppercase tracking-widest text-[#1d4ed8] font-semibold mb-1">Saved / Month</div>
+              <div class="text-[10px] uppercase tracking-widest text-[#1d4ed8] font-semibold mb-1">Per Month</div>
               <div class="text-lg font-bold text-[#0A1C60] tabular-nums">${fmtHr(r.h_saved)} hrs</div>
               <div class="text-[10px] text-[#6b7280] mt-0.5">${fmtDollar(r.dollar_month)}</div>
             </div>
             <div class="rounded-xl bg-green-50 border border-green-100 p-3 text-center">
-              <div class="text-[10px] uppercase tracking-widest text-[#059669] font-semibold mb-1">Saved / Year</div>
+              <div class="text-[10px] uppercase tracking-widest text-[#059669] font-semibold mb-1">Per Year</div>
               <div class="text-lg font-bold text-[#059669] tabular-nums">${fmtHr(r.h_saved_year)} hrs</div>
               <div class="text-[10px] text-[#6b7280] mt-0.5">${fmtDollar(r.dollar_year)}</div>
             </div>
             <div class="rounded-xl bg-orange-50 border border-orange-100 p-3 text-center">
-              <div class="text-[10px] uppercase tracking-widest text-[#c2410c] font-semibold mb-1">FTE Equivalent</div>
+              <div class="text-[10px] uppercase tracking-widest text-[#c2410c] font-semibold mb-1">FTE Equiv.</div>
               <div class="text-lg font-bold text-[#c2410c] tabular-nums">${r.fte_eq}</div>
               <div class="text-[10px] text-[#6b7280] mt-0.5">capacity returned</div>
             </div>
           </div>
 
           <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 space-y-2">
-            <div class="text-[10px] font-semibold uppercase tracking-widest text-[#6b7280]">How We Got There</div>
+            <div class="text-[10px] font-semibold uppercase tracking-widest text-[#6b7280]">The Math</div>
             <div class="text-[12px] text-[#4A5568] space-y-1">
               <div>Today: <strong>${r.changes} changes × ${r.envs} platforms × ${r.time} hrs = ${fmtHr(r.h_current)} hrs/month</strong></div>
-              <div>With Application Workspace: <strong>${r.changes} changes × 1 × ${r.time} hrs = ${fmtHr(r.h_aw)} hrs/month</strong></div>
-              <div>Hourly rate used: <strong>${fmtDollar(r.hourlyRate)}/hr</strong> (${fmtDollar(r.salary)}/yr ÷ 2,080 hrs)</div>
+              <div>With Recast: <strong>${r.changes} changes × 1 platform × ${r.time} hrs = ${fmtHr(r.h_aw)} hrs/month</strong></div>
+              <div>Hourly rate: <strong>${fmtDollar(r.hourlyRate)}/hr</strong> (${fmtDollar(r.salary)}/yr ÷ 2,080 hrs)</div>
             </div>
           </div>
 
@@ -1365,22 +1347,19 @@
             <div class="rounded-xl bg-green-50 border border-green-200 p-3 flex items-start gap-2">
               <i data-lucide="check-circle" class="w-4 h-4 text-[#059669] flex-shrink-0 mt-0.5"></i>
               <p class="text-[12px] text-[#065f46]">
-                <strong>This environment qualifies as a strong Application Workspace use case.</strong>
-                Multiple platforms and regular change volume means the per-platform rebuild cost is compounding every month.
+                <strong>This looks like a strong fit.</strong> Multiple platforms and regular changes mean the repeated work is adding up every month.
               </p>
             </div>
           ` : `
             <div class="rounded-xl bg-amber-50 border border-amber-200 p-3 flex items-start gap-2">
               <i data-lucide="alert-triangle" class="w-4 h-4 text-[#d97706] flex-shrink-0 mt-0.5"></i>
               <p class="text-[12px] text-[#92400e]">
-                Lower volume or fewer platforms — Application Workspace still eliminates per-platform rebuild work, but the compounding effect grows as your environment does.
+                Smaller environment — but the savings grow as your platform count does.
               </p>
             </div>
           `}
         `;
       }
-
-      function updateROIOutputs(){ /* render-driven */ }
 
       function setText(id, value){
         const el=document.getElementById(id);
