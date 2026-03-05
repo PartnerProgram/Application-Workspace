@@ -453,6 +453,7 @@
       STATE.flowTimers = { intervals: [], timeouts: [] };
       STATE.editChartBuffer = null;
       STATE.highlightDriverId = null;
+      STATE.activeForce = null;
 
       // ─── CHANGE 10: NEW_CARDS — all 3 replaced with accurate content ───
       const NEW_CARDS = [
@@ -599,34 +600,141 @@
         return '';
       }
 
+      // ─── FORCES data — drives the three interactive force cards ───
+      const FORCES = [
+        {
+          id: 'speed',
+          icon: 'zap',
+          title: 'Speed',
+          tagline: 'The business expects technology to move instantly.',
+          color: '#0070F3',
+          colorLight: 'rgba(0,112,243,0.07)',
+          colorBorder: 'rgba(0,112,243,0.25)',
+          bullets: [
+            'New hires expect applications on day one. Security teams expect patches immediately. Leadership wants AI tools deployed quickly.',
+            'Even with modern tools like Intune and cloud platforms, patch cycles still take days to fully propagate across every environment.',
+            'Application delivery pipelines were designed for a different era — one where change was planned, not continuous.'
+          ],
+          closing: 'IT teams are not slow. The systems used to deliver applications were built for a pace that no longer exists.',
+          drivers: ['constant_updates', 'security_compliance']
+        },
+        {
+          id: 'scale',
+          icon: 'layers',
+          title: 'Scale',
+          tagline: 'The environment has exploded. The team has not.',
+          color: '#7c3aed',
+          colorLight: 'rgba(124,58,237,0.07)',
+          colorBorder: 'rgba(124,58,237,0.25)',
+          bullets: [
+            'Most IT teams now support cloud and on-prem systems, SaaS platforms, VDI environments, Windows and Mac devices, and mobile endpoints — simultaneously.',
+            'Each platform introduces another deployment path. The same application must be packaged, tested, and deployed multiple times.',
+            'Engineers spend more time maintaining delivery pipelines than delivering value to the business.'
+          ],
+          closing: 'The workload has scaled with platform count. The headcount has not. That gap is where capacity disappears.',
+          drivers: ['more_apps', 'too_many_tools']
+        },
+        {
+          id: 'risk',
+          icon: 'shield-alert',
+          title: 'Risk',
+          tagline: 'Operational fragility grows quietly, then becomes a crisis.',
+          color: '#dc2626',
+          colorLight: 'rgba(220,38,38,0.07)',
+          colorBorder: 'rgba(220,38,38,0.25)',
+          bullets: [
+            'Application delivery often depends on manual processes, internal scripts, and knowledge held by a small number of key engineers.',
+            'Security patching can fall behind. Compliance tracking becomes manual. Delivery capability depends on specific individuals being present.',
+            'Backend infrastructure changes frequently cause front-end user disruption — triggering ticket spikes that pull senior engineers into reactive support.'
+          ],
+          closing: 'IT leaders know this risk exists. Solving it with more headcount is not realistic. Solving it requires changing the model.',
+          drivers: ['manual_rework', 'security_compliance']
+        }
+      ];
+
       function renderProblems(){
-        // ─── CHANGE 1.2: Problem cards — consequence-focused copy ───
-        const items=[
-          {t:'The Multiplication Wall',s:'Every platform you support multiplies every application you manage. One update is not one job — it is one job per environment, each with its own packaging, testing, and ways to fail. App sprawl and platform sprawl compound each other silently every month.',i:'layers'},
-          {t:'The Patch That Becomes a Project',s:'Security teams measure acceptable patch windows in days. Deployment tools like Intune operate on weekly cycles. Every additional platform makes that gap wider — and every day in that gap is documented exposure.',i:'shield-alert'},
-          {t:'The Expectation Gap',s:'Employees update personal apps silently overnight. Then they arrive at work and wait a week for the same thing — or open a ticket. That gap is visible to every user in the organization and it becomes the story they tell about IT.',i:'users'},
-          {t:'The Strategic Work That Never Starts',s:'AI adoption, cloud consolidation, platform modernization — leadership is asking for all of it. The team is not resistant. They are unavailable. The maintenance backlog is consuming the same engineering capacity the business needs to move forward.',i:'rocket'}
-        ];
+        const af = STATE.activeForce;
 
         return `
-          <section id="panel-problems" class="space-y-4">
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              ${items.map(p=>`
-                <article class="section-card p-4">
-                  <div class="flex items-center gap-2"><i data-lucide="${p.i}" class="w-5 h-5 text-[#0070F3]"></i><h3 class="text-base font-semibold">${p.t}</h3></div>
-                  <p class="mt-1 text-sm text-[#4A5568]">${p.s}</p>
-                </article>
-              `).join('')}
+          <section id="panel-problems" class="space-y-5">
+
+            <!-- ── ROW 1: Context banner ── -->
+            <div class="section-card px-6 py-5">
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-[#0070F3]/10 grid place-items-center mt-0.5">
+                  <i data-lucide="globe" class="w-5 h-5 text-[#0070F3]"></i>
+                </div>
+                <div>
+                  <h2 class="text-[17px] font-semibold text-[#0A1C60] mb-1">The Reality IT Teams Are Facing</h2>
+                  <p class="text-sm text-[#4A5568] leading-relaxed max-w-3xl">
+                    Over the last decade, IT environments have changed more than at any time in history — from on-prem infrastructure and a handful of enterprise apps to SaaS platforms, cloud and hybrid infrastructure, VDI environments, multiple operating systems, remote workforces, and now AI tools landing across the organization. But while the environment changed dramatically, the core operational model for delivering applications hasn't. That gap is why IT teams everywhere are feeling pressure from three converging forces.
+                  </p>
+                </div>
+              </div>
             </div>
 
+            <!-- ── ROW 2: Three force cards ── -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              ${FORCES.map(f => {
+                const isActive = af === f.id;
+                return `
+                  <button
+                    type="button"
+                    data-action="select-force"
+                    data-force="${f.id}"
+                    class="text-left section-card p-5 transition-all duration-200 focus-ring w-full"
+                    style="${isActive
+                      ? 'background:'+f.colorLight+';border-left:4px solid '+f.color+';box-shadow:0 0 0 1.5px '+f.color+'33;'
+                      : 'border-left:4px solid transparent;'}"
+                    aria-pressed="${isActive}"
+                  >
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-2">
+                        <div class="h-8 w-8 rounded-lg grid place-items-center flex-shrink-0"
+                             style="background:${f.colorLight}; border:1px solid ${f.colorBorder}">
+                          <i data-lucide="${f.icon}" class="w-4 h-4" style="color:${f.color}"></i>
+                        </div>
+                        <span class="text-lg font-bold text-[#0A1C60]">${f.title}</span>
+                      </div>
+                      ${isActive ? `<span class="h-2.5 w-2.5 rounded-full flex-shrink-0" style="background:${f.color}"></span>` : ''}
+                    </div>
+                    <p class="text-[13px] font-medium text-[#0A1C60] mb-2 leading-snug">${f.tagline}</p>
+                    <ul class="space-y-1.5">
+                      ${f.bullets.map(b=>`
+                        <li class="flex items-start gap-2 text-[12px] text-[#4A5568] leading-relaxed">
+                          <span class="h-1.5 w-1.5 rounded-full flex-shrink-0" style="background:${f.color}; margin-top:5px"></span>
+                          <span>${b}</span>
+                        </li>
+                      `).join('')}
+                    </ul>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- ── ROW 3: Chart + Why Change / Why Now / Why Recast sidebar ── -->
             <div class="section-card p-6">
-              <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
+              ${af ? `
+                <div class="mb-4 flex items-center justify-between">
+                  <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[12px] font-semibold"
+                       style="background:${FORCES.find(f=>f.id===af).colorLight}; color:${FORCES.find(f=>f.id===af).color}; border:1px solid ${FORCES.find(f=>f.id===af).colorBorder}">
+                    <span class="h-2 w-2 rounded-full" style="background:${FORCES.find(f=>f.id===af).color}"></span>
+                    ${FORCES.find(f=>f.id===af).title}
+                  </div>
+                  <button type="button" data-action="clear-force"
+                    class="inline-flex items-center gap-1 text-[11px] text-[#6b7280] hover:text-[#0A1C60] focus-ring rounded px-2 py-1 transition-colors">
+                    <i data-lucide="x" class="w-3 h-3"></i> Clear
+                  </button>
+                </div>
+              ` : ''}
+              <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
                 <div class="chart-container relative">
                   <svg id="capacity-gap-chart" viewBox="0 0 800 400"></svg>
                 </div>
-                <div class="w-full lg:w-64 bg-white/70 backdrop-blur-lg rounded-2xl shadow-md p-5 border border-slate-200">
-                  <h3 class="text-lg font-medium mb-4">Modern IT Challenges</h3>
-                  <div class="grid grid-cols-1 gap-4 items-stretch">
+                <div class="w-full bg-white/70 backdrop-blur-lg rounded-2xl shadow-md p-5 border border-slate-200">
+                  <h3 class="text-base font-semibold text-[#0A1C60] mb-1">Understand the Story</h3>
+                  <p class="text-[12px] text-[#4A5568] mb-4 leading-relaxed">Walk through why change is necessary, why the urgency is now, and how Recast addresses it.</p>
+                  <div class="grid grid-cols-1 gap-3 items-stretch">
                     ${calloutDropdown('change','alert-triangle','Why Change','bg-slate-50')}
                     ${calloutDropdown('now','clock-4','Why Now','bg-slate-50', false, "")}
                     ${calloutDropdown('recast','sparkles','Why Recast','bg-slate-50', true)}
@@ -634,6 +742,59 @@
                 </div>
               </div>
             </div>
+
+            <!-- ── ROW 4: The Hidden Bottleneck ── -->
+            <div class="rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#0A1C60 0%,#0070F3 100%)">
+              <div class="px-6 py-6 md:px-8 md:py-7">
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-white/15 grid place-items-center mt-0.5">
+                    <i data-lucide="alert-octagon" class="w-5 h-5 text-white"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">Where It All Converges</div>
+                    <h3 class="text-xl font-bold text-white mb-2">The Hidden Bottleneck</h3>
+                    <p class="text-[14px] text-white/85 leading-relaxed mb-4 max-w-2xl">
+                      Across almost every organization, Speed, Scale, and Risk converge in the same place: the application layer. This is where IT teams must package applications, maintain updates, deliver patches, and deploy software across environments. As the pace of change accelerates, this layer becomes the operational bottleneck that everything else waits on.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                      ${['Package applications','Maintain updates','Deliver patches','Deploy across environments','Track compliance'].map(task=>`
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-white text-[12px] font-medium border border-white/20">
+                          <i data-lucide="arrow-right" class="w-3 h-3"></i>${task}
+                        </span>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── ROW 5: What IT Leaders Are Really Trying to Do ── -->
+            <div class="section-card p-6">
+              <div class="mb-4">
+                <h3 class="text-base font-semibold text-[#0A1C60]">What IT Leaders Are Really Trying to Do</h3>
+                <p class="text-[13px] text-[#4A5568] mt-1">The goal is not just faster application delivery. It is eliminating the operational complexity that makes delivery slow in the first place.</p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                ${[
+                  {icon:'copy-minus', title:'Reduce Duplicate Work', body:'Stop packaging, testing, and deploying the same application separately for every platform it runs on.'},
+                  {icon:'user-check', title:'Free Up Engineers', body:'Return the 30–40% of senior engineering capacity consumed by repetitive maintenance to strategic work.'},
+                  {icon:'rocket', title:'Deliver Instantly', body:'Give new hires their applications on day one. Deploy AI tools when leadership asks. Close patches in days, not weeks.'},
+                  {icon:'cpu', title:'Support AI Without Overwhelm', body:'Roll out new AI tooling across the organization without overwhelming the same team already managing the backlog.'}
+                ].map(g=>`
+                  <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-4 hover:border-[#0070F3]/30 hover:bg-blue-50/30 transition-colors">
+                    <div class="h-8 w-8 rounded-lg bg-[#0070F3]/10 grid place-items-center mb-3">
+                      <i data-lucide="${g.icon}" class="w-4 h-4 text-[#0070F3]"></i>
+                    </div>
+                    <div class="text-[13px] font-semibold text-[#0A1C60] mb-1">${g.title}</div>
+                    <p class="text-[12px] text-[#4A5568] leading-relaxed">${g.body}</p>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200">
+                <p class="text-[13px] text-[#4A5568] italic">In other words: IT leaders need a way to scale application delivery without scaling operational complexity. That is what Application Workspace is built to solve.</p>
+              </div>
+            </div>
+
           </section>
         `;
       }
@@ -880,8 +1041,8 @@
         const closing = c.closing || '';
 
         return `
-          <div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" role="dialog" aria-modal="true" aria-labelledby="insight-modal-title">
-            <div class="w-full max-w-4xl mx-4 rounded-2xl overflow-hidden transform modal-content glass">
+          <div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" role="dialog" aria-modal="true" aria-labelledby="insight-modal-title" data-action="close-on-backdrop">
+            <div class="w-full max-w-4xl mx-4 rounded-2xl overflow-hidden transform modal-content glass" data-modal-inner="1">
               <div class="bg-white/40 backdrop-blur-lg px-8 py-6 flex items-center justify-between" style="border-bottom:1px solid var(--border-subtle)">
                 <div class="flex items-center gap-3">
                   <i data-lucide="lightbulb" class="w-8 h-8 text-[#0A1C60]" aria-hidden="true"></i>
@@ -949,8 +1110,8 @@
         const next = currentIdx < whyOrder.length - 1 ? whyOrder[currentIdx + 1] : null;
 
         return `
-          <div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" role="dialog" aria-modal="true" aria-labelledby="why-modal-title-${id}">
-            <div class="w-full max-w-4xl mx-4 rounded-2xl overflow-hidden transform modal-content glass">
+          <div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" role="dialog" aria-modal="true" aria-labelledby="why-modal-title-${id}" data-action="close-on-backdrop">
+            <div class="w-full max-w-4xl mx-4 rounded-2xl overflow-hidden transform modal-content glass" data-modal-inner="1">
               <div class="bg-white/40 backdrop-blur-lg px-8 py-6 flex items-center justify-between" style="border-bottom:1px solid var(--border-subtle)">
                 <div class="flex items-center gap-3">
                   <i data-lucide="${iconMap[id]}" class="w-8 h-8 text-[#0A1C60]" aria-hidden="true"></i>
@@ -1827,8 +1988,8 @@
           {id: 'chart', label: 'Chart Config'}
         ];
         return `
-          <div role="dialog" aria-modal="true" aria-labelledby="cs-editor-title" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay overflow-auto p-4 md:p-8">
-            <div class="w-[95vw] h-[95vh] rounded-2xl shadow-2xl p-8 overflow-y-auto glass">
+          <div role="dialog" aria-modal="true" aria-labelledby="cs-editor-title" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay overflow-auto p-4 md:p-8" data-action="close-on-backdrop">
+            <div class="w-[95vw] h-[95vh] rounded-2xl shadow-2xl p-8 overflow-y-auto glass" data-modal-inner="1">
               <div class="flex items-center justify-between">
                 <h2 id="cs-editor-title" class="text-xl font-semibold tracking-normal">Edit Current State</h2>
                 <button type="button" class="bg-transparent text-[#0A1C60] p-2 focus-ring rounded" data-action="close-modal" aria-label="Close">
@@ -1986,6 +2147,7 @@
             STATE.calcResult = null;
             STATE.openWhyModal = null;
             STATE.insightContent = null;
+            STATE.activeForce = null;
             render();
             return;
           }
@@ -2187,6 +2349,68 @@
           }
 
           if (action === 'reset-sliders') { resetSliders(); return; }
+
+          // Backdrop click-to-close — only fires if click landed on the overlay itself, not the inner card
+          if (action === 'close-on-backdrop') {
+            if (e.target.closest('[data-modal-inner]')) return;
+            STATE.modalOpen = false;
+            STATE.openWhyModal = null;
+            STATE.insightContent = null;
+            STATE.highlightDriverId = null;
+            render();
+            return;
+          }
+
+          if (action === 'select-force') {
+            const fid = act.getAttribute('data-force');
+            const force = FORCES.find(f => f.id === fid);
+            if (!force) return;
+
+            // Toggle off if already active
+            if (STATE.activeForce === fid) {
+              STATE.activeForce = null;
+              STATE.recastMode = false;
+              STATE.drivers.forEach(d => d.state = 'accelerating');
+              STATE.showTippingPoint = true;
+              updateCurves();
+              STATE.currentDemandExponent = STATE.targetDemandExponent;
+              STATE.currentCapacitySlope = STATE.targetCapacitySlope;
+              render();
+              return;
+            }
+
+            // Activate this force: highlight its drivers
+            STATE.activeForce = fid;
+            STATE.recastMode = false;
+            STATE.drivers.forEach(d => {
+              d.state = force.drivers.includes(d.id) ? 'accelerating' : 'off';
+            });
+            STATE.showTippingPoint = true;
+            updateCurves();
+            requestAnimationFrame(animateCurves);
+
+            // Open insight modal with force detail
+            openInsight({
+              id: force.id,
+              title: force.title,
+              short: force.tagline,
+              bullets: force.bullets,
+              closing: force.closing
+            });
+            return;
+          }
+
+          if (action === 'clear-force') {
+            STATE.activeForce = null;
+            STATE.recastMode = false;
+            STATE.drivers.forEach(d => d.state = 'accelerating');
+            STATE.showTippingPoint = true;
+            updateCurves();
+            STATE.currentDemandExponent = STATE.targetDemandExponent;
+            STATE.currentCapacitySlope = STATE.targetCapacitySlope;
+            render();
+            return;
+          }
         });
 
         root.addEventListener('input', (e) => {
