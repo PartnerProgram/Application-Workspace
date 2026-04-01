@@ -123,13 +123,7 @@
       @keyframes chartFadeIn { from { opacity: 0; } to { opacity: 1; } }
       .line-element { animation-delay: 0.15s; }
       .gap-element { animation-delay: 0.3s; }
-      @keyframes analystCycle { 0%,4% { opacity: 0; } 8%,16% { opacity: 1; } 20%,100% { opacity: 0; } }
-      .analyst-ticker { position: relative; display: inline-block; min-width: 120px; height: 1.2em; vertical-align: baseline; }
-      .analyst-item { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; animation: analystCycle 25s ease infinite; font-size: inherit; font-weight: 600; color: #0070F3; }
-      .analyst-item:nth-child(2) { animation-delay: 5s; }
-      .analyst-item:nth-child(3) { animation-delay: 10s; }
-      .analyst-item:nth-child(4) { animation-delay: 15s; }
-      .analyst-item:nth-child(5) { animation-delay: 20s; }
+      .analyst-trigger { cursor: pointer; border-bottom: 2px dashed #0070F3; padding-bottom: 1px; }
 
       :root{
         --bg-main:
@@ -433,6 +427,7 @@
     <script>
       const STATE = {
         activeTab: 'problems',
+        showAnalystModal: false,
         impact: { minutes: 9, pkgHours: 6, riskHrs: 22.5 },
         defaults: { impact: { minutes: 9, pkgHours: 6, riskHrs: 22.5 } },
         ctx: { device: 'Windows', network: 'Corporate', compliant: true },
@@ -1310,6 +1305,7 @@
           ${renderModal()}
           ${renderWhyModal()}
           ${renderInsightModal()}
+          ${renderAnalystModal()}
         `;
         if (window.lucide?.createIcons) { try { window.lucide.createIcons(); } catch {} }
         attachEvents();
@@ -1339,7 +1335,7 @@
         return `
           <section id="panel-problems" class="space-y-4">
             <div class="mb-1">
-              <h2 class="text-lg font-semibold text-[#0A1C60]">The application layer is now the #1 primary constraint in modern IT. <span class="analyst-ticker"><span class="analyst-item">- Forrester</span><span class="analyst-item">- Gartner</span><span class="analyst-item">- McKinsey</span><span class="analyst-item">- Mandiant</span><span class="analyst-item">- Grand View Research</span></span></h2>
+              <h2 class="text-lg font-semibold text-[#0A1C60]">The application layer is now the #1 primary constraint in modern <span class="analyst-trigger" data-action="open-analyst-modal">IT.</span></h2>
             </div>
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               ${STAT_CARDS.map(card => {
@@ -1513,6 +1509,27 @@
               </div>
             </button>
             ${subtext ? `<p class="px-5 py-2 text-sm text-gray-700">${subtext}</p>` : ''}
+          </div>
+        `;
+      }
+
+      function renderAnalystModal(){
+        if (!STATE.showAnalystModal) return '';
+        return `
+          <div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" data-action="close-analyst-modal">
+            <div class="w-full max-w-2xl mx-4 rounded-2xl overflow-hidden modal-content glass" onclick="event.stopPropagation()">
+              <div class="bg-white/40 backdrop-blur-lg px-6 py-4 flex items-center justify-between" style="border-bottom:1px solid var(--border-subtle)">
+                <div class="flex items-center gap-3"><i data-lucide="quote" class="w-6 h-6 text-[#0070F3]"></i><h2 class="text-xl font-bold tracking-tight text-[#0A1C60]">What the analysts are saying</h2></div>
+                <button type="button" class="text-slate-500 hover:text-slate-700 focus-ring p-2" data-action="close-analyst-modal"><i data-lucide="x" class="w-5 h-5"></i></button>
+              </div>
+              <div class="p-6 bg-white/35 backdrop-blur-lg space-y-1">
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition"><div class="text-sm font-bold min-w-[140px] flex-shrink-0" style="color:#006B3F">Forrester, 2025</div><div class="text-sm text-[#475569] italic">"App delivery complexity is the top operational drag on IT."</div></div>
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition"><div class="text-sm font-bold min-w-[140px] flex-shrink-0" style="color:#0070F3">Gartner, 2025</div><div class="text-sm text-[#475569] italic">"60% of organizations will fail to execute digital strategy by 2026."</div></div>
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition"><div class="text-sm font-bold min-w-[140px] flex-shrink-0" style="color:#1A3A6B">McKinsey, 2025</div><div class="text-sm text-[#475569] italic">"70% of transformations stall on execution capacity, not strategy."</div></div>
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition"><div class="text-sm font-bold min-w-[140px] flex-shrink-0" style="color:#D4213D">Mandiant, 2025</div><div class="text-sm text-[#475569] italic">"Time to exploit has collapsed from 32 days to 5."</div></div>
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition"><div class="text-sm font-bold min-w-[140px] flex-shrink-0" style="color:#7C3AED">Grand View Research, 2025</div><div class="text-sm text-[#475569] italic">"51% of IT operations effort remains reactive, not strategic."</div></div>
+              </div>
+            </div>
           </div>
         `;
       }
@@ -2920,6 +2937,8 @@
           if (action === 'pause-mt') { if (STATE.mtPaused) { STATE.mtPaused = false; render(); runMtQueue(); } else { STATE.mtPaused = true; STATE.flowTimers.timeouts.forEach(id => clearTimeout(id)); STATE.flowTimers.timeouts = []; render(); } return; }
           if (action === 'close-modal') { STATE.modalOpen = false; render(); return; }
           if (action === 'close-why-modal') { STATE.openWhyModal = null; render(); return; }
+          if (action === 'open-analyst-modal') { STATE.showAnalystModal = true; render(); return; }
+          if (action === 'close-analyst-modal') { STATE.showAnalystModal = false; render(); return; }
           if (action === 'close-insight-modal') { STATE.insightContent = null; STATE.highlightDriverId = null; render(); return; }
           if (action === 'why-nav') { STATE.openWhyModal = act.getAttribute('data-to'); render(); return; }
 
@@ -3087,7 +3106,7 @@
       deriveFromEmployees(STATE.calcInputs.users);
       calculateImpact();
       document.addEventListener('DOMContentLoaded', render);
-      document.addEventListener('keydown',(e)=>{ if(e.key==='Escape' && (STATE.modalOpen || STATE.openWhyModal || STATE.insightContent)){ STATE.modalOpen=false; STATE.openWhyModal=null; STATE.insightContent=null; STATE.highlightDriverId=null; render(); } });
+      document.addEventListener('keydown',(e)=>{ if(e.key==='Escape' && (STATE.modalOpen || STATE.openWhyModal || STATE.insightContent || STATE.showAnalystModal)){ STATE.modalOpen=false; STATE.openWhyModal=null; STATE.insightContent=null; STATE.highlightDriverId=null; STATE.showAnalystModal=false; render(); } });
     </script>
   </body>
 </html>
