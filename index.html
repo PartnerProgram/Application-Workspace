@@ -274,6 +274,48 @@
       .dr-arrow-line.dr-drawn { height: 20px; }
       @keyframes drPulse { 0% { box-shadow: 0 0 0 0 rgba(0,112,243,0); } 50% { box-shadow: 0 0 12px 3px rgba(0,112,243,0.15); } 100% { box-shadow: 0 0 0 0 rgba(0,112,243,0); } }
       .dr-pulse { animation: drPulse 2s ease-in-out infinite; }
+      /* Onboarding view */
+      .ob-device { border-radius: 12px; padding: 12px; transition: opacity 0.5s ease, transform 0.5s ease; }
+      .ob-device.ob-hidden { opacity: 0; transform: translateY(10px); }
+      .ob-device.ob-visible { opacity: 1; transform: translateY(0); }
+      .ob-left { background: white; border: 2px solid #fca5a5; border-top: 4px solid #ef4444; }
+      .ob-right { background: white; border: 2px solid #86efac; border-top: 4px solid #10b981; }
+      .ob-app { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 8px; font-size: 10px; font-weight: 600; border: 1px solid #e2e8f0; background: #f8fafc; color: #94a3b8; transition: all 0.4s ease; }
+      .ob-app.ob-installed { border-color: #10b981; background: #ecfdf5; color: #065f46; }
+      .ob-app.ob-failed { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+      .ob-app.ob-waiting { border-color: #e2e8f0; background: #f8fafc; color: #94a3b8; }
+      .ob-app.ob-active { border-color: #0070F3; background: #eff6ff; color: #0A1C60; }
+      .ob-callout { opacity: 0; transform: translateY(4px); transition: all 0.5s ease; font-size: 10px; font-weight: 600; }
+      .ob-callout.ob-show { opacity: 1; transform: translateY(0); }
+      .ob-step { display: flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 10px; color: #94a3b8; transition: all 0.3s ease; }
+      .ob-step.ob-done { color: #065f46; }
+      .ob-step.ob-active { color: #0A1C60; font-weight: 600; }
+      .ob-step.ob-fail { color: #991b1b; }
+      .ob-dot { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; flex-shrink: 0; transition: all 0.3s; }
+      .ob-step.ob-done .ob-dot { background: #10b981; }
+      .ob-step.ob-active .ob-dot { background: #0070F3; box-shadow: 0 0 0 3px rgba(0,112,243,0.2); }
+      .ob-step.ob-fail .ob-dot { background: #ef4444; }
+      @keyframes obPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+      .ob-pulse { animation: obPulse 1.5s ease-in-out infinite; }
+      .ob-laptop { opacity: 0; transform: perspective(800px) rotateY(-15deg) scale(0.92); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .ob-laptop.ob-visible { opacity: 1; transform: perspective(800px) rotateY(0deg) scale(1); }
+      .ob-laptop-r { transition-delay: 0.15s; }
+      .ob-screen-content { min-height: 180px; position: relative; background: #f8fafc; overflow: hidden; }
+      .ob-taskbar { display: flex; align-items: center; justify-content: space-between; padding: 4px 10px; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border-top: 1px solid rgba(203,213,225,0.5); font-size: 8px; color: #64748b; }
+      .ob-oobe { background: linear-gradient(135deg, #0078D4, #106EBE); min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+      .ob-desktop { background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 40%, #eff6ff 100%); min-height: 180px; display: flex; flex-direction: column; position: relative; }
+      .ob-desktop-icons { flex: 1; padding: 10px 12px; display: flex; flex-wrap: wrap; gap: 8px; align-content: start; }
+      .ob-desktop-icon { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 40px; }
+      .ob-desktop-icon .ob-icon-sq { width: 30px; height: 30px; border-radius: 7px; display: grid; place-items: center; font-size: 11px; font-weight: 800; color: white; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+      .ob-desktop-icon .ob-icon-label { font-size: 7px; color: #334155; text-align: center; line-height: 1.1; }
+      .ob-placeholder-icon .ob-icon-sq { background: rgba(148,163,184,0.25); border: 1.5px dashed #94a3b8; color: #94a3b8; font-size: 10px; font-weight: 700; box-shadow: none; }
+      .ob-toast { position: absolute; bottom: 6px; right: 6px; left: 6px; padding: 5px 8px; border-radius: 6px; font-size: 8px; font-weight: 600; display: flex; align-items: center; gap: 4px; backdrop-filter: blur(4px); }
+      .ob-toast-warn { background: rgba(254,243,199,0.95); border: 1px solid #fbbf24; color: #92400e; }
+      .ob-toast-error { background: rgba(254,226,226,0.95); border: 1px solid #fca5a5; color: #991b1b; }
+      .ob-toast-info { background: rgba(219,234,254,0.95); border: 1px solid #93c5fd; color: #1e40af; }
+      .ob-toast-success { background: rgba(209,250,229,0.95); border: 1px solid #86efac; color: #065f46; }
+      .ob-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); backdrop-filter: blur(2px); }
+      .ob-overlay-card { background: white; border-radius: 10px; padding: 12px 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
       @keyframes finalGlow { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } 50% { box-shadow: 0 0 30px 10px rgba(16,185,129,0.15); } 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
       .final-glow { animation: finalGlow 2s ease-in-out; }
       .cfg-item { display: flex; align-items: center; gap: 5px; padding: 3px 7px; border-radius: 5px; font-size: 10px; color: #475569; background: white; border: 1px solid #e2e8f0; transition: all 0.3s ease; opacity: 0; transform: translateX(-6px); }
@@ -475,6 +517,12 @@
         drQueue: [],
         drQueueIdx: 0,
         solutionViewDashboard: false,
+        solutionViewOnboarding: false,
+        obPhase: 'idle',
+        obRunning: false,
+        obPaused: false,
+        obQueue: [],
+        obQueueIdx: 0,
         showLabels: false,
         showSolutionCards: true,
         openWhy: null,
@@ -2311,6 +2359,15 @@
       ];
       const DR_ZONES_LIST = ['Zone A','Zone B','Zone C'];
 
+      // Default Windows desktop icons (Intune side)
+      const OB_WIN_ICONS = [
+        {l:'E',c:'#0078D4',n:'Edge'},{l:'\ud83d\udcc1',c:'#F0C75E',n:'Files'},{l:'\u2699',c:'#555',n:'Settings'},{l:'\ud83d\uddd1',c:'#777',n:'Recycle'}
+      ];
+      // Intune managed apps that slowly trickle in
+      const OB_INTUNE_SLOW = [
+        {l:'S',c:'#0070F3',n:'Security'},{l:'V',c:'#6366f1',n:'VPN'}
+      ];
+
       function renderMultiTenantView(){
         const p = STATE.mtPhase;
         const past = (target) => {
@@ -2562,6 +2619,286 @@
         `;
       }
 
+      /* ========== ONBOARDING VIEW ========== */
+      function renderOnboardingView(){
+        const p = STATE.obPhase;
+        const past = (target) => {
+          const order = ['idle','setup','autopilot','diverge','deploying','result','done'];
+          return order.indexOf(p) >= order.indexOf(target);
+        };
+
+        // Elapsed times
+        const leftElapsed = past('result') ? '60+ min' : past('deploying') ? '45 min' : past('diverge') ? '30 min' : past('autopilot') ? '15 min' : '2 min';
+        const rightElapsed = past('result') ? '18 min' : past('deploying') ? '12 min' : past('diverge') ? '10 min' : past('autopilot') ? '8 min' : '2 min';
+
+        // Timeline steps (3 per side)
+        const leftSteps = [
+          {label:'Autopilot enrollment', state: past('autopilot') ? 'ob-done' : past('setup') ? 'ob-active' : ''},
+          {label:'Waiting for apps (60+ min)', state: past('result') ? 'ob-fail' : past('diverge') ? 'ob-active' : ''},
+          {label:'User calls help desk', state: past('result') ? 'ob-fail' : ''},
+        ];
+        const rightSteps = [
+          {label:'Autopilot + AW Agent deploys', state: past('autopilot') ? 'ob-done' : past('setup') ? 'ob-active' : ''},
+          {label:'25 apps sequenced via agent', state: past('result') ? 'ob-done' : past('diverge') ? 'ob-active' : ''},
+          {label:'User productive immediately', state: past('result') ? 'ob-done' : ''},
+        ];
+
+        // ===== LEFT DEVICE SCREEN (Intune Only) =====
+        function leftScreen(){
+          if (!past('diverge')) {
+            // OOBE / Autopilot enrollment screen
+            const prog = past('autopilot') ? 70 : 20;
+            const label = past('autopilot') ? 'Enrolling with Intune...' : 'Setting up your device...';
+            return `<div class="ob-oobe">
+              <i data-lucide="cloud-cog" class="w-6 h-6 text-white mb-2" style="opacity:0.8"></i>
+              <div class="spinner mx-auto mb-2" style="width:18px;height:18px;border-width:2px;border-color:rgba(255,255,255,0.3);border-top-color:white"></div>
+              <div class="text-[10px] text-white font-semibold">${label}</div>
+              <div class="text-[8px] text-blue-200 mt-0.5">Windows Autopilot</div>
+              <div class="mt-3 w-full max-w-[140px] h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.2)">
+                <div class="h-full rounded-full bg-white" style="width:${prog}%;transition:width 0.6s ease"></div>
+              </div>
+            </div>`;
+          }
+          // Windows Desktop — mostly empty
+          const showSlow = past('deploying') ? OB_INTUNE_SLOW : [];
+          const placeholders = past('deploying') ? [{n:'M365'},{n:'Teams'},{n:'LOB'}] : [];
+          return `<div class="ob-desktop">
+            <div class="ob-desktop-icons">
+              ${OB_WIN_ICONS.map(ic => `<div class="ob-desktop-icon"><div class="ob-icon-sq" style="background:${ic.c}">${ic.l}</div><div class="ob-icon-label">${ic.n}</div></div>`).join('')}
+              ${showSlow.map(ic => `<div class="ob-desktop-icon"><div class="ob-icon-sq" style="background:${ic.c}">${ic.l}</div><div class="ob-icon-label">${ic.n}</div></div>`).join('')}
+              ${placeholders.map(ic => `<div class="ob-desktop-icon ob-placeholder-icon"><div class="ob-icon-sq">?</div><div class="ob-icon-label" style="color:#94a3b8">${ic.n}</div></div>`).join('')}
+            </div>
+            ${past('deploying') && !past('result') ? `<div class="ob-toast ob-toast-warn"><i data-lucide="clock" class="w-3 h-3 flex-shrink-0"></i> Software Center: Installing... (45 min)</div>` : ''}
+            ${past('result') && !past('done') ? `<div class="ob-toast ob-toast-error"><i data-lucide="x-circle" class="w-3 h-3 flex-shrink-0"></i> 3 apps failed to install</div>` : ''}
+            ${past('done') ? `<div class="ob-overlay"><div class="ob-overlay-card"><i data-lucide="phone-call" class="w-5 h-5 text-red-500 mx-auto mb-1"></i><div class="text-[10px] font-bold text-red-600">Calling IT Help Desk...</div><div class="text-[8px] text-slate-400">"My apps aren't installed"</div></div></div>` : ''}
+          </div>`;
+        }
+
+        // ===== RIGHT DEVICE SCREEN (With AW) =====
+        function rightScreen(){
+          if (!past('diverge')) {
+            // OOBE / Autopilot + AW Agent enrollment
+            const prog = past('autopilot') ? 90 : 20;
+            const label = past('autopilot') ? 'Enrolling + installing AW Agent...' : 'Setting up your device...';
+            return `<div class="ob-oobe">
+              <i data-lucide="cloud-cog" class="w-6 h-6 text-white mb-2" style="opacity:0.8"></i>
+              <div class="spinner mx-auto mb-2" style="width:18px;height:18px;border-width:2px;border-color:rgba(255,255,255,0.3);border-top-color:white"></div>
+              <div class="text-[10px] text-white font-semibold">${label}</div>
+              <div class="text-[8px] text-blue-200 mt-0.5">Windows Autopilot + Application Workspace</div>
+              <div class="mt-3 w-full max-w-[140px] h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.2)">
+                <div class="h-full rounded-full" style="width:${prog}%;transition:width 0.6s ease;background:linear-gradient(90deg,white,#86efac)"></div>
+              </div>
+            </div>`;
+          }
+          // Windows Desktop with cascading apps
+          const showApps = past('deploying');
+          const allDone = past('result');
+          return `<div class="ob-desktop">
+            <div class="ob-desktop-icons">
+              ${OB_WIN_ICONS.map(ic => `<div class="ob-desktop-icon"><div class="ob-icon-sq" style="background:${ic.c}">${ic.l}</div><div class="ob-icon-label">${ic.n}</div></div>`).join('')}
+              ${showApps ? `<div style="width:100%;display:flex;flex-wrap:wrap;gap:4px;margin-top:2px">
+                ${AP_APPS.map((app, i) => `<div class="ap-cascade-icon ${showApps ? 'visible' : ''}" style="--d:${allDone ? '0s' : (i * 0.05) + 's'}"><div class="ap-app-sq" style="background:${app.c};width:24px;height:24px;border-radius:5px;display:grid;place-items:center;font-size:8px;font-weight:800;color:white">${app.l}</div></div>`).join('')}
+              </div>` : ''}
+              ${!showApps ? `<div style="width:100%;margin-top:8px;text-align:center">
+                <div class="text-[9px] text-blue-600 font-semibold"><i data-lucide="zap" class="w-3 h-3 inline"></i> AW Agent: Sequencing 25 apps...</div>
+              </div>` : ''}
+            </div>
+            ${past('deploying') && !past('result') ? `<div class="ob-toast ob-toast-info"><i data-lucide="zap" class="w-3 h-3 flex-shrink-0"></i> AW Agent: Delivering ${AP_APPS.length} apps...</div>` : ''}
+            ${past('result') && !past('done') ? `<div class="ob-toast ob-toast-success"><i data-lucide="check-circle" class="w-3 h-3 flex-shrink-0"></i> All ${AP_APPS.length} apps installed!</div>` : ''}
+            ${past('done') ? `<div class="ob-overlay" style="background:rgba(16,185,129,0.1);backdrop-filter:none"><div class="ob-overlay-card" style="border:1.5px solid #10b981"><i data-lucide="user-check" class="w-5 h-5 text-emerald-500 mx-auto mb-1"></i><div class="text-[10px] font-bold text-emerald-700">Sarah is already productive</div><div class="text-[8px] text-slate-400">All apps ready in under 20 min</div></div></div>` : ''}
+          </div>`;
+        }
+
+        return `
+          <div class="section-card p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div class="bts-label bts-label-platform"><i data-lucide="user-plus" class="w-3 h-3"></i> Onboarding: Day 1 Experience</div>
+              <div class="flex items-center gap-2 text-[12px]">
+                ${STATE.obRunning ? `
+                  <button type="button" data-action="pause-ob" class="bg-[#0070F3] text-white px-2.5 py-1.5 text-[12px] font-semibold rounded hover:bg-[#005AD0] inline-flex items-center gap-1"><i data-lucide="${STATE.obPaused ? 'play' : 'pause'}" class="w-3 h-3"></i> ${STATE.obPaused ? 'Resume' : 'Pause'}</button>
+                ` : `
+                  <button type="button" data-action="start-ob" class="bg-[#0070F3] text-white px-2.5 py-1.5 text-[12px] font-semibold rounded hover:bg-[#005AD0] inline-flex items-center gap-1"><i data-lucide="play" class="w-3 h-3"></i> Auto</button>
+                  <button type="button" data-action="step-ob" class="bg-white text-[#0070F3] border border-[#0070F3] px-2.5 py-1.5 text-[12px] font-semibold rounded hover:bg-[#eff6ff] inline-flex items-center gap-1"><i data-lucide="skip-forward" class="w-3 h-3"></i> Step</button>
+                `}
+                <button type="button" data-action="reset-ob" class="bg-transparent text-[#0A1C60] border-2 border-[#0A1C60] px-2.5 py-1.5 rounded hover:text-[#0070F3] hover:border-[#0070F3]">Reset</button>
+              </div>
+            </div>
+
+            ${!past('setup') ? `
+              <div class="text-center py-6 text-sm text-slate-400">
+                <i data-lucide="laptop" class="w-8 h-8 mx-auto mb-2 text-slate-300"></i>
+                <div>Press <strong>Auto</strong> or <strong>Step</strong> to compare onboarding approaches</div>
+                <div class="text-[10px] text-slate-300 mt-1">Same new hire, same Autopilot \u2014 one gets 2 apps, the other gets 25</div>
+              </div>
+            ` : `
+
+              <!-- SIDE-BY-SIDE LAPTOP COMPARISON -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+                <!-- LEFT: Intune Only -->
+                <div class="ob-device ob-left ${past('setup') ? 'ob-visible' : 'ob-hidden'}">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-md grid place-items-center" style="background:#ef4444"><i data-lucide="monitor" class="w-3.5 h-3.5 text-white"></i></div>
+                      <div>
+                        <div class="text-[11px] font-bold text-[#0A1C60]">Intune Only</div>
+                        <div class="text-[8px] text-slate-400">Traditional Autopilot</div>
+                      </div>
+                    </div>
+                    ${past('result') ? '<span class="text-[10px] font-bold text-red-500 px-2 py-0.5 rounded-full bg-red-50 border border-red-200">3+ hours</span>' : past('diverge') ? '<span class="text-[9px] text-red-400 ob-pulse font-semibold">Waiting...</span>' : ''}
+                  </div>
+
+                  <div class="device-frame ob-laptop ${past('setup') ? 'ob-visible' : ''}" style="margin-bottom:8px">
+                    <div class="device-screen">
+                      <div class="device-titlebar">
+                        <div class="device-dot device-dot-r"></div>
+                        <div class="device-dot device-dot-y"></div>
+                        <div class="device-dot device-dot-g"></div>
+                        <span class="device-titlebar-text">${past('diverge') ? 'Desktop \u2014 ' + leftElapsed : 'Windows Autopilot'}</span>
+                      </div>
+                      <div class="ob-screen-content">
+                        ${leftScreen()}
+                      </div>
+                      ${past('diverge') ? `<div class="ob-taskbar">
+                        <span>\u23f1 ${leftElapsed}</span>
+                        <span style="font-size:7px;color:#94a3b8">${past('result') ? '2 of 5 apps' : past('deploying') ? 'Installing...' : 'Waiting...'}</span>
+                        ${past('result') ? '<span style="color:#ef4444;font-weight:700">\u26a0 FAILED</span>' : '<span style="color:#64748b"><i data-lucide="loader" class="w-3 h-3 inline ob-pulse"></i></span>'}
+                      </div>` : ''}
+                    </div>
+                  </div>
+
+                  <div class="space-y-1">
+                    ${leftSteps.map(s => `<div class="ob-step ${s.state}"><div class="ob-dot"></div><span>${s.label}</span></div>`).join('')}
+                  </div>
+                  ${past('result') ? `
+                    <div class="mt-2 p-2 rounded-lg bg-red-50 border border-red-200 text-[9px] text-red-600 flex items-start gap-1.5">
+                      <i data-lucide="alert-triangle" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5"></i>
+                      <span>60+ min wait. 3 apps failed silently. No install sequencing. Help desk ticket opened.</span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- RIGHT: With Application Workspace -->
+                <div class="ob-device ob-right ${past('setup') ? 'ob-visible' : 'ob-hidden'}" style="transition-delay:0.15s">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-md grid place-items-center" style="background:linear-gradient(135deg,#0070F3,#10b981)"><i data-lucide="zap" class="w-3.5 h-3.5 text-white"></i></div>
+                      <div>
+                        <div class="text-[11px] font-bold text-[#0A1C60]">With Application Workspace</div>
+                        <div class="text-[8px] text-slate-400">Autopilot + AW Agent</div>
+                      </div>
+                    </div>
+                    ${past('result') ? '<span class="text-[10px] font-bold text-emerald-600 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">\u223c20 min</span>' : past('diverge') ? '<span class="text-[9px] text-emerald-500 font-semibold">Deploying...</span>' : ''}
+                  </div>
+
+                  <div class="device-frame ob-laptop ob-laptop-r ${past('setup') ? 'ob-visible' : ''}" style="margin-bottom:8px">
+                    <div class="device-screen">
+                      <div class="device-titlebar">
+                        <div class="device-dot device-dot-r"></div>
+                        <div class="device-dot device-dot-y"></div>
+                        <div class="device-dot device-dot-g"></div>
+                        <span class="device-titlebar-text">${past('diverge') ? 'Desktop \u2014 ' + rightElapsed : 'Windows Autopilot + AW Agent'}</span>
+                      </div>
+                      <div class="ob-screen-content">
+                        ${rightScreen()}
+                      </div>
+                      ${past('diverge') ? `<div class="ob-taskbar">
+                        <span>\u23f1 ${rightElapsed}</span>
+                        <span style="font-size:7px;color:#10b981;font-weight:600">${past('result') ? '25/25 apps' : past('deploying') ? 'Delivering 25 apps...' : 'AW Agent active'}</span>
+                        ${past('result') ? '<span style="color:#10b981;font-weight:700">\u2713 DONE</span>' : '<span style="color:#0070F3"><i data-lucide="zap" class="w-3 h-3 inline"></i></span>'}
+                      </div>` : ''}
+                    </div>
+                  </div>
+
+                  <div class="space-y-1">
+                    ${rightSteps.map(s => `<div class="ob-step ${s.state}"><div class="ob-dot"></div><span>${s.label}</span></div>`).join('')}
+                  </div>
+                  ${past('result') ? `
+                    <div class="mt-2 p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-[9px] text-emerald-700 flex items-start gap-1.5">
+                      <i data-lucide="check-circle" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5"></i>
+                      <span>All 25 apps deployed in sequence. Identity-based persona applied. User productive in under 20 minutes.</span>
+                    </div>
+                  ` : ''}
+                </div>
+
+              </div>
+
+              <!-- Bottom callouts -->
+              ${past('done') ? `
+                <div class="flex flex-wrap justify-center gap-3 mt-3">
+                  <div class="ob-callout ob-show text-[#0A1C60] flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200"><i data-lucide="timer" class="w-3.5 h-3.5"></i> 3+ hours \u2192 20 minutes</div>
+                  <div class="ob-callout ob-show text-emerald-700 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200" style="transition-delay:0.15s"><i data-lucide="layers" class="w-3.5 h-3.5"></i> 2 apps vs 25 apps \u2014 same Autopilot</div>
+                  <div class="ob-callout ob-show text-[#0070F3] flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200" style="transition-delay:0.3s"><i data-lucide="phone-off" class="w-3.5 h-3.5"></i> Zero help desk calls</div>
+                </div>
+              ` : ''}
+
+            `}
+          </div>
+        `;
+      }
+
+      /* ========== OB ANIMATION ENGINE ========== */
+      function buildObQueue(){
+        const queue = [];
+        queue.push({ delay: 1000, fn(){ STATE.obPhase = 'setup'; render(); } });
+        queue.push({ delay: 2000, fn(){ STATE.obPhase = 'autopilot'; render(); } });
+        queue.push({ delay: 2000, fn(){ STATE.obPhase = 'diverge'; render(); } });
+        queue.push({ delay: 2500, fn(){ STATE.obPhase = 'deploying'; render(); } });
+        queue.push({ delay: 3500, fn(){ STATE.obPhase = 'result'; render(); } });
+        queue.push({ delay: 2500, fn(){ STATE.obPhase = 'done'; render(); } });
+        queue.push({ delay: 2500, fn(){ STATE.obRunning = false; STATE.obPaused = false; render(); } });
+        return queue;
+      }
+
+      function runObQueue(){
+        if (STATE.obPaused || STATE.obQueueIdx >= STATE.obQueue.length) return;
+        const step = STATE.obQueue[STATE.obQueueIdx];
+        const tid = setTimeout(() => {
+          if (STATE.obPaused) return;
+          step.fn();
+          STATE.obQueueIdx++;
+          runObQueue();
+        }, step.delay);
+        STATE.flowTimers.timeouts.push(tid);
+      }
+
+      function startOb(){
+        if (STATE.obRunning) return;
+        STATE.flowTimers.timeouts.forEach(id => clearTimeout(id));
+        STATE.flowTimers.timeouts = [];
+        STATE.obRunning = true;
+        STATE.obPaused = false;
+        STATE.obPhase = 'idle';
+        STATE.obQueue = buildObQueue();
+        STATE.obQueueIdx = 0;
+        render();
+        runObQueue();
+      }
+
+      function stepOb(){
+        if (STATE.obRunning) return;
+        if (!STATE.obQueue || STATE.obQueue.length === 0) {
+          STATE.obQueue = buildObQueue();
+          STATE.obQueueIdx = 0;
+          STATE.obPhase = 'idle';
+        }
+        if (STATE.obQueueIdx >= STATE.obQueue.length) return;
+        const step = STATE.obQueue[STATE.obQueueIdx];
+        step.fn();
+        STATE.obQueueIdx++;
+      }
+
+      function resetOb(){
+        STATE.flowTimers.timeouts.forEach(id => clearTimeout(id));
+        STATE.flowTimers.timeouts = [];
+        STATE.obPhase = 'idle';
+        STATE.obRunning = false;
+        STATE.obPaused = false;
+        STATE.obQueue = [];
+        STATE.obQueueIdx = 0;
+        render();
+      }
+
       /* ========== DR ANIMATION ENGINE ========== */
       function buildDrQueue(){
         const phases = ['source','endpoints','flowing','dashboards','aggregation','done'];
@@ -2689,7 +3026,7 @@
         const sc = STATE.flowScenarioIdx;
         const phase = STATE.flowPhase;
         const scenario = sc >= 0 && sc < SCENARIOS.length ? SCENARIOS[sc] : null;
-        const activeViewCount = [STATE.solutionViewUser, STATE.solutionViewAdmin, STATE.solutionViewMultiTenant, STATE.solutionViewDashboard].filter(Boolean).length;
+        const activeViewCount = [STATE.solutionViewUser, STATE.solutionViewAdmin, STATE.solutionViewMultiTenant, STATE.solutionViewDashboard, STATE.solutionViewOnboarding].filter(Boolean).length;
         const multiCol = activeViewCount >= 2;
 
         return `
@@ -2745,10 +3082,11 @@
                   <span class="text-[11px] text-slate-400 font-medium hidden sm:inline">Select a view:</span>
                   <button type="button" data-action="toggle-solution-view" data-view="user" class="view-toggle ${STATE.solutionViewUser ? 'active' : ''}"><i data-lucide="monitor-smartphone" class="w-3.5 h-3.5"></i> User Experience</button>
                   <button type="button" data-action="toggle-solution-view" data-view="admin" class="view-toggle ${STATE.solutionViewAdmin ? 'active' : ''}"><i data-lucide="settings-2" class="w-3.5 h-3.5"></i> Admin Console</button>
-                  <button type="button" data-action="toggle-solution-view" data-view="multitenant" class="view-toggle ${STATE.solutionViewMultiTenant ? 'active' : ''}"><i data-lucide="building-2" class="w-3.5 h-3.5"></i> Multi-Tenant</button>
+                  <button type="button" data-action="toggle-solution-view" data-view="onboarding" class="view-toggle ${STATE.solutionViewOnboarding ? 'active' : ''}"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i> Onboarding</button>
                   <button type="button" data-action="toggle-solution-view" data-view="dashboard" class="view-toggle ${STATE.solutionViewDashboard ? 'active' : ''}"><i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i> Dashboard & Reporting</button>
+                  <button type="button" data-action="toggle-solution-view" data-view="multitenant" class="view-toggle ${STATE.solutionViewMultiTenant ? 'active' : ''}"><i data-lucide="building-2" class="w-3.5 h-3.5"></i> Multi-Tenant</button>
                 </div>
-                ${(STATE.solutionViewUser || STATE.solutionViewAdmin || STATE.solutionViewMultiTenant || STATE.solutionViewDashboard) ? `
+                ${(STATE.solutionViewUser || STATE.solutionViewAdmin || STATE.solutionViewMultiTenant || STATE.solutionViewDashboard || STATE.solutionViewOnboarding) ? `
                 <!-- Flow controls -->
                 <div class="flex items-center gap-2 text-[12px]">
                   <button type="button" data-action="toggle-flow" class="bg-[#0070F3] text-white w-7 h-7 rounded-full hover:bg-[#005AD0] inline-flex items-center justify-center"><i data-lucide="${STATE.flowRunning && !STATE.flowPaused ? 'pause' : 'play'}" class="w-3.5 h-3.5"></i></button>
@@ -2763,8 +3101,9 @@
             <div class="grid grid-cols-1 ${multiCol ? 'lg:grid-cols-2' : ''} gap-3">
               ${STATE.solutionViewUser ? renderUserView() : ''}
               ${STATE.solutionViewAdmin ? renderAdminConsole() : ''}
-              ${STATE.solutionViewMultiTenant ? renderMultiTenantView() : ''}
+              ${STATE.solutionViewOnboarding ? renderOnboardingView() : ''}
               ${STATE.solutionViewDashboard ? renderDashboardView() : ''}
+              ${STATE.solutionViewMultiTenant ? renderMultiTenantView() : ''}
             </div>
 
             <div class="flex flex-col items-end gap-2 mt-2">
@@ -3356,7 +3695,7 @@
           if (node) { const id = node.dataset.id; STATE.activePopover = STATE.activePopover === id ? null : id; render(); return; }
           if (!action) return;
 
-          if (action === 'switch-tab') { STATE.activeTab = act.getAttribute('data-tab'); STATE.visitedCards = []; STATE.activePopover = null; STATE.openWhyModal = null; STATE.insightContent = null; STATE.flowStep = -1; STATE.flowRunning = false; STATE.flowPaused = false; STATE.flowScenarioIdx = -1; STATE.flowPhase = 'idle'; STATE.flowAppOpened = false; STATE._firstOpenDone = false; STATE.showAdminView = false; STATE.showAutopilot = false; STATE.autopilotStep = -1; STATE.autopilotAppCount = 0; STATE.drPhase = 'idle'; STATE.drRunning = false; STATE.drPaused = false; STATE.drQueue = []; STATE.drQueueIdx = 0; clearFlowTimers(); render(); return; }
+          if (action === 'switch-tab') { STATE.activeTab = act.getAttribute('data-tab'); STATE.visitedCards = []; STATE.activePopover = null; STATE.openWhyModal = null; STATE.insightContent = null; STATE.flowStep = -1; STATE.flowRunning = false; STATE.flowPaused = false; STATE.flowScenarioIdx = -1; STATE.flowPhase = 'idle'; STATE.flowAppOpened = false; STATE._firstOpenDone = false; STATE.showAdminView = false; STATE.showAutopilot = false; STATE.autopilotStep = -1; STATE.autopilotAppCount = 0; STATE.drPhase = 'idle'; STATE.drRunning = false; STATE.drPaused = false; STATE.drQueue = []; STATE.drQueueIdx = 0; STATE.obPhase = 'idle'; STATE.obRunning = false; STATE.obPaused = false; STATE.obQueue = []; STATE.obQueueIdx = 0; clearFlowTimers(); render(); return; }
           if (action === 'advance') { STATE.activeTab = act.getAttribute('data-next'); STATE.openWhyModal = null; if (STATE.activeTab === 'roi') { calculateImpact(); } render(); return; }
           if (action === 'toggle-solution-view') {
             const view = act.getAttribute('data-view');
@@ -3364,6 +3703,7 @@
             if (view === 'admin') STATE.solutionViewAdmin = !STATE.solutionViewAdmin;
             if (view === 'multitenant') STATE.solutionViewMultiTenant = !STATE.solutionViewMultiTenant;
             if (view === 'dashboard') STATE.solutionViewDashboard = !STATE.solutionViewDashboard;
+            if (view === 'onboarding') STATE.solutionViewOnboarding = !STATE.solutionViewOnboarding;
             render(); return;
           }
           if (action === 'start-mt') { startMt(); return; }
@@ -3374,6 +3714,10 @@
           if (action === 'step-dr') { stepDr(); return; }
           if (action === 'reset-dr') { resetDr(); return; }
           if (action === 'pause-dr') { if (STATE.drPaused) { STATE.drPaused = false; render(); runDrQueue(); } else { STATE.drPaused = true; STATE.flowTimers.timeouts.forEach(id => clearTimeout(id)); STATE.flowTimers.timeouts = []; render(); } return; }
+          if (action === 'start-ob') { startOb(); return; }
+          if (action === 'step-ob') { stepOb(); return; }
+          if (action === 'reset-ob') { resetOb(); return; }
+          if (action === 'pause-ob') { if (STATE.obPaused) { STATE.obPaused = false; render(); runObQueue(); } else { STATE.obPaused = true; STATE.flowTimers.timeouts.forEach(id => clearTimeout(id)); STATE.flowTimers.timeouts = []; render(); } return; }
           if (action === 'close-modal') { STATE.modalOpen = false; render(); return; }
           if (action === 'close-why-modal') { STATE.openWhyModal = null; render(); return; }
           if (action === 'open-analyst-modal') { STATE.showAnalystModal = true; render(); return; }
