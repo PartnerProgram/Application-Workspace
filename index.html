@@ -485,6 +485,1434 @@
       .logo-name { font-size: 13px; font-weight: 700; color: #334155; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.02em; opacity: 0.7; }
       .logo-name:hover { opacity: 1; }
       .logo-divider { width: 1px; height: 16px; background: #e2e8f0; flex-shrink: 0; }
+
+      /* ══════════════════════════════════════════════════════════════
+         RECAST SOFTWARE BRAND OVERRIDE — applied on top of legacy styles
+         Primary blue #0000CC, Accent cyan #00BFFF, flat surfaces, Inter
+         ══════════════════════════════════════════════════════════════ */
+      :root {
+        /* Recast tokens — calibrated to the live marketing site */
+        --r-blue: #1E3A8A;           /* Navy — hero, headlines */
+        --r-blue-hover: #1E40AF;
+        --r-blue-bright: #2A7FFF;    /* Bright "Re" blue — accents, links */
+        --r-cyan: #2A7FFF;
+        --r-cyan-hover: #4F95FF;
+        --r-orange: #E07050;         /* Coral/orange accent underline */
+        --r-decorator: #2A4BB0;      /* Lighter-blue "pixel dots" on navy */
+        --r-decorator-2: #3A5FD9;
+        --r-ink: #1A1A2E;
+        --r-ink-2: #4A4A5A;
+        --r-muted-blue: #C7D2F7;
+        --r-surface: #FFFFFF;
+        --r-surface-2: #F0F0F6;
+        --r-surface-3: #FAFAFE;
+        --r-quote-bg: #F6F8FF;
+        --r-divider: #DDDDEE;
+        --r-red: #CC2222;
+        --r-green: #0F7A3F;
+        --r-amber: #CC8800;
+
+        --shadow-card: 0 1px 2px rgba(26,26,46,0.06);
+        --shadow-hover: 0 2px 8px rgba(26,26,46,0.10);
+        --shadow-elevated: 0 8px 24px rgba(26,26,46,0.12);
+        --re-green: var(--r-green);
+        --bg-main: #FAFAFE;
+      }
+
+      html, body {
+        background: var(--bg-main) !important;
+        background-attachment: initial !important;
+        color: var(--r-ink) !important;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+      }
+      body { letter-spacing: -0.005em; }
+
+      /* ───── Color remap: #0070F3 (brand accent) → Recast primary blue
+         (used for CTAs, borders, brand text). Uses attribute selectors
+         to target remaining inline styles without hand-editing each.  */
+      [style*="#0070F3"] { /* will be overridden per-property below */ }
+      [style*="color:#0070F3"], [style*="color: #0070F3"] { color: var(--r-blue) !important; }
+      [style*="background:#0070F3"], [style*="background: #0070F3"],
+      [style*="background-color:#0070F3"], [style*="background-color: #0070F3"] { background-color: var(--r-cyan) !important; }
+      [style*="border-color:#0070F3"], [style*="border-color: #0070F3"] { border-color: var(--r-blue) !important; }
+
+      /* #0A1C60 (navy headline) → Recast primary blue */
+      [style*="color:#0A1C60"], [style*="color: #0A1C60"] { color: var(--r-blue) !important; }
+      [style*="background:#0A1C60"], [style*="background: #0A1C60"],
+      [style*="background-color:#0A1C60"] { background-color: var(--r-blue) !important; }
+      [style*="border-color:#0A1C60"] { border-color: var(--r-blue) !important; }
+
+      /* Tailwind arbitrary values used throughout */
+      .text-\[\#0070F3\] { color: var(--r-blue) !important; }
+      .bg-\[\#0070F3\]   { background-color: var(--r-cyan) !important; }
+      .hover\:bg-\[\#005AD0\]:hover { background-color: var(--r-cyan-hover) !important; }
+      .border-\[\#0070F3\] { border-color: var(--r-blue) !important; }
+      .ring-\[\#0070F3\]   { --tw-ring-color: var(--r-blue) !important; }
+
+      .text-\[\#0A1C60\] { color: var(--r-blue) !important; }
+      .bg-\[\#0A1C60\]   { background-color: var(--r-blue) !important; }
+      .border-\[\#0A1C60\] { border-color: var(--r-blue) !important; }
+
+      .text-\[\#4A5568\], .text-\[\#4B5563\], .text-\[\#64748B\], .text-\[\#475569\] { color: var(--r-ink-2) !important; }
+      .text-\[\#334155\] { color: var(--r-ink) !important; }
+
+      /* Class-driven legacy rules — override with Recast tokens */
+      .re-primary {
+        background: var(--r-cyan) !important;
+        color: #fff !important;
+        border-radius: 6px !important;
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
+        box-shadow: none !important;
+      }
+      .re-primary:hover { background: var(--r-cyan-hover) !important; transform: translateY(-1px) !important; }
+      .re-secondary {
+        background: transparent !important;
+        color: var(--r-blue) !important;
+        border: 1.5px solid var(--r-blue) !important;
+        border-radius: 6px !important;
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
+      }
+      .re-secondary:hover {
+        background: var(--r-quote-bg) !important;
+        color: var(--r-blue) !important;
+        border-color: var(--r-blue) !important;
+      }
+
+      /* ───── Section cards: flat, subtle, Recast */
+      .section-card {
+        background: var(--r-surface) !important;
+        border: 1px solid var(--r-divider) !important;
+        border-radius: 8px !important;
+        box-shadow: var(--shadow-card) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      .section-card:hover { box-shadow: var(--shadow-hover) !important; }
+
+      .glass, .glass-soft {
+        background: var(--r-surface) !important;
+        border: 1px solid var(--r-divider) !important;
+        box-shadow: var(--shadow-card) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      .sub-card {
+        border-radius: 6px !important;
+        background: var(--r-surface-3) !important;
+        border: 1px solid var(--r-divider) !important;
+      }
+
+      /* ───── Header / hero ───── */
+      header.relative {
+        background: var(--r-blue);
+        color: #fff;
+        position: relative;
+        margin-bottom: 0;
+      }
+      /* Pixel-dot texture on the left and right of the hero, matching recastsoftware.com */
+      header.relative::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(circle, var(--r-decorator) 1.5px, transparent 1.8px),
+          radial-gradient(circle, var(--r-decorator-2) 1.5px, transparent 1.8px);
+        background-size: 14px 14px, 14px 14px;
+        background-position: 0 0, 7px 7px;
+        -webkit-mask-image: linear-gradient(90deg, #000 0, #000 140px, transparent 260px, transparent calc(100% - 260px), #000 calc(100% - 140px), #000);
+                mask-image: linear-gradient(90deg, #000 0, #000 140px, transparent 260px, transparent calc(100% - 260px), #000 calc(100% - 140px), #000);
+        opacity: 0.7;
+        pointer-events: none;
+        z-index: 0;
+      }
+      header.relative::after {
+        content: "";
+        display: none;
+      }
+
+      header.relative > div { position: relative; z-index: 1; }
+      header.relative > div:first-child {
+        padding-top: 28px !important;
+        padding-bottom: 20px !important;
+      }
+      header.relative > div:last-child { padding-bottom: 0 !important; }
+
+      /* Eyebrow mark + product name row */
+      .recast-eyebrow-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .recast-eyebrow-mark {
+        width: 38px; height: 38px;
+        background: var(--r-blue-bright);
+        border-radius: 4px;
+        display: grid; place-items: center;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .recast-eyebrow-mark svg { width: 22px; height: 22px; }
+      .recast-eyebrow-label {
+        color: #fff;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 0.01em;
+      }
+
+      header.relative h1 {
+        color: #fff !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.08 !important;
+        margin: 0 !important;
+        font-size: 40px !important;
+        max-width: 20ch;
+      }
+      header.relative h1 span:first-child { color: var(--r-blue-bright) !important; }
+      header.relative h1 span:nth-child(2) { color: #fff !important; }
+
+      /* Orange accent bar under the headline */
+      header.relative h1::after {
+        content: "";
+        display: block;
+        width: 56px;
+        height: 3px;
+        background: var(--r-orange);
+        margin-top: 14px;
+      }
+
+      header.relative p {
+        color: var(--r-muted-blue) !important;
+        font-size: 15px !important;
+        line-height: 1.55 !important;
+        margin-top: 14px !important;
+        max-width: 60ch;
+      }
+
+      /* ── Top white nav bar (absolute, stuck above the blue hero) ── */
+      .recast-topnav {
+        background: #fff;
+        border-bottom: 1px solid var(--r-divider);
+        padding: 12px 0;
+      }
+      .recast-topnav-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      .recast-topnav-logo {
+        height: 28px;
+        width: auto;
+        flex-shrink: 0;
+      }
+      .recast-topnav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--r-ink);
+        font-weight: 600;
+        font-size: 14px;
+        flex: 1;
+      }
+      .recast-topnav-links span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: default;
+      }
+      .recast-topnav-links span::after {
+        content: "";
+        width: 0; height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid var(--r-ink-2);
+      }
+      .recast-topnav-links .no-caret::after { display: none; }
+      .recast-topnav-cta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .recast-topnav-cta .login {
+        color: var(--r-ink);
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .recast-topnav-cta .btn-nav {
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 2px;
+        border: 1.5px solid var(--r-blue);
+      }
+      .recast-topnav-cta .btn-nav.solid {
+        background: var(--r-blue);
+        color: #fff;
+      }
+      .recast-topnav-cta .btn-nav.solid:hover { background: var(--r-blue-hover); }
+      .recast-topnav-cta .btn-nav.outline {
+        background: transparent;
+        color: var(--r-blue);
+      }
+      .recast-topnav-cta .btn-nav.outline:hover { background: var(--r-quote-bg); }
+
+      /* Primary / secondary CTA buttons inside the hero (navy filled + navy outline) */
+      .recast-hero-ctas {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .recast-hero-ctas button {
+        padding: 10px 22px;
+        font-size: 14px;
+        font-weight: 700;
+        border-radius: 2px;
+        border: 1.5px solid #fff;
+        cursor: pointer;
+        transition: background 150ms, color 150ms;
+      }
+      .recast-hero-ctas button.primary {
+        background: #fff;
+        color: var(--r-blue);
+        border-color: #fff;
+      }
+      .recast-hero-ctas button.primary:hover { background: var(--r-muted-blue); }
+      .recast-hero-ctas button.outline {
+        background: transparent;
+        color: #fff;
+        border-color: #fff;
+      }
+      .recast-hero-ctas button.outline:hover { background: rgba(255,255,255,0.1); }
+
+      /* Tab bar — clean underline rail at the bottom of the hero */
+      .recast-tabs {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        margin-top: 24px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .recast-tabs::-webkit-scrollbar { display: none; }
+      .recast-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255,255,255,0.72);
+        font-weight: 600;
+        font-size: 14px;
+        padding: 14px 20px;
+        background: transparent;
+        border: 0;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: color 150ms, border-color 150ms, background 150ms;
+      }
+      .recast-tab:hover { color: #fff; background: rgba(255,255,255,0.06); }
+      .recast-tab.is-active {
+        color: #fff;
+        border-bottom-color: var(--r-blue-bright);
+      }
+
+      header.relative [role="tablist"] {
+        background: transparent !important;
+        border: 0 !important;
+        border-top: 1px solid rgba(255,255,255,0.15) !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        backdrop-filter: none !important;
+        gap: 0 !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+      }
+      header.relative [role="tablist"]::-webkit-scrollbar { display: none; }
+      header.relative [role="tablist"] button {
+        color: rgba(255,255,255,0.72) !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        padding: 16px 20px !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        border-bottom: 3px solid transparent !important;
+        margin-bottom: -1px;
+        transition: color 150ms, border-color 150ms, background 150ms !important;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      header.relative [role="tablist"] button[aria-selected="true"],
+      header.relative [role="tablist"] button.bg-\[\#0070F3\] {
+        color: #fff !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        border-bottom-color: var(--r-cyan) !important;
+        border-radius: 0 !important;
+      }
+      header.relative [role="tablist"] button[aria-selected="false"]:hover {
+        color: #fff !important;
+        background: rgba(255,255,255,0.06) !important;
+      }
+
+      main.mx-auto { padding-top: 32px; }
+
+      /* ───── Typography polish ───── */
+      h2, .text-lg, .text-xl, .text-2xl {
+        letter-spacing: -0.015em;
+      }
+      /* Headings that used the old navy → primary blue */
+      h2.text-\[\#0A1C60\], h3.text-\[\#0A1C60\],
+      h2.text-\[\#0070F3\], h3.text-\[\#0070F3\] { color: var(--r-blue) !important; }
+
+      /* ───── Buttons / interactive surfaces ───── */
+      button, [role="button"] { font-family: inherit; }
+
+      .catalog-get-btn {
+        background: var(--r-cyan) !important;
+        border-radius: 999px !important;
+      }
+
+      /* Analyst trigger dashed underline */
+      .analyst-trigger { border-bottom-color: var(--r-cyan) !important; }
+
+      /* Status/accent utilities from legacy rules */
+      .user-status.loading { color: var(--r-blue) !important; }
+      .spinner { border-top-color: var(--r-blue) !important; }
+      .click-ring { border-color: var(--r-cyan) !important; }
+      .bts-label-engine {
+        color: var(--r-blue) !important;
+        background: var(--r-quote-bg) !important;
+        border-color: var(--r-divider) !important;
+      }
+      .path-row.active-path,
+      .scenario-pill.active-scenario,
+      .view-toggle.active,
+      .admin-row.row-active,
+      .mt-app-pill.mt-custom,
+      .ob-app.ob-active,
+      .admin-highlight {
+        border-color: var(--r-blue) !important;
+        background: var(--r-quote-bg) !important;
+        color: var(--r-blue) !important;
+      }
+
+      .mt-secondary, .dr-panel {
+        border-color: var(--r-blue) !important;
+        color: var(--r-blue) !important;
+      }
+      .dr-metric.dr-lit {
+        border-color: var(--r-blue) !important;
+        background: var(--r-quote-bg) !important;
+        color: var(--r-blue) !important;
+      }
+      .dr-bar { background: var(--r-blue) !important; }
+
+      .ob-step.ob-active .ob-dot,
+      .ap-step.ap-active .ap-dot,
+      .phase-dot.active {
+        background: var(--r-blue) !important;
+        box-shadow: 0 0 0 3px rgba(0,0,204,0.18) !important;
+      }
+      .phase-dot.done { background: var(--r-green) !important; }
+      .dtap-stage.dtap-current {
+        border-color: var(--r-blue) !important;
+        color: var(--r-blue) !important;
+      }
+      .ap-counter { color: var(--r-blue) !important; }
+
+      /* Gradient fills that used old blue → flatten to Recast blue */
+      .ap-device-header.workspace,
+      .platform-bar-mini,
+      .dr-global-badge {
+        background: var(--r-blue) !important;
+      }
+      .dash-metric .metric-value,
+      .flip-card-stat {
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: var(--r-blue) !important;
+        color: var(--r-blue) !important;
+      }
+      .flip-card-back {
+        color: var(--r-blue) !important;
+        border-color: var(--r-blue) !important;
+      }
+      .orch-connector, .upd-bar, .mt-sync-line, .dr-feed-line, .dr-arrow-line {
+        background: linear-gradient(to right, var(--r-blue), var(--r-green)) !important;
+      }
+      .cinema-progress-fill {
+        background: linear-gradient(90deg, var(--r-blue), var(--r-green)) !important;
+      }
+      .cinema-caption .typing-cursor { background: var(--r-blue) !important; }
+
+      /* Flow bar / keyframes tint */
+      @keyframes tilePulse {
+        0% { transform: scale(0.7); background: #e5e7eb; opacity: 0.4; }
+        60% { transform: scale(1); background: var(--r-blue); opacity: 1; }
+        100% { background: #e5e7eb; opacity: 0.9; }
+      }
+      .dash-metric:hover {
+        border-color: var(--r-blue) !important;
+        box-shadow: 0 4px 20px rgba(0,0,204,0.08) !important;
+      }
+
+      /* ROI number inputs */
+      input[type="number"], input[type="text"] {
+        border-color: var(--r-divider) !important;
+      }
+      input[type="number"]:focus, input[type="text"]:focus {
+        border-color: var(--r-blue) !important;
+        outline: 2px solid rgba(0,0,204,0.15) !important;
+        outline-offset: 0 !important;
+      }
+      #roi-employees { color: var(--r-blue) !important; }
+
+      /* Focus ring */
+      .focus-ring:focus-visible {
+        outline: 2px solid var(--r-cyan) !important;
+        outline-offset: 2px !important;
+      }
+
+      /* ───── Modal chrome ───── */
+      .modal-overlay { background: rgba(26,26,46,0.55) !important; }
+      .modal-content {
+        border-radius: 8px !important;
+        box-shadow: 0 20px 60px rgba(26,26,46,0.30) !important;
+      }
+
+      /* ───── Chart colors ───── */
+      .chart-annotation { fill: var(--r-blue) !important; }
+
+      /* ───── Tweak a few tailwind blue/indigo utilities to Recast palette ───── */
+      .text-blue-200, .text-blue-300 { color: var(--r-muted-blue) !important; }
+      .text-blue-600, .text-blue-700, .text-blue-800 { color: var(--r-blue) !important; }
+      .bg-blue-50, .bg-indigo-50 { background-color: var(--r-quote-bg) !important; }
+      .bg-blue-100 { background-color: var(--r-surface-2) !important; }
+      .bg-blue-400 { background-color: var(--r-cyan) !important; }
+      .border-blue-200, .border-indigo-200 { border-color: var(--r-divider) !important; }
+
+      /* ───── Logo ticker gradient masks use white — keep */
+      /* ═════════════════════════════════════════════════════════════
+         MOBILE — comprehensive overhaul for <= 900px
+         Goal: every tab usable with a single vertical scroll, no overflow.
+         ═════════════════════════════════════════════════════════════ */
+      html, body { overflow-x: hidden; }
+
+      @media (max-width: 900px) {
+        /* Unlock the scroll-free shell — mobile uses normal document scroll */
+        html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+        body > #app { height: auto; display: block; }
+        body > #app > main.mx-auto {
+          overflow: visible;
+          height: auto;
+          padding-top: 12px !important;
+          padding-bottom: 24px !important;
+        }
+        body > #app > main.mx-auto > section {
+          padding: 0 14px !important;
+          max-width: 100% !important;
+        }
+
+        /* ── Hero ─────────────────────────────────────── */
+        header.relative::before, header.relative::after { display: none; }
+        header.relative > div:first-child {
+          padding: 20px 14px 14px !important;
+        }
+        .recast-eyebrow-row { margin-bottom: 10px !important; gap: 10px !important; }
+        .recast-eyebrow-mark { width: 30px !important; height: 30px !important; }
+        .recast-eyebrow-mark svg { width: 16px !important; height: 16px !important; }
+        .recast-eyebrow-label { font-size: 13px !important; }
+        header.relative h1 {
+          font-size: 26px !important;
+          line-height: 1.15 !important;
+          max-width: none !important;
+        }
+        header.relative h1::after { width: 36px !important; height: 2px !important; margin-top: 10px !important; }
+        header.relative p {
+          font-size: 13px !important;
+          line-height: 1.5 !important;
+          margin-top: 10px !important;
+          max-width: none !important;
+        }
+
+        /* ── Tabs — horizontal scroll rail ────────────── */
+        header.relative > div:last-child { padding: 0 !important; }
+        .recast-tabs {
+          padding: 0 14px !important;
+          margin-top: 14px !important;
+          border-top: 1px solid rgba(255,255,255,0.15) !important;
+          -webkit-overflow-scrolling: touch;
+        }
+        .recast-tab {
+          padding: 12px 14px !important;
+          font-size: 13px !important;
+          gap: 6px !important;
+        }
+        .recast-tab svg, .recast-tab i { width: 14px !important; height: 14px !important; }
+
+        /* ── Sections / cards ─────────────────────────── */
+        #panel-problems.space-y-4 > * + *,
+        #panel-solution.space-y-3 > * + *,
+        #panel-roi.space-y-4 > * + * { margin-top: 10px !important; }
+        .section-card { padding: 14px !important; border-radius: 6px !important; }
+        .section-card.p-6, .section-card.p-8 { padding: 14px !important; }
+        .section-card h2, .section-card h3 { font-size: 15px !important; margin-bottom: 6px !important; }
+        .sub-card, .sub-card.p-6, .sub-card.p-4 { padding: 10px !important; }
+
+        /* ── Universal: collapse desktop grid/flex layouts ── */
+        main.mx-auto .grid.grid-cols-2,
+        main.mx-auto .grid.grid-cols-3,
+        main.mx-auto .grid.grid-cols-4,
+        main.mx-auto .md\:grid-cols-2,
+        main.mx-auto .md\:grid-cols-3,
+        main.mx-auto .md\:grid-cols-4,
+        main.mx-auto .lg\:grid-cols-2,
+        main.mx-auto .lg\:grid-cols-3,
+        main.mx-auto .lg\:grid-cols-4 {
+          grid-template-columns: 1fr !important;
+          gap: 10px !important;
+        }
+        main.mx-auto .flex.gap-4,
+        main.mx-auto .flex.gap-6,
+        main.mx-auto .flex.gap-8 {
+          flex-wrap: wrap !important;
+          gap: 10px !important;
+        }
+        /* Any flex row with explicit widths should stack */
+        main.mx-auto .flex.flex-row:not(.no-mobile-stack) {
+          flex-direction: column !important;
+          align-items: stretch !important;
+        }
+
+        /* ── Capacity gap chart — scale to fit viewport ── */
+        .chart-container { overflow: visible !important; max-height: 260px !important; aspect-ratio: auto !important; }
+        #capacity-gap-chart { min-width: 0 !important; width: 100% !important; max-height: 260px !important; height: 260px !important; }
+        #capacity-gap-chart svg { width: 100% !important; height: 100% !important; }
+        /* Driver pills row */
+        .driver-pills, .drivers-row { flex-wrap: wrap !important; gap: 6px !important; }
+        .driver-pill, .driver-pills button { font-size: 11px !important; padding: 6px 8px !important; }
+
+        /* ── Device frames (Admin View, Multi-tenant, Onboarding etc) ── */
+        .device-frame,
+        #deviceFrame, #ap-device-frame, #mt-device-frame, #ob-device-frame, #dr-device-frame {
+          max-width: 100% !important;
+          width: 100% !important;
+          max-height: none !important;
+          transform: none !important;
+          border-radius: 8px !important;
+        }
+        .device-frame .device-header { padding: 6px 10px !important; font-size: 11px !important; }
+        .device-frame .sidebar,
+        .device-frame [class*="sidebar"] {
+          display: none !important;
+        }
+        .device-frame .main-content,
+        .device-frame [class*="main-content"] {
+          width: 100% !important;
+          padding: 12px !important;
+        }
+        /* Fallback: collapse any inner two-column split inside device frames */
+        .device-frame .grid-cols-\[200px_1fr\],
+        .device-frame .grid-cols-\[240px_1fr\],
+        .device-frame .grid-cols-\[260px_1fr\] {
+          grid-template-columns: 1fr !important;
+        }
+
+        /* ── Catalog / tile grids ─────────────────────── */
+        .catalog-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+        .catalog-grid .tile, .catalog-grid > * { padding: 8px !important; font-size: 12px !important; }
+        .ap-cascade-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 4px !important; }
+
+        /* ── Flip cards ───────────────────────────────── */
+        .flip-card { height: auto !important; min-height: 80px !important; }
+        .flip-card-inner, .flip-card-front, .flip-card-back { position: relative !important; height: auto !important; min-height: 80px !important; }
+
+        /* ── ROI form ─────────────────────────────────── */
+        .roi-form-row,
+        .roi-grid,
+        #panel-roi .grid {
+          grid-template-columns: 1fr !important;
+          gap: 12px !important;
+        }
+        #panel-roi input[type="number"],
+        #panel-roi input[type="text"],
+        #panel-roi input[type="range"] {
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+        /* ROI output tiles — 2 per row, not 4 */
+        #panel-roi .roi-outputs,
+        #panel-roi .grid.grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+
+        /* ── Tables ───────────────────────────────────── */
+        table { font-size: 12px !important; }
+        table th, table td { padding: 6px 8px !important; }
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        /* ── Modals ──────────────────────────────────── */
+        .modal-overlay { padding: 12px !important; }
+        .modal-overlay > div,
+        .modal-overlay .modal-card {
+          width: 100% !important;
+          max-width: 100% !important;
+          max-height: 90vh !important;
+          padding: 16px !important;
+          margin: 0 !important;
+          border-radius: 8px !important;
+          overflow-y: auto !important;
+        }
+
+        /* ── Controls row (play/pause buttons) wraps ── */
+        .controls-row, .demo-controls, .flow-controls {
+          flex-wrap: wrap !important;
+          gap: 6px !important;
+        }
+
+        /* ── Buttons / inputs: bigger hit targets ─────── */
+        button, .btn { min-height: 40px; padding: 8px 14px !important; font-size: 13px !important; }
+        button svg, button i[data-lucide] { width: 14px !important; height: 14px !important; }
+        input, select, textarea { min-height: 40px; font-size: 14px !important; }
+
+        /* ── Typography scale-down ────────────────────── */
+        .text-3xl, .text-4xl, .text-5xl { font-size: 22px !important; }
+        .text-2xl { font-size: 18px !important; }
+        .text-xl { font-size: 16px !important; }
+        .text-lg { font-size: 15px !important; }
+
+        /* ── Spacing tightening ───────────────────────── */
+        .space-y-6 > * + *, .space-y-8 > * + * { margin-top: 12px !important; }
+        .gap-6, .gap-8 { gap: 10px !important; }
+        .p-6, .p-8 { padding: 14px !important; }
+        .py-6, .py-8 { padding-top: 14px !important; padding-bottom: 14px !important; }
+
+        /* ── Kill any desktop-only fixed widths ───────── */
+        [style*="width: 1000px"], [style*="width: 960px"], [style*="width: 900px"],
+        [style*="min-width: 800px"], [style*="min-width: 900px"] {
+          width: 100% !important;
+          min-width: 0 !important;
+        }
+      }
+
+      /* Extra-small phones */
+      @media (max-width: 480px) {
+        header.relative h1 { font-size: 22px !important; }
+        .recast-eyebrow-label { font-size: 12px !important; }
+        .catalog-grid { grid-template-columns: 1fr !important; }
+        .ap-cascade-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        #panel-roi .roi-outputs,
+        #panel-roi .grid.grid-cols-4 { grid-template-columns: 1fr !important; }
+      }
+
+      /* ───── Scroll-free shell: hero + tabs pinned, panel gets remaining viewport ───── */
+      html, body { height: 100%; overflow: hidden; }
+      body > #app { height: 100vh; display: flex; flex-direction: column; }
+      body > #app > header.relative { flex: 0 0 auto; }
+      body > #app > .recast-topnav { flex: 0 0 auto; }
+      body > #app > main.mx-auto {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+        max-width: none !important;
+        width: 100% !important;
+      }
+      /* ═════════════════════════════════════════════════════════════
+         DESKTOP LAYOUT — unified width and alignment
+         ═════════════════════════════════════════════════════════════ */
+
+      /* Unified max-width for hero content AND main panel so they align vertically */
+      header.relative .max-w-6xl,
+      body > #app > main.mx-auto > section {
+        max-width: 1440px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+      }
+      body > #app > main.mx-auto { padding-left: 0 !important; padding-right: 0 !important; }
+
+      /* Compact hero + topnav so the panel gets most of the viewport */
+      .recast-topnav { padding: 8px 0 !important; }
+      .recast-topnav-logo { height: 22px !important; }
+      .recast-topnav-links { font-size: 13px !important; gap: 18px !important; }
+      .recast-topnav-cta .btn-nav { padding: 6px 12px !important; font-size: 12px !important; }
+
+      header.relative > div:first-child {
+        padding-top: 14px !important;
+        padding-bottom: 10px !important;
+      }
+      .recast-eyebrow-row { margin-bottom: 8px !important; }
+      .recast-eyebrow-mark { width: 28px !important; height: 28px !important; }
+      .recast-eyebrow-mark svg { width: 16px !important; height: 16px !important; }
+      .recast-eyebrow-label { font-size: 13px !important; }
+      header.relative h1 { font-size: 24px !important; line-height: 1.1 !important; }
+      header.relative h1::after { margin-top: 8px !important; width: 40px !important; height: 2px !important; }
+      header.relative p { font-size: 13px !important; margin-top: 8px !important; }
+      .recast-tabs { margin-top: 12px !important; }
+      .recast-tab { padding: 10px 16px !important; font-size: 13px !important; }
+
+      /* Tighter, denser panels */
+      #panel-problems.space-y-4 > * + *,
+      #panel-roi.space-y-4 > * + * { margin-top: 10px !important; }
+      #panel-solution.space-y-3 > * + * { margin-top: 8px !important; }
+      .section-card { padding: 14px !important; }
+      .section-card.p-8, .section-card.p-6 { padding: 16px !important; }
+      .section-card h2, .section-card h3 { font-size: 16px !important; margin-bottom: 6px !important; }
+      .sub-card.p-6, .sub-card.p-4 { padding: 10px 12px !important; }
+
+      /* Shrink the capacity chart so it doesn't dominate the viewport */
+      #capacity-gap-chart { max-height: 280px; }
+      .chart-container { aspect-ratio: auto; max-height: 280px; }
+
+      /* ═════════════════════════════════════════════════════════════
+         DESKTOP TIGHTENING (>= 901px) — Problems tab density
+         ═════════════════════════════════════════════════════════════ */
+      @media (min-width: 901px) {
+        /* Current State panel — fit in viewport without scrolling */
+        #panel-problems.cs-panel { display: flex; flex-direction: column; gap: 10px; }
+        #panel-problems.cs-panel > * + * { margin-top: 0 !important; }
+
+        /* Compact flip cards — keep original 3D flip behavior intact */
+        .flip-card {
+          height: 68px !important;
+          min-height: 68px !important;
+          cursor: pointer !important;
+        }
+        .flip-card.flipped { height: 210px !important; }
+        /* Force-hide inactive face — bypasses unreliable backface-visibility */
+        .flip-card:not(.flipped) .flip-card-back { visibility: hidden !important; }
+        .flip-card.flipped .flip-card-front { visibility: hidden !important; }
+        .flip-card-front {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: flex-start !important;
+          gap: 10px !important;
+          padding: 10px 14px !important;
+          background: #fff !important;
+          border: 1px solid var(--r-divider) !important;
+          border-radius: 6px !important;
+        }
+        .flip-card-front i[data-lucide] {
+          width: 16px !important;
+          height: 16px !important;
+          color: var(--r-blue-bright) !important;
+        }
+        .flip-card-stat {
+          font-size: 22px !important;
+          font-weight: 800 !important;
+          background: none !important;
+          -webkit-text-fill-color: var(--r-blue) !important;
+          color: var(--r-blue) !important;
+          letter-spacing: -0.02em !important;
+          line-height: 1 !important;
+        }
+        .flip-card-tap {
+          margin-left: auto !important;
+          font-size: 9px !important;
+          color: #94a3b8 !important;
+        }
+
+        /* Panel heading — compact inline row with edit button */
+        #panel-problems > .flex { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+        #panel-problems > .flex h2 {
+          font-size: 11px !important;
+          font-weight: 700 !important;
+          color: var(--r-ink-2) !important;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        /* Chart section card: compact, chart capped to fit viewport */
+        #panel-problems > .section-card { padding: 14px 18px !important; }
+        #panel-problems > .section-card > .grid {
+          grid-template-columns: 1fr 260px !important;
+          gap: 18px !important;
+          align-items: stretch !important;
+        }
+        #panel-problems .chart-container {
+          max-height: none !important;
+          aspect-ratio: auto !important;
+          height: 100% !important;
+          min-height: 0 !important;
+          padding: 0 !important;
+        }
+        #capacity-gap-chart {
+          max-height: min(52vh, 420px) !important;
+          height: min(52vh, 420px) !important;
+          width: 100% !important;
+          min-height: 320px !important;
+          display: block;
+        }
+
+        /* Modern IT Challenges rail — clean card, compact */
+        #panel-problems > .section-card > .grid > div:last-child {
+          background: var(--r-quote-bg) !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          border: 1px solid var(--r-divider) !important;
+          border-radius: 6px !important;
+          box-shadow: none !important;
+          padding: 12px !important;
+        }
+        #panel-problems > .section-card > .grid > div:last-child > h3 {
+          font-size: 11px !important;
+          font-weight: 700 !important;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--r-ink-2) !important;
+          margin-bottom: 8px !important;
+          padding-bottom: 8px;
+          border-bottom: 1px solid var(--r-divider);
+        }
+        #panel-problems > .section-card > .grid > div:last-child > .grid { gap: 6px !important; }
+        #panel-problems > .section-card > .grid > div:last-child .callout-dropdown,
+        #panel-problems > .section-card > .grid > div:last-child [data-action="toggle-callout"] {
+          padding: 8px 10px !important;
+          font-size: 13px !important;
+        }
+
+        /* Edit pencil already inline — remove old absolute-position rules */
+        #panel-problems > .mt-3 { display: none !important; }
+
+        /* Panel wrapper: less vertical padding so everything fits */
+        body > #app > main.mx-auto { padding-top: 12px !important; padding-bottom: 12px !important; }
+        #panel-problems.space-y-4 > * + * { margin-top: 10px !important; }
+
+        /* ─── Business Impact panel: fit to viewport, no scroll ─── */
+        #panel-roi { display: flex; flex-direction: column; gap: 10px; }
+        #panel-roi.space-y-4 > * + * { margin-top: 0 !important; }
+
+        /* Compact input card */
+        #panel-roi .bi-input-card { padding: 12px 16px !important; }
+        #panel-roi .bi-input-eyebrow { font-size: 10px !important; margin-bottom: 6px !important; }
+        #panel-roi .bi-input-label { font-size: 14px !important; }
+        #panel-roi .bi-input-employees { font-size: 18px !important; padding: 6px 10px !important; width: 110px !important; }
+        #panel-roi .bi-input-unit { font-size: 14px !important; }
+        #panel-roi .bi-input-cta { padding: 9px 16px !important; font-size: 13px !important; }
+        #panel-roi .bi-input-advanced { padding: 8px 12px !important; font-size: 12px !important; }
+
+        /* Hero: tighter */
+        #panel-roi .bi-hero { padding: 18px 24px !important; gap: 22px !important; grid-template-columns: 1fr 280px !important; }
+        #panel-roi .bi-hero-eyebrow { font-size: 10px !important; margin-bottom: 6px !important; }
+        #panel-roi .bi-hero-number { font-size: 54px !important; }
+        #panel-roi .bi-hero-unit { font-size: 16px !important; }
+        #panel-roi .bi-hero-sub { font-size: 13px !important; margin-top: 8px !important; }
+        #panel-roi .bi-hero-secondary { padding-left: 20px !important; gap: 10px !important; }
+        #panel-roi .bi-hero-stat-value { font-size: 18px !important; }
+        #panel-roi .bi-hero-stat-label { font-size: 10px !important; }
+
+        /* Breakdown + Reinvest: compact padding */
+        #panel-roi .bi-breakdown, #panel-roi .bi-reinvest { padding: 14px 18px !important; }
+        #panel-roi .bi-section-head { margin-bottom: 10px !important; padding-bottom: 8px !important; }
+        #panel-roi .bi-section-title { font-size: 13px !important; }
+        #panel-roi .bi-section-sub { font-size: 11px !important; }
+        #panel-roi .bi-bars { gap: 8px !important; }
+        #panel-roi .bi-bar-row { grid-template-columns: 260px 1fr 110px !important; }
+        #panel-roi .bi-bar-name { font-size: 12px !important; }
+        #panel-roi .bi-bar-note { font-size: 10px !important; }
+        #panel-roi .bi-bar-track { height: 8px !important; }
+        #panel-roi .bi-bar-value { font-size: 15px !important; }
+
+        /* Reinvest tiles compact */
+        #panel-roi .bi-reinvest-tile { padding: 10px !important; font-size: 11px !important; gap: 5px !important; }
+        #panel-roi .bi-reinvest-tile i[data-lucide] { width: 15px !important; height: 15px !important; }
+        #panel-roi .bi-reinvest-grid { gap: 8px !important; }
+
+        /* Action bar compact */
+        #panel-roi .bi-actionbar { padding-top: 0 !important; }
+        #panel-roi .bi-action-primary, #panel-roi .bi-action-secondary { padding: 8px 16px !important; font-size: 12px !important; }
+
+        /* Empty + too-small states compact */
+        #panel-roi .bi-empty { padding: 24px 20px !important; }
+        #panel-roi .bi-empty-visual { height: 50px !important; margin-bottom: 10px !important; }
+        #panel-roi .bi-empty-title { font-size: 14px !important; }
+        #panel-roi .bi-empty-body { font-size: 12px !important; }
+        #panel-roi .bi-toosmall { padding: 12px 16px !important; }
+
+        /* ─── Recast Approach panel: compact spacing & density ─── */
+        #panel-solution { display: flex; flex-direction: column; gap: 8px; }
+        #panel-solution.space-y-3 > * + * { margin-top: 0 !important; }
+
+        /* Solution cards row: trim padding, smaller headings */
+        #panel-solution > .grid:first-child .section-card { padding: 12px !important; }
+
+        /* Centralized Platform strip: compact */
+        #panel-solution > .section-card { padding: 10px 14px !important; }
+        #panel-solution > .section-card .platform-bar { padding: 8px 12px !important; }
+        #panel-solution > .section-card .platform-stat-value { font-size: 13px !important; }
+        #panel-solution > .section-card .platform-stat-label { font-size: 9px !important; }
+        #panel-solution > .section-card .platform-cap { font-size: 10px !important; padding: 3px 8px !important; }
+        #panel-solution > .section-card .mt-2.text-\\[10px\\] { font-size: 9px !important; margin-top: 6px !important; }
+
+        /* Control strip: thinner */
+        #panel-solution .view-toggle { padding: 6px 10px !important; font-size: 11px !important; }
+
+        /* CTA row: less vertical whitespace */
+        #panel-solution > .flex.flex-col.items-end { margin-top: 4px !important; }
+        #panel-solution > .flex.flex-col.items-end > button { padding: 8px 18px !important; font-size: 13px !important; }
+      }
+
+      /* Device frames / demos: cap heights */
+      .device-frame { max-height: 52vh; }
+
+      /* Modals still overlay fullscreen */
+      .modal-overlay { position: fixed !important; inset: 0 !important; z-index: 100; }
+
+      /* ═════════════════════════════════════════════════════════════
+         BUSINESS IMPACT TAB — redesigned for clarity
+         ═════════════════════════════════════════════════════════════ */
+      .bi-input-card {
+        background: #fff;
+        border: 1px solid var(--r-divider);
+        border-radius: 8px;
+        padding: 20px 24px;
+        box-shadow: var(--shadow-card);
+      }
+      .bi-input-eyebrow {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--r-ink-2);
+        margin-bottom: 10px;
+      }
+      .bi-input-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .bi-input-field {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        flex: 1;
+        min-width: 260px;
+      }
+      .bi-input-label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--r-ink);
+        white-space: nowrap;
+      }
+      .bi-input-employees {
+        width: 130px;
+        padding: 8px 12px;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--r-blue);
+        border: 2px solid var(--r-divider);
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 150ms, box-shadow 150ms;
+        appearance: textfield;
+        -moz-appearance: textfield;
+      }
+      .bi-input-employees:focus {
+        border-color: var(--r-blue-bright);
+        box-shadow: 0 0 0 3px rgba(42,127,255,0.12);
+      }
+      .bi-input-employees::-webkit-outer-spin-button,
+      .bi-input-employees::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+      .bi-input-unit {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--r-ink-2);
+      }
+      .bi-input-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--r-blue);
+        color: #fff;
+        padding: 12px 22px;
+        font-size: 14px;
+        font-weight: 700;
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 150ms;
+        white-space: nowrap;
+      }
+      .bi-input-cta:hover { background: var(--r-blue-hover); }
+      .bi-input-advanced {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        color: var(--r-ink-2);
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        border: 1px solid var(--r-divider);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 150ms;
+      }
+      .bi-input-advanced:hover { color: var(--r-blue); border-color: var(--r-blue-bright); }
+
+      .bi-assumptions {
+        margin-top: 18px;
+        padding: 16px;
+        background: var(--r-surface-3);
+        border: 1px solid var(--r-divider);
+        border-radius: 6px;
+      }
+      .bi-assumptions-title {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--r-ink-2);
+        margin-bottom: 10px;
+      }
+      .bi-assumptions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .bi-assumptions-grid.four { grid-template-columns: repeat(4, 1fr); }
+      .bi-rate { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--r-ink-2); }
+      .bi-rate input {
+        padding: 6px 8px;
+        border: 1px solid var(--r-divider);
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--r-ink);
+      }
+      .bi-assumptions-actions { display: flex; gap: 8px; margin-top: 12px; }
+      .bi-assumptions-save {
+        background: var(--r-blue);
+        color: #fff;
+        border: 0;
+        padding: 8px 14px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .bi-assumptions-save:hover { background: var(--r-blue-hover); }
+      .bi-assumptions-close {
+        background: transparent;
+        border: 0;
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--r-ink-2);
+        cursor: pointer;
+      }
+
+      /* Empty state */
+      .bi-empty {
+        background: #fff;
+        border: 1px dashed var(--r-divider);
+        border-radius: 8px;
+        padding: 36px 20px;
+        text-align: center;
+      }
+      .bi-empty-visual {
+        display: inline-flex;
+        align-items: flex-end;
+        gap: 6px;
+        height: 64px;
+        margin-bottom: 14px;
+      }
+      .bi-empty-bar {
+        width: 22px;
+        background: var(--r-quote-bg);
+        border: 1px solid var(--r-muted-blue);
+        border-radius: 2px 2px 0 0;
+      }
+      .bi-empty-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--r-ink);
+        margin-bottom: 4px;
+      }
+      .bi-empty-body {
+        font-size: 13px;
+        color: var(--r-ink-2);
+        max-width: 440px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
+
+      /* Too-small state */
+      .bi-toosmall {
+        display: flex;
+        gap: 14px;
+        background: #fff;
+        border: 1px solid var(--r-divider);
+        border-left: 3px solid var(--r-amber);
+        border-radius: 6px;
+        padding: 16px 20px;
+      }
+      .bi-toosmall-icon { color: var(--r-amber); flex-shrink: 0; }
+      .bi-toosmall-title { font-size: 14px; font-weight: 700; color: var(--r-ink); margin-bottom: 4px; }
+      .bi-toosmall-body { font-size: 13px; color: var(--r-ink-2); line-height: 1.5; }
+
+      /* Hero metric block */
+      .bi-hero {
+        background: var(--r-blue);
+        color: #fff;
+        border-radius: 8px;
+        padding: 28px 32px;
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 32px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .bi-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(circle, var(--r-decorator) 1.5px, transparent 1.8px);
+        background-size: 14px 14px;
+        opacity: 0.4;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 70%, #000);
+                mask-image: linear-gradient(90deg, transparent 0, transparent 70%, #000);
+        pointer-events: none;
+      }
+      .bi-hero > * { position: relative; }
+      .bi-hero-eyebrow {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--r-muted-blue);
+        margin-bottom: 10px;
+      }
+      .bi-hero-number {
+        font-size: 72px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: #fff;
+      }
+      .bi-hero-unit {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--r-muted-blue);
+        margin-left: 10px;
+        letter-spacing: 0;
+      }
+      .bi-hero-sub {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--r-muted-blue);
+        max-width: 46ch;
+      }
+      .bi-hero-sub strong { color: #fff; font-weight: 700; }
+      .bi-hero-secondary {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        border-left: 1px solid rgba(255,255,255,0.2);
+        padding-left: 24px;
+      }
+      .bi-hero-stat { }
+      .bi-hero-stat-value {
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.1;
+      }
+      .bi-hero-stat-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--r-muted-blue);
+        margin-top: 2px;
+      }
+
+      /* Breakdown */
+      .bi-breakdown, .bi-reinvest {
+        background: #fff;
+        border: 1px solid var(--r-divider);
+        border-radius: 8px;
+        padding: 20px 24px;
+        box-shadow: var(--shadow-card);
+      }
+      .bi-section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--r-divider);
+      }
+      .bi-section-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--r-ink);
+      }
+      .bi-section-sub {
+        font-size: 12px;
+        color: var(--r-ink-2);
+      }
+      .bi-bars { display: flex; flex-direction: column; gap: 14px; }
+      .bi-bar-row {
+        display: grid;
+        grid-template-columns: 280px 1fr 130px;
+        gap: 16px;
+        align-items: center;
+      }
+      .bi-bar-label { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .bi-bar-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+      .bi-bar-name { font-size: 13px; font-weight: 700; color: var(--r-ink); }
+      .bi-bar-note { font-size: 11px; color: var(--r-ink-2); flex-basis: 100%; margin-left: 18px; }
+      .bi-bar-track {
+        height: 10px;
+        background: var(--r-surface-2);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .bi-bar-fill {
+        height: 100%;
+        border-radius: 5px;
+        transition: width 700ms cubic-bezier(.2,.8,.2,1);
+      }
+      .bi-bar-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--r-ink);
+        text-align: right;
+      }
+      .bi-bar-value span {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--r-ink-2);
+        margin-left: 4px;
+      }
+
+      /* Reinvest tiles */
+      .bi-reinvest-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+      .bi-reinvest-tile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 14px;
+        background: var(--r-quote-bg);
+        border: 1px solid var(--r-divider);
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--r-ink);
+        line-height: 1.35;
+      }
+      .bi-reinvest-tile i[data-lucide] {
+        width: 18px;
+        height: 18px;
+        color: var(--r-blue-bright);
+      }
+
+      /* Action bar */
+      .bi-actionbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 4px;
+        flex-wrap: wrap;
+      }
+      .bi-action-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--r-blue);
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 13px;
+        font-weight: 700;
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 150ms;
+      }
+      .bi-action-primary:hover { background: var(--r-blue-hover); }
+      .bi-action-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: var(--r-blue);
+        padding: 10px 18px;
+        font-size: 13px;
+        font-weight: 700;
+        border: 1.5px solid var(--r-blue);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 150ms;
+      }
+      .bi-action-secondary:hover { background: var(--r-quote-bg); }
+      .bi-pdf-input {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        border: 2px solid var(--r-blue);
+        border-radius: 4px;
+        padding: 6px 10px;
+      }
+      .bi-pdf-input input {
+        border: 0;
+        outline: none;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--r-ink);
+        width: 200px;
+      }
+      .bi-pdf-submit {
+        width: 28px; height: 28px;
+        border-radius: 4px;
+        background: var(--r-blue);
+        border: 0;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .bi-pdf-cancel { color: #94a3b8; font-size: 14px; cursor: pointer; padding: 0 4px; }
+
+      @media (max-width: 900px) {
+        .bi-hero { grid-template-columns: 1fr !important; padding: 20px !important; gap: 20px !important; }
+        .bi-hero-secondary { border-left: 0 !important; border-top: 1px solid rgba(255,255,255,0.2); padding-left: 0 !important; padding-top: 16px; flex-direction: row !important; flex-wrap: wrap; gap: 18px !important; }
+        .bi-hero-number { font-size: 52px !important; }
+        .bi-input-row { flex-direction: column; align-items: stretch !important; }
+        .bi-input-field { flex-wrap: wrap; }
+        .bi-input-cta, .bi-input-advanced { width: 100%; justify-content: center; }
+        .bi-assumptions-grid, .bi-assumptions-grid.four { grid-template-columns: repeat(2, 1fr) !important; }
+        .bi-bar-row { grid-template-columns: 1fr !important; gap: 6px !important; }
+        .bi-bar-value { text-align: left !important; }
+        .bi-reinvest-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        .bi-actionbar { flex-direction: column; align-items: stretch; }
+        .bi-action-primary, .bi-action-secondary { width: 100%; justify-content: center; }
+      }
     </style>
   </head>
 
@@ -1262,6 +2690,14 @@
         STATE.flowTimers.timeouts.push(tid);
       }
 
+      function scrollPreserveRender(){
+        const mainEl = document.querySelector('body > #app > main');
+        const scrollTop = mainEl ? mainEl.scrollTop : 0;
+        render();
+        const newMainEl = document.querySelector('body > #app > main');
+        if (newMainEl) newMainEl.scrollTop = scrollTop;
+      }
+
       function startFlow(){
         if (STATE.flowRunning) return;
         clearFlowTimers();
@@ -1269,9 +2705,11 @@
         STATE.flowPaused = false;
         STATE.flowScenarioIdx = 0;
         STATE.flowPhase = 'idle';
+        STATE.flowAppOpened = false;
+        STATE._firstOpenDone = false;
         STATE.flowQueue = buildFlowQueue();
         STATE.flowQueueIdx = 0;
-        render();
+        scrollPreserveRender();
         runFlowQueue();
       }
 
@@ -1280,13 +2718,13 @@
         STATE.flowPaused = true;
         STATE.flowTimers.timeouts.forEach(id => clearTimeout(id));
         STATE.flowTimers.timeouts = [];
-        render();
+        scrollPreserveRender();
       }
 
       function resumeFlow(){
         if (!STATE.flowRunning || !STATE.flowPaused) return;
         STATE.flowPaused = false;
-        render();
+        scrollPreserveRender();
         runFlowQueue();
       }
 
@@ -1306,7 +2744,13 @@
         });
       }
 
-      function updateFlowDOM(){ render(); }
+      function updateFlowDOM(){
+        if (STATE.activeTab !== 'solution') { render(); return; }
+        const panelSection = document.querySelector('main > section');
+        if (!panelSection) { render(); return; }
+        panelSection.innerHTML = renderSolution();
+        if (window.lucide?.createIcons) try { window.lucide.createIcons(); } catch {}
+      }
 
       function resetFlow(){
         clearFlowTimers();
@@ -1359,21 +2803,24 @@
         root.innerHTML = `
           <header class="relative">
             <div class="relative mx-auto max-w-6xl px-4 pt-8 pb-6">
-              <h1 class="text-[40px] md:text-[56px] font-semibold leading-tight"><span style="color:#0070F3">Re</span><span style="color:#0A1C60">cast</span> Software</h1>
+              <div class="recast-eyebrow-row">
+                <div class="recast-eyebrow-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+                <div class="recast-eyebrow-label">Application Workspace</div>
+              </div>
+              <h1 class="text-[40px] md:text-[56px] font-semibold leading-tight"><span>Re</span><span>cast</span> Software</h1>
               <p class="mt-2 max-w-2xl text-[16px] leading-[1.5] text-[#4A5568]">
                 ${STATE.activeTab==='problems'
-                  ? ''
+                  ? 'Same package, any workspace: laptops, Cloud PCs, and virtual desktops (AVD, Citrix, Omnissa).'
                   : STATE.activeTab==='solution'
                     ? 'The current model multiplies work per platform. Here\'s what it looks like when that stops.'
                     : 'Application Workspace helps IT keep applications running smoothly as platforms change -  without creating more work'}
               </p>
             </div>
             <div class="relative mx-auto max-w-6xl px-4">
-              <div role="tablist" aria-label="Demo sections" class="flex w-full flex-wrap gap-2 rounded bg-white/60 backdrop-blur-lg p-1 ring-1 ring-slate-200">
+              <div role="tablist" aria-label="Demo sections" class="recast-tabs">
                 ${TABS.map(t=>`
                   <button type="button"
-                    class="${cx('inline-flex items-center gap-2 px-3.5 py-1.5 text-sm focus-ring transition',
-                      STATE.activeTab===t.id ? 'bg-[#0070F3] text-white hover:bg-[#005AD0] rounded' : 'text-[#0A1C60] hover:bg-slate-100 rounded')}"
+                    class="recast-tab ${STATE.activeTab===t.id ? 'is-active' : ''} focus-ring"
                     data-action="switch-tab" data-tab="${t.id}"
                     aria-controls="panel-${t.id}" aria-selected="${STATE.activeTab===t.id}">
                     <i data-lucide="${t.icon}" class="w-4 h-4"></i><span>${t.label}</span>
@@ -1417,11 +2864,12 @@
 
       function renderProblems(){
         return `
-          <section id="panel-problems" class="space-y-4">
-            <div class="mb-1">
-              <h2 class="text-lg font-semibold text-[#0A1C60]">The application layer is now the #1 primary constraint in modern <span class="analyst-trigger" data-action="open-analyst-modal">IT.</span></h2>
+          <section id="panel-problems" class="space-y-2 cs-panel">
+            <div class="flex items-center justify-between gap-3">
+              <h2 class="text-base font-semibold text-[#0A1C60]">The application layer is now the #1 primary constraint in modern <span class="analyst-trigger" data-action="open-analyst-modal">IT.</span></h2>
+              <button type="button" data-action="open-currentstate-editor" class="w-7 h-7 rounded-full border-2 border-gray-300 bg-transparent text-gray-400 inline-flex items-center justify-center hover:text-[#0070F3] hover:border-[#0070F3] transition flex-shrink-0" title="Edit Current State"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
             </div>
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 cs-stats">
               ${STAT_CARDS.map(card => {
                 const isFlipped = STATE.flippedCards[card.id];
                 return '<div class="flip-card '+(isFlipped ? 'flipped' : '')+'" data-action="flip-card" data-card-id="'+card.id+'" role="button" tabindex="0" aria-label="'+card.title+'">'
@@ -1443,23 +2891,20 @@
                 +'</div>';
               }).join('')}
             </div>
-            <div class="section-card p-6">
-              <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-4 items-start">
+            <div class="section-card cs-chart-card">
+              <div class="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-3 items-stretch">
                 <div class="chart-container relative">
-                  <svg id="capacity-gap-chart" viewBox="0 0 800 420"></svg>
+                  <svg id="capacity-gap-chart" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid meet"></svg>
                 </div>
-                <div class="w-full bg-white/70 backdrop-blur-lg rounded-2xl shadow-md p-4 border border-slate-200">
-                  <h3 class="text-lg font-medium mb-4">Modern IT Challenges</h3>
-                  <div class="grid grid-cols-1 gap-4 items-stretch">
+                <div class="w-full bg-white/70 backdrop-blur-lg rounded-xl shadow-sm p-3 border border-slate-200 cs-challenges">
+                  <h3 class="text-xs font-semibold uppercase tracking-wide text-[#0A1C60] mb-2">Modern IT Challenges</h3>
+                  <div class="grid grid-cols-1 gap-2 items-stretch">
                     ${calloutDropdown('change','alert-triangle','Why Change','bg-slate-50')}
                     ${calloutDropdown('now','clock-4','Why Now','bg-slate-50', false, "")}
                     ${calloutDropdown('recast','sparkles','Why Recast','bg-slate-50', true)}
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="mt-3">
-              <button type="button" data-action="open-currentstate-editor" class="w-9 h-9 rounded-full border-2 border-gray-300 bg-transparent text-gray-400 inline-flex items-center justify-center hover:text-[#0070F3] hover:border-[#0070F3] transition" title="Edit Current State"><i data-lucide="pencil" class="w-4 h-4"></i></button>
             </div>
           </section>
         `;
@@ -1962,6 +3407,10 @@
         const scenario = sc >= 0 && sc < SCENARIOS.length ? SCENARIOS[sc] : null;
         const appOpen = scenario && !['idle','launch','catalog','clicking'].includes(phase);
         const showDesktop = !scenario || phase === 'idle' || phase === 'launch';
+        const firstOpen = appOpen && !STATE._firstOpenDone;
+        if (firstOpen) STATE._firstOpenDone = true;
+        const appWindowClass = appOpen ? (firstOpen ? 'open' : 'open-instant') : '';
+        const msgClass = appOpen ? (firstOpen ? 'show' : 'show-instant') : '';
 
         const phaseLabel = !scenario ? 'Ready' :
           phase === 'idle' ? 'Waiting...' :
@@ -2056,7 +3505,7 @@
                 </div>
                 `}
 
-                <div class="app-window-overlay ${appOpen ? 'open' : ''}" id="appWindow">
+                <div class="app-window-overlay ${appWindowClass}" id="appWindow">
                   <div class="app-window-topbar">
                     <div class="aw-icon" style="background:#5B53D6">T</div>
                     <div>
@@ -2075,15 +3524,15 @@
                     <div class="teams-chat-area">
                       <div class="teams-chat-header"><i data-lucide="hash" class="w-3 h-3 text-slate-400"></i> General</div>
                       <div class="teams-chat-body">
-                        <div class="teams-msg ${appOpen ? 'show' : ''}" style="transition-delay:0.3s">
+                        <div class="teams-msg ${msgClass}" style="transition-delay:${firstOpen ? '0.3s' : '0s'}">
                           <div class="teams-msg-avatar" style="background:#3b82f6">AK</div>
                           <div class="teams-msg-bubble">Hey team, the Q3 deck is updated and ready for review</div>
                         </div>
-                        <div class="teams-msg ${appOpen ? 'show' : ''}" style="transition-delay:0.6s">
+                        <div class="teams-msg ${msgClass}" style="transition-delay:${firstOpen ? '0.6s' : '0s'}">
                           <div class="teams-msg-avatar" style="background:#10b981">JR</div>
                           <div class="teams-msg-bubble">Perfect timing -  pulling it up now</div>
                         </div>
-                        <div class="teams-msg ${appOpen ? 'show' : ''}" style="transition-delay:0.9s">
+                        <div class="teams-msg ${msgClass}" style="transition-delay:${firstOpen ? '0.9s' : '0s'}">
                           <div class="teams-msg-bubble self">On it. Give me 5 min.</div>
                         </div>
                       </div>
@@ -3655,99 +5104,104 @@
         const ci = STATE.calcInputs;
         const sc = STATE.calcScenario;
         const a = ROI_ASSUMPTIONS[sc];
+        const hasResult = r && ci.users > 200;
+        const tooSmall = r && ci.users <= 200;
         return `
           <section id="panel-roi" class="space-y-4">
 
-            <!-- BRIDGE CARD -->
-            <div class="section-card px-5 py-4 rounded-2xl" style="background:linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%); border:1px solid #dbeafe">
-              <div class="flex items-center gap-2 mb-2">
-                <i data-lucide="sparkles" class="w-4 h-4 text-[#0070F3]"></i>
-                <span class="text-sm font-semibold text-[#0A1C60]">What you just saw eliminates hours of repetitive work</span>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-blue-200 text-[11px] font-semibold text-[#0A1C60] shadow-sm"><i data-lucide="shopping-bag" class="w-3 h-3 text-[#0070F3]"></i> Self-Service Delivery</span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-blue-200 text-[11px] font-semibold text-[#0A1C60] shadow-sm"><i data-lucide="bot" class="w-3 h-3 text-[#0070F3]"></i> Automatic Patching</span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-blue-200 text-[11px] font-semibold text-[#0A1C60] shadow-sm"><i data-lucide="repeat" class="w-3 h-3 text-[#0070F3]"></i> Zero Per-Platform Rebuilds</span>
-              </div>
-              <div class="text-xs text-[#64748b]">per app, per update, per environment. Enter your employee count below to see what that adds up to.</div>
-            </div>
-
-            <!-- EMPLOYEE COUNT INPUT -  HERO -->
-            <div class="section-card p-6 rounded-2xl">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4 flex-1">
-                  <div class="h-12 w-12 rounded-xl grid place-items-center bg-gradient-to-br from-[#0070F3] to-[#0A1C60] flex-shrink-0"><i data-lucide="building-2" class="w-6 h-6 text-white"></i></div>
-                  <div class="flex-1">
-                    <div class="text-base font-semibold text-[#0A1C60] mb-1">How many employees?</div>
-                    <div class="flex items-center gap-3">
-                      <input type="number" id="roi-employees" placeholder="5000" value="${ci.users}" class="w-full max-w-[220px] px-4 py-3 text-2xl font-bold text-[#0A1C60] border-2 border-slate-200 rounded-xl focus:border-[#0070F3] focus:outline-none transition" style="appearance:textfield;-moz-appearance:textfield">
-                      <button type="button" data-action="calculate-impact" class="inline-flex items-center gap-2 bg-[#0070F3] text-white px-5 py-3 text-sm font-semibold rounded-xl hover:bg-[#005AD0] transition whitespace-nowrap"><i data-lucide="bar-chart-3" class="w-4 h-4"></i> Show Results</button>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" data-action="toggle-assumptions" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs text-slate-400 hover:text-[#0070F3] border border-slate-200 rounded-lg hover:border-[#0070F3] transition" title="Adjust assumptions"><i data-lucide="sliders" class="w-3.5 h-3.5"></i> Adjust</button>
+            <!-- STEP 1 — Input, always visible, compact -->
+            <div class="bi-input-card">
+              <div class="bi-input-eyebrow">Business Impact Calculator</div>
+              <div class="bi-input-row">
+                <label class="bi-input-field">
+                  <span class="bi-input-label">Your organization has</span>
+                  <input type="number" id="roi-employees" placeholder="5,000" value="${ci.users}" class="bi-input-employees">
+                  <span class="bi-input-unit">employees</span>
+                </label>
+                <button type="button" data-action="calculate-impact" class="bi-input-cta">
+                  ${hasResult || tooSmall ? 'Recalculate' : 'Calculate Impact'}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <button type="button" data-action="toggle-assumptions" class="bi-input-advanced" title="Adjust assumptions">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                  <span>${STATE.showAssumptions ? 'Hide assumptions' : 'Assumptions'}</span>
+                </button>
               </div>
 
               ${STATE.showAssumptions ? `
-                <div class="mt-4 p-4 rounded-lg bg-slate-50 border border-slate-200">
-                  <div class="flex items-center justify-between mb-3">
-                    <div class="text-[10px] font-semibold text-[#0A1C60] uppercase tracking-wide">Environment & Effort Assumptions</div>
-                  </div>
-                  <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                <div class="bi-assumptions">
+                  <div class="bi-assumptions-title">Environment & effort inputs</div>
+                  <div class="bi-assumptions-grid">
                     ${roiInput('roi-users','users','Managed users','End users in scope','5000',ci.users)}
                     ${roiInput('roi-endpoints','monitor','Endpoints','Devices in scope','6000',ci.endpoints)}
                     ${roiInput('roi-envs','layers','Environments','Intune, SCCM, VDI, Jamf, etc.','3',ci.envs)}
                     ${roiInput('roi-apps','layout-grid','Active apps','Apps actively managed','150',ci.apps)}
-                    ${roiInput('roi-custom','package','Custom / internal apps','Internally packaged or unique','30',ci.customApps)}
-                    ${roiInput('roi-tickets','ticket','Monthly app tickets','App-related support tickets/mo','600',ci.monthlyTickets)}
+                    ${roiInput('roi-custom','package','Custom / internal apps','Internally packaged','30',ci.customApps)}
+                    ${roiInput('roi-tickets','ticket','Monthly app tickets','App tickets/mo','600',ci.monthlyTickets)}
+                    ${roiInput('roi-ticketmins','clock','Avg ticket time (min)','Minutes per ticket','18',ci.avgTicketMins)}
+                    ${roiInput('roi-pkghrs','wrench','Packaging hrs/mo','Package + repackage','80',ci.pkgHours)}
+                    ${roiInput('roi-patchhrs','refresh-cw','Patching hrs/mo','Validate + deploy','60',ci.patchHours)}
                   </div>
-                  <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
-                    ${roiInput('roi-ticketmins','clock','Avg ticket time (min)','Minutes per app ticket','18',ci.avgTicketMins)}
-                    ${roiInput('roi-pkghrs','wrench','Packaging hours / mo','Package + repackage effort','80',ci.pkgHours)}
-                    ${roiInput('roi-patchhrs','refresh-cw','Patching hours / mo','Validate + deploy updates','60',ci.patchHours)}
+                  <div class="bi-assumptions-title" style="margin-top:16px">Reduction rates (%)</div>
+                  <div class="bi-assumptions-grid four">
+                    <label class="bi-rate"><span>Ticket reduction</span><input type="number" id="asn-ticket" min="0" max="100" value="${Math.round(a.ticketReduction * 100)}"></label>
+                    <label class="bi-rate"><span>Packaging reduction</span><input type="number" id="asn-pkg" min="0" max="100" value="${Math.round(a.pkgReduction * 100)}"></label>
+                    <label class="bi-rate"><span>Patching reduction</span><input type="number" id="asn-patch" min="0" max="100" value="${Math.round(a.patchReduction * 100)}"></label>
+                    <label class="bi-rate"><span>Strategic reallocation</span><input type="number" id="asn-strategic" min="0" max="100" value="${Math.round(a.strategicRealloc * 100)}"></label>
                   </div>
-                  <div class="text-[10px] font-semibold text-[#0A1C60] uppercase tracking-wide mb-2 mt-4">Reduction rates</div>
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-[#475569]">
-                    <label class="flex flex-col gap-1"><span>Ticket reduction %</span><input type="number" id="asn-ticket" min="0" max="100" value="${Math.round(a.ticketReduction * 100)}" class="w-full px-2 py-1 rounded border border-slate-300 text-xs font-semibold focus-ring"></label>
-                    <label class="flex flex-col gap-1"><span>Packaging reduction %</span><input type="number" id="asn-pkg" min="0" max="100" value="${Math.round(a.pkgReduction * 100)}" class="w-full px-2 py-1 rounded border border-slate-300 text-xs font-semibold focus-ring"></label>
-                    <label class="flex flex-col gap-1"><span>Patching reduction %</span><input type="number" id="asn-patch" min="0" max="100" value="${Math.round(a.patchReduction * 100)}" class="w-full px-2 py-1 rounded border border-slate-300 text-xs font-semibold focus-ring"></label>
-                    <label class="flex flex-col gap-1"><span>Strategic reallocation %</span><input type="number" id="asn-strategic" min="0" max="100" value="${Math.round(a.strategicRealloc * 100)}" class="w-full px-2 py-1 rounded border border-slate-300 text-xs font-semibold focus-ring"></label>
+                  <div class="bi-assumptions-actions">
+                    <button type="button" data-action="save-assumptions" class="bi-assumptions-save">Save &amp; Recalculate</button>
+                    <button type="button" data-action="toggle-assumptions" class="bi-assumptions-close">Close</button>
                   </div>
-                  <div class="flex items-center gap-2 mt-3">
-                    <button type="button" data-action="save-assumptions" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-semibold rounded-md bg-[#0070F3] text-white hover:bg-[#005AD0] transition"><i data-lucide="save" class="w-3 h-3"></i> Save & Recalculate</button>
-                    <button type="button" data-action="toggle-assumptions" class="px-3 py-1.5 text-[10px] font-semibold rounded-md text-slate-500 hover:text-slate-700 transition">Close</button>
-                  </div>
-                  <div class="text-[9px] text-slate-400 mt-2">All values are editable. Changes recalculate the impact below.</div>
                 </div>
               ` : ''}
             </div>
 
-            <!-- ROI DASHBOARD -->
-            ${ci.users <= 200 ? '<div class="section-card p-6 rounded-2xl text-center"><i data-lucide="info" class="w-8 h-8 text-slate-300 mx-auto mb-3"></i><div class="text-sm font-semibold text-[#0A1C60] mb-2">Not the right fit for this size</div><div class="text-xs text-[#64748b] max-w-md mx-auto leading-relaxed">Organizations under 200 employees typically don\'t face the multi-platform complexity that Application Workspace addresses. For smaller teams, the per-platform model usually works fine.</div></div>' : (r ? '<div id="impact-results">' + renderCalcResult() + '</div>' : '')}
+            <!-- STEP 2 — Results -->
+            ${tooSmall ? `
+              <div class="bi-toosmall">
+                <div class="bi-toosmall-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <div>
+                  <div class="bi-toosmall-title">Under 200 employees? You likely don't need this.</div>
+                  <div class="bi-toosmall-body">Organizations under 200 typically don't face the multi-platform complexity Application Workspace addresses. The per-platform model usually works fine at that scale.</div>
+                </div>
+              </div>
+            ` : hasResult ? `<div id="impact-results">${renderCalcResult()}</div>` : `
+              <div class="bi-empty">
+                <div class="bi-empty-visual">
+                  <div class="bi-empty-bar" style="height:22%"></div>
+                  <div class="bi-empty-bar" style="height:48%"></div>
+                  <div class="bi-empty-bar" style="height:72%"></div>
+                  <div class="bi-empty-bar" style="height:96%"></div>
+                </div>
+                <div class="bi-empty-title">Enter your employee count to see your impact</div>
+                <div class="bi-empty-body">We'll model hours returned, FTE capacity freed, and where it goes — calibrated to your environment in seconds.</div>
+              </div>
+            `}
 
-
-            <div class="flex items-center justify-between">
-              <div class="flex gap-3">
-                ${r ? (STATE.pdfCompanyInput ? `
-                  <div class="flex items-center gap-3" style="animation:dashSlideUp 0.3s ease forwards">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0000CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-                    <input type="text" id="pdf-company-input" placeholder="Enter company name" value="${STATE.pdfCompanyName}" style="width:280px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:15px;font-weight:600;color:#0A1C60;outline:none;transition:border-color 0.2s,box-shadow 0.2s" onfocus="this.style.borderColor='#0070F3';this.style.boxShadow='0 0 0 3px rgba(0,112,243,0.1)'" onblur="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
-                    <button type="button" data-action="submit-pdf-company" style="width:38px;height:38px;border-radius:50%;background:#0000CC;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background 0.2s;flex-shrink:0" onmouseover="this.style.background='#0000AA'" onmouseout="this.style.background='#0000CC'">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            ${hasResult ? `
+              <div class="bi-actionbar">
+                ${STATE.pdfCompanyInput ? `
+                  <div class="bi-pdf-input">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--r-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <input type="text" id="pdf-company-input" placeholder="Enter company name" value="${STATE.pdfCompanyName}">
+                    <button type="button" data-action="submit-pdf-company" class="bi-pdf-submit">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                     </button>
-                    <span data-action="cancel-pdf-input" style="color:#94a3b8;font-size:12px;cursor:pointer;margin-left:4px">\u2715</span>
+                    <span data-action="cancel-pdf-input" class="bi-pdf-cancel">×</span>
                   </div>
                 ` : `
-                  <button type="button" data-action="open-pdf-input" class="inline-flex items-center gap-2 text-white px-7 py-2.5 text-sm font-semibold rounded-full transition" style="background:#0000CC" onmouseover="this.style.background='#0000AA'" onmouseout="this.style.background='#0000CC'">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                  <button type="button" data-action="open-pdf-input" class="bi-action-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
                     Download Executive Summary
                   </button>
-                `) : ''}
+                `}
+                <button type="button" data-action="open-ai-agent" class="bi-action-secondary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  Ask a question
+                </button>
               </div>
-              <button type="button" data-action="open-ai-agent" class="inline-flex items-center gap-2 text-white px-4 py-2.5 text-sm font-semibold rounded-full shadow-lg hover:opacity-90 transition" style="background:linear-gradient(135deg,#0070F3,#0A1C60)">
-                <i data-lucide="message-circle-question" class="w-4 h-4"></i> Ask a Question
-              </button>
-            </div>
+            ` : ''}
           </section>
         `;
       }
@@ -3759,81 +5213,93 @@
         const supportPct = Math.round(a.ticketReduction * 100);
         const pkgPct = Math.round(a.pkgReduction * 100);
         const patchPct = Math.round(a.patchReduction * 100);
+        const total = r.ticketHoursReturned + r.pkgHoursReturned + r.patchHoursReturned;
+        const ticketShare = total ? Math.round((r.ticketHoursReturned / total) * 100) : 0;
+        const pkgShare = total ? Math.round((r.pkgHoursReturned / total) * 100) : 0;
+        const patchShare = 100 - ticketShare - pkgShare;
         return `
-          <!-- BEAT 1: Here's what we estimated -->
-          <div class="section-card p-6 rounded-2xl dash-animate">
-            <div class="text-[10px] font-semibold text-[#64748b] uppercase tracking-widest mb-4">Here's what we estimated</div>
-            <div class="grid grid-cols-3 gap-6">
-              <div class="text-center">
-                <div class="text-4xl font-bold text-[#0A1C60] leading-none">${num(r.totalHoursYear)}</div>
-                <div class="text-xs text-slate-400 mt-2">hours / year locked in routine work</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-[#0A1C60] leading-none">${r.fteCapacity}</div>
-                <div class="text-xs text-slate-400 mt-2">FTE-equivalents recoverable</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-[#0070F3] leading-none">${num(r.strategicHours)}</div>
-                <div class="text-xs text-slate-400 mt-2">strategic hours returned / year</div>
-              </div>
+          <!-- HERO METRIC — one clear takeaway -->
+          <div class="bi-hero dash-animate">
+            <div class="bi-hero-primary">
+              <div class="bi-hero-eyebrow">Estimated annual impact for ${num(ci.users)} employees</div>
+              <div class="bi-hero-number">${num(r.totalHoursYear)}<span class="bi-hero-unit">hours</span></div>
+              <div class="bi-hero-sub">returned to your team every year — the equivalent of <strong>${r.fteCapacity} full-time engineers</strong> freed from routine work.</div>
             </div>
-          </div>
-
-          <!-- BEAT 2: Here's where it comes from -->
-          <div class="section-card p-6 rounded-2xl dash-animate mt-4">
-            <div class="text-[10px] font-semibold text-[#64748b] uppercase tracking-widest mb-4">Here's where it comes from</div>
-            <div class="space-y-4">
-              <div>
-                <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-semibold text-[#0A1C60]">Support & tickets</span><span class="text-sm font-bold text-emerald-600">${num(r.ticketHoursReturned)} hrs/mo returned</span></div>
-                <div class="h-3 rounded-full bg-slate-100 overflow-hidden"><div class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600 transition-all duration-700" style="width:${supportPct}%"></div></div>
-                <div class="text-[10px] text-slate-400 mt-1">${supportPct}% reduction - ${num(r.ticketsAvoided)} tickets avoided per month</div>
+            <div class="bi-hero-secondary">
+              <div class="bi-hero-stat">
+                <div class="bi-hero-stat-value">${fmtDollars(r.totalRecoveredAnnual)}</div>
+                <div class="bi-hero-stat-label">Annual capacity value</div>
               </div>
-              <div>
-                <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-semibold text-[#0A1C60]">Packaging</span><span class="text-sm font-bold text-[#0070F3]">${num(r.pkgHoursReturned)} hrs/mo returned</span></div>
-                <div class="h-3 rounded-full bg-slate-100 overflow-hidden"><div class="h-full rounded-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-700" style="width:${pkgPct}%"></div></div>
-                <div class="text-[10px] text-slate-400 mt-1">${pkgPct}% reduction across ${ci.envs} environments</div>
+              <div class="bi-hero-stat">
+                <div class="bi-hero-stat-value">4–6 wk</div>
+                <div class="bi-hero-stat-label">Time to first value</div>
               </div>
-              <div>
-                <div class="flex items-center justify-between mb-1.5"><span class="text-sm font-semibold text-[#0A1C60]">Patching</span><span class="text-sm font-bold text-indigo-600">${num(r.patchHoursReturned)} hrs/mo returned</span></div>
-                <div class="h-3 rounded-full bg-slate-100 overflow-hidden"><div class="h-full rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600 transition-all duration-700" style="width:${patchPct}%"></div></div>
-                <div class="text-[10px] text-slate-400 mt-1">${patchPct}% reduction - staged pipeline replaces per-platform rebuilds</div>
+              <div class="bi-hero-stat">
+                <div class="bi-hero-stat-value">${num(r.strategicHours)} h</div>
+                <div class="bi-hero-stat-label">Reinvested in strategy</div>
               </div>
             </div>
           </div>
 
-          <!-- BEAT 3: Here's what it means -  THE CLIMAX -->
-          <div class="rounded-2xl dash-animate mt-4 p-6" style="background:linear-gradient(135deg,#0A1C60 0%,#0070F3 100%)">
-            <div class="text-center mb-5">
-              <div class="text-[10px] font-semibold text-blue-200 uppercase tracking-widest mb-3">Where the capacity goes</div>
-              <div class="text-5xl font-bold text-white leading-none">${num(r.strategicHours)}</div>
-              <div class="text-sm text-blue-200 mt-2">hours / year returned to strategic work</div>
-              <div class="text-sm font-semibold text-white mt-1">${r.fteCapacity} FTE-equivalents - reallocated, not eliminated</div>
+          <!-- BREAKDOWN — where the hours come from -->
+          <div class="bi-breakdown dash-animate">
+            <div class="bi-section-head">
+              <div class="bi-section-title">Where the hours come from</div>
+              <div class="bi-section-sub">Monthly hours returned, by workflow</div>
             </div>
-            <div class="flex flex-wrap justify-center gap-3 mb-2">
-              ${['AI and Copilot rollouts','Cloud and endpoint migrations','Compliance and security posture','Automation and self-service','Pilot programs and modernization'].map(t => '<div class="px-3 py-1.5 rounded-full bg-white/15 text-[11px] font-semibold text-white">'+t+'</div>').join('')}
+            <div class="bi-bars">
+              <div class="bi-bar-row">
+                <div class="bi-bar-label">
+                  <span class="bi-bar-dot" style="background:#10B981"></span>
+                  <span class="bi-bar-name">Support &amp; tickets</span>
+                  <span class="bi-bar-note">${num(r.ticketsAvoided)} tickets avoided/mo · ${supportPct}% reduction</span>
+                </div>
+                <div class="bi-bar-track">
+                  <div class="bi-bar-fill" style="width:${supportPct}%;background:#10B981"></div>
+                </div>
+                <div class="bi-bar-value">${num(r.ticketHoursReturned)} <span>hrs/mo</span></div>
+              </div>
+              <div class="bi-bar-row">
+                <div class="bi-bar-label">
+                  <span class="bi-bar-dot" style="background:var(--r-blue-bright)"></span>
+                  <span class="bi-bar-name">Packaging</span>
+                  <span class="bi-bar-note">Across ${ci.envs} environments · ${pkgPct}% reduction</span>
+                </div>
+                <div class="bi-bar-track">
+                  <div class="bi-bar-fill" style="width:${pkgPct}%;background:var(--r-blue-bright)"></div>
+                </div>
+                <div class="bi-bar-value">${num(r.pkgHoursReturned)} <span>hrs/mo</span></div>
+              </div>
+              <div class="bi-bar-row">
+                <div class="bi-bar-label">
+                  <span class="bi-bar-dot" style="background:var(--r-blue)"></span>
+                  <span class="bi-bar-name">Patching</span>
+                  <span class="bi-bar-note">Staged pipeline replaces rebuilds · ${patchPct}% reduction</span>
+                </div>
+                <div class="bi-bar-track">
+                  <div class="bi-bar-fill" style="width:${patchPct}%;background:var(--r-blue)"></div>
+                </div>
+                <div class="bi-bar-value">${num(r.patchHoursReturned)} <span>hrs/mo</span></div>
+              </div>
             </div>
           </div>
 
-          <!-- Executive summary cards -->
-          <div class="grid grid-cols-3 gap-4 mt-4 dash-animate">
-            <div class="section-card p-5 rounded-2xl border-t-4 border-emerald-500">
-              <div class="text-[9px] font-semibold text-emerald-600 uppercase tracking-wider mb-3">Capacity Recovered</div>
-              <div class="text-3xl font-bold text-[#0A1C60] leading-none mb-2">${num(r.totalHoursYear)} hrs</div>
-              <div class="text-[10px] text-[#64748b] leading-relaxed">${num(r.totalHoursYear)} hours returned to the work that's actually on your roadmap. Dollar equivalent: ${fmtDollars(r.totalRecoveredAnnual)}/yr.</div>
+          <!-- WHERE IT GOES — strategic reallocation -->
+          <div class="bi-reinvest dash-animate">
+            <div class="bi-section-head">
+              <div class="bi-section-title">Where the recovered capacity goes</div>
+              <div class="bi-section-sub">${num(r.strategicHours)} hours / year · ${r.fteCapacity} FTE reallocated, not eliminated</div>
             </div>
-            <div class="section-card p-5 rounded-2xl border-t-4 border-[#0070F3]">
-              <div class="text-[9px] font-semibold text-[#0070F3] uppercase tracking-wider mb-3">Time to Value</div>
-              <div class="text-3xl font-bold text-[#0A1C60] leading-none mb-2">4-6 wk</div>
-              <div class="text-[10px] text-[#64748b] leading-relaxed">No rip-and-replace. Connects to your existing stack. Live before your next patch cycle.</div>
-            </div>
-            <div class="section-card p-5 rounded-2xl border-t-4 border-indigo-500">
-              <div class="text-[9px] font-semibold text-indigo-500 uppercase tracking-wider mb-3">Platform Risk</div>
-              <div class="text-3xl font-bold text-[#0A1C60] leading-none mb-2">Zero</div>
-              <div class="text-[10px] text-[#64748b] leading-relaxed">SOC 2 Type II. ISO 27001. 60M+ devices. Additive to your current environment.</div>
+            <div class="bi-reinvest-grid">
+              ${[
+                {icon:'sparkles', label:'AI &amp; Copilot rollouts'},
+                {icon:'cloud', label:'Cloud &amp; endpoint migrations'},
+                {icon:'shield-check', label:'Compliance &amp; security posture'},
+                {icon:'zap', label:'Automation &amp; self-service'},
+                {icon:'flag', label:'Pilot programs &amp; modernization'}
+              ].map(t => `<div class="bi-reinvest-tile"><i data-lucide="${t.icon}"></i><span>${t.label}</span></div>`).join('')}
             </div>
           </div>
-
-          <!-- Trust line -->
         `;
       }
 
