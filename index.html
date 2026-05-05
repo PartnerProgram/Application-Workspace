@@ -1192,19 +1192,19 @@
       .arch-device-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 8px; border: 1px solid #E2E8F0; background: #FFFFFF; font-size: 11px; font-weight: 500; color: #475569; line-height: 1.2; }
       .arch-bracket-up { width: 60%; max-width: 520px; height: 10px; margin: 3px auto 0; border: 2px dashed #CBD5E1; border-top: none; border-radius: 0 0 10px 10px; }
       .arch-bracket-down { width: 60%; max-width: 520px; height: 10px; margin: 0 auto 3px; border: 1.5px solid #93C5FD; border-top: none; border-radius: 0 0 10px 10px; }
-      .arch-aw { position: relative; margin: 4px 14px; padding: 9px 14px 10px; border-radius: 10px; background: linear-gradient(180deg, #0A1C60 0%, #0E2585 60%, #1232A0 100%); color: #FFFFFF; overflow: hidden; box-shadow: 0 6px 20px -8px rgba(10,28,96,0.45); }
+      .arch-aw { position: relative; margin: 4px 14px; padding: 9px 14px 10px; border-radius: 10px; background: #0000CC; color: #FFFFFF; overflow: hidden; box-shadow: 0 6px 20px -8px rgba(10,28,96,0.45); }
       .arch-aw::before { content: ''; position: absolute; top: -40%; right: -8%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); pointer-events: none; }
       .arch-aw-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
       .arch-aw-brand { display: flex; flex-direction: column; gap: 1px; }
       .arch-aw-title { font-size: 15px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.005em; line-height: 1.15; }
       .arch-aw-tagline { font-size: 10px; font-weight: 500; color: #BFDBFE; letter-spacing: 0.04em; }
       .arch-aw-brand-mark { display: inline-flex; align-items: center; gap: 6px; font-size: 9.5px; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.02em; white-space: nowrap; }
-      .arch-aw-caps { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; padding-top: 7px; border-top: 1px solid rgba(255,255,255,0.14); }
-      .arch-aw-cap { display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 6px; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.78); background: transparent; border: 1px solid rgba(255,255,255,0.18); }
+      .arch-aw-caps { display: flex; flex-wrap: nowrap; gap: 5px; margin-top: 7px; padding-top: 7px; border-top: 1px solid rgba(255,255,255,0.14); }
+      .arch-aw-cap { flex: 1 1 0; min-width: 0; justify-content: center; display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.78); background: transparent; border: 1px solid rgba(255,255,255,0.18); }
       .arch-aw-cap i { width: 10px; height: 10px; opacity: 0.7; flex-shrink: 0; }
       .arch-aw-cap--lead { color: #0A1C60; background: #FFFFFF; border-color: #FFFFFF; font-weight: 700; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.25); }
       .arch-aw-cap--lead i { opacity: 1; color: #0070F3; }
-      .arch-aw-cap { white-space: nowrap; line-height: 1.15; }
+      .arch-aw-cap { white-space: nowrap; line-height: 1.15; overflow: hidden; text-overflow: ellipsis; }
       @media (max-width: 720px) {
         .arch-aw-head { flex-direction: column; align-items: flex-start; }
         .arch-bracket-up, .arch-bracket-down { width: 80%; }
