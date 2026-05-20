@@ -4401,49 +4401,6 @@
         border-radius: 1px;
         flex-shrink: 0;
       }
-      .bi-section-eyebrow.is-cycle::before { background: #B45309; }
-      .bi-section-eyebrow.is-compound::before { background: #047857; }
-      .bi-section-eyebrow.is-toggle {
-        background: none;
-        border: 0;
-        cursor: pointer;
-        font: inherit;
-        color: inherit;
-        letter-spacing: inherit;
-        text-transform: inherit;
-        text-align: left;
-        padding: 5px 10px 5px 0;
-        margin-left: 0;
-        width: fit-content;
-        border-radius: 6px;
-        transition: color 150ms, background 150ms;
-      }
-      .bi-section-eyebrow.is-toggle:hover {
-        color: var(--r-ink);
-        background: rgba(15, 23, 42, 0.04);
-      }
-      .bi-section-eyebrow.is-toggle:focus-visible {
-        outline: 2px solid var(--r-blue);
-        outline-offset: 2px;
-      }
-      .bi-section-chevron {
-        width: 13px;
-        height: 13px;
-        stroke: currentColor;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none;
-        transition: transform 200ms cubic-bezier(.2,.8,.2,1);
-        flex-shrink: 0;
-        opacity: 0.7;
-      }
-      .bi-section-eyebrow.is-toggle:hover .bi-section-chevron { opacity: 1; }
-      .bi-section-eyebrow.is-toggle[aria-expanded="false"] .bi-section-chevron {
-        transform: rotate(-90deg);
-      }
-      .bi-section-content.is-collapsed { display: none; }
-
       /* Compounding-value card — stacks one-time + recurring across Year 1, 2, 3 */
       .bi-compound {
         background: #fff;
@@ -4598,6 +4555,186 @@
         #panel-roi .bi-compound-inputs { padding: 8px 12px !important; margin-bottom: 12px !important; }
       }
 
+      /* ─── Outcomes pillars: Speed / Scale / Risk ───────────────────
+         Three stacked cards on the left side of the result split.
+         Same white-card + light-border vocabulary as the rest of the
+         tab. Accent lives on the left rule only — blue / green /
+         amber — so the three categories are distinct without competing
+         with the right-hand bar chart. */
+      .bi-pillars {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .bi-pillar {
+        position: relative;
+        background: #fff;
+        border: 1px solid var(--r-divider);
+        border-left: 6px solid var(--r-blue);
+        border-radius: 8px;
+        padding: 16px 20px 14px;
+        box-shadow: 0 1px 2px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.06);
+      }
+      .bi-pillar.is-speed { border-left-color: var(--r-blue); }
+      .bi-pillar.is-scale { border-left-color: var(--r-green); }
+      .bi-pillar.is-risk  { border-left-color: var(--r-amber); }
+      .bi-pillar-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .bi-pillar-eyebrow {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--r-blue);
+        background: rgba(0, 0, 204, 0.09);
+        padding: 3px 7px 2px;
+        border-radius: 3px;
+        line-height: 1;
+      }
+      .is-scale .bi-pillar-eyebrow { color: var(--r-green); background: rgba(15, 122, 63, 0.10); }
+      .is-risk  .bi-pillar-eyebrow { color: var(--r-amber); background: rgba(204, 136, 0, 0.12); }
+      .bi-pillar-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--r-ink);
+        margin: 0;
+        line-height: 1.2;
+        letter-spacing: -0.005em;
+      }
+      .bi-pillar-hero {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        margin: 0 -6px 12px;
+        border-radius: 6px;
+        background: rgba(0, 0, 204, 0.045);
+      }
+      .is-scale .bi-pillar-hero { background: rgba(15, 122, 63, 0.055); }
+      .is-risk  .bi-pillar-hero { background: rgba(204, 136, 0, 0.065); }
+      .bi-pillar-hero-num {
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        color: var(--r-blue);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      .is-scale .bi-pillar-hero-num { color: var(--r-green); }
+      .is-risk  .bi-pillar-hero-num { color: var(--r-amber); }
+      .bi-pillar-hero-num.bi-pillar-hero-text {
+        font-size: 22px;
+        letter-spacing: -0.015em;
+        font-variant-numeric: normal;
+        line-height: 1.15;
+      }
+      .bi-pillar-hero-unit {
+        font-size: 15px;
+        font-weight: 700;
+        color: inherit;
+        letter-spacing: 0;
+      }
+      .bi-pillar-hero-sub {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--r-ink-2);
+        line-height: 1.45;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+      .bi-pillar-hero-note {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--r-ink-2);
+        opacity: 0.85;
+        font-style: italic;
+      }
+      .bi-pillar-rows {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .bi-pillar-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .bi-pillar-row-lbl {
+        color: var(--r-ink-2);
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .bi-pillar-row-val {
+        font-weight: 700;
+        color: var(--r-ink);
+        font-variant-numeric: tabular-nums;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .bi-pillar-row-val-single {
+        font-weight: 700;
+        color: var(--r-ink);
+      }
+      .bi-pillar-from {
+        color: var(--r-ink-2);
+        font-weight: 600;
+      }
+      .bi-pillar-arrow {
+        color: var(--r-ink-2);
+        font-weight: 700;
+      }
+      .bi-pillar-to {
+        color: var(--r-blue);
+        font-weight: 800;
+      }
+      .is-scale .bi-pillar-to { color: var(--r-green); }
+      .is-risk  .bi-pillar-to { color: var(--r-amber); }
+      .bi-pillar-tag {
+        font-size: 10px;
+        font-weight: 800;
+        padding: 1px 6px;
+        border-radius: 3px;
+        background: rgba(15, 122, 63, 0.10);
+        color: var(--r-green);
+        letter-spacing: 0;
+      }
+      .bi-pillars-foot {
+        margin: 10px 2px 0;
+        font-size: 11px;
+        color: var(--r-ink-2);
+        font-style: italic;
+      }
+      @media (max-height: 900px) {
+        #panel-roi .bi-pillars { gap: 10px !important; }
+        #panel-roi .bi-pillar { padding: 13px 16px 11px !important; }
+        #panel-roi .bi-pillar-head { margin-bottom: 8px !important; }
+        #panel-roi .bi-pillar-hero { padding: 8px 12px !important; margin: 0 -4px 9px !important; }
+        #panel-roi .bi-pillar-hero-num { font-size: 28px !important; }
+        #panel-roi .bi-pillar-hero-num.bi-pillar-hero-text { font-size: 18px !important; }
+        #panel-roi .bi-pillar-hero-unit { font-size: 13px !important; }
+        #panel-roi .bi-pillar-hero-sub { font-size: 11px !important; }
+        #panel-roi .bi-pillar-title { font-size: 13px !important; }
+        #panel-roi .bi-pillar-row { font-size: 11px !important; gap: 10px !important; }
+        #panel-roi .bi-pillar-rows { gap: 5px !important; }
+        #panel-roi .bi-pillars-foot { font-size: 10px !important; margin-top: 6px !important; }
+      }
+
       /* ─── Side-by-side split: Ongoing × 3-year horizon ─── */
       /* Default to stacked so narrow viewports remain readable. */
       .bi-split {
@@ -4611,8 +4748,7 @@
         min-width: 0;
       }
       /* Pin the eyebrow header heights so both columns line up at the top. */
-      .bi-split-col > .bi-section-eyebrow,
-      .bi-split-col > .bi-section-eyebrow.is-toggle {
+      .bi-split-col > .bi-section-eyebrow {
         min-height: 22px;
         margin-bottom: 8px;
       }
@@ -4621,19 +4757,16 @@
       @media (min-width: 1100px) {
         .bi-split:not(.is-single) { grid-template-columns: 1fr 1fr; }
 
-        /* Stretch both column cards so the right side matches the left's
+        /* Stretch column cards so the right side matches the left's
            natural height (no ragged bottoms when the panel sits side-by-side). */
-        .bi-split:not(.is-single) .bi-split-col > .bi-compare,
-        .bi-split:not(.is-single) .bi-split-col > .bi-section-content {
+        .bi-split:not(.is-single) .bi-split-col > .bi-compare {
           flex: 1;
           display: flex;
           flex-direction: column;
         }
-        .bi-split:not(.is-single) .bi-section-content > .bi-compound {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-        }
+        /* Stretch the outcomes pillars stack on the left to match the
+           right-hand bar chart's natural height. */
+        .bi-split:not(.is-single) .bi-split-col > .bi-pillars { flex: 1; }
         /* Year rows expand and distribute to fill any spare vertical space. */
         .bi-split:not(.is-single) .bi-compound-rows {
           flex: 1;
@@ -5196,7 +5329,6 @@
         calcScenario: 'expected',
         calcResult: null,
         showAssumptions: false,
-        collapsedSections: { compound: false },
         editingAssumptions: false,
         pdfCompanyInput: false,
         pdfCompanyName: '',
@@ -9421,10 +9553,15 @@
         return `<div class="flex items-center justify-between mt-4" aria-hidden="true">${phases.map((p, i) => `${i > 0 ? '<div class="flex-1 h-px bg-slate-200 mx-2"></div>' : ''}<div class="flex flex-col items-center"><i data-lucide="${p.icon}" class="w-5 h-5 text-[#0070F3]"></i><span class="text-xs mt-1 text-[#4A5568]">${p.label}</span></div>`).join('')}</div>`;
       }
 
+      // Packaging reductions are split into two pools so a catalog-heavy
+      // stack doesn't get the same answer as a custom-heavy one. Anchored
+      // to side-by-side field measurements: store/catalog apps collapse
+      // to near-zero touch time, while complex custom apps still need
+      // packaging engineering (just far less of it).
       const ROI_ASSUMPTIONS = {
-        conservative: { ticketReduction: 0.20, pkgReduction: 0.35, patchReduction: 0.30, strategicRealloc: 0.40, fteHours: 1920, uxShare: 0.55, dashShare: 0.20, mtShare: 0.25, label: 'Conservative' },
-        expected:     { ticketReduction: 0.70, pkgReduction: 0.50, patchReduction: 0.45, strategicRealloc: 0.50, fteHours: 1920, uxShare: 0.55, dashShare: 0.20, mtShare: 0.25, label: 'Expected' },
-        high:         { ticketReduction: 0.90, pkgReduction: 0.65, patchReduction: 0.60, strategicRealloc: 0.70, fteHours: 1920, uxShare: 0.55, dashShare: 0.20, mtShare: 0.25, label: 'High' },
+        conservative: { ticketReduction: 0.20, catalogPkgReduction: 0.85, customPkgReduction: 0.55, patchReduction: 0.30, strategicRealloc: 0.40, fteHours: 1920, uxShare: 0.55, dashShare: 0.20, mtShare: 0.25, label: 'Conservative' },
+        expected:     { ticketReduction: 0.70, catalogPkgReduction: 0.95, customPkgReduction: 0.79, patchReduction: 0.45, strategicRealloc: 0.50, fteHours: 1920, uxShare: 0.55, dashShare: 0.20, mtShare: 0.25, label: 'Expected' },
+        high:         { ticketReduction: 0.90, catalogPkgReduction: 0.97, customPkgReduction: 0.85, patchReduction: 0.60, strategicRealloc: 0.70, fteHours: 1920, uxShare: 0.55, dashShare: 0.20, mtShare: 0.25, label: 'High' },
       };
 
       // Field-test packaging benchmarks. AW: 3 standard apps in 38 min = 0.21 hrs each; 3.0 hrs per complex app.
@@ -9659,9 +9796,10 @@
         y += 46;
         y = secBarFull(y, 'WHERE IT COMES FROM');
         y += 6;
+        const pkgPct = ci.pkgHours > 0 ? Math.round((r.pkgHoursReturned / ci.pkgHours) * 100) : 0;
         const bars = [
           {label:'Support & tickets', hrs: r.ticketHoursReturned, pct: Math.round(a.ticketReduction*100), detail: num(r.ticketsAvoided)+' tickets avoided per month', color: GR},
-          {label:'Packaging', hrs: r.pkgHoursReturned, pct: Math.round(a.pkgReduction*100), detail: Math.round(a.pkgReduction*100)+'% reduction across '+ci.envs+' environments', color: PB},
+          {label:'Packaging', hrs: r.pkgHoursReturned, pct: pkgPct, detail: pkgPct+'% blended reduction across catalog + custom apps', color: PB},
           {label:'Patching', hrs: r.patchHoursReturned, pct: Math.round(a.patchReduction*100), detail: 'Staged pipeline replaces per-platform rebuilds', color: AC}
         ];
         bars.forEach(b => {
@@ -9769,7 +9907,7 @@
         doc.text('Prepared for ' + companyName + '  \u00b7  ' + num(ci.users) + ' employees  \u00b7  ' + ci.envs + ' environments  \u00b7  ' + ci.apps + ' apps  \u00b7  ' + a.label + ' scenario', ML, y + 4);
         y += 11;
         doc.setFontSize(7);
-        doc.text('Ticket reduction: ' + Math.round(a.ticketReduction*100) + '%  \u00b7  Packaging: ' + Math.round(a.pkgReduction*100) + '%  \u00b7  Patching: ' + Math.round(a.patchReduction*100) + '%  \u00b7  Strategic reallocation: ' + Math.round(a.strategicRealloc*100) + '%', ML, y + 4);
+        doc.text('Ticket reduction: ' + Math.round(a.ticketReduction*100) + '%  \u00b7  Packaging: ' + (ci.pkgHours > 0 ? Math.round((r.pkgHoursReturned / ci.pkgHours) * 100) : 0) + '% blended (catalog ' + Math.round(a.catalogPkgReduction*100) + '% / custom ' + Math.round(a.customPkgReduction*100) + '%)  \u00b7  Patching: ' + Math.round(a.patchReduction*100) + '%  \u00b7  Strategic reallocation: ' + Math.round(a.strategicRealloc*100) + '%', ML, y + 4);
         y += 9;
         doc.text('Generated from Recast Software Business Impact Model  \u00b7  ' + today, ML, y + 4);
         drawFooter(2);
@@ -9824,7 +9962,8 @@
                   <div class="bi-assumptions-title" style="margin-top:16px">Reduction rates (%)</div>
                   <div class="bi-assumptions-grid four">
                     <label class="bi-rate"><span>Ticket reduction</span><input type="number" id="asn-ticket" min="0" max="100" value="${Math.round(a.ticketReduction * 100)}"></label>
-                    <label class="bi-rate"><span>Packaging reduction</span><input type="number" id="asn-pkg" min="0" max="100" value="${Math.round(a.pkgReduction * 100)}"></label>
+                    <label class="bi-rate"><span>Catalog packaging</span><input type="number" id="asn-pkg-catalog" min="0" max="100" value="${Math.round(a.catalogPkgReduction * 100)}"></label>
+                    <label class="bi-rate"><span>Custom packaging</span><input type="number" id="asn-pkg-custom" min="0" max="100" value="${Math.round(a.customPkgReduction * 100)}"></label>
                     <label class="bi-rate"><span>Patching reduction</span><input type="number" id="asn-patch" min="0" max="100" value="${Math.round(a.patchReduction * 100)}"></label>
                     <label class="bi-rate"><span>Strategic reallocation</span><input type="number" id="asn-strategic" min="0" max="100" value="${Math.round(a.strategicRealloc * 100)}"></label>
                   </div>
@@ -9908,8 +10047,17 @@
         const a = ROI_ASSUMPTIONS[STATE.calcScenario];
         const ci = STATE.calcInputs;
 
-        // ── 5-bar distribution, derived entirely from the calculator's truth ──
-        // Catalog vs custom share of packaging + patching, driven by inputs.
+        // ── 5-bar distribution, partitioning the engine's raw pools ──
+        // The bars represent the same pools the engine adds up
+        // (currentSupportHoursRaw + pkgHours + patchHours), so on raw
+        // values the parts sum to the whole exactly. To keep that true
+        // after rounding, we apply largest-remainder rounding with the
+        // bar totals locked to the engine's headline.
+        //
+        // Packaging is split by app-mix into catalog/custom pools with
+        // distinct reduction rates (catalog collapses much harder than
+        // custom). Patching shares the same catalog/custom split for
+        // display but applies a single uniform patch reduction.
         const apps = Math.max(1, ci.apps);
         const customShare = Math.min(1, ci.customApps / apps);
         const catalogShare = 1 - customShare;
@@ -9920,31 +10068,108 @@
         const dashShare = a.dashShare / rawSum;
         const mtShare = a.mtShare / rawSum;
 
-        const pkgPatchOld = ci.pkgHours + ci.patchHours;
-        const pkgPatchRet = r.pkgHoursReturned + r.patchHoursReturned;
-        const sup = r.currentSupportHours;
-        const supRet = r.ticketHoursReturned;
+        // Hover narratives for each row — longer-form explanations of
+        // why this pool collapses with AW, written for a sales-facing
+        // audience. Surfaced via the row's `title` tooltip.
+        const BAR_NARRATIVES = {
+          'Managed apps':     'Vendor apps come pre-built from the Recast Setup Store — Recast packages, tests, and keeps each one current, so new versions apply automatically instead of being repackaged by hand.',
+          'Custom packaging': 'Your in-house apps are packaged once with reusable install, update, and detection logic, then delivered through the same automation engine — no manual scripting per environment.',
+          'User experience':  'Users install what they need on demand from one self-service catalog with single sign-on — instant access and far fewer help-desk tickets for installs and logins.',
+          'Dashboarding':     'Every action is logged automatically and surfaced through built-in reporting and OData — audit evidence and usage dashboards generate themselves instead of being compiled by hand.',
+          'Multi-tenant':     'One package promotes identically across every environment and tenant — build once, get the same result everywhere, with no drift between dev, test, and prod.'
+        };
 
-        const bars = [
-          { label: 'Managed apps',     sub: 'Deploy + lifecycle',     old: pkgPatchOld * catalogShare, ret: pkgPatchRet * catalogShare },
-          { label: 'Custom packaging', sub: 'In-house apps',          old: pkgPatchOld * customShare,  ret: pkgPatchRet * customShare  },
-          { label: 'User experience',  sub: 'Self-serve + auth',      old: sup * uxShare,              ret: supRet * uxShare           },
-          { label: 'Dashboarding',     sub: 'Reporting + audit',      old: sup * dashShare,            ret: supRet * dashShare         },
-          { label: 'Multi-tenant',     sub: 'Cross-env consistency',  old: sup * mtShare,              ret: supRet * mtShare           },
-        ].map(b => {
-          const oldR = Math.round(b.old);
-          const retR = Math.round(b.ret);
-          const neww = Math.max(0, oldR - retR);
-          const reclaimed = oldR - neww;
-          const pct = oldR > 0 ? Math.round((reclaimed / oldR) * 100) : 0;
-          return { label: b.label, sub: b.sub, old: oldR, neww, reclaimed, pct };
+        // Per-pool raw values, sourced from the engine. Patching is
+        // excluded from this visualization — it lives in the Risk card's
+        // "Patch validation effort" row. The Scale card headline still
+        // includes patching reclaim (engine truth); these bars only
+        // partition the packaging + support pools that they actually
+        // visualize, and the rounding targets are locked to that subset.
+        const supRaw    = r.currentSupportHoursRaw;
+        const supRetRaw = r.ticketHoursReturnedRaw;
+
+        const barsRaw = [
+          { label: 'Managed apps',     sub: 'Catalog + lifecycle',    old: r.catalogPkgHoursRaw,   ret: r.catalogPkgReturnedRaw },
+          { label: 'Custom packaging', sub: 'In-house apps',          old: r.customPkgHoursRaw,    ret: r.customPkgReturnedRaw  },
+          { label: 'User experience',  sub: 'Self-serve + auth',      old: supRaw * uxShare,       ret: supRetRaw * uxShare     },
+          { label: 'Dashboarding',     sub: 'Reporting + audit',      old: supRaw * dashShare,     ret: supRetRaw * dashShare   },
+          { label: 'Multi-tenant',     sub: 'Cross-env consistency',  old: supRaw * mtShare,       ret: supRetRaw * mtShare     },
+        ].map(b => ({ ...b, neww: Math.max(0, b.old - b.ret) }));
+
+        // Visible totals (excluding patching), used as rounding targets
+        // so the bars reconcile to what they actually display.
+        const visibleBaselineRaw = supRaw + r.catalogPkgHoursRaw + r.customPkgHoursRaw;
+        const visibleReturnedRaw = supRetRaw + r.catalogPkgReturnedRaw + r.customPkgReturnedRaw;
+        const visibleReclaim     = Math.round(visibleReturnedRaw);
+        const patchingReclaim    = r.patchHoursReturned; // shown as a separate note below the bars
+
+        // Largest-remainder rounding: residuals are absorbed into the
+        // rows with the largest fractional parts so the integer parts
+        // sum exactly to the integer target.
+        function roundToTotal(rawParts, target){
+          const fl = rawParts.map(v => Math.floor(v));
+          let rem = target - fl.reduce((s,n) => s+n, 0);
+          if (rem <= 0) return fl;
+          const order = rawParts.map((v,i) => ({ i, frac: v - Math.floor(v) }))
+                                .sort((x,y) => y.frac - x.frac);
+          for (let k = 0; k < rem && k < order.length; k++) fl[order[k].i]++;
+          return fl;
+        }
+
+        // Force bar totals to match the engine's visible pools exactly:
+        //   sum(oldR) === Math.round(visibleBaselineRaw)
+        //   sum(newR) === Math.round(visibleBaselineRaw) − visibleReclaim
+        // → sum(oldR) − sum(newR) === visibleReclaim, always.
+        const oldTarget = Math.round(visibleBaselineRaw);
+        const newTarget = Math.max(0, oldTarget - visibleReclaim);
+        const oldR = roundToTotal(barsRaw.map(b => b.old),  oldTarget);
+        const newR = roundToTotal(barsRaw.map(b => b.neww), newTarget);
+
+        // Clamp new[i] ≤ old[i]; redistribute any rounding overflow
+        // into rows that still have slack (preserves the total).
+        for (let i = 0; i < oldR.length; i++) {
+          if (newR[i] > oldR[i]) {
+            let excess = newR[i] - oldR[i];
+            newR[i] = oldR[i];
+            for (let j = 0; j < newR.length && excess > 0; j++) {
+              if (j === i) continue;
+              const slack = oldR[j] - newR[j];
+              if (slack > 0) {
+                const take = Math.min(slack, excess);
+                newR[j] += take;
+                excess  -= take;
+              }
+            }
+          }
+        }
+
+        const bars = barsRaw.map((b, i) => {
+          const oldV = oldR[i];
+          const newV = newR[i];
+          const reclaimed = oldV - newV;
+          const pct = oldV > 0 ? Math.round((reclaimed / oldV) * 100) : 0;
+          return { label: b.label, sub: b.sub, narrative: BAR_NARRATIVES[b.label] || '', old: oldV, neww: newV, reclaimed, pct };
         });
 
         const oldTotal = bars.reduce((s,b) => s + b.old,  0);
         const newTotal = bars.reduce((s,b) => s + b.neww, 0);
-        const totalReturned = Math.max(0, oldTotal - newTotal);
+        const totalReturned = visibleReclaim; // visible bars only; full engine reclaim is on the Scale card
         const pctReduction = oldTotal ? Math.round((totalReturned / oldTotal) * 100) : 0;
-        const ftesAbsorbed = oldTotal ? (oldTotal * 12 / a.fteHours).toFixed(1) : '0.0';
+        const ftesAbsorbed = oldTotal && a.fteHours > 0 ? (oldTotal * 12 / a.fteHours).toFixed(1) : '0.0';
+
+        // Scale-card numbers use the full engine reclaim (includes
+        // patching). Right-panel bars+summary use the visible-pool
+        // reclaim. Both are honest within their scope; the small note
+        // under the summary bridges them.
+        const fullReclaim = r.totalHoursMonth;
+        const fullPctReduction = r.baselineRaw > 0 ? Math.round((fullReclaim / r.baselineRaw) * 100) : 0;
+
+        // Dev guardrail — fails loudly if engine and bar partition ever diverge.
+        console.assert(
+          oldTotal - newTotal === visibleReclaim,
+          'bars do not reconcile to visible reclaim',
+          { barReclaim: oldTotal - newTotal, visibleReclaim }
+        );
 
         // Nice axis ceiling for the chart (round up to a clean tick).
         const axisMax = Math.max(...bars.map(b => b.old), 10);
@@ -9959,9 +10184,11 @@
         const ticks = Array.from({length: tickCount}, (_, i) => Math.round(i * tickStep));
 
         const barRow = (b) => {
-          const tip = `${b.label}: ${num(b.old)} hrs today → ${num(b.neww)} hrs with App Workspace (−${b.pct}%, ${num(b.reclaimed)} hrs reclaimed)`;
+          const detail = `${num(b.old)} hrs today → ${num(b.neww)} hrs with App Workspace (−${b.pct}%, ${num(b.reclaimed)} hrs reclaimed)`;
+          const narrative = b.narrative ? `\n\n${b.narrative}` : '';
+          const tip = `${b.label} · ${b.sub}\n${detail}${narrative}`;
           return `
-          <div class="bi-compare-row" title="${tip}">
+          <div class="bi-compare-row" title="${tip.replace(/"/g, '&quot;')}">
             <div class="bi-compare-label">
               ${b.label}
               <span class="bi-compare-label-sub">${b.sub}</span>
@@ -9983,128 +10210,170 @@
           </div>`;
         };
 
-        // ── Packaging cycle ROI (field-test benchmarks) ──
-        const awCycle    = r.awCycleHours      ?? 0;
-        const tradCycle  = r.tradCycleHours    ?? 0;
-        const hrsSaved   = r.cycleHoursSaved   ?? 0;
-        const timeMult   = r.cycleTimeMultiple ?? 0;
-        const $saved     = r.cycleDollarsSaved ?? 0;
-        const hasCycle   = awCycle > 0 && tradCycle > 0;
-        const cycleScale = Math.max(tradCycle, awCycle, 1);
-        const awPct      = (awCycle   / cycleScale) * 100;
-        const tradPct    = (tradCycle / cycleScale) * 100;
-        const tradVal    = `${num(Math.round(tradCycle))} hrs`;
-        const awVal      = `${num(Math.round(awCycle))} hrs`;
-        // If the bar is too short to fit text inside, render the value outside.
-        const tradOutside = tradPct < 18;
-        const awOutside   = awPct < 18;
-        const cycleStdApps = r.cycleStandardApps ?? 0;
-        const cycleCmpApps = r.cycleComplexApps  ?? 0;
-        const pctLess      = hasCycle ? Math.round((1 - awCycle / tradCycle) * 100) : 0;
-        const timeMultStr  = hasCycle ? timeMult.toFixed(1) : '—';
-        const timeMultUnit = hasCycle ? '× faster' : '';
+        // ─── SPEED / SCALE / RISK card derivations ───────────────────
+        // Every value below feeds the same r/ci/a state that drives the
+        // right-hand "Where time gets returned" panel — both update
+        // together on Recalculate or assumption edits, so the two
+        // columns can never show inconsistent numbers. Only two values
+        // are new derivations: blended per-app build time (Speed hero)
+        // and reclaimed-hour dollar value (Scale hero sub).
+        const pb = PACKAGING_BENCHMARKS;
+        const complexMix  = Math.max(0, Math.min(1, (ci.complexMixPct ?? 20) / 100));
+        const standardMix = 1 - complexMix;
+        const tradBlended = standardMix * pb.tradStdHrs + complexMix * pb.tradComplexHrs;
+        const awBlended   = standardMix * pb.awStdHrs   + complexMix * pb.awComplexHrs;
+        const pctFaster   = tradBlended > 0 ? Math.round((1 - awBlended / tradBlended) * 100) : 0;
 
-        const compoundCol = (() => {
-            const oneTimeHrs = Math.round(hasCycle ? hrsSaved : 0);
-            const recurHrs   = Math.round(r.totalHoursYear || 0);
-            if ((oneTimeHrs + recurHrs) <= 0) return '';
-            const yr1Hrs = oneTimeHrs + recurHrs;
-            const yr2Hrs = oneTimeHrs + recurHrs * 2;
-            const yr3Hrs = oneTimeHrs + recurHrs * 3;
-            const max = Math.max(yr3Hrs, 1);
-            const otPct  = (oneTimeHrs / max) * 100;
-            const recPct = (recurHrs   / max) * 100;
-            const labelInside = (pct, value, unit) => pct >= 7 ? `+${num(value)}${unit}` : '';
-            const engYears = yr3Hrs / 1920;
-            const useYears = engYears >= 1;
-            const heroNum  = useYears ? engYears.toFixed(1) : (engYears * 12).toFixed(1);
-            const heroUnit = useYears ? 'engineer-years' : 'engineer-months';
-            const envCount = ci.envs || 1;
-            const ticketsAnnual = Math.round((r.ticketsAvoided || 0) * 12);
-            const ticketsTotal  = ticketsAnnual * 3;
-            const tixReductionPct = Math.round(a.ticketReduction * 100);
-            const engMonths = hasCycle ? (hrsSaved / 160).toFixed(1) : '0';
-            return `
-          <!-- COMPOUNDING OPERATIONAL CAPACITY OVER 3 YEARS -->
-          <section class="bi-split-col">
-            <button class="bi-section-eyebrow is-compound is-toggle" type="button" data-action="toggle-section" data-section="compound" aria-expanded="${STATE.collapsedSections.compound ? 'false' : 'true'}" aria-controls="section-compound">
-              <span class="bi-section-eyebrow-label">3-year horizon</span>
-              <svg class="bi-section-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="bi-section-content${STATE.collapsedSections.compound ? ' is-collapsed' : ''}" id="section-compound">
-              <div class="bi-compound dash-animate">
-                <div class="bi-compound-head">
-                  <div class="bi-compound-head-main">
-                    <div class="bi-compound-hero">
-                      <span class="bi-compound-hero-num">${heroNum}</span>
-                      <span class="bi-compound-hero-unit">${heroUnit}</span>
-                      <span class="bi-compound-hero-suffix">reclaimed by Year 3</span>
-                    </div>
-                    <div class="bi-compound-sub">Onboarding pays for itself in Year 1. Recurring capacity compounds every year after across <b>${envCount} environment${envCount===1?'':'s'}</b>.</div>
-                  </div>
-                  <div class="bi-compound-legend">
-                    <span class="bi-compound-legend-item"><span class="bi-compound-legend-swatch is-onetime"></span>One-time onboarding</span>
-                    <span class="bi-compound-legend-item"><span class="bi-compound-legend-swatch is-recurring"></span>Recurring capacity</span>
-                  </div>
-                </div>
-                <div class="bi-pkg-inputs bi-compound-inputs">
-                  <span class="bi-pkg-inputs-prompt">Tune onboarding</span>
-                  <label class="bi-pkg-input-chip" title="Total apps to onboard">
-                    <input type="number" id="pkg-apps" min="0" step="1" value="${ci.apps}" class="is-wide" aria-label="Total apps to onboard">
-                    <span class="bi-pkg-input-chip-label">apps</span>
-                  </label>
-                  <label class="bi-pkg-input-chip" title="Share of apps that are complex (rest are standard)">
-                    <input type="number" id="pkg-mix" min="0" max="100" step="1" value="${Math.round(ci.complexMixPct ?? 20)}" aria-label="Percent complex apps">
-                    <span class="bi-pkg-input-chip-label">% complex &middot; ${Math.round(100 - (ci.complexMixPct ?? 20))}% standard</span>
-                  </label>
-                  <label class="bi-pkg-input-chip" title="Loaded engineer hourly rate">
-                    <span class="bi-pkg-input-chip-label">$</span>
-                    <input type="number" id="pkg-rate" min="0" step="1" value="${ci.loadedRate || 95}" aria-label="Loaded engineer hourly rate">
-                    <span class="bi-pkg-input-chip-label">/hr loaded</span>
-                  </label>
-                  <span class="bi-pkg-inputs-note">Defaults from Recast field test</span>
-                </div>
-                <div class="bi-compound-rows">
-                  <div class="bi-compound-row" title="Year 1: ${num(oneTimeHrs)} one-time + ${num(recurHrs)} recurring = ${num(yr1Hrs)} hrs">
-                    <div class="bi-compound-row-label">Year 1</div>
-                    <div class="bi-compound-bar">
-                      <div class="bi-compound-seg bi-compound-seg-onetime" style="width:${otPct}%">${labelInside(otPct, oneTimeHrs, 'hrs')}</div>
-                      <div class="bi-compound-seg bi-compound-seg-rec"     style="width:${recPct}%">${labelInside(recPct, recurHrs, 'hrs')}</div>
-                    </div>
-                    <div class="bi-compound-total">${num(yr1Hrs)} hrs<small>cumulative</small></div>
-                  </div>
-                  <div class="bi-compound-row" title="Year 2 cumulative: ${num(oneTimeHrs)} one-time + ${num(recurHrs * 2)} recurring = ${num(yr2Hrs)} hrs">
-                    <div class="bi-compound-row-label">Year 2</div>
-                    <div class="bi-compound-bar">
-                      <div class="bi-compound-seg bi-compound-seg-onetime" style="width:${otPct}%"></div>
-                      <div class="bi-compound-seg bi-compound-seg-rec"     style="width:${recPct}%"></div>
-                      <div class="bi-compound-seg bi-compound-seg-rec is-yr2" style="width:${recPct}%">${labelInside(recPct, recurHrs, 'hrs')}</div>
-                    </div>
-                    <div class="bi-compound-total">${num(yr2Hrs)} hrs<small>cumulative</small></div>
-                  </div>
-                  <div class="bi-compound-row" title="Year 3 cumulative: ${num(oneTimeHrs)} one-time + ${num(recurHrs * 3)} recurring = ${num(yr3Hrs)} hrs">
-                    <div class="bi-compound-row-label">Year 3</div>
-                    <div class="bi-compound-bar">
-                      <div class="bi-compound-seg bi-compound-seg-onetime" style="width:${otPct}%"></div>
-                      <div class="bi-compound-seg bi-compound-seg-rec"     style="width:${recPct}%"></div>
-                      <div class="bi-compound-seg bi-compound-seg-rec is-yr2" style="width:${recPct}%"></div>
-                      <div class="bi-compound-seg bi-compound-seg-rec is-yr3" style="width:${recPct}%">${labelInside(recPct, recurHrs, 'hrs')}</div>
-                    </div>
-                    <div class="bi-compound-total">${num(yr3Hrs)} hrs<small>cumulative</small></div>
-                  </div>
-                </div>
-                <div class="bi-compound-foot">
-                  <svg class="bi-compound-foot-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  <span><b>+ ${num(ticketsTotal)} end-user tickets prevented</b> over 3 years &mdash; <b>${tixReductionPct}% fewer helpdesk calls</b>. Users self-serve their apps across all ${envCount} environment${envCount===1?'':'s'} instead of waiting for IT, and the one-time packaging onboarding (&asymp; <b>${engMonths} engineer-months</b>) stays returned forever.</span>
-                </div>
-              </div>
-            </div>
-          </section>`;
-          })();
+        const loadedRate = r.rate;
+        const reclaimedDollarsAnnual = r.totalRecoveredAnnual; // engine value, no recompute
+        const fmtDollarsK = (n) => '$' + Math.round(n / 1000).toLocaleString() + 'K';
+
+        // Cross-platform touchpoints — same formula the removed env
+        // picker used, driven by ci.envs and a fixed 50% coverage (a
+        // typical app lives on ~half the platforms in a stack).
+        const ENV_COVERAGE = 0.5;
+        const streamsToday = Math.max(ci.apps, Math.round(ci.apps * ci.envs * ENV_COVERAGE));
+        const streamsAw    = ci.apps;
+        const touchpointReduction = streamsToday > 0 ? Math.max(0, Math.round(((streamsToday - streamsAw) / streamsToday) * 100)) : 0;
+
+        // After-state hours read from the engine, not recomputed — so the
+        // row totals match `pkgHoursReturned` / `patchHoursReturned` exactly.
+        const pkgAfter   = Math.max(0, ci.pkgHours   - r.pkgHoursReturned);
+        const patchAfter = Math.max(0, ci.patchHours - r.patchHoursReturned);
+        const dashRow    = bars.find(b => b.label === 'Dashboarding') || { old: 0, neww: 0 };
+        const envsLabel  = ci.envs === 1 ? 'env' : 'envs';
 
         return `
-          <div class="bi-split${compoundCol ? '' : ' is-single'}">
-            <!-- ONGOING IMPACT — monthly recurring -->
+          <div class="bi-split">
+            <!-- OUTCOMES — Speed / Scale / Risk (left side: the headline story) -->
+            <section class="bi-split-col">
+              <div class="bi-section-eyebrow">Outcomes &middot; speed, scale, risk</div>
+              <div class="bi-pillars">
+
+                <article class="bi-pillar is-speed">
+                  <header class="bi-pillar-head">
+                    <span class="bi-pillar-eyebrow">Speed</span>
+                    <h3 class="bi-pillar-title">Time to deliver</h3>
+                  </header>
+                  <div class="bi-pillar-hero">
+                    <div class="bi-pillar-hero-num">&minus;${pctFaster}<span class="bi-pillar-hero-unit">%</span></div>
+                    <div class="bi-pillar-hero-sub">
+                      per-app build time &middot;
+                      <span class="bi-pillar-from">${tradBlended.toFixed(1)} hrs</span>
+                      <span class="bi-pillar-arrow">&rarr;</span>
+                      <span class="bi-pillar-to">${awBlended.toFixed(1)} hrs</span>
+                    </div>
+                  </div>
+                  <ul class="bi-pillar-rows">
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Builds per release</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">${ci.envs}</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">1</span>
+                      </span>
+                    </li>
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">User access</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">days</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">&lt;1 min</span>
+                      </span>
+                    </li>
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Patch window</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">5&ndash;10 days</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">day-zero</span>
+                      </span>
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="bi-pillar is-scale">
+                  <header class="bi-pillar-head">
+                    <span class="bi-pillar-eyebrow">Scale</span>
+                    <h3 class="bi-pillar-title">Capacity reclaimed</h3>
+                  </header>
+                  <div class="bi-pillar-hero">
+                    <div class="bi-pillar-hero-num">${num(fullReclaim)}<span class="bi-pillar-hero-unit"> hrs/mo</span></div>
+                    <div class="bi-pillar-hero-sub">
+                      &asymp; <span class="bi-pillar-to">${fmtDollarsK(reclaimedDollarsAnnual)}/yr</span>
+                      &middot; <span class="bi-pillar-to">&minus;${fullPctReduction}%</span>
+                      <span class="bi-pillar-hero-note">of operational hours</span>
+                    </div>
+                  </div>
+                  <ul class="bi-pillar-rows">
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Packaging effort</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">${num(ci.pkgHours)} hrs/mo</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">${num(pkgAfter)} hrs/mo</span>
+                      </span>
+                    </li>
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Delivery touchpoints</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">${num(streamsToday)}</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">${num(streamsAw)}</span>
+                        <span class="bi-pillar-tag">&minus;${touchpointReduction}%</span>
+                      </span>
+                    </li>
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Engineer time</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">repetitive packaging</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">strategy</span>
+                      </span>
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="bi-pillar is-risk">
+                  <header class="bi-pillar-head">
+                    <span class="bi-pillar-eyebrow">Risk</span>
+                    <h3 class="bi-pillar-title">Audit-ready by default</h3>
+                  </header>
+                  <div class="bi-pillar-hero">
+                    <div class="bi-pillar-hero-num bi-pillar-hero-text">Per-action log</div>
+                    <div class="bi-pillar-hero-sub">replaces manual evidence &middot; every change captured</div>
+                  </div>
+                  <ul class="bi-pillar-rows">
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Reporting + audit effort</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">${num(dashRow.old)} hrs/mo</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">${num(dashRow.neww)} hrs/mo</span>
+                      </span>
+                    </li>
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">Patch validation effort</span>
+                      <span class="bi-pillar-row-val">
+                        <span class="bi-pillar-from">${num(ci.patchHours)} hrs/mo</span>
+                        <span class="bi-pillar-arrow">&rarr;</span>
+                        <span class="bi-pillar-to">${num(patchAfter)} hrs/mo</span>
+                      </span>
+                    </li>
+                    <li class="bi-pillar-row">
+                      <span class="bi-pillar-row-lbl">App consistency</span>
+                      <span class="bi-pillar-row-val bi-pillar-row-val-single">
+                        1 build &equals; all ${ci.envs} ${envsLabel}
+                      </span>
+                    </li>
+                  </ul>
+                </article>
+
+              </div>
+              <p class="bi-pillars-foot">Modeled from your Assumptions &mdash; editable above.</p>
+            </section>
+
+            <!-- ONGOING IMPACT — monthly recurring (right side: data backs the story) -->
             <section class="bi-split-col">
               <div class="bi-section-eyebrow">Ongoing &middot; hours per month</div>
               <div class="bi-compare dash-animate">
@@ -10114,7 +10383,7 @@
                     <div class="bi-compare-sub">Recurring operational hours, today vs. with Application Workspace. Hover any row for the math.</div>
                   </div>
                   <div class="bi-compare-legend">
-                    <span class="bi-compare-legend-item"><span class="bi-compare-legend-swatch" style="background:var(--r-red)"></span>Today (manual)</span>
+                    <span class="bi-compare-legend-item"><span class="bi-compare-legend-swatch" style="background:var(--r-red)"></span>Today</span>
                     <span class="bi-compare-legend-item"><span class="bi-compare-legend-swatch" style="background:var(--r-blue)"></span>With App Workspace</span>
                   </div>
                 </div>
@@ -10136,13 +10405,12 @@
                     <span class="bi-compare-summary-tag">with Application Workspace</span>
                   </div>
                   <div class="bi-compare-summary-right">
-                    <span class="bi-compare-summary-pct">${pctReduction}% reduction</span>
+                    <span class="bi-compare-summary-pct">${pctReduction}% of operational hours</span>
                     <span class="bi-compare-summary-detail">&middot; <b>${num(totalReturned)} hrs/mo</b> returned to strategy</span>
                   </div>
                 </div>
               </div>
             </section>
-            ${compoundCol}
           </div>
         `;
       }
@@ -10154,23 +10422,54 @@
       function calculateImpact(){
         const ci = STATE.calcInputs;
         const a = ROI_ASSUMPTIONS[STATE.calcScenario];
-        const currentSupportHours = round((ci.monthlyTickets * ci.avgTicketMins) / 60);
-        const ticketHoursReturned = round(currentSupportHours * a.ticketReduction);
-        const ticketsAvoided = Math.round(ci.monthlyTickets * a.ticketReduction);
-        const pkgHoursReturned = round(ci.pkgHours * a.pkgReduction);
-        const patchHoursReturned = round(ci.patchHours * a.patchReduction);
-        const totalHoursMonth = round(ticketHoursReturned + pkgHoursReturned + patchHoursReturned);
-        const totalHoursYear = round(totalHoursMonth * 12);
-        const fteCapacity = round(totalHoursYear / a.fteHours);
-        const strategicHours = Math.round(totalHoursYear * a.strategicRealloc);
-        const reqsDeferred = ci.openReqs > 0 ? Math.min(ci.openReqs, Math.floor(fteCapacity)) : 0;
-        const delayedInitiatives = ci.delayedInitiatives;
-        const supportCostAnnual = Math.round(currentSupportHours * 90 * 12);
-        const engineeringCostAnnual = Math.round((ci.pkgHours + ci.patchHours) * 120 * 12);
-        const wasteCostAnnual = Math.round((supportCostAnnual + engineeringCostAnnual) * 0.25);
-        const totalBurnAnnual = supportCostAnnual + engineeringCostAnnual + wasteCostAnnual;
-        const totalRecoveredAnnual = Math.round((ticketHoursReturned * 90 + (pkgHoursReturned + patchHoursReturned) * 120) * 12);
-        const monthlyCostOfWaiting = Math.round(totalRecoveredAnnual / 12);
+        const rate = ci.loadedRate || 95; // single editable loaded rate, used everywhere
+
+        // ── Raw (unrounded) values are the canonical source of truth ──
+        // Every monthly-hours figure flows from these. We round only on output
+        // so rounded parts can never disagree with the rounded whole.
+        const currentSupportHoursRaw = (ci.monthlyTickets * ci.avgTicketMins) / 60;
+        const ticketHoursReturnedRaw = currentSupportHoursRaw * a.ticketReduction;
+
+        // Packaging is two distinct pools — catalog/store apps collapse
+        // near-completely; custom apps still need engineering. Split the
+        // pool by app share, apply per-pool reductions, then recombine.
+        const totalApps    = Math.max(0, ci.apps);
+        const customApps   = Math.max(0, Math.min(ci.customApps, totalApps));
+        const customShare  = totalApps > 0 ? customApps / totalApps : 0;
+        const catalogShareEngine = 1 - customShare;
+        const catalogPkgHoursRaw    = ci.pkgHours * catalogShareEngine;
+        const customPkgHoursRaw     = ci.pkgHours * customShare;
+        const catalogPkgReturnedRaw = catalogPkgHoursRaw * a.catalogPkgReduction;
+        const customPkgReturnedRaw  = customPkgHoursRaw  * a.customPkgReduction;
+        const pkgHoursReturnedRaw   = catalogPkgReturnedRaw + customPkgReturnedRaw;
+        const blendedPkgReduction   = ci.pkgHours > 0 ? (pkgHoursReturnedRaw / ci.pkgHours) : 0;
+
+        const patchHoursReturnedRaw  = ci.patchHours * a.patchReduction;
+        const totalReturnedRaw       = ticketHoursReturnedRaw + pkgHoursReturnedRaw + patchHoursReturnedRaw;
+        const baselineRaw            = currentSupportHoursRaw + ci.pkgHours + ci.patchHours;
+
+        // ── Rounded outputs (display-only) ──
+        const currentSupportHours = Math.round(currentSupportHoursRaw);
+        const ticketHoursReturned = Math.round(ticketHoursReturnedRaw);
+        const ticketsAvoided      = Math.round(ci.monthlyTickets * a.ticketReduction);
+        const pkgHoursReturned    = Math.round(pkgHoursReturnedRaw);
+        const patchHoursReturned  = Math.round(patchHoursReturnedRaw);
+        const totalHoursMonth     = Math.round(totalReturnedRaw); // canonical monthly reclaim
+        const totalHoursYear      = Math.round(totalReturnedRaw * 12);
+        const fteCapacity         = a.fteHours > 0 ? Math.round(totalHoursYear / a.fteHours) : 0;
+        const strategicHours      = Math.round(totalHoursYear * a.strategicRealloc);
+        const reqsDeferred        = ci.openReqs > 0 ? Math.min(ci.openReqs, Math.floor(fteCapacity)) : 0;
+        const delayedInitiatives  = ci.delayedInitiatives;
+
+        // ── Dollars: one declared rate for every figure ──
+        // Replaces the previous hardcoded $90 (support) / $120 (engineering)
+        // mix with the single editable Assumptions rate so all $ values agree.
+        const supportCostAnnual     = Math.round(currentSupportHoursRaw * rate * 12);
+        const engineeringCostAnnual = Math.round((ci.pkgHours + ci.patchHours) * rate * 12);
+        const wasteCostAnnual       = Math.round((supportCostAnnual + engineeringCostAnnual) * 0.25);
+        const totalBurnAnnual       = supportCostAnnual + engineeringCostAnnual + wasteCostAnnual;
+        const totalRecoveredAnnual  = Math.round(totalReturnedRaw * rate * 12);
+        const monthlyCostOfWaiting  = Math.round(totalRecoveredAnnual / 12);
 
         // ── Packaging cycle ROI (field-test model) ──
         // Standard_Apps  = Total_Apps × (1 − complex%);   Complex_Apps = Total_Apps × complex%
@@ -10207,7 +10506,24 @@
         const threeYearNet = threeYearValue - threeYearInvestment;
         const awBlendedPerUserMonth = ci.users > 0 ? (awAnnualInvestment / 12 / ci.users) : 0;
 
-        STATE.calcResult = { currentSupportHours, ticketHoursReturned, ticketsAvoided, pkgHoursReturned, patchHoursReturned, totalHoursMonth, totalHoursYear, fteCapacity, strategicHours, reqsDeferred, delayedInitiatives, supportCostAnnual, engineeringCostAnnual, wasteCostAnnual, totalBurnAnnual, totalRecoveredAnnual, monthlyCostOfWaiting, cycleStandardApps, cycleComplexApps, awCycleHours, tradCycleHours, cycleHoursSaved, cycleTimeMultiple, cycleDollarsSaved, awAnnualInvestment, recurringAnnualValue, oneTimePackagingValue, year1Value, year1Net, year1ROIMultiple, recurringROIMultiple, paybackMonths, threeYearValue, threeYearInvestment, threeYearNet, awBlendedPerUserMonth };
+        STATE.calcResult = {
+          // Display-rounded fields the view reads directly.
+          currentSupportHours, ticketHoursReturned, ticketsAvoided, pkgHoursReturned, patchHoursReturned,
+          totalHoursMonth, totalHoursYear, fteCapacity, strategicHours, reqsDeferred, delayedInitiatives,
+          supportCostAnnual, engineeringCostAnnual, wasteCostAnnual, totalBurnAnnual,
+          totalRecoveredAnnual, monthlyCostOfWaiting,
+          cycleStandardApps, cycleComplexApps, awCycleHours, tradCycleHours, cycleHoursSaved,
+          cycleTimeMultiple, cycleDollarsSaved,
+          awAnnualInvestment, recurringAnnualValue, oneTimePackagingValue, year1Value, year1Net,
+          year1ROIMultiple, recurringROIMultiple, paybackMonths,
+          threeYearValue, threeYearInvestment, threeYearNet, awBlendedPerUserMonth,
+          // Raw fields the bar partition reads to stay in lockstep with the engine.
+          currentSupportHoursRaw, ticketHoursReturnedRaw, pkgHoursReturnedRaw, patchHoursReturnedRaw,
+          totalReturnedRaw, baselineRaw, rate,
+          // Per-pool packaging split + blended pct (used by bars and the PDF).
+          catalogPkgHoursRaw, customPkgHoursRaw, catalogPkgReturnedRaw, customPkgReturnedRaw,
+          blendedPkgReduction
+        };
       }
 
       const USER_ID = String(window.APP_USER_ID || "guest");
@@ -10567,19 +10883,14 @@
           if (action === 'expand-all') { Object.keys(STATE.openCards).forEach(k => STATE.openCards[k] = true); STATE.visitedCards = ['core','onboarding','trust']; render(); return; }
           if (action === 'calculate-impact') { calculateImpact(); render(); return; }
           if (action === 'toggle-assumptions') { STATE.showAssumptions = !STATE.showAssumptions; render(); return; }
-          if (action === 'toggle-section') {
-            const section = act.getAttribute('data-section');
-            if (section && STATE.collapsedSections.hasOwnProperty(section)) {
-              STATE.collapsedSections[section] = !STATE.collapsedSections[section];
-              render();
-            }
-            return;
-          }
           if (action === 'save-assumptions') {
             const sc = STATE.calcScenario; const clamp = (v) => Math.max(0, Math.min(100, cleanNum(v))) / 100;
-            const t = document.getElementById('asn-ticket'); const p = document.getElementById('asn-pkg'); const pa = document.getElementById('asn-patch'); const s = document.getElementById('asn-strategic');
+            const t = document.getElementById('asn-ticket'); const pCat = document.getElementById('asn-pkg-catalog'); const pCust = document.getElementById('asn-pkg-custom'); const pa = document.getElementById('asn-patch'); const s = document.getElementById('asn-strategic');
             const ux = document.getElementById('asn-ux'); const dh = document.getElementById('asn-dash'); const mt = document.getElementById('asn-mt');
-            if (t) ROI_ASSUMPTIONS[sc].ticketReduction = clamp(t.value); if (p) ROI_ASSUMPTIONS[sc].pkgReduction = clamp(p.value); if (pa) ROI_ASSUMPTIONS[sc].patchReduction = clamp(pa.value); if (s) ROI_ASSUMPTIONS[sc].strategicRealloc = clamp(s.value);
+            if (t) ROI_ASSUMPTIONS[sc].ticketReduction = clamp(t.value);
+            if (pCat)  ROI_ASSUMPTIONS[sc].catalogPkgReduction = clamp(pCat.value);
+            if (pCust) ROI_ASSUMPTIONS[sc].customPkgReduction  = clamp(pCust.value);
+            if (pa) ROI_ASSUMPTIONS[sc].patchReduction = clamp(pa.value); if (s) ROI_ASSUMPTIONS[sc].strategicRealloc = clamp(s.value);
             if (ux) ROI_ASSUMPTIONS[sc].uxShare = clamp(ux.value); if (dh) ROI_ASSUMPTIONS[sc].dashShare = clamp(dh.value); if (mt) ROI_ASSUMPTIONS[sc].mtShare = clamp(mt.value);
             // Packaging cycle inputs + per-app benchmarks
             const cmix = document.getElementById('asn-complex-mix'); const lrate = document.getElementById('asn-loaded-rate');
