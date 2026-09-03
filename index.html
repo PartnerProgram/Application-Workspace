@@ -3752,7 +3752,7 @@
       .us-id-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
       .us-id-role { font-size: 11px; color: rgba(255, 255, 255, 0.75); font-weight: 600; }
       .us-id-day { margin-top: 10px; font-size: 10px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.08em; text-transform: uppercase; }
-      .us-win { width: min(430px, 92%); background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35); display: flex; flex-direction: column; }
+      .us-win { width: min(430px, 92%); background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 20px 48px rgba(0, 0, 0, 0.42); display: flex; flex-direction: column; }
       .us-rise { animation: usRise 480ms cubic-bezier(0.22, 1, 0.36, 1); }
       @keyframes usRise { from { opacity: 0; transform: translateY(22px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
       .us-win-head { display: flex; align-items: center; gap: 7px; padding: 7px 11px; color: #fff; }
@@ -3769,7 +3769,8 @@
       .us-greet-sub { font-size: 10px; color: #6A6A7A; margin: 2px 0 12px; }
       .us-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 8px; }
       .us-app { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-      .us-app-ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 800; position: relative; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14); }
+      .us-app-ico { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 800; position: relative; box-shadow: 0 1px 2px rgba(26, 26, 46, 0.12), 0 4px 10px rgba(26, 26, 46, 0.14); transition: transform 180ms ease, box-shadow 180ms ease; }
+      .us-app:hover .us-app-ico { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(26, 26, 46, 0.14), 0 8px 18px rgba(26, 26, 46, 0.2); }
       .us-app-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 5px; background: #fff; border-radius: inherit; }
       .us-app-name { font-size: 9.5px; font-weight: 600; color: #3A3A4C; }
       .us-glow { box-shadow: 0 0 0 2.5px rgba(0, 191, 255, 0.6), 0 0 16px 3px rgba(0, 191, 255, 0.45); animation: uxTeamsGlow 1.4s ease-in-out infinite; }
@@ -3782,7 +3783,7 @@
       .us-zoom { animation: usZoom 460ms cubic-bezier(0.22, 1, 0.36, 1); }
       @keyframes usZoom { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
       .us-appwin-bar { display: flex; align-items: center; gap: 7px; color: #fff; font-size: 11px; font-weight: 800; padding: 7px 10px; min-width: 0; }
-      .us-appwin-bar > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-appwin-bar > span { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; }
       .us-appwin-ico { width: 17px; height: 17px; border-radius: 5px; background: rgba(255, 255, 255, 0.28); display: grid; place-items: center; font-size: 8px; font-weight: 800; flex-shrink: 0; position: relative; }
       .us-appwin-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; border-radius: inherit; }
       .us-appwin-dots { margin-left: auto; display: flex; gap: 4px; }
@@ -3851,9 +3852,9 @@
       .us-half .us-dev-tag { margin-top: 6px; }
       .us-personas { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
       .us-personas-lab { font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8A9A; }
-      .us-cursor { position: absolute; width: 18px; height: 18px; z-index: 40; pointer-events: none; filter: drop-shadow(0 1px 2px rgba(26, 26, 46, 0.4)); left: 61%; top: 62%; }
+      .us-cursor { position: absolute; width: 18px; height: 18px; z-index: 40; pointer-events: none; filter: drop-shadow(0 1px 2px rgba(26, 26, 46, 0.4)); left: 52%; top: 63%; }
       .us-cursor-travel { animation: usCursorGo 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-      @keyframes usCursorGo { from { left: 80%; top: 86%; } to { left: 61%; top: 62%; } }
+      @keyframes usCursorGo { from { left: 80%; top: 86%; } to { left: 52%; top: 63%; } }
       .us-cursor-click::after { content: ''; position: absolute; left: 6px; top: 6px; width: 9px; height: 9px; border-radius: 999px; background: rgba(0, 0, 204, 0.35); animation: uxCursorClick 480ms ease-out forwards; }
       .us-cursor-cat { left: 61%; top: 54%; }
       .us-flowcard { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 30; background: #fff; border: 1px solid #DDDDEE; border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; width: min(340px, 86%); box-shadow: 0 14px 34px rgba(26, 26, 46, 0.18); }
@@ -3862,7 +3863,190 @@
       .us-flowstep { display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; color: #4A4A5A; }
       .us-flowstep span { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       .us-flowdev { width: 100%; display: flex; justify-content: center; }
+      .us-scene { width: 100%; display: flex; justify-content: center; }
+      .us-scenefade { animation: usSceneIn 300ms ease-out; }
+      @keyframes usSceneIn { from { opacity: 0; } to { opacity: 1; } }
+      .us-toastn { position: absolute; top: 24px; right: 8px; z-index: 8; display: flex; align-items: center; gap: 7px; background: #fff; border: 1px solid #DDDDEE; border-radius: 9px; padding: 6px 10px; box-shadow: 0 10px 26px rgba(26, 26, 46, 0.22); max-width: 78%; }
+      .us-toastn-ico { position: relative; width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center; overflow: hidden; color: #fff; font-size: 7px; font-weight: 800; flex-shrink: 0; }
+      .us-toastn-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; }
+      .us-toastn-tx { display: flex; flex-direction: column; min-width: 0; text-align: left; }
+      .us-toastn-tx b { font-size: 8.5px; color: #1A1A2E; white-space: nowrap; }
+      .us-toastn-tx span { font-size: 7.5px; color: #6A6A7A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      /* Prologue: bare device → zero-touch bootstrap */
+      .us-bare { position: relative; width: 100%; height: 100%; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+      .us-bare::before { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.07), transparent 62%); pointer-events: none; }
+      .us-bare-bin { position: absolute; top: 8px; left: 9px; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 7px; color: rgba(255, 255, 255, 0.6); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+      .us-bare-bin i, .us-bare-bin svg { width: 16px; height: 16px; }
+      .us-bare-empty { display: flex; flex-direction: column; align-items: center; gap: 5px; color: rgba(255, 255, 255, 0.3); }
+      .us-bare-empty i, .us-bare-empty svg { width: 26px; height: 26px; stroke-width: 1.4; }
+      .us-bare-empty span { font-size: 9px; font-weight: 600; letter-spacing: 0.03em; }
+      .us-bare-wm { position: absolute; right: 11px; bottom: 22px; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; font-size: 8.5px; font-weight: 600; color: rgba(255, 255, 255, 0.4); text-align: right; }
+      .us-bare-wm em { font-size: 6.5px; font-style: normal; font-weight: 400; color: rgba(255, 255, 255, 0.28); }
+      .us-bare-toasts { position: absolute; top: 9px; right: 9px; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+      .us-bare-toast { display: inline-flex; align-items: center; gap: 6px; background: rgba(32, 32, 42, 0.94); color: #EDEDF2; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 7px; padding: 5px 9px; font-size: 8px; font-weight: 600; white-space: nowrap; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4); }
+      .us-bare-toast i, .us-bare-toast svg { width: 9px; height: 9px; color: #FFCC55; flex-shrink: 0; }
+      .us-bare-toast b { color: rgba(255, 255, 255, 0.32); font-weight: 400; margin-left: 2px; }
+      .us-cmd { font-family: ui-monospace, Menlo, monospace; font-size: 9px; color: #D8D8E0; background: #0A0A10; border: 1px solid #333; border-radius: 3px; padding: 7px 11px; animation: usCmdFlash 1.6s ease forwards; }
+      .us-caret { display: inline-block; width: 5px; height: 9px; background: #D8D8E0; margin-left: 3px; vertical-align: -1px; animation: usBlink 700ms steps(1) infinite; }
+      @keyframes usBlink { 50% { opacity: 0; } }
+      @keyframes usCmdFlash { 0% { opacity: 0; } 10%, 55% { opacity: 1; } 100% { opacity: 0; height: 0; padding: 0; margin: 0; border-width: 0; } }
+      .us-agent { position: relative; width: 26px; height: 26px; border-radius: 8px; background: #0000CC; display: grid; place-items: center; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0, 0, 204, 0.3), 0 5px 14px rgba(0, 0, 204, 0.28); }
+      .us-agent svg { width: 16px; height: 16px; }
+      .us-agent::after { content: ''; position: absolute; inset: -3px; border-radius: 11px; border: 1.5px solid rgba(0, 191, 255, 0.55); animation: usAgentPing 1.8s ease-out infinite; }
+      @keyframes usAgentPing { 0% { opacity: 0.9; transform: scale(0.9); } 70%, 100% { opacity: 0; transform: scale(1.25); } }
+      .us-boot { width: min(300px, 90%); background: #fff; border-left: 3px solid #00BFFF; border-radius: 0 9px 9px 0; padding: 10px 13px; display: flex; flex-direction: column; gap: 5px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14), 0 18px 40px rgba(0, 0, 0, 0.38); }
+      .us-boot-t { display: flex; align-items: center; gap: 6px; padding-bottom: 5px; border-bottom: 1px solid #EDEDF4; }
+      .us-boot-node { font-size: 8.5px; font-weight: 800; color: #fff; background: #0000CC; border-radius: 5px; padding: 3px 8px; white-space: nowrap; }
+      .us-boot-pill { font-size: 7.5px; font-weight: 800; color: #005C7D; background: #E5F6FF; border: 1px solid #BFEBFF; border-radius: 999px; padding: 2px 7px; white-space: nowrap; }
+      .us-bootrow { display: flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 600; color: #1A1A2E; }
+      .us-bootrow i, .us-bootrow svg { width: 10px; height: 10px; color: #0F7A3F; flex-shrink: 0; }
+      .us-boot-sum { margin-top: 3px; font-size: 8.5px; font-weight: 800; color: #fff; background: #0F7A3F; border-radius: 999px; padding: 3px 10px; text-align: center; white-space: nowrap; }
+      .us-samline.is-gray, .us-samline.is-gray i, .us-samline.is-gray svg { color: #8A8A9A; }
       .us-openwrap-flow { gap: 10px; }
+      /* ── Two chairs: Maya's day + Sam's quiet panel ── */
+      .us-playbtn { width: 48px; height: 48px; border-radius: 50%; background: #0000CC; color: #fff; border: 0; display: grid; place-items: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0, 0, 204, 0.35); transition: transform 160ms ease, background 160ms ease; animation: usPickPulse 2.2s ease-out infinite; }
+      .us-playbtn:hover { transform: scale(1.08); background: #33CCFF; color: #0B2530; }
+      .us-playbtn i, .us-playbtn svg { width: 18px; height: 18px; }
+      .us-over { position: absolute; inset: 0; z-index: 6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px 12px 30px; pointer-events: none; }
+      .us-s1login { animation: usHold 1.5s ease forwards; }
+      @keyframes usHold { 0%, 70% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+      .us-s1ws { opacity: 0; animation: usIn 420ms cubic-bezier(0.22, 1, 0.36, 1) 1300ms forwards; }
+      .us-tags { display: flex; align-items: center; justify-content: center; gap: 5px; margin: -8px 0 4px; }
+      .us-tags span { font-size: 7.5px; font-weight: 800; white-space: nowrap; color: #6A6A7A; background: #F6F8FF; border: 1px solid #DDDDEE; border-radius: 999px; padding: 1.5px 7px; }
+      .us-tags em { font-size: 8px; font-style: italic; color: #8A8A9A; margin-left: 3px; }
+      .us-vuln { position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: #CC8800; box-shadow: 0 0 0 2px #fff; opacity: 0; animation: usIn 300ms ease 400ms forwards; }
+      .us-webbadge { position: absolute; bottom: -4px; right: -4px; width: 13px; height: 13px; border-radius: 50%; background: #fff; border: 1px solid #D5DAF5; display: grid; place-items: center; opacity: 0; animation: usIn 300ms ease 1400ms forwards; }
+      .us-webbadge i, .us-webbadge svg { width: 8px; height: 8px; color: #0000CC; }
+      .us-ver { position: relative; margin-left: auto; display: inline-flex; background: rgba(255, 255, 255, 0.22); border-radius: 999px; padding: 1px 7px; font-size: 8px; font-weight: 700; font-style: normal; }
+      .us-ver i { font-style: normal; }
+      .us-ver-old { animation: usVerOut 500ms ease 1400ms forwards; }
+      .us-ver-new { position: absolute; left: 7px; top: 1px; opacity: 0; animation: usIn 500ms ease 1600ms forwards; }
+      @keyframes usVerOut { to { opacity: 0; } }
+      .us-urlbar { display: flex; align-items: center; gap: 4px; font-size: 8px; font-weight: 600; color: #4A4A5A; background: #F0F0F6; padding: 3px 8px; }
+      .us-urlbar i, .us-urlbar svg { width: 8px; height: 8px; flex-shrink: 0; }
+      .us-appbody { padding: 10px; background: #fff; display: flex; flex-direction: column; gap: 8px; }
+      .us-approw { display: flex; gap: 6px; }
+      .us-approw span { display: block; height: 6px; border-radius: 999px; background: #EDEDF4; }
+      .us-reqcard { display: flex; align-items: center; gap: 8px; background: #FAFAFE; border: 1px solid #DDDDEE; border-radius: 8px; padding: 7px 9px; }
+      .us-reqico { position: relative; width: 26px; height: 26px; border-radius: 7px; display: grid; place-items: center; overflow: hidden; color: #fff; font-size: 8px; font-weight: 800; flex-shrink: 0; }
+      .us-reqico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; }
+      .us-reqid { display: flex; flex-direction: column; min-width: 0; text-align: left; }
+      .us-reqid b { font-size: 10px; color: #1A1A2E; white-space: nowrap; }
+      .us-reqid span { font-size: 8px; color: #8A8A9A; }
+      .us-reqbtn { margin-left: auto; flex-shrink: 0; }
+      .us-req2col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+      .us-req2col .us-reqcard { padding: 5px 7px; gap: 6px; }
+      .us-req2col .us-reqico { width: 20px; height: 20px; font-size: 7px; }
+      .us-req2col .us-reqid b { font-size: 9px; }
+      .us-req2col .us-reqid span { display: none; }
+      .us-req2col .us-reqbtn { padding: 2px 7px; font-size: 7.5px; }
+      .us-reqcol { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+      .us-reqcol .us-reqcard { width: 100%; }
+      .us-reqchip { display: inline-flex; align-items: center; gap: 5px; font-size: 8.5px; font-weight: 800; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+      .us-reqchip i, .us-reqchip svg { width: 9px; height: 9px; flex-shrink: 0; }
+      .us-reqchip.is-ok { background: #EAF5EE; border: 1px solid #C7E4D2; color: #0F7A3F; }
+      .us-reqchip.is-warn { background: #FCF6EA; border: 1px solid #F2DCB0; color: #855700; }
+      .us-reqadded { display: inline-flex; align-items: center; gap: 4px; font-size: 8px; font-weight: 700; color: #6A6A7A; }
+      .us-reqadded i, .us-reqadded svg { width: 9px; height: 9px; }
+      .us-duo { display: flex; gap: 12px; width: 100%; align-items: center; }
+      .us-duo-main { flex: 1.55; min-width: 0; display: flex; justify-content: center; }
+      .us-sam { flex: 1; max-width: 40%; min-width: 0; background: #F4F6F9; border: 1px solid #D8DEE8; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+      .us-sam.us-in { animation: usSamIn 460ms cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) forwards; }
+      @keyframes usSamIn { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+      .us-sam-head { display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #E2E8F0; padding-bottom: 7px; }
+      .us-sam-ava { width: 24px; height: 24px; border-radius: 50%; background: #33506B; color: #fff; font-size: 8px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
+      .us-sam-id { display: flex; flex-direction: column; min-width: 0; }
+      .us-sam-id b { font-size: 10.5px; color: #1A1A2E; white-space: nowrap; }
+      .us-sam-id span { font-size: 8px; color: #6A6A7A; }
+      .us-sam-head > i, .us-sam-head > svg { margin-left: auto; width: 13px; height: 13px; color: #8A9BB0; flex-shrink: 0; }
+      .us-sam-body { display: flex; flex-direction: column; gap: 7px; }
+      .us-samline { display: flex; align-items: center; gap: 6px; font-size: 9.5px; font-weight: 600; color: #4A4A5A; }
+      .us-samline i, .us-samline svg { width: 11px; height: 11px; color: #33506B; flex-shrink: 0; }
+      .us-samline span { min-width: 0; }
+      .us-samline.is-ok, .us-samline.is-ok i, .us-samline.is-ok svg { color: #0F7A3F; }
+      .us-samline.is-warn { color: #855700; }
+      .us-samline.is-warn i, .us-samline.is-warn svg { color: #CC8800; }
+      .us-samline.is-stamp { font-weight: 800; color: #1A1A2E; letter-spacing: 0.04em; }
+      .us-samtoggle { margin-left: auto; width: 22px; height: 12px; border-radius: 999px; background: #0F7A3F; position: relative; flex-shrink: 0; }
+      .us-samtoggle i { position: absolute; right: 2px; top: 2px; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+      .us-samdef { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #D8DEE8; border-radius: 8px; padding: 6px 8px; }
+      .us-sampaths { display: flex; gap: 4px; flex-wrap: wrap; }
+      .us-sampath { font-size: 8px; font-weight: 800; padding: 2.5px 9px; border-radius: 999px; background: #E8EDF3; color: #6A7A8A; white-space: nowrap; }
+      .us-sampath.is-lit { background: #0000CC; color: #fff; }
+      .us-webchip { font-size: 8.5px; font-weight: 800; color: #0000CC; background: #F6F8FF; border: 1px solid #D5DAF5; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+      .us-stamp { font-size: 9px; font-weight: 800; white-space: nowrap; color: #1A1A2E; background: #fff; border: 1px solid #DDDDEE; border-radius: 999px; padding: 2px 9px; margin-bottom: 2px; box-shadow: 0 2px 6px rgba(26, 26, 46, 0.12); }
+      .us-day1 { font-size: 7.5px; font-weight: 800; text-transform: none; letter-spacing: 0.06em; white-space: nowrap; background: #0000CC; color: #fff; border-radius: 999px; padding: 2px 7px; margin-left: 4px; flex-shrink: 0; }
+      .us-reveal { display: flex; flex-direction: column; gap: 9px; align-items: center; width: 100%; }
+      .us-reveal-lap { zoom: 0.58; width: 100%; display: flex; justify-content: center; }
+      .us-layers { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+      .us-layer { font-size: 8.5px; font-weight: 800; padding: 3.5px 11px; border-radius: 6px; background: #12123E; color: #C9D2F2; white-space: nowrap; }
+      .us-alexrow { display: flex; align-items: center; gap: 7px; font-size: 9.5px; background: #FAFAFE; border: 1px solid #DDDDEE; border-radius: 999px; padding: 4px 12px 4px 6px; flex-wrap: wrap; justify-content: center; }
+      .us-alexrow b { font-size: 9.5px; color: #1A1A2E; white-space: nowrap; }
+      .us-alexrow > span:not(.us-finava):not(.us-alexapps) { font-size: 8.5px; color: #6A6A7A; }
+      .us-alexrow em { font-size: 8px; font-style: italic; color: #0000CC; }
+      .us-alexapps { display: flex; gap: 4px; }
+      .us-alexrow .us-finava { width: 20px; height: 20px; font-size: 7px; }
+      .us-black { position: absolute; inset: 0; z-index: 60; background: #0B0B14; border-radius: 10px; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; text-align: center; padding: 20px; opacity: 0; animation: usIn 900ms ease 3800ms forwards; }
+      .us-black span { color: #fff; font-size: 17px; font-weight: 800; line-height: 1.4; letter-spacing: -0.01em; }
+      .us-black em { color: #AABBEE; font-size: 11px; font-style: normal; font-weight: 600; line-height: 1.7; opacity: 0; animation: usIn 800ms ease 4800ms forwards; }
+      .us-gone { font-size: 8.5px; font-weight: 600; color: #8A8A9A; text-decoration: line-through; text-decoration-color: #CC2222; white-space: nowrap; background: rgba(255, 255, 255, 0.88); border-radius: 999px; padding: 3px 11px; opacity: 0; animation: usGone 2.6s ease 500ms forwards; }
+      @keyframes usGone { 0% { opacity: 0; transform: translateY(4px); } 15% { opacity: 1; transform: none; } 70% { opacity: 1; } 100% { opacity: 0; } }
+      .us-cursor-late::after { content: ''; position: absolute; left: 6px; top: 6px; width: 9px; height: 9px; border-radius: 999px; background: rgba(0, 0, 204, 0.35); opacity: 0; animation: uxCursorClick 480ms ease-out 1150ms forwards; }
+      @media (max-width: 820px) { .us-duo { flex-direction: column; } .us-sam { max-width: 100%; width: 100%; } }
+      /* ── World-class UX story: opening user cards, portal chrome, install, finale ── */
+      .us-search { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; background: rgba(255, 255, 255, 0.22); border-radius: 999px; padding: 2.5px 9px; font-size: 8px; font-weight: 600; color: rgba(255, 255, 255, 0.9); white-space: nowrap; }
+      .us-search i, .us-search svg { width: 9px; height: 9px; }
+      .us-win-user { margin-left: 0; }
+      .us-inst { display: block; width: 40px; height: 3px; border-radius: 999px; background: #E5E5F0; overflow: hidden; margin-top: 1px; }
+      .us-inst i { display: block; height: 100%; width: 0; background: #00BFFF; border-radius: 999px; animation: usInstFill 1.5s cubic-bezier(0.3, 0, 0.4, 1) forwards; }
+      @keyframes usInstFill { to { width: 100%; } }
+      .us-addedring { box-shadow: 0 0 0 2.5px #0F7A3F, 0 3px 8px rgba(0, 0, 0, 0.14); }
+      .us-splash { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #fff; }
+      .us-splash-mark { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-size: 19px; font-weight: 800; color: #fff; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); margin-bottom: 2px; }
+      .us-splash-brand { font-size: 13px; font-weight: 800; letter-spacing: -0.01em; }
+      .us-splash-id { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; margin-top: 8px; white-space: nowrap; }
+      .us-splash-id .us-who-ava { position: static; }
+      .us-splash-sso { display: flex; align-items: center; gap: 5px; font-size: 9px; font-weight: 600; color: rgba(255, 255, 255, 0.72); }
+      .us-splash-sso i, .us-splash-sso svg { width: 10px; height: 10px; }
+      .us-choose { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+      .us-choose-t { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; color: #1A1A2E; text-align: center; }
+      .us-choose-sub { font-size: 11px; font-weight: 600; color: #6A6A7A; margin-top: -8px; }
+      .us-choose-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: min(520px, 100%); }
+      @media (max-width: 700px) { .us-choose-row { grid-template-columns: 1fr; } }
+      .us-ucard { display: flex; flex-direction: column; align-items: center; gap: 5px; background: #FAFAFE; border: 1px solid #DDDDEE; border-radius: 12px; padding: 16px 14px 14px; cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+      .us-ucard:hover { transform: translateY(-4px); background: #fff; box-shadow: 0 0 0 1.5px var(--acc, #0000CC), 0 10px 24px rgba(26, 26, 46, 0.12); }
+      .us-ucard:active { transform: translateY(-1px); }
+      .us-ucard-ava { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 15px; font-weight: 800; box-shadow: 0 0 0 3px rgba(26, 26, 46, 0.07); margin-bottom: 2px; }
+      .us-ucard-name { font-size: 13.5px; font-weight: 800; color: #1A1A2E; letter-spacing: -0.01em; }
+      .us-ucard-role { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #0000CC; }
+      .us-ucard-role i, .us-ucard-role svg { width: 10px; height: 10px; }
+      .us-ucard-apps { display: flex; align-items: center; gap: 5px; margin-top: 5px; }
+      .us-ucard-ico { position: relative; width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; overflow: hidden; color: #fff; font-size: 8px; font-weight: 800; }
+      .us-ucard-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; }
+      .us-ucard-more { font-size: 9px; font-weight: 700; color: #6A6A7A; }
+      .us-ucard-go { display: inline-flex; align-items: center; gap: 5px; background: #0000CC; color: #fff; font-size: 9px; font-weight: 800; padding: 5px 13px; border-radius: 999px; margin-top: 7px; transition: background 160ms ease, color 160ms ease; white-space: nowrap; }
+      .us-ucard:hover .us-ucard-go { background: #33CCFF; color: #0B2530; }
+      .us-ucard-go i, .us-ucard-go svg { width: 9px; height: 9px; }
+      .us-choose-devs { display: flex; align-items: center; gap: 6px; font-size: 9.5px; font-weight: 600; color: #6A6A7A; flex-wrap: wrap; justify-content: center; }
+      .us-choose-devs i, .us-choose-devs svg { width: 11px; height: 11px; color: #0000CC; }
+      .us-final { display: flex; flex-direction: column; gap: 10px; width: min(540px, 100%); }
+      .us-fintitle { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; color: #1A1A2E; text-align: center; margin-bottom: 2px; }
+      .us-finrow { display: flex; align-items: center; gap: 10px; background: #FAFAFE; border: 1px solid #DDDDEE; border-radius: 10px; padding: 9px 12px; }
+      .us-finava { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+      .us-finid { display: flex; flex-direction: column; min-width: 0; }
+      .us-finid b { font-size: 11.5px; color: #1A1A2E; white-space: nowrap; }
+      .us-finid span { font-size: 9px; color: #6A6A7A; font-weight: 600; }
+      .us-finapps { display: flex; align-items: center; gap: 5px; margin-left: auto; }
+      .us-finico { position: relative; width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center; overflow: hidden; color: #fff; font-size: 7px; font-weight: 800; }
+      .us-finico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; }
+      .us-finmore { font-size: 8.5px; font-weight: 700; color: #6A6A7A; }
+      .us-finlab { font-size: 7.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #6A6A7A; background: #F0F0F6; border-radius: 999px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0; }
+      .us-finlab-alt { color: #0000CC; background: #F6F8FF; border: 1px solid #D5DAF5; }
+      .us-findevs { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+      .us-findev { display: inline-flex; align-items: center; gap: 4px; font-size: 9.5px; font-weight: 700; color: #1A1A2E; border: 1px solid #DDDDEE; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+      .us-findev i, .us-findev svg { width: 11px; height: 11px; color: #0000CC; }
+      .us-findev-note { font-size: 9px; font-style: italic; color: #6A6A7A; }
+      @media (max-width: 640px) { .us-finapps { display: none; } }
       .us-flowstep i, .us-flowstep svg { width: 12px; height: 12px; color: #00BFFF; flex-shrink: 0; }
       .us-flowstep b { margin-left: auto; color: #0F7A3F; font-weight: 800; }
       .us-flowstep-ok { color: #0F5A2F; font-weight: 800; background: #EAF5EE; border: 1px solid #C7E4D2; border-radius: 6px; padding: 5px 8px; }
@@ -3872,7 +4056,8 @@
       @media (max-width: 900px) { .us-body2 { grid-template-columns: 1fr; } }
       .us-rail { display: flex; flex-direction: column; gap: 8px; padding: 4px 0 4px 2px; }
       .us-rail-t { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8A9A; margin-bottom: 2px; }
-      .us-step { display: flex; gap: 9px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; border: 1px solid transparent; opacity: 0.45; transition: all 250ms ease; }
+      .us-step { display: flex; gap: 9px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; border: 1px solid transparent; opacity: 0.45; transition: all 250ms ease; background: transparent; text-align: left; cursor: pointer; font: inherit; width: 100%; }
+      .us-step:hover { opacity: 1; background: #FAFAFE; border-color: #DDDDEE; }
       .us-step.is-on { opacity: 1; background: #F6F8FF; border-color: #D5DAF5; }
       .us-step.is-done { opacity: 0.8; }
       .us-step-n { width: 20px; height: 20px; border-radius: 999px; background: #F0F0F6; color: #4A4A5A; font-size: 10px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; margin-top: 1px; }
@@ -3890,6 +4075,16 @@
 
       /* Scene 6: real device chrome (laptops + browser) */
       .us-lap { display: flex; flex-direction: column; align-items: center; width: 100%; filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.45)); }
+      /* Distinct hardware: graphite squared Windows machine vs. black-bezel MacBook Pro on aluminum */
+      .us-lap-win .us-screen { border-radius: 7px; border-color: #14161C; border-width: 7px 7px 11px; }
+      .us-lap-win .us-lap-base { background: #23262E; border-radius: 1px 1px 10px 10px; }
+      .us-lap-win .us-lap-base i { background: rgba(255, 255, 255, 0.12); border-radius: 0 0 5px 5px; }
+      .us-lap-mac .us-screen { border-radius: 15px; border-color: #060608; border-width: 6px 6px 8px; }
+      .us-lap-mac .us-lap-base { height: 11px; }
+      .us-shell-tag { margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 5px; filter: none; }
+      .us-shell-tag i, .us-shell-tag svg { width: 11px; height: 11px; color: #0000CC; flex-shrink: 0; }
+      .us-lapbtn { background: transparent; border: 0; padding: 0; cursor: pointer; width: 100%; display: flex; justify-content: center; transition: transform 200ms ease; }
+      .us-lapbtn:hover { transform: translateY(-3px); }
       .us-screen { position: relative; overflow: hidden; width: 100%; border: 6px solid #0A0A12; border-bottom-width: 9px; border-radius: 14px; padding: 21px 10px 27px; display: flex; align-items: center; justify-content: center; min-height: 142px; background-clip: padding-box; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 1px 0 rgba(255, 255, 255, 0.08); }
       .us-cam { position: absolute; top: 3px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: #1E3A5F; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.12); z-index: 3; }
       .us-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 42px; height: 7px; background: #0A0A12; border-radius: 0 0 6px 6px; z-index: 3; }
@@ -3904,7 +4099,7 @@
       .us-macbar-r { margin-left: auto; display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
       .us-dock { position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; padding: 3px 7px; z-index: 2; }
       .us-dock i { width: 10px; height: 10px; border-radius: 3px; display: block; }
-      .us-taskbar { position: absolute; bottom: 0; left: 0; right: 0; height: 17px; background: rgba(22, 22, 42, 0.85); display: flex; align-items: center; padding: 0 8px; z-index: 2; }
+      .us-taskbar { position: absolute; bottom: 0; left: 0; right: 0; height: 17px; background: rgba(18, 18, 30, 0.92); border-top: 1px solid rgba(255, 255, 255, 0.07); display: flex; align-items: center; padding: 0 8px; z-index: 2; }
       .us-tb-center { display: flex; align-items: center; gap: 6px; margin: 0 auto; }
       .us-start { display: grid; grid-template-columns: 4px 4px; gap: 1px; flex-shrink: 0; }
       .us-start i { width: 4px; height: 4px; background: #00BFFF; display: block; }
@@ -10021,17 +10216,19 @@
         // Cinematic scene holds — keynote pacing for the user-story module;
         // 'approach' is the cursor-travel beat between catalog and click.
         const BEATS = [
-          ['launch',   2200],
-          ['catalog',  900],
-          ['approach', 1500],
-          ['clicking', 1500],
-          ['checking', 2200],
-          ['routing',  600],
-          ['config',   500],
-          ['done',     2400],
-          ['final',    3400],
+          ['bare',     4600],
+          ['boot',     6200],
+          ['launch',   4200],
+          ['catalog',  2000],
+          ['approach', 2400],
+          ['clicking', 4600],
+          ['checking', 5200],
+          ['routing',  3800],
+          ['config',   4400],
+          ['done',     4400],
+          ['final',    6000],
         ];
-        queue.push({ delay: 400, fn(){ STATE.flowScenarioIdx = idx; STATE.flowPhase = 'launch'; STATE.flowAppOpened = false; updateFlowDOM(); } });
+        queue.push({ delay: 400, fn(){ STATE.flowScenarioIdx = idx; STATE.flowPhase = 'bare'; STATE.flowAppOpened = false; updateFlowDOM(); } });
         BEATS.slice(1).forEach((b, i) => {
           queue.push({ delay: BEATS[i][1], fn(){
             STATE.flowPhase = b[0];
@@ -10279,8 +10476,14 @@
         if (STATE.activeTab !== 'solution') { render(); return; }
         const panelSection = document.querySelector('main > section');
         if (!panelSection) { render(); return; }
+        // Skip the DOM write entirely when nothing visual changed — identical
+        // re-renders are what made the animations look glitchy (images and
+        // CSS animations restart on every innerHTML swap).
+        const newHTML = renderSolution();
+        if (panelSection.__lastFlowHTML === newHTML) return;
         const _revealPrev = _demoRevealSnapshot();
-        panelSection.innerHTML = renderSolution();
+        panelSection.innerHTML = newHTML;
+        panelSection.__lastFlowHTML = newHTML;
         if (window.lucide?.createIcons) try { window.lucide.createIcons(); } catch {}
         _demoReplayReveals(_revealPrev);
         _glideAcCursor();
@@ -11918,10 +12121,11 @@
         const live = STATE.flowRunning && STATE.flowScenarioIdx >= 0;
         const ph = live ? STATE.flowPhase : 'idle';
         const isMaya = STATE.uxPersona !== 1;
-        const reqOn = isMaya || STATE.uxReqManual;
-        const SCENE_OF = { idle:0, launch:1, catalog:1, approach:2, clicking:3, checking:4, routing:4, config:4, done: reqOn ? 5 : 4, final: reqOn ? 6 : 4 };
+        // One morning, nine beats: empty desk → first click → another machine
+        // → two requests → silent update → security reroute → the reveal.
+        const SCENE_OF = { idle:0, bare:1, boot:2, launch:3, catalog:4, approach:5, clicking:6, checking:7, routing:8, config:9, done:10, final:11 };
         const scene = SCENE_OF[ph] !== undefined ? SCENE_OF[ph] : 0;
-        const ended = reqOn ? ph === 'final' : ['done','final'].includes(ph);
+        const ended = ph === 'final';
 
         // Real, recognizable app logos (icons8 CDN) with lettered-tile
         // fallback if any icon fails to load offline.
@@ -11943,54 +12147,67 @@
           figma:      { n:'Figma',      l:'F',   c:'#A259FF', s:'figma' },
           trello:     { n:'Trello',     l:'Tr',  c:'#0079BF', s:'trello' },
           dropbox:    { n:'Dropbox',    l:'Db',  c:'#0061FF', s:'dropbox' },
+          powerbi:    { n:'Power BI',   l:'PB',  c:'#F2C811', s:'power-bi' },
+          hubspot:    { n:'HubSpot',    l:'HS',  c:'#FF7A59' },
+          linkedin:   { n:'LinkedIn',   l:'in',  c:'#0A66C2', s:'linkedin' },
+          asana:      { n:'Asana',      l:'As',  c:'#F06A6A' },
+          notion:     { n:'Notion',     l:'N',   c:'#1A1A2E', s:'notion' },
+          photoshop:  { n:'Adobe',      l:'Ps',  c:'#001E36', s:'adobe-photoshop' },
         };
         const PERSONAS = [
           { name:'Maya Chen', initials:'MC', role:'Finance', roleIcon:'calculator', accent:'#0F7A3F', wall:'#12123E', desk:'#16266B',
-            apps:['excel','word','outlook','zoom','sap','dropbox','teams','salesforce'], target:'teams' },
+            apps:['excel','word','outlook','zoom','sap','onedrive','dropbox','teams','photoshop','edge'], target:'teams',
+            fin:'sap', finName:'the finance system', req1:'slack', req2:'powerbi', upd:'photoshop' },
           { name:'Alex Rivera', initials:'AR', role:'Sales', roleIcon:'briefcase', accent:'#0000CC', wall:'#301345', desk:'#3B1E5E',
-            apps:['outlook','excel','teams','zoom','slack','chrome','salesforce','dropbox'], target:'salesforce' },
+            apps:['outlook','linkedin','slack','chrome','zoom','word','excel','salesforce','teams','notion'], target:'salesforce',
+            fin:'excel', finName:'the forecast sheet', req1:'figma', req2:'powerbi', upd:'notion' },
         ];
         const baseIdx = STATE.uxPersona === 1 ? 1 : 0;
         const p = PERSONAS[baseIdx];
         const A = (id) => { const o = APPS[id] || { n:id, l:'?', c:'#8A8A9A' }; return { name:o.n, letter:o.l, color:o.c, img:o.s ? `https://img.icons8.com/color/96/${o.s}.png` : '' }; };
         const target = A(p.target);
+        const req1 = A(p.req1);
+        const req2 = A(p.req2);
+        const upd = A(p.upd);
+        const fin = A(p.fin);
         const first = p.name.split(' ')[0];
+        const other = PERSONAS[1 - baseIdx];
+        const her = isMaya ? 'her' : 'his';
+        const she = isMaya ? 'She' : 'He';
 
-        // Persistent story rail — the whole arc visible at once, the active
-        // chapter highlighted. Replaces the caption slideshow.
+        // Two chairs, eight chapters: every time the user gets something
+        // effortlessly, the second chair shows WHY — and it is quiet there too.
         const CHAPTERS = [
-          [`${PERSONAS[baseIdx].name.split(' ')[0]} signs in`, `Sees every app ${PERSONAS[baseIdx].role} is entitled to \u2014 ready to go, nothing to install.`],
-          [`Clicks ${A(PERSONAS[baseIdx].target).name}`, 'One click. No install prompts, no license keys, no ticket.'],
-          ['It opens and runs', `Signed in automatically. Click ${PERSONAS[1 - baseIdx].name.split(' ')[0]} above \u2014 a different list, same one click.`],
-          ...(reqOn ? [['Requests an app', 'One click in the Catalog \u2014 the approval workflow runs automatically. No ticket, no waiting.']] : []),
+          ['A blank device sets itself up', 'Autopilot finishes; one script calls Recast. Trusted, agent on, apps delivered \u2014 zero touch.'],
+          [`${first} signs in on a new laptop`, `${her.charAt(0).toUpperCase() + her.slice(1)} apps are already there \u2014 no setup, no ticket.`],
+          [`${she} opens ${target.name}`, 'One click. Everything behind it already happened.'],
+          [`${she} switches to a Mac`, 'Same workspace. The app opens as web \u2014 the right fit for that machine.'],
+          [`${she} requests two new apps`, `One approves automatically. One goes to ${her} manager. Both arrive.`],
+          ['Apps stay up to date', 'Updates install silently as apps open.'],
+          ['IT changes the backend', `${her.charAt(0).toUpperCase() + her.slice(1)} app works exactly the same \u2014 ${she.toLowerCase()} never notices.`],
+          ['A security threat appears', `The app reroutes to a safe version. ${she} keeps working.`],
+          ['What made it all work', 'Identity, policy, delivery \u2014 invisible to the user, quiet for IT.'],
         ];
-        const chap = ({ 0:-1, 1:0, 2:1, 3:1, 4:2, 5:3, 6:3 })[scene];
-        const MICRO = [
-          '',
-          `${p.apps.length} apps \u2014 everything ${p.role} can access`,
-          `One click \u2014 ${target.name}`,
-          'Opening\u2026',
-          'Running \u2014 signed in automatically',
-          'Requesting Slack \u2014 one click',
-          'Approved \u2014 automation did the rest',
-        ];
+        const chap = ({ 0:-1, 1:0, 2:0, 3:1, 4:2, 5:2, 6:3, 7:4, 8:5, 9:6, 10:7, 11:8 })[scene];
 
         const plus = `<span class="us-plus" style="left:8%;top:16%">+</span><span class="us-plus" style="right:12%;top:64%">+</span><span class="us-plus" style="left:22%;bottom:10%">+</span>`;
 
         const tile = (app, o = {}) => `
           <div class="us-app ${o.pop ? 'us-in' : ''} ${o.clicked ? 'us-clicked' : ''}" style="--d:${o.d || 0}ms">
-            <div class="us-app-ico ${o.glow ? 'us-glow' : ''}" style="background:${app.color}">${app.letter}
+            <div class="us-app-ico ${o.added ? 'us-addedring' : ''}" style="background:${app.color}">${app.letter}
               ${app.img ? `<img src="${app.img}" alt="" loading="lazy" onerror="this.remove()">` : ''}
               ${o.pulse ? '<span class="us-pulse"></span>' : ''}
+              ${o.vuln ? '<span class="us-vuln"></span>' : ''}
+              ${o.web ? '<span class="us-webbadge"><i data-lucide="globe"></i></span>' : ''}
             </div>
             <span class="us-app-name">${app.name}</span>
-            ${o.tag ? `<span class="us-get ${o.tag !== 'Get' ? 'is-ok' : ''}">${o.tag}</span>` : ''}
           </div>`;
 
         const win = (tab, inner, o = {}) => `
           <div class="us-win ${o.cls || ''}" style="--acc:${(o.p || p).accent}">
             <div class="us-win-head" style="background:${(o.p || p).accent}">
               <span class="us-win-mark">A</span><span class="us-win-brand">Acme Workspace</span>
+              <span class="us-search"><i data-lucide="search"></i>Search apps</span>
               <span class="us-win-user">${(o.p || p).initials}</span>
             </div>
             <div class="us-win-tabs">
@@ -12000,86 +12217,86 @@
             <div class="us-win-body">${inner}</div>
           </div>`;
 
-        const wsInner = (pp, pop) => `
+        // The portal grid — one renderer for every workspace beat so the DOM
+        // stays stable between phases (no re-animation, no flicker).
+        const wsInner = (pp, o = {}) => {
+          const ids = [...pp.apps, ...(o.extra || [])];
+          return `
           <div class="us-greet">Good morning, ${pp.name.split(' ')[0]}</div>
-          <div class="us-greet-sub">${pp.apps.length} apps \u2014 everything ${pp.role} has access to</div>
-          <div class="us-grid" style="grid-template-columns:repeat(4,1fr)">${pp.apps.map((id, i) => {
+          <div class="us-greet-sub" style="${o.tags ? 'margin-bottom:6px' : ''}">${ids.length} apps \u2014 everything ${pp.role} has access to</div>
+          ${o.tags ? `<div class="us-tags us-in" style="--d:${o.tagD || 0}ms"><span>${pp.role}</span><span>Laptop</span><span>Full-time</span><em>the apps chose themselves</em></div>` : ''}
+          <div class="us-grid" style="grid-template-columns:repeat(${ids.length > 10 ? 6 : 5},1fr)">${ids.map((id, i) => {
             const isT = id === pp.target;
+            const isU = id === pp.upd;
             return tile(A(id), {
-              pop, d: 100 + i * 70,
-              glow: isT && ph === 'approach',
-              clicked: isT && ph === 'clicking',
-              pulse: isT && ph === 'clicking',
+              pop: o.pop, d: o.pop ? (o.popBase || 100) + i * 80 : 0,
+              clicked: isT && o.clickTarget,
+              pulse: isT && o.clickTarget,
+              vuln: isU && o.vuln,
+              web: isU && o.web,
+              added: (o.extra || []).includes(id),
             });
           }).join('')}</div>`;
-
-        // Realistic app-open views — animate in ONCE (on 'checking'); later
-        // phase ticks re-render statically so nothing replays or flickers.
-        // Maya opens a Teams chat; Alex opens a Salesforce opportunity and
-        // scrolls through it.
-        const appInner = (anim) => {
-          const io = (d) => anim ? `us-in" style="--d:${d}ms` : 'us-still';
-          if (target.name === 'Salesforce') return `
-          <div class="us-appwin ${anim ? 'us-zoom' : ''}">
-            <div class="us-appwin-bar" style="background:${target.color}">
-              <span class="us-appwin-ico">${target.letter}${target.img ? `<img src="${target.img}" alt="" onerror="this.remove()">` : ''}</span><span>Salesforce</span>
-              <span class="us-appwin-dots"><i></i><i></i><i></i></span>
-            </div>
-            <div class="us-sf-clip">
-              <div class="us-sf-scroll ${anim ? 'us-sfanim' : 'us-sfdone'}">
-                <div class="us-sf-opp ${io(250)}">
-                  <span class="us-sf-opp-ico"><i data-lucide="trophy"></i></span>
-                  <div class="us-sf-opp-t"><span>Opportunity</span><b>Northwind Corp \u2014 Enterprise Renewal</b></div>
-                  <span class="us-sf-amt">$240,000</span>
-                </div>
-                <div class="us-sf-path ${io(450)}">
-                  ${['Qualify','Proposal','Negotiation','Closed Won'].map((s, i) => `<span class="us-sf-step ${i < 2 ? 'is-done' : i === 2 ? 'is-cur' : ''}">${i < 2 ? '\u2713 ' : ''}${s}</span>`).join('')}
-                </div>
-                <div class="us-sf-rows ${io(650)}">
-                  <div class="us-sf-row"><span>Close date</span><b>Sep 30, 2026</b></div>
-                  <div class="us-sf-row"><span>Owner</span><b>${p.name}</b></div>
-                  <div class="us-sf-row"><span>Next step</span><b>Pricing review with CFO \u00b7 Thu</b></div>
-                </div>
-                <div class="us-sf-act ${io(850)}">
-                  <span class="us-sf-act-t">Recent activity</span>
-                  <div class="us-sf-row"><span>Call \u00b7 yesterday</span><b>Renewal terms discussed</b></div>
-                  <div class="us-sf-row"><span>Email \u00b7 Mon</span><b>Proposal v2 sent</b></div>
-                </div>
-              </div>
-            </div>
-          </div>`;
-          const mate = ['Priya Patel','PP','#B4009E'];
-          return `
-          <div class="us-appwin ${anim ? 'us-zoom' : ''}">
-            <div class="us-appwin-bar" style="background:${target.color}">
-              <span class="us-appwin-ico">${target.letter}${target.img ? `<img src="${target.img}" alt="" onerror="this.remove()">` : ''}</span><span>Microsoft Teams</span>
-              <span class="us-appwin-dots"><i></i><i></i><i></i></span>
-            </div>
-            <div class="us-chat">
-              <div class="us-chat-top"><span class="us-chat-ch"># finance-team</span><span class="us-chat-day">Today</span></div>
-              <div class="us-msg ${io(300)}">
-                <span class="us-msg-ava" style="background:${mate[2]}">${mate[1]}</span>
-                <div class="us-msg-body"><span class="us-msg-name">${mate[0]} <i>9:58 AM</i></span><span class="us-msg-bubble">Morning ${first}! Standup moved to 10:30 today.</span></div>
-              </div>
-              <div class="us-msg us-msg-me ${io(650)}">
-                <div class="us-msg-body"><span class="us-msg-name">You <i>9:59 AM</i></span><span class="us-msg-bubble us-msg-bubble-me">Perfect \u2014 just signed in, everything was already set up.</span></div>
-                <span class="us-msg-ava" style="background:${p.accent}">${p.initials}</span>
-              </div>
-              <div class="us-chat-input ${io(900)}"><i data-lucide="plus"></i><span>Type a message</span><i data-lucide="send"></i></div>
-            </div>
-          </div>`;
         };
 
-        // Persistent "signed in as" chip — anchors every scene to a person,
-        // and makes the persona hand-off unmistakable when it changes.
-        const who = (scene > 0) ? `
+        // Small app window + overlay helpers for the open/update/reroute beats.
+        const over = (inner, d) => `<div class="us-over us-in" style="--d:${d || 0}ms">${inner}</div>`;
+        const appWin = (app, o = {}) => `
+          <div class="us-appwin ${o.cls || ''}" style="width:min(300px,88%)">
+            <div class="us-appwin-bar" style="background:${app.color}">
+              <span class="us-appwin-ico">${app.letter}${app.img ? `<img src="${app.img}" alt="" onerror="this.remove()">` : ''}</span><span>${o.title || app.name}</span>
+              ${o.ver ? `<span class="us-ver"><i class="us-ver-old">${o.ver[0]}</i><i class="us-ver-new">${o.ver[1]}</i></span>` : ''}
+              <span class="us-appwin-dots"><i></i><i></i><i></i></span>
+            </div>
+            ${o.url ? `<div class="us-urlbar"><i data-lucide="lock"></i>${o.url}</div>` : ''}
+            <div class="us-appbody">${o.body || `
+              <div class="us-approw"><span style="width:38%"></span><span style="width:62%"></span></div>
+              <div class="us-bars" style="height:42px">${[42,68,55,82,48,74].map(h => `<i style="height:${h}%"></i>`).join('')}</div>`}</div>
+          </div>`;
+
+        // A believable Teams chat for the first-open beat.
+        const teamsBody = `
+          <div class="us-chat-top"><span class="us-chat-ch"># ${p.role.toLowerCase()}-team</span><span class="us-chat-day">Today</span></div>
+          <div class="us-msg us-in" style="--d:500ms">
+            <span class="us-msg-ava" style="background:#B4009E">PP</span>
+            <div class="us-msg-body"><span class="us-msg-name">Priya Patel <i>9:01 AM</i></span><span class="us-msg-bubble">Morning ${first}! Welcome aboard.</span></div>
+          </div>
+          <div class="us-msg us-msg-me us-in" style="--d:1000ms">
+            <div class="us-msg-body"><span class="us-msg-name">You <i>9:01 AM</i></span><span class="us-msg-bubble us-msg-bubble-me">Morning! All set up already.</span></div>
+            <span class="us-msg-ava" style="background:${p.accent}">${p.initials}</span>
+          </div>`;
+
+        // Request card (used by the two-column asking beat).
+        const reqCard = (app) => `
+          <div class="us-reqcard">
+            <span class="us-reqico" style="background:${app.color}">${app.letter}${app.img ? `<img src="${app.img}" alt="" onerror="this.remove()">` : ''}</span>
+            <div class="us-reqid"><b>${app.name}</b><span>Catalog</span></div>
+            <span class="us-get us-reqbtn">Request</span>
+          </div>`;
+
+        // The second chair. Slides in from the right, never covers Maya,
+        // always calm: status lines only.
+        const sam = (inner, o = {}) => `
+          <aside class="us-sam us-in" style="--d:${o.d != null ? o.d : 250}ms">
+            <div class="us-sam-head"><span class="us-sam-ava">SO</span><div class="us-sam-id"><b>Sam Okafor</b><span>IT Administrator</span></div><i data-lucide="coffee"></i></div>
+            <div class="us-sam-body">${inner}</div>
+          </aside>`;
+        const samLine = (icon, txt, d, cls) => `<div class="us-samline ${cls || ''} us-in" style="--d:${d || 0}ms"><i data-lucide="${icon}"></i><span>${txt}</span></div>`;
+        const duo = (mayaInner, samPanel) => `<div class="us-duo"><div class="us-duo-main">${mayaInner}</div>${samPanel || ''}</div>`;
+
+        // Persistent "signed in as" chip — anchors every scene to a person.
+        const who = (scene > 2) ? `
           <div class="us-who">
             <span class="us-who-ava" style="background:${p.accent}">${p.initials}</span>
             <span class="us-who-txt">${p.name} \u00b7 ${p.role}</span>
-          </div>` : '';
+            ${scene === 3 ? '<span class="us-day1">Day 1</span>' : ''}
+          </div>` : (scene ? `
+          <div class="us-who"><span class="us-who-txt">New laptop \u00b7 out of the box</span></div>` : '');
 
         // One device-chrome shell used by the picker, the live journey, and
         // the any-device scene: 'win' laptop, 'mac' MacBook, 'vdi' browser.
+        // One day, told by the clock: it advances scene by scene.
+        const clk = ({ 0:'8:58 AM', 1:'8:44 AM', 2:'8:47 AM', 3:'8:58 AM', 4:'9:01 AM', 5:'9:01 AM', 6:'11:30 AM', 7:'11:52 AM', 8:'1:15 PM', 9:'2:05 PM', 10:'2:41 PM', 11:'5:58 PM' })[scene];
         const shell = (kind, inner, cls) => {
           if (kind === 'vdi') return `
             <div class="us-browser ${cls || ''}">
@@ -12088,85 +12305,153 @@
               <div class="us-screen" style="background:${p.desk}">${inner}</div>
             </div>`;
           return `
-            <div class="us-lap ${cls || ''}">
+            <div class="us-lap us-lap-${kind} ${cls || ''}">
               <div class="us-screen" style="background:${p.desk}">
                 ${kind === 'mac' ? '<span class="us-notch"></span>' : '<span class="us-cam"></span>'}
-                ${kind === 'mac' ? `<div class="us-macbar"><i data-lucide="apple"></i><span class="us-macbar-r"><i data-lucide="wifi"></i><i data-lucide="battery"></i><span>Tue 10:24</span></span></div>` : ''}
+                ${kind === 'mac' ? `<div class="us-macbar"><i data-lucide="apple"></i><span class="us-macbar-r"><i data-lucide="wifi"></i><i data-lucide="battery"></i><span>Tue ${clk}</span></span></div>` : ''}
                 ${inner}
                 ${kind === 'mac'
                   ? `<div class="us-dock"><i style="background:#185ABD"></i><i style="background:#107C41"></i><i style="background:${p.accent}"></i><i style="background:#E01E5A"></i></div>`
-                  : `<div class="us-taskbar"><span class="us-tb-center"><span class="us-start"><i></i><i></i><i></i><i></i></span><span class="us-tb-dot" style="background:#185ABD"></span><span class="us-tb-dot" style="background:#107C41"></span><span class="us-tb-dot" style="background:${p.accent}"></span></span><span class="us-tb-clock">10:24</span></div>`}
+                  : `<div class="us-taskbar"><span class="us-tb-center"><span class="us-start"><i></i><i></i><i></i><i></i></span><span class="us-tb-dot" style="background:#185ABD"></span><span class="us-tb-dot" style="background:#107C41"></span><span class="us-tb-dot" style="background:${p.accent}"></span></span><span class="us-tb-clock">${clk}</span></div>`}
               </div>
               <div class="us-lap-base ${kind === 'mac' ? 'us-lap-base-mac' : ''}"><i></i></div>
+              <div class="us-dev-tag us-shell-tag"><i data-lucide="${kind === 'mac' ? 'laptop' : 'monitor'}"></i><b>${kind === 'mac' ? 'MacBook Pro' : 'Windows laptop'}</b></div>
             </div>`;
         };
         const dev = ['win','mac','vdi'].includes(STATE.uxDevice) ? STATE.uxDevice : 'win';
 
-        // Maya's Catalog request — anim=true on the request beat (cursor
-        // click), static afterwards with the tag flipped to Requested.
-        const catReq = (anim) => `
-          <div class="us-greet">Catalog</div>
-          <div class="us-greet-sub">Request anything \u2014 approval runs automatically</div>
-          <div class="us-grid" style="grid-template-columns:repeat(4,1fr)">${['trello','figma','slack','jira'].map((id, i) => {
-            const isT = id === 'slack';
-            return tile(A(id), {
-              pop: anim, d: 80 + i * 70,
-              clicked: isT && anim,
-              pulse: isT && anim,
-              tag: isT ? (anim ? 'Request' : 'Requested \u2713') : '',
-            });
-          }).join('')}</div>`;
-
+        const webUrl = `${target.name.toLowerCase().replace(/ /g, '')}.acme.com`;
         let stage = '';
         if (scene === 0) {
-          // Device picker — click any of the three; the journey plays inside
-          // that device and the experience is identical on every one.
-          const DEVS = [['win','Windows','monitor'],['mac','Mac','laptop'],['vdi','Virtual Desktop','cloud']];
-          stage = `<div class="us-pickwrap">
-              <div class="us-pick-hero us-in">
-                <span class="us-ava" style="background:${p.accent}">${p.initials}</span>
-                <div class="us-pick-hero-id">
-                  <div class="us-pick-hero-name">${p.name}</div>
-                  <span class="us-pick-hero-role"><i data-lucide="${p.roleIcon}"></i>${p.role} department</span>
+          // Idle — the finished workspace; clicking the laptop starts the day.
+          // div[data-action] (not <button>) — the window contains its own
+          // buttons and nested buttons break the DOM.
+          stage = `<div class="us-lapbtn focus-ring" data-action="ux-play" role="button" tabindex="0" aria-label="Play the day" title="Play">${shell('win', win('ws', wsInner(p, {})), 'us-frame-lg')}</div>`;
+        } else if (scene === 1) {
+          // Prologue A — the bare device. Nothing configured; the OS nags.
+          stage = duo(shell('win', `<div class="us-bare">
+              <span class="us-bare-bin"><i data-lucide="trash-2"></i>Recycle Bin</span>
+              <span class="us-bare-wm">Activate Windows<em>Go to Settings to activate Windows</em></span>
+              <div class="us-bare-empty"><i data-lucide="package-open"></i><span>No apps installed</span></div>
+              <div class="us-bare-toasts">
+                ${[['Windows Update available','bell'],['Activate Windows','key-round'],['Set up your device','settings']].map(([t, ic], i) => `<span class="us-bare-toast us-in" style="--d:${600 + i * 700}ms"><i data-lucide="${ic}"></i>${t}<b>\u00d7</b></span>`).join('')}
+              </div>
+            </div>`, 'us-frame-lg'),
+            sam(
+              samLine('laptop-minimal', 'New laptop \u00b7 nothing configured', 200, 'is-gray') +
+              samLine('shield-check', 'Autopilot \u00b7 MDM enrolment', 1400, 'is-gray') +
+              samLine('shield-check', 'Intune \u00b7 security baseline', 2200, 'is-gray') +
+              samLine('circle-slash', 'Still no apps, no profile', 3000, 'is-gray'), { d: 0 }));
+        } else if (scene === 2) {
+          // Prologue B — one script, then trust, agent, context, apps. Zero touch.
+          stage = duo(shell('win', `<div class="us-bare">
+              <span class="us-bare-wm">Activate Windows</span>
+              <div class="us-cmd us-in" style="--d:100ms">C:\\&gt; bootstrap.exe<span class="us-caret"></span></div>
+              <div class="us-boot us-in" style="--d:1100ms">
+                <div class="us-boot-t"><span class="us-agent"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.6 20 6.4v5.6c0 4.6-3.3 8-8 9.4-4.7-1.4-8-4.8-8-9.4V6.4L12 2.6Z" fill="#00BFFF" fill-opacity=".18" stroke="#00BFFF" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10.6" r="2.4" fill="#fff"/><path d="M12 13v4.4M12 13l-3.1 2M12 13l3.1 2" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="us-boot-node">Recast agent \u2192 backend</span><span class="us-boot-pill">TCP 443</span></div>
+                ${[['Device trusted \u00b7 certificate valid', 400], ['Agent installed \u00b7 2.5 MB', 1200], ['Context evaluated \u00b7 Finance \u00b7 Windows 11', 2000], ['Configurations + apps delivered', 2800]].map(([t, d]) => `<div class="us-bootrow us-in" style="--d:${1300 + d}ms"><i data-lucide="check"></i>${t}</div>`).join('')}
+                <div class="us-boot-sum us-in" style="--d:4600ms">Bare metal to ready \u00b7 2 min 41 s \u00b7 nobody touched it</div>
+              </div>
+            </div>`, 'us-frame-lg'),
+            sam(
+              samLine('terminal', 'One script \u00b7 delivered by Intune', 300) +
+              samLine('plug', 'Port 443 out \u00b7 nothing inbound', 1100) +
+              samLine('check-circle-2', 'No imaging bench \u00b7 no technician', 2600, 'is-ok'), { d: 200 }));
+        } else if (scene === 3) {
+          // CH1 — the empty desk. She signs in; Sam has nothing to do.
+          stage = duo(shell('win', `
+              ${win('ws', wsInner(p, { pop: true, popBase: 1600, tags: true, tagD: 3100 }), { cls: 'us-s1ws' })}
+              <div class="us-over us-s1login"><div class="us-splash">
+                <span class="us-splash-mark" style="background:${p.accent}">${p.initials}</span>
+                <div class="us-splash-brand">${p.name}</div>
+                <div class="us-splash-sso"><i data-lucide="shield-check"></i>Signing in\u2026</div>
+              </div></div>`, 'us-frame-lg'),
+            sam(
+              samLine('user-plus', `New hire: ${p.name} \u00b7 ${p.role}`, 900) +
+              samLine('inbox', '0 tickets opened', 1600) +
+              samLine('check-circle-2', 'Nothing to do', 2300, 'is-ok'), { d: 700 }));
+        } else if (scene === 4) {
+          // CH2 — the first click. Sam stays hidden; don't interrupt the fast beat.
+          stage = shell('win', win('ws', wsInner(p, { clickTarget: true })), 'us-frame-lg');
+        } else if (scene === 5) {
+          stage = shell('win', `${win('ws', wsInner(p, {}))}${over(`${appWin(target, { cls: 'us-zoom', body: p.target === 'teams' ? teamsBody : '' })}<span class="us-gone">no ticket \u00b7 no installer \u00b7 no setup wizard \u00b7 no restart</span>`, 100)}`, 'us-frame-lg');
+        } else if (scene === 6) {
+          // CH3 — follows her. Same icon on a Mac opens as web; Sam shows why.
+          stage = duo(shell('mac', `${win('ws', wsInner(p, {}))}${over(`${appWin(target, { cls: 'us-zoom', url: webUrl })}<span class="us-webchip us-in" style="--d:900ms">Opened as web \u2014 best fit for this device</span>`, 1400)}`, 'us-frame-lg'),
+            sam(`
+              <div class="us-samdef us-in" style="--d:900ms">
+                <span class="us-reqico" style="background:${target.color}">${target.letter}${target.img ? `<img src="${target.img}" alt="" onerror="this.remove()">` : ''}</span>
+                <div class="us-reqid"><b>${target.name}</b><span>one definition</span></div>
+              </div>
+              <div class="us-sampaths">${['Install','Stream','Web'].map((m, i) => `<span class="us-sampath ${m === 'Web' ? 'is-lit' : ''} us-in" style="--d:${1500 + i * 220}ms">${m}</span>`).join('')}</div>
+              ${samLine('check-circle-2', 'Built once. Delivers three ways.', 2500, 'is-ok')}`, { d: 600 }));
+        } else if (scene === 7) {
+          // CH4 — asking. Two requests, two paths, side by side. Zero tickets.
+          stage = duo(shell('win', win('cat', `
+              <div class="us-greet">Catalog</div>
+              <div class="us-req2col">
+                <div class="us-reqcol us-in" style="--d:150ms">
+                  ${reqCard(req1)}
+                  <div class="us-reqchip is-ok us-in" style="--d:1200ms"><i data-lucide="check"></i>Approved \u00b7 auto</div>
+                  <div class="us-reqadded us-in" style="--d:1900ms"><i data-lucide="layout-grid"></i>Added</div>
+                </div>
+                <div class="us-reqcol us-in" style="--d:800ms">
+                  ${reqCard(req2)}
+                  <div class="us-reqchip is-warn us-in" style="--d:2200ms"><i data-lucide="user-check"></i>Routed to manager</div>
+                  <div class="us-reqchip is-ok us-in" style="--d:3400ms"><i data-lucide="check"></i>Approved</div>
+                  <div class="us-reqadded us-in" style="--d:4000ms"><i data-lucide="layout-grid"></i>Added</div>
                 </div>
               </div>
-              <div class="us-pick-t">Where does ${first} sign in?</div>
-              <div class="us-pick-sub">Click a device \u2014 the experience is identical on all three</div>
-              <div class="us-devrow us-pickrow">
-                ${DEVS.map(([k, nm, ic], i) => `
-                  <button type="button" class="us-pick us-in focus-ring" style="--d:${i * 120}ms" data-action="pick-ux-device" data-dev="${k}">
-                    ${shell(k, `<div class="us-pick-inner"><span class="us-pick-mark" style="background:${p.accent}">A</span><span class="us-pick-name">Acme Workspace</span><span class="us-pick-go"><i data-lucide="play"></i>Start here</span></div>`)}
-                    <div class="us-dev-tag us-pick-tag"><i data-lucide="${ic}"></i><b>${nm}</b></div>
-                  </button>`).join('')}
-              </div>
-            </div>`;
-        } else if (scene >= 1 && scene <= 3) {
-          stage = shell(dev, win('ws', wsInner(p, ph === 'launch'), { cls: ph === 'launch' ? 'us-rise' : '' }), 'us-frame-lg');
+              <div class="us-toastn us-in" style="--d:3500ms">
+                <span class="us-toastn-ico" style="background:${req2.color}">${req2.letter}${req2.img ? `<img src="${req2.img}" alt="" onerror="this.remove()">` : ''}</span>
+                <div class="us-toastn-tx"><b>${req2.name} approved</b><span>by J. Torres \u00b7 added to your workspace</span></div>
+              </div>`), 'us-frame-lg'),
+            sam(
+              samLine('file-check', `${req1.name} \u00b7 auto-approved \u00b7 policy: ${p.role}, under $10/user`, 2400) +
+              samLine('user-check', `${req2.name} Pro \u00b7 manager approval \u00b7 4 min`, 3600), { d: 2000 }));
+        } else if (scene === 8) {
+          // CH5 — kept current. The version ticks over as it opens; Sam sees the rings.
+          stage = duo(shell('win', `${win('ws', wsInner(p, { extra: [p.req1, p.req2] }))}${over(appWin(upd, { cls: 'us-zoom', ver: ['v2.1', 'v2.2'] }), 400)}`, 'us-frame-lg'),
+            sam(`
+              <div class="us-sampaths">${['Dev','Test','Acceptance','Production'].map((s, i) => `<span class="us-sampath is-lit us-in" style="--d:${900 + i * 260}ms">${s}</span>`).join('')}</div>
+              ${samLine('refresh-cw', `${upd.name} v2.2 \u00b7 4,000 devices \u00b7 overnight \u00b7 ring by ring`, 2100)}`, { d: 700 }));
+        } else if (scene === 9) {
+          // CH6 — the migration. Sam first at 2:00 PM; Maya at 2:05 notices nothing.
+          stage = duo(shell('win', `${win('ws', wsInner(p, { extra: [p.req1, p.req2] }))}${over(`<span class="us-stamp">2:05 PM</span>${appWin(fin, { cls: 'us-zoom' })}<span class="us-webchip us-in" style="--d:800ms">Delivery changed. Nothing changed for you.</span>`, 1800)}`, 'us-frame-lg'),
+            sam(
+              samLine('clock', '2:00 PM', 200, 'is-stamp') +
+              `<div class="us-samline us-in" style="--d:600ms"><i data-lucide="git-branch"></i><span>${fin.name}: Citrix \u2192 AVD</span><span class="us-samtoggle"><i></i></span></div>` +
+              samLine('check-circle-2', 'Routing updated', 1300, 'is-ok'), { d: 0 }));
+        } else if (scene === 10) {
+          // CH7 — protected. Sam's amber flag first; her tile reroutes to web.
+          stage = duo(shell('win', `${win('ws', wsInner(p, { extra: [p.req1, p.req2], vuln: true, web: true }))}${over(`${appWin(upd, { cls: 'us-zoom', url: `${p.upd}.acme.com` })}<span class="us-webchip us-in" style="--d:800ms">Rerouted for your protection</span>`, 2300)}`, 'us-frame-lg'),
+            sam(
+              samLine('clock', '2:41 PM', 200, 'is-stamp') +
+              samLine('shield-alert', `${upd.name}: known vulnerability \u00b7 severity 7.8`, 700, 'is-warn') +
+              samLine('git-branch', 'Reroute to web', 1500) +
+              samLine('check-circle-2', 'Closed', 2200, 'is-ok'), { d: 0 }));
         } else {
-          const anim = ph === 'checking';
-          stage = `<div class="us-openwrap">
-              <div class="us-added ${anim ? 'us-in' : 'us-still'}" style="--d:700ms"><i data-lucide="check"></i>Open \u00b7 signed in automatically</div>
-              ${shell(dev, win('ws', appInner(anim)), 'us-frame-lg')}
-            </div>`;
-        }
-        // The us-added pill and us-flowcard are absolutely positioned overlays,
-        // so the device never moves between scenes 4→5→6 — no layout jumps.
-        const anim6 = ph === 'final';
-        if (scene === 5) {
-          stage = shell(dev, win('cat', catReq(true)), 'us-frame-lg');
-        } else if (scene === 6) {
-          stage = `<div class="us-openwrap us-openwrap-flow">
-              <div class="us-flowcard ${anim6 ? 'us-zoom' : ''}">
-                <div class="us-flowcard-t"><i data-lucide="workflow"></i>Approval workflow \u00b7 running automatically</div>
-                <div class="us-flowstep us-in" style="--d:200ms"><i data-lucide="send"></i><span>Request submitted</span><b>\u2713</b></div>
-                <div class="us-flowstep us-in" style="--d:1000ms"><i data-lucide="shield-check"></i><span>Policy check \u00b7 ${p.role} \u00b7 license available</span><b>\u2713</b></div>
-                <div class="us-flowstep us-flowstep-ok us-in" style="--d:1900ms"><i data-lucide="check-circle-2"></i><span>Approved \u2014 added to My workspace</span><b>\u2713</b></div>
+          // CH8 — the reveal: the stack she stood on all day, then the line.
+          stage = `${duo(`<div class="us-reveal">
+              <div class="us-reveal-lap us-in" style="--d:100ms">${shell('win', win('ws', wsInner(p, { extra: [p.req1, p.req2] })))}</div>
+              <div class="us-layers">${['Identity','Policy','Catalog \u00b7 8,000+ apps','Delivery paths','Update engine'].map((l, i) => `<span class="us-layer us-in" style="--d:${600 + i * 240}ms">${l}</span>`).join('')}</div>
+              <div class="us-alexrow us-in" style="--d:2100ms">
+                <span class="us-finava" style="background:${other.accent}">${other.initials}</span>
+                <b>${other.name}</b><span>${other.role}</span>
+                <span class="us-alexapps">${other.apps.slice(0, 5).map(id => { const a = A(id); return `<span class="us-finico" style="background:${a.color}">${a.letter}${a.img ? `<img src="${a.img}" alt="" onerror="this.remove()">` : ''}</span>`; }).join('')}</span>
+                <em>different apps</em>
               </div>
-              <div class="us-flowdev">${shell(dev, win('cat', catReq(false)), 'us-frame-lg')}</div>
-            </div>`;
+              <div class="us-fintitle us-in" style="--d:2900ms">One icon. It just works. Everywhere.</div>
+            </div>`,
+            sam(samLine('sigma', 'Today: 0 tickets \u00b7 1 approval \u00b7 1 migration \u00b7 1 reroute', 800), { d: 400 }))}`;
         }
 
-        const cursor = (scene === 2 || scene === 3 || scene === 5) ? `<svg class="us-cursor ${scene === 2 ? 'us-cursor-travel' : scene === 5 ? 'us-cursor-click us-cursor-cat' : 'us-cursor-click'}" viewBox="0 0 24 24" fill="#1A1A2E" stroke="#fff" stroke-width="1.5" aria-hidden="true"><path d="M5 3l14 8-6 1.5L9.5 19z"/></svg>` : '';
+        const cursor = scene === 4 ? `<svg class="us-cursor us-cursor-travel us-cursor-late" viewBox="0 0 24 24" fill="#1A1A2E" stroke="#fff" stroke-width="1.5" aria-hidden="true"><path d="M5 3l14 8-6 1.5L9.5 19z"/></svg>` : '';
+
+        // Crossfade only when the SCENE changes — intra-scene ticks (cursor,
+        // pulses) re-render without a fade so nothing double-animates.
+        const sceneChanged = STATE._usScene !== scene;
+        STATE._usScene = scene;
 
         return `
           <div class="section-card p-4 us-card">
@@ -12181,27 +12466,21 @@
                     <span class="ux-persona-dot" style="background:${pp.accent}"></span><span>${pp.name.split(' ')[0]} \u00b7 ${pp.role}</span>
                   </button>`).join('')}
               </div>
-              <div class="us-personas">
-                <span class="us-personas-lab">Device</span>
-                ${[['win','Windows'],['mac','Mac'],['vdi','Virtual desktop']].map(([k, nm]) => `
-                  <button type="button" class="ux-scenario-pill ux-persona-pill ${dev === k ? 'is-active' : ''}" data-action="pick-ux-device" data-dev="${k}"><span>${nm}</span></button>`).join('')}
-              </div>
             </div>
-            <div style="display:none" aria-hidden="true">${Object.keys(APPS).map(k => `<img src="${A(k).img}" alt="">`).join('')}</div>
+            <div style="display:none" aria-hidden="true">${Object.keys(APPS).map(k => A(k).img ? `<img src="${A(k).img}" alt="">` : '').join('')}</div>
             <div class="us-body2">
               <div class="us-stage" style="background:#FFFFFF;border:1px solid #DDDDEE">
                 ${who}
                 ${cursor}
-                ${stage}
-                ${MICRO[scene] ? `<div class="us-substrip" role="status" aria-live="polite" aria-atomic="true">${MICRO[scene]}</div>` : ''}
+                <div class="us-scene ${sceneChanged ? 'us-scenefade' : ''}">${stage}</div>
               </div>
               <aside class="us-rail" aria-label="Journey steps">
                 <div class="us-rail-t">The journey</div>
                 ${CHAPTERS.map((c, i) => `
-                  <div class="us-step ${chap > i ? 'is-done' : ''} ${chap === i ? 'is-on' : ''}">
+                  <button type="button" class="us-step focus-ring ${chap > i ? 'is-done' : ''} ${chap === i ? 'is-on' : ''}" data-action="ux-chapter" data-ph="${['bare','launch','catalog','clicking','checking','routing','config','done','final'][i]}" title="Jump to this chapter">
                     <span class="us-step-n">${chap > i ? '\u2713' : i + 1}</span>
                     <div class="us-step-tx"><b>${c[0]}</b><span>${c[1]}</span></div>
-                  </div>`).join('')}
+                  </button>`).join('')}
               </aside>
             </div>
           </div>
@@ -19423,16 +19702,44 @@
             }
             return;
           }
-          if (action === 'ux-request') {
-            // Click the Catalog tab → run the request-an-app workflow now.
+          if (action === 'ux-play') { if (!STATE.flowRunning) startFlow(); return; }
+          if (action === 'ux-chapter') {
+            // Click a rail step → jump to that chapter and keep playing from there.
+            const SEQ = [['bare', 4600], ['boot', 6200], ['launch', 4200], ['catalog', 2000], ['approach', 2400], ['clicking', 4600], ['checking', 5200], ['routing', 3800], ['config', 4400], ['done', 4400], ['final', 6000]];
+            const startPh = act.getAttribute('data-ph');
+            const si = SEQ.findIndex(s => s[0] === startPh);
+            if (si < 0) return;
             STATE.flowTimers.timeouts.forEach(id => clearTimeout(id)); STATE.flowTimers.timeouts = [];
-            STATE.uxReqManual = true;
             STATE.flowRunning = true;
             if (STATE.flowScenarioIdx < 0) STATE.flowScenarioIdx = STATE.uxScenarioIdx >= 0 ? STATE.uxScenarioIdx : 0;
-            STATE.flowPhase = 'done';
+            STATE.flowPhase = startPh;
             scrollPreserveRender();
-            const t = setTimeout(() => { STATE.flowPhase = 'final'; updateFlowDOM(); }, 2600);
-            STATE.flowTimers.timeouts.push(t);
+            let at = SEQ[si][1];
+            SEQ.slice(si + 1).forEach(([phx, dwell]) => {
+              const t = setTimeout(() => { STATE.flowPhase = phx; updateFlowDOM(); }, at);
+              STATE.flowTimers.timeouts.push(t);
+              at += dwell;
+            });
+            return;
+          }
+          if (action === 'ux-request') {
+            // Click the Catalog tab → jump to the asking chapter.
+            STATE.flowTimers.timeouts.forEach(id => clearTimeout(id)); STATE.flowTimers.timeouts = [];
+            STATE.flowRunning = true;
+            if (STATE.flowScenarioIdx < 0) STATE.flowScenarioIdx = STATE.uxScenarioIdx >= 0 ? STATE.uxScenarioIdx : 0;
+            STATE.flowPhase = 'checking';
+            scrollPreserveRender();
+            [['routing', 5200], ['config', 9000], ['done', 13400], ['final', 17800]].forEach(([phx, at]) => {
+              const t = setTimeout(() => { STATE.flowPhase = phx; updateFlowDOM(); }, at);
+              STATE.flowTimers.timeouts.push(t);
+            });
+            return;
+          }
+          if (action === 'pick-ux-user') {
+            const pi = parseInt(act.getAttribute('data-idx'), 10);
+            STATE.uxPersona = pi === 1 ? 1 : 0;
+            if (STATE.flowRunning || STATE.flowScenarioIdx >= 0) resetFlow();
+            startFlow();
             return;
           }
           if (action === 'pick-ux-device') {
