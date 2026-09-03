@@ -456,6 +456,37 @@
         from { opacity: 0; transform: translateY(6px); }
         to   { opacity: 1; transform: translateY(0); }
       }
+      /* Teams-embedded beats: launch mark, in-Teams container, entitlement
+         strip, and the Salesforce tab content. */
+      .ux-frame-teams-mark { background: #5B53D6; color: #fff; font-size: 15px; font-weight: 800; }
+      .ux-frame-inteams { flex: 1; background: #ffffff; display: flex; min-height: 0; }
+      .ux-entitle {
+        display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+        padding: 5px 8px; border-bottom: 1px solid #DDDDEE; background: #FAFAFE;
+        font-size: 8px; color: #4A4A5A; opacity: 0;
+      }
+      .ux-entitle.is-in { animation: uxTeamsMsgIn 300ms ease 120ms forwards; }
+      .ux-entitle.is-in-instant { opacity: 1; }
+      .ux-entitle-count b { color: #0000CC; font-weight: 800; }
+      .ux-entitle-sep { color: #C3C3D2; }
+      .ux-entitle-note { color: #8A8A9A; }
+      .ux-entitle-chip {
+        padding: 1px 5px; border-radius: 999px; background: #E5F6FF;
+        border: 1px solid #BFEBFF; color: #005C7D; font-weight: 700;
+        font-size: 7px; letter-spacing: 0.03em; text-transform: uppercase;
+      }
+      .ux-sf-row { align-items: center; background: #ffffff; border: 1px solid #DDDDEE; border-radius: 6px; padding: 4px 7px; }
+      .ux-sf-ava {
+        width: 18px; height: 18px; border-radius: 50%; background: #0000CC;
+        color: #fff; font-size: 7px; font-weight: 800;
+        display: grid; place-items: center; flex-shrink: 0;
+      }
+      .ux-sf-line { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+      .ux-sf-line b { font-size: 9px; color: #1A1A2E; line-height: 1.2; }
+      .ux-sf-line span { font-size: 8px; color: #8A8A9A; line-height: 1.2; }
+      .ux-sf-fig { font-size: 9px; font-weight: 800; color: #00719A; flex-shrink: 0; }
+      .ux-sf-bars { height: 32px; align-items: flex-end; gap: 5px; padding: 0 2px; }
+      .ux-sf-bars i { flex: 1; background: #BFEBFF; border-top: 2px solid #00BFFF; border-radius: 2px 2px 0 0; }
       .ux-teams-avatar {
         width: 18px; height: 18px; border-radius: 50%;
         display: grid; place-items: center;
@@ -719,8 +750,6 @@
       .lifecycle-dot.lifecycle-dot-done::before { background: #0F7A3F; inset: 0; }
       .lifecycle-dot.lifecycle-dot-playing::before { animation: lc-pulse 1.4s ease-in-out infinite; }
       @keyframes lc-pulse { 0%,100%{ transform:scale(1); opacity:1; } 50%{ transform:scale(1.8); opacity:0.6; } }
-      .lifecycle-connector { flex: 1; height: 1px; background: #DDDDEE; min-width: 6px; margin-bottom: 28px; align-self: center; transition: background 0.3s ease; }
-      .lifecycle-connector.lc-done { background: #0F7A3F; }
       /* ── Lifecycle rail: the seven modules read as one sequence ──
          Idle, a slow pulse walks the dots left to right on the same 7s clock
          as the diagram above. Playing, the current module carries a bar that
@@ -3175,7 +3204,7 @@
       .rws-chip svg { width: 15px; height: 15px; flex: 0 0 15px; }
       .rws-chip i, .rws-chip svg { width: 14px; height: 14px; color: #6A6A7A; }
       .rws-chips-sm .rws-chip { font-size: 11.5px; padding: 5px 12px; }
-      .rws-brk { position: relative; width: 38%; min-width: 220px; margin: 0 auto; height: 22px; border: 1.4px dashed #AABBEE; }
+      .rws-brk { position: relative; width: 26%; min-width: 170px; margin: 0 auto; height: 15px; border: 1.4px dashed #AABBEE; }
       .rws-brk-t { border-top: 0; border-radius: 0 0 12px 12px; margin-top: 7px; }
       .rws-brk-b { border-bottom: 0; border-radius: 12px 12px 0 0; margin-bottom: 7px; }
       /* The vertical run each bracket funnels into. Three dots ride it on a
@@ -3252,9 +3281,11 @@
         .rws-stages { padding-top: 0; grid-template-columns: repeat(2, 1fr); }
         .rws-diff { grid-template-columns: 1fr; }
       }
-      @media (max-height: 900px) {
+      @media (max-height: 1000px) {
         .rws-slab { padding: 12px 14px 13px; }
-        .rws-slab.rws-quiet { padding: 0 0 13px; }
+        .rws-slab.rws-quiet { padding: 0; }
+        .rws-rail { padding: 8px 14px 9px; }
+        .rws-rail .rws-rail-lab { margin-bottom: 5px; }
         .rws-quiet .rws-head { padding: 11px 14px 12px; }
         .rws-quiet .rws-io { padding: 0 14px; margin-top: 12px; }
         .rws-slab-t { font-size: 15.5px; }
@@ -3269,13 +3300,14 @@
         .rws-diffc { padding: 9px 10px 10px; }
         .rws-diffc b { font-size: 12px; }
         .rws-diffc span { font-size: 10.4px; }
-        .rws-brk { height: 18px; }
-        @keyframes rwsFlowDown { 0% { transform: translateY(-3px); opacity: 0; } 12% { opacity: 1; } 82% { opacity: 1; } 100% { transform: translateY(18px); opacity: 0; } }
+        .rws-brk { height: 13px; }
+        @keyframes rwsFlowDown { 0% { transform: translateY(-3px); opacity: 0; } 12% { opacity: 1; } 82% { opacity: 1; } 100% { transform: translateY(13px); opacity: 0; } }
         .rws-chip { padding: 5px 11px; font-size: 11.5px; }
       }
       /* ── Quiet treatment of the workspace slab (blue as accent, not field) ── */
-      .rws-slab.rws-quiet { background: #FFFFFF; border: 1px solid #DDDDEE; box-shadow: 0 1px 2px rgba(26, 26, 46,0.06); color: #1A1A2E; padding: 0 0 16px; }
-      .rws-quiet .rws-head { background: #0000CC; padding: 13px 17px 14px; }
+      .rws-slab.rws-quiet { background: #FFFFFF; border: 1px solid #DDDDEE; box-shadow: 0 1px 2px rgba(26, 26, 46,0.06); color: #1A1A2E; padding: 0; }
+      .rws-quiet .rws-head { background: #0000CC; padding: 13px 17px 14px; display: flex; align-items: center; gap: 9px; }
+      .rws-head-mk { display: inline-grid; place-items: center; width: 24px; height: 24px; flex: 0 0 24px; border-radius: 6px; background: #FFFFFF; color: #0000CC; font-size: 11.5px; font-weight: 800; letter-spacing: -0.01em; line-height: 1; }
       .rws-quiet .rws-slab-t { color: #FFFFFF; }
       .rws-quiet .rws-slab-s { color: #AABBEE; }
       .rws-quiet .rws-io { padding: 0 17px; margin-top: 15px; }
@@ -3296,6 +3328,22 @@
       .rws-quiet .rws-diffc-ic i, .rws-quiet .rws-diffc-ic svg { color: #0086B3; }
       .rws-quiet .rws-diffc span { color: #4A4A5A; }
       @media (max-width: 1180px) { .rws-quiet .rws-stage + .rws-stage::before { display: none; } }
+
+      /* ── The banner tops the whole picture ───────────────────────────────
+         What you already run and everyone you support used to sit outside
+         the box, which read as three separate things wired together. They
+         are not: both are inside Application Workspace. So the blue banner
+         now caps the whole diagram and the two rails become tinted bands
+         top and bottom, framing the white pipeline that runs between them.
+         Document order is unchanged, so the PDF's reader still finds the
+         title, both rails and both chip rows where it expects them. ── */
+      .rws-rail { padding: 11px 17px 12px; background: #F7F7FC; }
+      .rws-rail-in  { border-bottom: 1px solid var(--r-divider, #DDDDEE); }
+      .rws-rail-out { border-top: 1px solid var(--r-divider, #DDDDEE); }
+      .rws-rail .rws-rail-lab { margin-bottom: 6px; }
+      /* The brackets are now internal plumbing between band and core. */
+      .rws-quiet .rws-brk-t { margin-top: 0; }
+      .rws-quiet .rws-brk-b { margin-bottom: 0; }
       /* ── Deploy & Update: one spine, run twice ── */
       .udx-runs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
       .udx-run { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid #DDDDEE; border-radius: 8px; background: #FFFFFF; transition: border-color 260ms cubic-bezier(0.2, 0.8, 0.2, 1), background 260ms cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -3402,7 +3450,7 @@
       /* ── Flow: one pale current sweeping the slab, chevrons firing in order ── */
       .rws-slab.rws-quiet { position: relative; overflow: hidden; }
       .rws-quiet > * { position: relative; z-index: 1; }
-      .rws-quiet::before { content: ""; position: absolute; z-index: 0; top: 56px; bottom: 0; left: 0; width: 42%; pointer-events: none;
+      .rws-quiet::before { content: ""; position: absolute; z-index: 0; top: 40px; bottom: 0; left: 0; width: 42%; pointer-events: none;
         background: linear-gradient(100deg, rgba(0, 0, 204,0) 0%, rgba(0, 0, 204,0.085) 45%, rgba(0, 0, 204,0) 100%);
         animation: rwsCurrent 9s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
       @keyframes rwsCurrent { 0% { transform: translateX(-105%); } 100% { transform: translateX(345%); } }
@@ -3418,11 +3466,113 @@
       .rws-brk::after { animation: rwsNode 2.6s ease-in-out infinite; }
       .rws-brk-b::after { animation-delay: 1.3s; }
       @keyframes rwsNode { 0%, 100% { box-shadow: 0 0 0 0 rgba(0, 0, 204,0.28); } 55% { box-shadow: 0 0 0 5px rgba(0, 0, 204,0); } }
+      @media (max-width: 900px) { .rws-quiet::before { display: none; } }
       @media (prefers-reduced-motion: reduce) {
         .rws-quiet::before, .rws-quiet .rws-stage + .rws-stage::before, .rws-brk::after { animation: none; }
         .rws-flow { display: none; }
         .rws-quiet .rws-stage + .rws-stage::before { opacity: 1; }
       }
+      /* ── Orbit layout: the lifecycle inside Application Workspace drawn as
+         a circle. Top rail funnels down into it, bottom rail receives it,
+         inputs enter from the left, outputs leave to the right. All motion
+         lives in the circle (orbiting dots, sequential stage pulses) and on
+         its connectors. ── */
+      .rws-io.rws-io-orbit { grid-template-columns: minmax(0, 1fr) 44px minmax(430px, 2.4fr) 44px minmax(0, 1fr); align-items: center; gap: 10px; max-width: 1560px; margin-left: auto; margin-right: auto; width: 100%; box-sizing: border-box; }
+      .rws-io-orbit .lc-orbit-wrap.lc-in-diagram { width: 100%; }
+      .rws-io-orbit .lc-in-diagram .lc-orbit { flex: 1 1 auto; margin: 0 auto; }
+      .rws-io-orbit .rws-pill-store { display: grid; grid-template-columns: 18px 1fr; align-items: center; column-gap: 8px; row-gap: 1px; }
+      .rws-io-orbit .rws-pill-store b { white-space: normal; line-height: 1.2; }
+      .rws-io-orbit .rws-pill-store em { grid-column: 2; margin-left: 0; font-size: 10px; }
+      .rws-pill-2l { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+      .rws-pill-2l em { font-style: normal; font-size: 10px; font-weight: 500; color: #8A8A9A; line-height: 1.25; }
+      .rws-quiet::before { display: none; }
+      .rws-wheel { --orbD: 440px; --hubD: 138px; position: relative; width: var(--orbD); height: var(--orbD); margin: 2px auto; border-radius: 50%; overflow: hidden; border: 1.5px solid #C6CCF2; background: #FFFFFF; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+      .rws-wheel::before, .rws-wheel::after { content: ""; position: absolute; background: #DDDDEE; z-index: 2; }
+      .rws-wheel::before { left: 0; right: 0; top: 50%; height: 1px; margin-top: -0.5px; }
+      .rws-wheel::after { top: 0; bottom: 0; left: 50%; width: 1px; margin-left: -0.5px; }
+      .rws-q { display: flex; align-items: center; justify-content: center; animation: rwsQuadGlow 9s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+      .rws-qa { grid-area: 1 / 1; padding: 24px 0 0 24px; animation-delay: 7.9s; }
+      .rws-qb { grid-area: 1 / 2; padding: 24px 24px 0 0; background: #F6F8FF; animation-delay: 1.1s; }
+      .rws-qc { grid-area: 2 / 2; padding: 0 24px 24px 0; animation-delay: 3.35s; }
+      .rws-qd { grid-area: 2 / 1; padding: 0 0 24px 24px; background: #F6F8FF; animation-delay: 5.6s; }
+      @keyframes rwsQuadGlow { 0%, 12%, 100% { box-shadow: inset 0 0 0 999px rgba(0, 0, 204, 0); } 5% { box-shadow: inset 0 0 0 999px rgba(0, 0, 204, 0.05); } }
+      .rws-quiet .rws-wheel .rws-stage { width: 122px; padding: 0; background: transparent; border: 0; box-shadow: none; gap: 6px; }
+      .rws-wheel .rws-stage b { font-size: 12.5px; white-space: nowrap; }
+      .rws-wheel .rws-stage span:not(.rws-stage-ic) { font-size: 9.4px; }
+      .rws-hub { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3; width: var(--hubD); height: var(--hubD); border-radius: 50%; background: #0000CC; box-shadow: 0 8px 24px rgba(0, 0, 204, 0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 0 15px; }
+      .rws-hub .rws-store-mk { width: 26px; height: 26px; flex: 0 0 26px; border-radius: 6px; background: #FFFFFF; color: #0000CC; font-size: 12px; }
+      .rws-hub b { font-size: 13px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: #FFFFFF; }
+      .rws-hub > span:last-child { font-size: 9.3px; font-weight: 600; color: #AABBEE; }
+      .rws-orbit-dot { position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: #0000CC; z-index: 2; animation: rwsOrbitSpin 9s linear infinite; }
+      .rws-orbit-dot:nth-of-type(2) { animation-delay: -4.5s; opacity: 0.55; }
+      @keyframes rwsOrbitSpin { from { transform: rotate(0deg) translateY(calc(var(--orbD) / -2 + 6px)); } to { transform: rotate(360deg) translateY(calc(var(--orbD) / -2 + 6px)); } }
+      .rws-quiet .rws-wheel .rws-stage-ic { width: 30px; height: 30px; border-radius: 9px; animation: rwsStagePulse 9s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+      .rws-st2 .rws-stage-ic { animation-delay: 1.1s; }
+      .rws-st3 .rws-stage-ic { animation-delay: 3.35s; }
+      .rws-st4 .rws-stage-ic { animation-delay: 5.6s; }
+      .rws-st1 .rws-stage-ic { animation-delay: 7.9s; }
+      @keyframes rwsStagePulse { 0%, 12%, 100% { box-shadow: 0 0 0 0 rgba(0, 0, 204, 0); transform: none; } 5% { box-shadow: 0 0 0 6px rgba(0, 0, 204, 0.14); transform: scale(1.07); } }
+      .rws-hbrk { position: relative; height: 12px; align-self: center; }
+      .rws-hbrk::before { content: ""; position: absolute; left: 0; right: 5px; top: 50%; height: 2px; margin-top: -1px; }
+      .rws-hbrk-l::before { background: linear-gradient(90deg, rgba(0,0,204,0.05), rgba(0,0,204,0.34)); }
+      .rws-hbrk-r::before { background: linear-gradient(90deg, rgba(0,0,204,0.34), rgba(0,0,204,0.05)); }
+      .rws-hbrk::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 6px solid #0000CC; border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
+      .rws-hbrk-r::after { border-left-color: #0000CC; }
+      .rws-hflow { position: absolute; left: 0; top: 50%; margin-top: -2.5px; width: 5px; height: 5px; border-radius: 50%; background: #0000CC; opacity: 0; animation: rwsFlowRight 2.6s linear infinite; }
+      .rws-hflow:nth-of-type(2) { animation-delay: 1.3s; }
+      .rws-hbrk-r .rws-hflow { animation-delay: 0.65s; }
+      .rws-hbrk-r .rws-hflow:nth-of-type(2) { animation-delay: 1.95s; }
+      @keyframes rwsFlowRight { 0% { transform: translateX(-2px); opacity: 0; } 12% { opacity: 1; } 82% { opacity: 1; } 100% { transform: translateX(36px); opacity: 0; } }
+      @media (max-height: 1000px) {
+        .rws-wheel { --orbD: 380px; --hubD: 120px; }
+        .rws-qa { padding: 20px 0 0 20px; }
+        .rws-qb { padding: 20px 20px 0 0; }
+        .rws-qc { padding: 0 20px 20px 0; }
+        .rws-qd { padding: 0 0 20px 20px; }
+        .rws-quiet .rws-wheel .rws-stage { width: 106px; }
+        .rws-wheel .rws-stage b { font-size: 11.5px; }
+        .rws-wheel .rws-stage span:not(.rws-stage-ic) { font-size: 8.8px; }
+        .rws-hub b { font-size: 11.5px; }
+        .rws-hub > span:last-child { font-size: 8.8px; }
+      }
+      @media (max-width: 1180px) {
+        .rws-io.rws-io-orbit { grid-template-columns: minmax(0, 1fr) 36px minmax(360px, 2.4fr) 36px minmax(0, 1fr); gap: 8px; }
+        .rws-wheel { --orbD: 360px; --hubD: 116px; margin: 4px auto; }
+        .rws-quiet .rws-wheel .rws-stage { width: 100px; }
+        .rws-wheel .rws-stage b { font-size: 11px; }
+        .rws-wheel .rws-stage span:not(.rws-stage-ic) { font-size: 8.6px; }
+      }
+      @media (max-width: 900px) {
+        .rws-io.rws-io-orbit { grid-template-columns: 1fr; }
+        .rws-hbrk { display: none; }
+        .rws-wheel { margin: 4px auto; }
+      }
+      @media (max-width: 560px) {
+        .rws-wheel { width: auto; height: auto; border-radius: 14px; display: flex; flex-direction: column; }
+        .rws-wheel::before, .rws-wheel::after { display: none; }
+        .rws-q { padding: 12px 14px; animation: none; background: #FFFFFF; justify-content: flex-start; }
+        .rws-q + .rws-q { border-top: 1px solid #DDDDEE; }
+        .rws-quiet .rws-wheel .rws-stage { width: auto; flex-direction: row; text-align: left; }
+        .rws-hub { position: static; transform: none; order: -1; width: auto; height: auto; border-radius: 0; padding: 12px 14px; flex-direction: row; }
+        .rws-orbit-dot { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rws-orbit-dot, .rws-hflow { display: none; }
+        .rws-q, .rws-quiet .rws-wheel .rws-stage-ic { animation: none; }
+      }
+      .rws-shot .rws-orbit-dot, .rws-shot .rws-hflow { display: none !important; }
+
+      .route-why { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 2px 0 7px; opacity: 0; transition: opacity 300ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+      .lc-tour-btn { display: none; margin-left: auto; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.55); background: transparent; color: #FFFFFF; font-size: 11.5px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; transition: background 200ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+      .lc-tour-btn:hover { background: rgba(255, 255, 255, 0.12); border-color: #FFFFFF; }
+      .lc-tour-btn:active { transform: translateY(1px); }
+      .lc-tour-btn i, .lc-tour-btn svg { width: 11px; height: 11px; }
+      .route-why.is-on { opacity: 1; }
+      .route-chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border: 1px solid #DDDDEE; border-radius: 999px; background: #FAFAFE; font-size: 9.5px; font-weight: 600; color: #4A4A5A; }
+      .route-chip i, .route-chip svg { width: 10px; height: 10px; color: #8A8A9A; }
+      .route-why-arrow { color: #8A8A9A; font-size: 10px; }
+      .route-why-out { font-size: 9.5px; font-weight: 700; color: #0000CC; }
+
       /* ── Off-screen host for the PDF's diagram capture ───────────────────
          The Executive Summary embeds a real raster of the Recast Approach
          diagram. The same markup the screen renders (RWS_DIAGRAM_HTML) is
@@ -3492,9 +3642,9 @@
       .cardtab-sub { color: #8A8A9A; }
       .cardtab-active .cardtab-sub { color: #4A4A5A; }
       .arch-lifecycle-strip { position: relative; padding: 2px 4px; }
-      .arch-inside-h { text-align: center; margin-bottom: 13px; }
-      .arch-inside-t { font-size: 17px; font-weight: 800; letter-spacing: -0.028em; line-height: 1.25; color: #1A1A2E; }
-      .arch-inside-s { margin-top: 3px; font-size: 12px; font-weight: 500; color: #6A6A7A; }
+      .arch-inside-h { text-align: center; margin-bottom: 9px; }
+      .arch-inside-t { font-size: 16px; font-weight: 800; letter-spacing: -0.028em; line-height: 1.25; color: #1A1A2E; }
+      .arch-inside-s { margin-top: 2px; font-size: 11.5px; font-weight: 500; line-height: 1.35; color: #6A6A7A; }
       @media (max-width: 860px) { .arch-inside-t { font-size: 15px; } }
       .demo-loop-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px 8px 14px; border-radius: 999px; background: #0000CC; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 160ms cubic-bezier(0.2,0.8,0.2,1); box-shadow: 0 2px 8px -2px rgba(0, 0, 204,0.4); }
       .demo-loop-btn:hover { background: #00BFFF; color: #1A1A2E; box-shadow: 0 4px 12px -2px rgba(0, 191, 255,0.5); }
@@ -3579,6 +3729,276 @@
       .teams-msg-bubble.self { background: #F6F8FF; border-color: #AABBEE; border-radius: 8px 0 8px 8px; margin-left: auto; }
       .teams-chat-input { padding: 6px 10px; border-top: 1px solid #DDDDEE; display: flex; align-items: center; gap: 6px; }
       .teams-chat-input-box { flex: 1; height: 24px; border: 1px solid #DDDDEE; border-radius: 4px; background: white; padding: 0 8px; font-size: 9px; color: #8A8A9A; display: flex; align-items: center; }
+
+      /* ── User story: cinematic end-user scenes (imported) ── */
+      @keyframes uxCursorClick { 0% { transform: scale(0.4); opacity: 1; } 100% { transform: scale(3.2); opacity: 0; } }
+      .ux-persona-pill { display: inline-flex; align-items: center; gap: 5px; }
+      .ux-persona-dot { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
+      .us-who { position: absolute; top: 10px; left: 12px; display: flex; align-items: center; gap: 6px; background: #F6F8FF; border: 1px solid #DDDDEE; border-radius: 999px; padding: 3px 10px 3px 4px; z-index: 5; }
+      .us-who-ava { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 7.5px; font-weight: 800; box-shadow: 0 0 0 1.5px rgba(26, 26, 46, 0.12); flex-shrink: 0; }
+      .us-who-txt { font-size: 9.5px; font-weight: 700; color: #1A1A2E; white-space: nowrap; }
+      .us-who-new { box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.55); }
+      .us-openwrap { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+      .us-added { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 30; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; background: #EAF5EE; border: 1px solid #C7E4D2; color: #0F7A3F; font-size: 10px; font-weight: 800; padding: 3px 11px; border-radius: 999px; box-shadow: 0 4px 12px rgba(15, 122, 63, 0.18); }
+      .us-added i { width: 11px; height: 11px; }
+      .us-stage { position: relative; border-radius: 10px; min-height: 330px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 42px 18px 20px; }
+      .us-plus { position: absolute; color: rgba(255, 255, 255, 0.13); font-size: 20px; font-weight: 700; pointer-events: none; }
+      .us-hint { display: flex; align-items: center; gap: 8px; color: #6A6A7A; font-size: 12px; font-weight: 600; }
+      .us-hint i { width: 18px; height: 18px; }
+      .us-in { opacity: 0; animation: usIn 420ms cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) forwards; }
+      @keyframes usIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .us-idcard { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-align: center; }
+      .us-ava { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 18px; font-weight: 800; color: #fff; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.22); margin-bottom: 6px; }
+      .us-id-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+      .us-id-role { font-size: 11px; color: rgba(255, 255, 255, 0.75); font-weight: 600; }
+      .us-id-day { margin-top: 10px; font-size: 10px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.08em; text-transform: uppercase; }
+      .us-win { width: min(430px, 92%); background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35); display: flex; flex-direction: column; }
+      .us-rise { animation: usRise 480ms cubic-bezier(0.22, 1, 0.36, 1); }
+      @keyframes usRise { from { opacity: 0; transform: translateY(22px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      .us-win-head { display: flex; align-items: center; gap: 7px; padding: 7px 11px; color: #fff; }
+      .us-win-mark { width: 18px; height: 18px; border-radius: 5px; background: rgba(255, 255, 255, 0.92); color: #1A1A2E; font-size: 11px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
+      .us-win-brand { font-size: 11.5px; font-weight: 800; letter-spacing: 0.01em; white-space: nowrap; }
+      .us-win-user { margin-left: auto; width: 18px; height: 18px; border-radius: 50%; background: rgba(255, 255, 255, 0.28); font-size: 8px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
+      .us-win-tabs { display: flex; gap: 4px; padding: 6px 11px 0; border-bottom: 1px solid #DDDDEE; background: #FAFAFE; }
+      .us-tab { font-size: 10px; font-weight: 700; color: #8A8A9A; padding: 4px 9px 6px; border-bottom: 2px solid transparent; white-space: nowrap; flex-shrink: 0; display: inline-block; }
+      .us-tab.is-on { color: #1A1A2E; border-bottom-color: var(--acc, #0000CC); }
+      .us-tab-btn { cursor: pointer; background: transparent; border-left: 0; border-right: 0; border-top: 0; }
+      .us-tab-btn:hover { color: #0000CC; }
+      .us-win-body { padding: 12px 14px 14px; }
+      .us-greet { font-size: 15.5px; font-weight: 800; color: #1A1A2E; letter-spacing: -0.01em; }
+      .us-greet-sub { font-size: 10px; color: #6A6A7A; margin: 2px 0 12px; }
+      .us-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 8px; }
+      .us-app { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+      .us-app-ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 800; position: relative; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14); }
+      .us-app-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 5px; background: #fff; border-radius: inherit; }
+      .us-app-name { font-size: 9.5px; font-weight: 600; color: #3A3A4C; }
+      .us-glow { box-shadow: 0 0 0 2.5px rgba(0, 191, 255, 0.6), 0 0 16px 3px rgba(0, 191, 255, 0.45); animation: uxTeamsGlow 1.4s ease-in-out infinite; }
+      .us-clicked .us-app-ico { animation: uxIconBump 320ms cubic-bezier(0.22, 1, 0.36, 1); }
+      .us-pulse { position: absolute; inset: -3px; border-radius: 12px; border: 2px solid #00BFFF; animation: uxClickPulse 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+      .us-get { font-size: 8.5px; font-weight: 800; white-space: nowrap; padding: 2px 10px; border-radius: 999px; border: 1px solid #AABBEE; color: #0000CC; background: #F6F8FF; }
+      .us-get.is-ok { border-color: #C7E4D2; color: #0F7A3F; background: #EAF5EE; }
+      .us-whisper { text-align: center; font-size: 9px; color: #8A8A9A; font-style: italic; margin-top: 10px; }
+      .us-appwin { border: 1px solid #DDDDEE; border-radius: 9px; overflow: hidden; box-shadow: 0 8px 22px rgba(26, 26, 46, 0.16); }
+      .us-zoom { animation: usZoom 460ms cubic-bezier(0.22, 1, 0.36, 1); }
+      @keyframes usZoom { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+      .us-appwin-bar { display: flex; align-items: center; gap: 7px; color: #fff; font-size: 11px; font-weight: 800; padding: 7px 10px; min-width: 0; }
+      .us-appwin-bar > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-appwin-ico { width: 17px; height: 17px; border-radius: 5px; background: rgba(255, 255, 255, 0.28); display: grid; place-items: center; font-size: 8px; font-weight: 800; flex-shrink: 0; position: relative; }
+      .us-appwin-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; border-radius: inherit; }
+      .us-appwin-dots { margin-left: auto; display: flex; gap: 4px; }
+      .us-appwin-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); }
+      .us-appwin-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; background: #fff; }
+      .us-still { opacity: 1; }
+      /* Salesforce opportunity view — slow scroll after it opens */
+      .us-sf-clip { background: #F3F5F9; overflow: hidden; max-height: 168px; }
+      .us-sf-scroll { display: flex; flex-direction: column; gap: 7px; padding: 10px 12px 12px; }
+      .us-sfanim { animation: usSfScroll 2.2s cubic-bezier(0.4, 0, 0.3, 1) 1400ms forwards; }
+      .us-sfdone { transform: translateY(-44px); }
+      @keyframes usSfScroll { from { transform: translateY(0); } to { transform: translateY(-44px); } }
+      .us-sf-opp { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #E2E6EE; border-radius: 6px; padding: 7px 9px; }
+      .us-sf-opp-ico { width: 22px; height: 22px; border-radius: 5px; background: #FF9A3C; display: grid; place-items: center; flex-shrink: 0; }
+      .us-sf-opp-ico i, .us-sf-opp-ico svg { width: 12px; height: 12px; color: #fff; }
+      .us-sf-opp-t { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+      .us-sf-opp-t span { font-size: 7.5px; color: #6A6A7A; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+      .us-sf-opp-t b { font-size: 9.5px; color: #1A1A2E; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-sf-amt { font-size: 10.5px; font-weight: 800; color: #0F7A3F; flex-shrink: 0; }
+      .us-sf-path { display: flex; gap: 2px; }
+      .us-sf-step { flex: 1; text-align: center; font-size: 7px; font-weight: 700; padding: 4px 2px; background: #E2E6EE; color: #6A6A7A; white-space: nowrap; overflow: hidden; }
+      .us-sf-step:first-child { border-radius: 999px 0 0 999px; }
+      .us-sf-step:last-child { border-radius: 0 999px 999px 0; }
+      .us-sf-step.is-done { background: #C8E8D4; color: #0F5A2F; }
+      .us-sf-step.is-cur { background: #0176D3; color: #fff; }
+      .us-sf-rows, .us-sf-act { background: #fff; border: 1px solid #E2E6EE; border-radius: 6px; padding: 6px 9px; display: flex; flex-direction: column; gap: 4px; }
+      .us-sf-act-t { font-size: 7.5px; color: #6A6A7A; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+      .us-sf-row { display: flex; justify-content: space-between; gap: 8px; font-size: 8.5px; }
+      .us-sf-row span { color: #6A6A7A; flex-shrink: 0; }
+      .us-sf-row b { color: #1A1A2E; font-weight: 700; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-chat { background: #fff; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 9px; }
+      .us-chat-top { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #EDEDF4; padding-bottom: 6px; }
+      .us-chat-ch { font-size: 10.5px; font-weight: 800; color: #1A1A2E; }
+      .us-chat-day { font-size: 8.5px; color: #8A8A9A; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+      .us-msg { display: flex; gap: 7px; align-items: flex-start; }
+      .us-msg-me { justify-content: flex-end; }
+      .us-msg-ava { width: 20px; height: 20px; border-radius: 50%; color: #fff; font-size: 7.5px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; margin-top: 2px; }
+      .us-msg-body { display: flex; flex-direction: column; gap: 2px; max-width: 78%; }
+      .us-msg-me .us-msg-body { align-items: flex-end; }
+      .us-msg-name { font-size: 8px; font-weight: 700; color: #6A6A7A; }
+      .us-msg-name i { font-style: normal; font-weight: 500; color: #A0A0B0; margin-left: 3px; }
+      .us-msg-bubble { background: #F0F0F6; border-radius: 3px 10px 10px 10px; padding: 6px 9px; font-size: 9.5px; color: #1A1A2E; line-height: 1.4; }
+      .us-msg-bubble-me { background: #E3E8FD; border-radius: 10px 3px 10px 10px; }
+      .us-chat-input { display: flex; align-items: center; gap: 7px; border: 1px solid #DDDDEE; border-radius: 6px; padding: 6px 9px; margin-top: 2px; }
+      .us-chat-input span { flex: 1; font-size: 9px; color: #A0A0B0; }
+      .us-chat-input i, .us-chat-input svg { width: 11px; height: 11px; color: #6A6A7A; flex-shrink: 0; }
+      .us-appwin-body b { font-size: 12px; color: #1A1A2E; }
+      .us-dim { font-size: 10.5px; color: #6A6A7A; }
+      .us-bars { height: 52px; display: flex; align-items: flex-end; gap: 7px; }
+      .us-bars i { flex: 1; background: #E5F6FF; border-top: 3px solid #00BFFF; border-radius: 3px 3px 0 0; }
+      .us-devrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; align-items: end; }
+      .us-dev { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+      .us-dev-frame { border-radius: 9px; padding: 10px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+      .us-win-mini { width: 100%; min-width: 0; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+      .us-win-mini .us-win-brand { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+      .us-win-mini .us-win-head { min-width: 0; }
+      .us-mini-app { display: flex; gap: 8px; align-items: center; padding: 10px; background: #fff; }
+      .us-mini-app b { display: block; font-size: 10.5px; color: #1A1A2E; }
+      .us-mini-app span { font-size: 9px; color: #0F7A3F; font-weight: 600; }
+      .us-dev-tag { text-align: center; font-size: 9.5px; color: #6A6A7A; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .us-dev-tag b { font-weight: 800; margin-right: 4px; color: #1A1A2E; }
+      .us-half .us-dev-tag, .us-half .us-dev-tag b { color: #4A4A5A; }
+      .us-half .us-dev-tag b { color: #1A1A2E; }
+      .us-finale { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
+      .us-half .us-win, .us-win-sm { width: 100%; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28); }
+      .us-half .us-dev-tag { margin-top: 6px; }
+      .us-personas { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+      .us-personas-lab { font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8A9A; }
+      .us-cursor { position: absolute; width: 18px; height: 18px; z-index: 40; pointer-events: none; filter: drop-shadow(0 1px 2px rgba(26, 26, 46, 0.4)); left: 61%; top: 62%; }
+      .us-cursor-travel { animation: usCursorGo 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+      @keyframes usCursorGo { from { left: 80%; top: 86%; } to { left: 61%; top: 62%; } }
+      .us-cursor-click::after { content: ''; position: absolute; left: 6px; top: 6px; width: 9px; height: 9px; border-radius: 999px; background: rgba(0, 0, 204, 0.35); animation: uxCursorClick 480ms ease-out forwards; }
+      .us-cursor-cat { left: 61%; top: 54%; }
+      .us-flowcard { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 30; background: #fff; border: 1px solid #DDDDEE; border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; width: min(340px, 86%); box-shadow: 0 14px 34px rgba(26, 26, 46, 0.18); }
+      .us-flowcard-t { display: flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; color: #0000CC; padding-bottom: 4px; border-bottom: 1px solid #EDEDF4; }
+      .us-flowcard-t i, .us-flowcard-t svg { width: 12px; height: 12px; }
+      .us-flowstep { display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; color: #4A4A5A; }
+      .us-flowstep span { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-flowdev { width: 100%; display: flex; justify-content: center; }
+      .us-openwrap-flow { gap: 10px; }
+      .us-flowstep i, .us-flowstep svg { width: 12px; height: 12px; color: #00BFFF; flex-shrink: 0; }
+      .us-flowstep b { margin-left: auto; color: #0F7A3F; font-weight: 800; }
+      .us-flowstep-ok { color: #0F5A2F; font-weight: 800; background: #EAF5EE; border: 1px solid #C7E4D2; border-radius: 6px; padding: 5px 8px; }
+      .us-flowstep-ok i, .us-flowstep-ok svg { color: #0F7A3F; }
+      .us-substrip { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); background: rgba(0, 0, 0, 0.45); color: #fff; font-size: 10.5px; font-weight: 700; padding: 4px 13px; border-radius: 999px; white-space: nowrap; z-index: 6; animation: usIn 320ms ease; }
+      .us-body2 { display: grid; grid-template-columns: 2.15fr 0.85fr; gap: 14px; align-items: stretch; }
+      @media (max-width: 900px) { .us-body2 { grid-template-columns: 1fr; } }
+      .us-rail { display: flex; flex-direction: column; gap: 8px; padding: 4px 0 4px 2px; }
+      .us-rail-t { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8A9A; margin-bottom: 2px; }
+      .us-step { display: flex; gap: 9px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; border: 1px solid transparent; opacity: 0.45; transition: all 250ms ease; }
+      .us-step.is-on { opacity: 1; background: #F6F8FF; border-color: #D5DAF5; }
+      .us-step.is-done { opacity: 0.8; }
+      .us-step-n { width: 20px; height: 20px; border-radius: 999px; background: #F0F0F6; color: #4A4A5A; font-size: 10px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; margin-top: 1px; }
+      .us-step.is-on .us-step-n { background: #0000CC; color: #fff; }
+      .us-step.is-done .us-step-n { background: #EAF5EE; color: #0F7A3F; }
+      .us-step-tx b { display: block; font-size: 12px; color: #1A1A2E; letter-spacing: -0.01em; white-space: nowrap; }
+      .us-step-tx span { font-size: 10.5px; color: #6A6A7A; line-height: 1.4; display: none; }
+      .us-step.is-on .us-step-tx span { display: block; }
+      @media (max-width: 860px) { .us-devrow, .us-finale { grid-template-columns: 1fr; } }
+      @media (prefers-reduced-motion: reduce) {
+        .us-in, .us-rise, .us-zoom, .us-cursor-travel, .us-pulse, .us-glow { animation: none !important; }
+        .us-in { opacity: 1 !important; }
+        .us-cursor { opacity: 0 !important; }
+      }
+
+      /* Scene 6: real device chrome (laptops + browser) */
+      .us-lap { display: flex; flex-direction: column; align-items: center; width: 100%; filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.45)); }
+      .us-screen { position: relative; overflow: hidden; width: 100%; border: 6px solid #0A0A12; border-bottom-width: 9px; border-radius: 14px; padding: 21px 10px 27px; display: flex; align-items: center; justify-content: center; min-height: 142px; background-clip: padding-box; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 1px 0 rgba(255, 255, 255, 0.08); }
+      .us-cam { position: absolute; top: 3px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: #1E3A5F; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.12); z-index: 3; }
+      .us-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 42px; height: 7px; background: #0A0A12; border-radius: 0 0 6px 6px; z-index: 3; }
+      .us-browser .us-screen { border: 0; border-radius: 0; padding: 14px 10px; min-height: 126px; }
+      .us-lap-base { width: 128%; height: 10px; background: #3A3A4C; border-radius: 2px 2px 12px 12px; margin-top: -2px; position: relative; z-index: 2; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 4px 7px rgba(0, 0, 0, 0.45); }
+      .us-lap-base i { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 48px; height: 4px; background: rgba(255, 255, 255, 0.16); border-radius: 0 0 7px 7px; display: block; }
+      .us-lap-base-mac { background: #DDE1E9; box-shadow: inset 0 1px 0 #F5F7FA, 0 4px 7px rgba(0, 0, 0, 0.45); }
+      .us-lap-base-mac i { background: #C0C6D1; }
+      .us-macbar { position: absolute; top: 0; left: 0; right: 0; height: 13px; background: rgba(250, 250, 254, 0.88); display: flex; align-items: center; gap: 6px; padding: 0 8px; font-size: 6.5px; font-weight: 700; color: #3A3A4C; z-index: 2; }
+      .us-macbar i { width: 7px; height: 7px; flex-shrink: 0; }
+      .us-macbar > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-macbar-r { margin-left: auto; display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+      .us-dock { position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; padding: 3px 7px; z-index: 2; }
+      .us-dock i { width: 10px; height: 10px; border-radius: 3px; display: block; }
+      .us-taskbar { position: absolute; bottom: 0; left: 0; right: 0; height: 17px; background: rgba(22, 22, 42, 0.85); display: flex; align-items: center; padding: 0 8px; z-index: 2; }
+      .us-tb-center { display: flex; align-items: center; gap: 6px; margin: 0 auto; }
+      .us-start { display: grid; grid-template-columns: 4px 4px; gap: 1px; flex-shrink: 0; }
+      .us-start i { width: 4px; height: 4px; background: #00BFFF; display: block; }
+      .us-tb-dot { width: 9px; height: 9px; border-radius: 2.5px; display: inline-block; flex-shrink: 0; }
+      .us-tb-clock { position: absolute; right: 8px; font-size: 6.5px; color: rgba(255, 255, 255, 0.85); font-weight: 700; }
+      .us-browser { border-radius: 8px; overflow: hidden; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35); background: #F0F0F6; }
+      .us-btabs { display: flex; align-items: flex-end; gap: 4px; padding: 4px 8px 0; background: #DDDDEE; }
+      .us-btab { display: inline-flex; align-items: center; gap: 4px; background: #F0F0F6; border-radius: 6px 6px 0 0; font-size: 7px; font-weight: 700; color: #3A3A4C; padding: 3px 9px; white-space: nowrap; }
+      .us-btab i { width: 8px; height: 8px; }
+      .us-btab-ghost { width: 30px; height: 8px; background: rgba(255, 255, 255, 0.4); border-radius: 4px 4px 0 0; }
+      .us-burl { display: flex; align-items: center; gap: 4px; padding: 3px 7px; background: #F0F0F6; }
+      .us-bdot { width: 5px; height: 5px; border-radius: 50%; background: #C3C3D2; flex-shrink: 0; }
+      .us-burl .us-bdot:nth-child(1) { background: #FF5F57; }
+      .us-burl .us-bdot:nth-child(2) { background: #FEBC2E; }
+      .us-burl .us-bdot:nth-child(3) { background: #28C840; }
+      .us-burl-bar { flex: 1; min-width: 0; display: inline-flex; align-items: center; gap: 3px; background: #fff; border: 1px solid #DDDDEE; border-radius: 999px; font-size: 6.5px; color: #6A6A7A; font-weight: 600; padding: 2px 7px; white-space: nowrap; overflow: hidden; }
+      .us-burl-bar i { width: 7px; height: 7px; flex-shrink: 0; }
+      .us-screen .us-win-mini { width: 88%; }
+      .us-win-mini .us-win-head { padding: 4px 6px; gap: 4px; }
+      .us-win-mini .us-win-brand { font-size: 8px; letter-spacing: 0; }
+      .us-win-mini .us-win-mark { display: none; }
+      .us-mini-app { min-width: 0; }
+      .us-mini-app > div { min-width: 0; }
+      .us-mini-app b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .us-mini-app span { white-space: nowrap; }
+      /* Device picker + large journey frame — the workspace fills the screen */
+      .us-frame-lg { width: min(520px, 96%); }
+      .us-frame-lg .us-screen { height: 296px; min-height: 0; padding: 13px 0 17px; }
+      .us-browser.us-frame-lg .us-screen { height: 266px; padding: 0; }
+      .us-frame-lg .us-win { width: 100%; height: 100%; min-height: 0; border-radius: 0; box-shadow: none; }
+      .us-frame-lg .us-win-body { flex: 1; min-height: 0; overflow: hidden; padding: 8px 16px 20px; }
+      .us-frame-lg .us-greet { font-size: 14px; }
+      .us-frame-lg .us-greet-sub { margin-bottom: 8px; }
+      .us-frame-lg .us-app-ico { width: 34px; height: 34px; font-size: 12px; }
+      .us-frame-lg .us-grid { gap: 8px; }
+      .us-frame-lg .us-whisper { display: none; }
+      .us-frame-lg .us-idcard { padding-bottom: 10px; }
+      .us-browser { width: 100%; }
+      .us-pickwrap { width: 100%; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+      .us-pick-hero { display: flex; align-items: center; gap: 12px; background: #F6F8FF; border: 1px solid #DDDDEE; border-radius: 999px; padding: 8px 18px 8px 10px; }
+      .us-pick-hero .us-ava { width: 38px; height: 38px; font-size: 13px; margin: 0; box-shadow: 0 0 0 3px rgba(26, 26, 46, 0.08); }
+      .us-pick-hero-id { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+      .us-pick-hero-name { color: #1A1A2E; font-size: 13px; font-weight: 800; letter-spacing: -0.01em; line-height: 1; }
+      .us-pick-hero-role { display: inline-flex; align-items: center; gap: 5px; color: #0000CC; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+      .us-pick-hero-role i, .us-pick-hero-role svg { width: 11px; height: 11px; }
+      .us-pick-t { color: #1A1A2E; font-size: 13px; font-weight: 800; text-align: center; margin-top: -4px; }
+      .us-pick { display: flex; flex-direction: column; gap: 7px; cursor: pointer; background: transparent; border: 0; padding: 8px; border-radius: 14px; transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease; min-width: 0; }
+      .us-pick:hover { transform: translateY(-5px); background: #F6F8FF; box-shadow: 0 0 0 1.5px rgba(0, 191, 255, 0.55); }
+      .us-pick:active { transform: translateY(-2px); }
+      .us-pick-inner { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+      .us-pick-mark { width: 34px; height: 34px; border-radius: 10px; color: #fff; font-size: 16px; font-weight: 800; display: grid; place-items: center; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); }
+      .us-pick-name { font-size: 9.5px; font-weight: 800; color: #fff; }
+      .us-pick-go { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; font-size: 8.5px; font-weight: 800; color: #fff; background: #0000CC; border-radius: 999px; padding: 4px 11px; margin-top: 3px; transition: background 160ms ease, color 160ms ease; animation: usPickPulse 2.2s ease-out infinite; }
+      .us-pick:hover .us-pick-go { background: #33CCFF; color: #0B2530; }
+      @keyframes usPickPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.45); } 55% { box-shadow: 0 0 0 7px rgba(0, 191, 255, 0); } }
+      .us-pick-go i { width: 9px; height: 9px; }
+      .us-pick .us-screen { height: 128px; min-height: 0; padding: 18px 8px 24px; }
+      .us-pick .us-browser .us-screen { height: 104px; }
+      .us-pick-name { white-space: nowrap; }
+      .us-pickwrap .us-devrow { width: 100%; align-items: end; }
+      .us-pick-sub { color: #6A6A7A; font-size: 11px; font-weight: 600; text-align: center; margin: -8px 0 4px; }
+      .us-pick-tag { display: flex; align-items: center; justify-content: center; gap: 5px; }
+      .us-pick-tag i, .us-pick-tag svg { width: 11px; height: 11px; color: #0000CC; }
+      .us-pick-tag b { color: #1A1A2E; font-size: 11px; }
+      .us-dev .us-screen { height: 150px; min-height: 0; padding: 18px 8px 24px; }
+      .us-dev .us-win-mini { width: 84%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28); }
+      .ux-persona-pill, .ux-persona-pill span { white-space: nowrap; }
+      .us-devrow { gap: 10px; }
+      .us-devrow-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(440px, 100%); margin: 0 auto; }
+      .us-dev .us-win-mini { width: 90%; }
+      .us-dev .us-lap-base { width: 106%; }
+      .us-dev .us-mini-app { padding: 7px; gap: 6px; }
+      .us-dev .us-mini-app b { font-size: 9px; }
+      .us-dev .us-mini-app span { white-space: normal; font-size: 8px; line-height: 1.25; }
+      .us-half .us-win { zoom: 0.8; }
+      /* lucide swaps <i data-lucide> for <svg> \u2014 size those too */
+      .us-macbar svg { width: 7px; height: 7px; }
+      .us-hint svg { width: 18px; height: 18px; }
+      .us-added svg { width: 11px; height: 11px; }
+      .us-pick-go svg { width: 9px; height: 9px; }
+      .us-btab svg { width: 8px; height: 8px; }
+      .us-burl-bar svg { width: 7px; height: 7px; flex-shrink: 0; }
+      /* Scene 7 permission diff + finale note */
+      .us-diff { display: flex; align-items: center; gap: 10px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px; padding: 5px 12px; }
+      .us-diff-row { display: flex; align-items: center; gap: 5px; }
+      .us-diff-row.is-dim { opacity: 0.5; }
+      .us-diff-ava { width: 15px; height: 15px; border-radius: 50%; color: #fff; font-size: 6.5px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
+      .us-diff-role { font-size: 8.5px; font-weight: 700; color: rgba(255, 255, 255, 0.85); white-space: nowrap; }
+      .us-diff-apps { display: flex; gap: 3px; }
+      .us-diff-ico { width: 14px; height: 14px; border-radius: 4px; position: relative; color: #fff; font-size: 6px; font-weight: 800; display: grid; place-items: center; overflow: hidden; flex-shrink: 0; }
+      .us-diff-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 1px; background: #fff; }
+      .us-diff-arrow { width: 12px; height: 12px; color: #00BFFF; flex-shrink: 0; }
+      .us-finalewrap { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+      .us-finale-note { text-align: center; font-size: 11.5px; font-weight: 800; color: #1A1A2E; }
 
       /* Cinema Mode */
       .cinema-mode .device-frame { box-shadow: 0 12px 40px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05); transition: box-shadow 0.5s ease; }
@@ -6087,7 +6507,7 @@
         #panel-solution > .section-card .mt-2.text-\\[10px\\] { font-size: 9px !important; margin-top: 6px !important; }
 
         /* Control strip: thinner */
-        #panel-solution .view-toggle { padding: 6px 10px !important; font-size: 11px !important; }
+        #panel-solution .view-toggle { padding: clamp(2.6px, 0.68cqw, 6px) clamp(4.5px, 1.14cqw, 10px) !important; font-size: clamp(7.4px, 1.25cqw, 11px) !important; gap: clamp(3px, 0.57cqw, 5px) !important; }
 
         /* CTA row: less vertical whitespace */
         #panel-solution > .flex.flex-col.items-end { margin-top: 4px !important; }
@@ -8249,6 +8669,304 @@
         .alm-hw-loop span { white-space: normal; }
         .alm-chart { max-width: 100%; }
       }
+
+      /* ══════════════════════════════════════════════════════════════════
+         WHAT'S INSIDE APPLICATION WORKSPACE — the orbit
+         Six modules ring the one they exist to serve. Geometry is owned by
+         LC_ORBIT in script and arrives on the elements as inline percentages
+         and SVG user units; everything here is paint. Below 900px the ring is
+         dropped and the same markup falls back to a wrapped list with the hub
+         leading, so nothing depends on the circle being drawable.
+         ══════════════════════════════════════════════════════════════════ */
+      .lc-orbit-wrap { display: flex; align-items: center; justify-content: center; gap: 30px; max-width: 1320px; margin: 0 auto; }
+      .lc-orbit {
+        position: relative;
+        flex: 0 1 880px; width: 100%; max-width: 880px;
+        aspect-ratio: 880 / 390;
+        container-type: inline-size;
+      }
+      /* Every size below is tuned so that at the design width of 800px the
+         numbers land exactly where they were set by hand; below it the whole
+         composition scales instead of the type stranding at fixed pixels. */
+      .lc-sat .lifecycle-label { font-size: clamp(5.9px, 0.97cqw, 8.5px); }
+      .lc-sat .view-toggle svg, .lc-sat .view-toggle i { width: clamp(8.5px, 1.59cqw, 14px); height: clamp(8.5px, 1.59cqw, 14px); }
+      .lc-hub-ico { width: clamp(20px, 3.86cqw, 34px); height: clamp(20px, 3.86cqw, 34px); }
+      .lc-hub-ico svg, .lc-hub-ico i { width: clamp(11px, 2.05cqw, 18px); height: clamp(11px, 2.05cqw, 18px); }
+      .lc-hub-name { font-size: clamp(10px, 1.82cqw, 15px); }
+      .lc-hub-sub { font-size: clamp(7.5px, 1.28cqw, 11px); }
+
+      /* Gutter notes: what each half of the ring is for. The rule runs down
+         the side facing the circle and takes the colour of that half's state. */
+      .lc-arc {
+        flex: 1 1 172px; max-width: 252px; display: flex; flex-direction: column; gap: 4px;
+        transition: border-color 0.3s ease;
+      }
+      .lc-arc-l { text-align: right; padding-right: 13px; border-right: 2px solid var(--r-divider, #DDDDEE); }
+      .lc-arc-r { text-align: left;  padding-left:  13px; border-left:  2px solid var(--r-divider, #DDDDEE); }
+      .lc-arc.is-live { border-color: var(--r-blue, #0000CC); }
+      .lc-arc.is-done { border-color: var(--re-green, #0F7A3F); }
+      .lc-arc-t {
+        font-size: 12px; font-weight: 800; letter-spacing: -0.015em; line-height: 1.2;
+        color: var(--r-ink, #1A1A2E); transition: color 0.3s ease;
+      }
+      .lc-arc.is-live .lc-arc-t { color: var(--r-blue, #0000CC); }
+      .lc-arc-c { font-size: 10.5px; font-weight: 500; line-height: 1.45; color: #6A6A7A; }
+      .lc-orbit-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+      .lc-orbit-hint {
+        margin-top: 6px; text-align: center;
+        font-size: 9.5px; font-weight: 600; letter-spacing: 0.04em; color: #8A8A9A;
+      }
+
+      /* The ring stays quiet so the pills remain the loudest thing on it. */
+      .lc-ring-base  { fill: none; stroke: #DDDDEE; stroke-width: 1.5; stroke-dasharray: 2.5 7; stroke-linecap: round; }
+      /* The tour closes the circle as it goes; the arc is the progress bar. */
+      .lc-ring-prog  {
+        fill: none; stroke: var(--r-blue, #0000CC); stroke-width: 2.5; stroke-linecap: round;
+        stroke-dasharray: 100; stroke-dashoffset: 100; opacity: 0;
+        transition: stroke-dashoffset 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease;
+      }
+      .lc-live .lc-ring-prog { opacity: 1; }
+
+      /* Spokes: every module reports to the middle. */
+      .lc-spoke { stroke: #DDDDEE; stroke-width: 1.25; stroke-linecap: round; transition: stroke 0.3s ease, stroke-width 0.3s ease; }
+      .lc-spoke.is-live { stroke: var(--r-blue, #0000CC); stroke-width: 1.9; }
+      .lc-spoke.is-done { stroke: var(--re-green, #0F7A3F); }
+
+      /* Idle, one mark runs the loop clockwise on the same 7s clock as the
+         diagram above, and each spoke lights as it is passed — so the section
+         reads as a cycle before anyone clicks anything. */
+      .lc-orbit-mark {
+        fill: var(--r-cyan, #00BFFF);
+        filter: drop-shadow(0 0 6px rgba(0, 191, 255, 0.9));
+        animation: lcOrbitRun 7s linear infinite;
+      }
+      @keyframes lcOrbitRun { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+      .lc-orbit-trail {
+        fill: none; stroke: var(--r-cyan, #00BFFF); stroke-width: 2.6; stroke-linecap: round;
+        stroke-dasharray: 8 92; opacity: 0.5;
+        animation: lcOrbitTrail 7s linear infinite;
+      }
+      @keyframes lcOrbitTrail { from { stroke-dashoffset: 8; } to { stroke-dashoffset: -92; } }
+      .lc-live .lc-orbit-mark, .lc-live .lc-orbit-trail { opacity: 0; }
+      .arch-lifecycle-strip:not(.lc-live) .lc-spoke {
+        animation: lcSpokePass 7s ease-in-out infinite;
+        animation-delay: calc(var(--lc-slot, 0) * 1.1666s);
+      }
+      @keyframes lcSpokePass { 0%, 100% { stroke: #DDDDEE; } 4% { stroke: rgba(0, 0, 204, 0.55); } 16% { stroke: #DDDDEE; } }
+      /* The dots walk the ring on the same clock, so re-time the stagger from
+         the module's ring slot instead of its position in the source array. */
+      .arch-lifecycle-strip:not(.lc-live) .lc-sat .lifecycle-dot::before { animation-delay: calc(var(--lc-slot, 0) * 1.1666s); }
+
+      /* ── Satellites ── */
+      .lc-sat { position: absolute; transform: translate(-50%, -50%); z-index: 2; gap: 4px; }
+      .lc-sat.lc-out-b { flex-direction: column-reverse; }   /* labels always radiate outward */
+      .lc-sat .lifecycle-label { padding: 1px 5px; border-radius: 4px; background: rgba(252, 252, 255, 0.94); }
+      .lc-item-current.lc-sat { transform: translate(-50%, -50%) scale(1.07); }
+      .lc-sat .view-toggle { box-shadow: 0 2px 8px -3px rgba(26, 26, 46, 0.16); background: #fff; white-space: nowrap; }
+      .lc-sat .view-toggle:hover:not(.active) { box-shadow: 0 4px 14px -4px rgba(26, 26, 46, 0.22); }
+
+      /* ── Hub: the user experience, and the reason for the other six ── */
+      .lc-hub {
+        position: absolute; left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        display: block; width: 24%; max-width: 219px; z-index: 3;
+      }
+      .lc-hub-halo {
+        position: absolute; inset: -26%; border-radius: 50%; pointer-events: none;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 204, 0.13) 32%, rgba(0, 0, 204, 0.05) 42%, rgba(0, 0, 204, 0.014) 54%, transparent 68%);
+        animation: lcHubBreathe 7s ease-in-out infinite;
+      }
+      @keyframes lcHubBreathe { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.06); opacity: 1; } }
+      .lc-hub-btn {
+        position: relative; z-index: 1;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+        width: 100%; aspect-ratio: 1; padding: 0 17px;
+        border-radius: 50%; border: 1.5px solid #C6CCF2; background: #F6F8FF;
+        text-align: center; cursor: pointer;
+        box-shadow: 0 8px 26px -10px rgba(26, 26, 46, 0.26);
+        overflow: hidden;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .lc-hub-btn:hover { transform: translateY(-1px); border-color: var(--r-blue, #0000CC); box-shadow: 0 12px 32px -10px rgba(0, 0, 204, 0.34); }
+      .lc-hub-btn.active,
+      .lc-item-current .lc-hub-btn {
+        border-color: var(--r-blue, #0000CC);
+        background: linear-gradient(180deg, #fff 0%, var(--r-quote-bg, #F6F8FF) 100%);
+        box-shadow: 0 12px 32px -10px rgba(0, 0, 204, 0.34);
+      }
+      .lc-hub-stage { line-height: 1.1; }
+      .lc-hub-ico {
+        display: grid; place-items: center;
+        width: 34px; height: 34px; margin-top: 3px;
+        border-radius: 9px; background: var(--r-blue, #0000CC);
+        box-shadow: 0 3px 10px -3px rgba(0, 0, 204, 0.5);
+      }
+      .lc-hub-ico svg, .lc-hub-ico i { width: 18px; height: 18px; color: #fff; }
+      .lc-hub-name { margin-top: 4px; font-weight: 800; letter-spacing: -0.022em; line-height: 1.15; color: var(--r-ink, #1A1A2E); }
+      .lc-hub-sub  { margin-top: 1px; font-size: clamp(7.5px, 1.28cqw, 11px); font-weight: 600; letter-spacing: 0.01em; line-height: 1.3; color: #8A8A9A; text-wrap: balance; }
+      .lc-hub-btn.active .lc-hub-sub, .lc-item-current .lc-hub-sub { color: var(--r-blue, #0000CC); }
+      /* A circle has no bottom edge, so the hub's step timer is a ring. */
+      .lc-hub-prog { position: absolute; inset: -7px; width: calc(100% + 14px); height: calc(100% + 14px); transform: rotate(-90deg); pointer-events: none; z-index: 2; }
+      .lc-hub-prog-c {
+        fill: none; stroke: var(--r-cyan, #00BFFF); stroke-width: 2.4; stroke-linecap: round;
+        stroke-dasharray: 100; stroke-dashoffset: 100;
+        animation-name: lcRingFill; animation-timing-function: linear; animation-fill-mode: forwards;
+      }
+      @keyframes lcRingFill { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+      .lc-hub-tick {
+        position: absolute; top: 6%; right: 6%; z-index: 3;
+        display: grid; place-items: center; width: 20px; height: 20px;
+        border-radius: 50%; background: var(--re-green, #0F7A3F); color: #fff;
+        box-shadow: 0 0 0 3px #fff;
+      }
+      .lc-hub-tick svg { width: 10px; height: 10px; }
+      @container (max-width: 660px) { .lc-hub-sub { display: none; } }
+      @container (max-width: 545px) { .lc-hub-stage { display: none; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        .lc-orbit-mark, .lc-orbit-trail, .lc-spoke, .lc-hub-halo, .lc-hub-prog-c { animation: none !important; }
+        .lc-hub-prog-c { stroke-dashoffset: 0; }
+      }
+
+      /* ── Fitting a full screen ───────────────────────────────────────────
+         The panel has to sit inside one viewport without scrolling, and the
+         circle is the tallest thing in it. Because .lc-orbit is a size
+         container, one max-width scales the ring, the pills and their type
+         together, so shorter viewports get a smaller composition rather than
+         a broken one. Steps are set from the panel's real budget: chrome and
+         the card tabs take ~180px, the pipeline card takes the rest. ── */
+      /* The circle is the only thing here that can shrink continuously, so it
+         absorbs the whole height budget: width follows the room left over
+         once the chrome, the card tabs and the pipeline card have taken
+         theirs (880/390 converts leftover height back into width). The
+         subtracted constant changes per band because the pipeline card and
+         the circle's own heading step down at those same breakpoints. */
+      @media (min-width: 901px) and (max-height: 1100px) { .lc-orbit { max-width: clamp(430px, calc((100vh - 650px) * 2.2564), 880px); } }
+      @media (min-width: 901px) and (max-height: 1000px) { .lc-orbit { max-width: clamp(430px, calc((100vh - 628px) * 2.2564), 880px); } }
+      @media (min-width: 901px) and (max-height: 900px)  { .lc-orbit { max-width: clamp(430px, calc((100vh - 590px) * 2.2564), 880px); } }
+      @media (min-width: 901px) and (max-height: 820px)  { .lc-orbit { max-width: clamp(430px, calc((100vh - 575px) * 2.2564), 880px); } }
+      @media (min-width: 901px) and (max-height: 1100px) {
+        /* card tabs */
+        #panel-solution > .grid .cardtab > div { padding: 8px 14px; }
+        #panel-solution > .grid .cardtab-icon { height: 30px; width: 30px; }
+        /* the circle */
+        #panel-solution > .section-card { padding: 10px 14px !important; }
+        /* the pipeline */
+        .rws-quiet .rws-head { padding: 9px 14px 10px; }
+        .rws-slab-t { font-size: 15px; }
+        .rws-rail { padding: 7px 14px 8px; }
+        .rws-chip { padding: 4px 10px; font-size: 11px; }
+        .rws-chips-sm .rws-chip { padding: 3.5px 9px; font-size: 10.5px; }
+        .rws-chip i, .rws-chip svg { width: 13px; height: 13px; }
+        .rws-rail-lab { font-size: 8px; margin-bottom: 4px; }
+        .rws-quiet .rws-io { margin-top: 10px; }
+        /* a wider input column takes the note from three lines to two, which
+           is where most of this card's spare height was sitting */
+        .rws-io { grid-template-columns: 0.95fr 2.15fr 0.9fr; gap: 10px; }
+        .rws-io.rws-io-orbit { grid-template-columns: minmax(0, 1fr) 44px minmax(430px, 2.4fr) 44px minmax(0, 1fr); }
+        .rws-stages { padding-top: 15px; gap: 7px; }
+        .rws-stage { padding: 7px 7px 8px; gap: 3px; }
+        .rws-stage-ic { width: 23px; height: 23px; }
+        .rws-pills { gap: 5px; }
+        .rws-pill { padding: 5px 9px; }
+        .rws-inote { margin: 0 0 1px; font-size: 9.2px; line-height: 1.3; }
+        .rws-lab { margin-bottom: 4px; }
+        .rws-brk { height: 11px; }
+      }
+      @media (min-width: 901px) and (max-height: 1000px) {
+        .arch-inside-t { font-size: 15px; }
+        .arch-inside-s { font-size: 11px; }
+        .arch-inside-h { margin-bottom: 7px; }
+        .lc-orbit-hint { display: none; }
+      }
+      @media (min-width: 901px) and (max-height: 900px) {
+        .rws-inote { display: none; }
+        .rws-stage span { font-size: 8.8px; }
+        .rws-stage b { font-size: 11.5px; }
+        .rws-chip { padding: 3.5px 9px; font-size: 10.5px; }
+      }
+      @media (min-width: 901px) and (max-height: 820px) {
+        .arch-inside-s { display: none; }
+      }
+
+      /* Three columns need 800px of ring plus both gutters. Under that the
+         gutters drop below the circle rather than squeezing it, because a
+         shrunken ring crowds the pills long before it runs out of room. */
+      @media (max-width: 1320px) {
+        .lc-orbit-wrap { flex-wrap: wrap; gap: 18px 26px; }
+        .lc-orbit { flex: 1 1 100%; margin: 0 auto; }
+        .lc-arc-l, .lc-arc-r {
+          flex: 0 1 320px; max-width: 320px; text-align: left; padding: 0 0 0 13px;
+          border-right: none; border-left: 2px solid var(--r-divider, #DDDDEE);
+        }
+        .lc-arc-r { order: 1; }
+        .lc-arc-l { order: 2; }
+        .lc-orbit-hint { margin-top: 14px; }
+        .lc-arc.is-live { border-color: var(--r-blue, #0000CC); }
+        .lc-arc.is-done { border-color: var(--re-green, #0F7A3F); }
+      }
+
+      /* ── Under 900px the circle stops paying for itself: same markup, laid
+           out as a wrapped list with the hub leading, so the message survives
+           even though the geometry does not. ── */
+      @media (max-width: 900px), (max-height: 700px) {
+        .lc-arc { display: none; }
+        .lc-orbit {
+          max-width: none; aspect-ratio: auto;
+          display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end;
+          gap: 12px 8px;
+        }
+        .lc-orbit-svg { display: none; }
+        .lc-sat { position: static; transform: none; }
+        .lc-sat .lifecycle-label { padding: 0; background: none; }
+        .lc-sat.lc-out-b { flex-direction: column; }
+        .lc-item-current.lc-sat { transform: translateY(-2px); }
+        .lc-hub {
+          position: relative; left: auto; top: auto; transform: none;
+          width: 100%; max-width: none; order: -1; margin-bottom: 2px;
+        }
+        .lc-hub-halo, .lc-hub-prog { display: none; }
+        .lc-hub-btn {
+          flex-direction: row; gap: 10px; justify-content: center;
+          aspect-ratio: auto; padding: 11px 18px; border-radius: 14px;
+          box-shadow: 0 2px 10px -4px rgba(26, 26, 46, 0.2);
+        }
+        .lc-hub-btn:hover, .lc-hub-btn.active, .lc-item-current .lc-hub-btn { box-shadow: 0 4px 14px -5px rgba(0, 0, 204, 0.32); }
+        .lc-hub-ico { order: -1; width: 28px; height: 28px; margin-top: 0; border-radius: 8px; }
+        .lc-hub-ico svg, .lc-hub-ico i { width: 15px; height: 15px; }
+        .lc-hub-name { margin-top: 0; font-size: 14px; }
+        .lc-hub-sub { display: none; }
+        .lc-hub-tick { top: 50%; right: 10px; transform: translateY(-50%); }
+      }
+
+      /* ── Orbit embedded in the architecture diagram ──────────────────
+         Inside the pipeline card the circle's size comes from its grid track,
+         not from the viewport-height budgets tuned for the old standalone
+         section — and the short-viewport list fallback must not fire while
+         the diagram is wide enough to draw the ring. ── */
+      @media (min-width: 901px) {
+        .lc-in-diagram { padding: 14px 0 10px; flex-wrap: wrap; gap: 10px 26px; position: relative; }
+        .lc-in-diagram .lc-orbit { max-width: 880px !important; aspect-ratio: 880 / 390; display: block; flex: 1 1 100%; margin: 0 auto; }
+        .lc-in-diagram .lc-arc { display: flex; flex: 0 1 300px; max-width: 300px; text-align: left; padding: 0 0 0 13px; border-right: none; border-left: 2px solid var(--r-divider, #DDDDEE); }
+        .lc-in-diagram .lc-arc-r { order: 1; }
+        .lc-in-diagram .lc-arc-l { order: 2; }
+        .lc-in-diagram .lc-orbit-svg { display: block; }
+        .lc-in-diagram .lc-sat { position: absolute; transform: translate(-50%, -50%); }
+        .lc-in-diagram .lc-sat.lc-out-b { flex-direction: column-reverse; }
+        .lc-in-diagram .lc-sat .lifecycle-label { padding: 1px 5px; background: rgba(252, 252, 255, 0.94); }
+        .lc-in-diagram .lc-item-current.lc-sat { transform: translate(-50%, -50%) scale(1.07); }
+        .lc-in-diagram .lc-hub { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 24%; max-width: 219px; order: 0; margin: 0; }
+        .lc-in-diagram .lc-hub-halo, .lc-in-diagram .lc-hub-prog { display: block; }
+        .lc-in-diagram .lc-hub-btn { flex-direction: column; gap: 2px; justify-content: center; aspect-ratio: 1; padding: 0 17px; border-radius: 50%; box-shadow: 0 8px 26px -10px rgba(26, 26, 46, 0.26); }
+        .lc-in-diagram .lc-hub-ico { order: 0; width: clamp(20px, 3.86cqw, 34px); height: clamp(20px, 3.86cqw, 34px); margin-top: 3px; border-radius: 9px; }
+        .lc-in-diagram .lc-hub-ico svg, .lc-in-diagram .lc-hub-ico i { width: clamp(11px, 2.05cqw, 18px); height: clamp(11px, 2.05cqw, 18px); }
+        .lc-in-diagram .lc-hub-name { margin-top: 4px; font-size: clamp(11px, 2.05cqw, 17px); }
+        .lc-in-diagram .lc-hub-stage { font-size: clamp(8.5px, 1.25cqw, 11px); }
+        .lc-in-diagram .lc-sat .view-toggle { font-size: clamp(11px, 1.6cqw, 14px); padding: 7px 14px; gap: 7px; }
+        .lc-in-diagram .lc-sat .view-toggle svg, .lc-in-diagram .lc-sat .view-toggle i { width: clamp(11px, 1.8cqw, 16px); height: clamp(11px, 1.8cqw, 16px); }
+        .lc-in-diagram .lc-sat .lifecycle-label { font-size: clamp(7.5px, 1.15cqw, 10px); }
+        .lc-in-diagram .lc-hub-tick { top: 6%; right: 6%; transform: none; }
+      }
 </style>
   </head>
 
@@ -8274,6 +8992,8 @@
         solutionViewAdmin: false,
         adminPane: 'console',
         solutionViewMultiTenant: false,
+        uxPersona: 0,
+        uxDevice: 'win',
         lifecyclePlaying: false,
         lcStep: -1,
         lcTimers: [],
@@ -8489,7 +9209,7 @@
         flowRunning: false,
         flowScenario: 'first',
         flowScenarioIdx: -1,
-        uxScenarioIdx: 1,
+        uxScenarioIdx: 0,
         flowPhase: 'idle',
         flowPaused: false,
         flowQueue: [],
@@ -8528,7 +9248,7 @@
         {
           id: 'core', icon: 'layers', title: 'How it works.',
           bullets: ['<strong>One platform for the whole application lifecycle.</strong> Package, deploy, patch, govern, and retire every app \u2014 across Intune, ConfigMgr, Citrix, AVD, Windows, and macOS \u2014 through the tools you already own.','<strong>Package</strong> \u2014 Install logic, detection rules, dependencies, uninstall steps, and deployment formats are prepared for you. 8,000+ maintained apps are ready to use; your own apps get the same structure.','<strong>Deploy</strong> \u2014 One package reaches the right user, device, and path \u2014 local, VDI, SaaS, or Cloud PC \u2014 with no rebuild per environment.','<strong>Patch</strong> \u2014 New versions, security fixes, and replacements promote through Dev, Test, Acceptance, Production, with staged rollout and a rollback path.','<strong>Govern</strong> \u2014 Consistent rules for how apps are approved, deployed, updated, and retired. Entitlements, versions, licensing, and every action in one dashboard.','<strong>Retire</strong> \u2014 End-of-life apps removed cleanly across every environment. No orphaned installs.'],
-          closer: 'Save time. Reduce risk. Gain control.', timeline: false, bgHeader: 'bg-[#F0F0F6]', bgContent: 'bg-[#F0F0F6]'
+          closer: 'One definition. Every platform you already run.', timeline: false, bgHeader: 'bg-[#F0F0F6]', bgContent: 'bg-[#F0F0F6]'
         },
         {
           id: 'trust', icon: 'shield-check', title: 'Who trusts it.',
@@ -8650,12 +9370,12 @@
       // pop-out modal's Next button (which advances to the adjacent module).
       /* Dwell per lifecycle step (ms) — the tour timer and the rail's progress
          bar read the same array, so the bar can never disagree with the tour. */
-      const LC_DWELL = [8800, 11800, 11200, 12000, 8900, 8600, 8900];
+      const LC_DWELL = [27500, 8800, 11800, 11200, 8900, 8600, 8900];
       const LIFECYCLE_MODULES = [
+        {view:'user',       stage:'RUN',       name:'User Experience',       icon:'monitor-smartphone'},
         {view:'setupstore', stage:'PACKAGE',   name:'Setup Store',           icon:'library'},
         {view:'admin',      stage:'DEPLOY',    name:'Admin Console',         icon:'settings-2'},
         {view:'onboarding', stage:'ONBOARD',   name:'Onboarding',            icon:'user-plus'},
-        {view:'user',       stage:'RUN',       name:'User Experience',       icon:'monitor-smartphone'},
         {view:'dashboard',  stage:'GOVERN',    name:'Dashboard & Reporting', icon:'bar-chart-3'},
         {view:'ai',         stage:'ASSIST',    name:'AI Copilot',            icon:'sparkles'},
         {view:'multitenant',stage:'SCALE',     name:'Multi-Tenant',          icon:'building-2'},
@@ -8668,6 +9388,49 @@
       const activeLifecycleView = () =>
         LIFECYCLE_MODULES.find(m => STATE[lifecycleViewFlag(m.view)])?.view || null;
 
+      /* ── "What's inside" orbit geometry ──────────────────────────────────
+         The seven modules used to read left-to-right, which said they were a
+         queue of equals. They are not. Six of them exist to produce and
+         protect the seventh, so RUN is lifted out of the line and made the
+         hub, and the rest ring it in lifecycle order, clockwise from twelve
+         o'clock, every spoke pointing at the thing the customer actually
+         buys. The ring, the spokes, the arrows and the pill positions are all
+         derived from these numbers, so the drawing and the layout cannot
+         drift apart. Order is untouched: LIFECYCLE_MODULES stays index-
+         aligned with the guided tour's step list. ── */
+      const LC_HUB_VIEW = 'user';
+      const LC_ORBIT = { w: 880, h: 390, cx: 440, cy: 195, rx: 340, ry: 148, hubR: 106 };
+      const lcHubIndex  = () => LIFECYCLE_MODULES.findIndex(m => m.view === LC_HUB_VIEW);
+      const lcRingCount = () => LIFECYCLE_MODULES.length - 1;
+      /* Ring slot for a module index: the hub is lifted out, the rest close up. */
+      const lcSlot = (idx) => idx < lcHubIndex() ? idx : idx - 1;
+      const lcPoint = (slot) => {
+        const a = (-90 + (360 / lcRingCount()) * slot) * Math.PI / 180;
+        return { x: LC_ORBIT.cx + LC_ORBIT.rx * Math.cos(a), y: LC_ORBIT.cy + LC_ORBIT.ry * Math.sin(a) };
+      };
+      const LC_RING_PATH = (() => {
+        const { cx, cy, rx, ry } = LC_ORBIT;
+        return `M ${cx} ${cy - ry} A ${rx} ${ry} 0 1 1 ${cx} ${cy + ry} A ${rx} ${ry} 0 1 1 ${cx} ${cy - ry}`;
+      })();
+      /* How far round the ring the guided tour has travelled. The hub is not
+         on the ring, so the arc holds at the halfway mark while the tour is
+         inside the user experience, then carries on where it left off. */
+      const lcRingProgress = () => {
+        if (!STATE.lifecyclePlaying || STATE.lcStep < 0) return 0;
+        const hub = lcHubIndex();
+        const reached = STATE.lcStep >= hub ? STATE.lcStep : STATE.lcStep + 1;
+        return Math.max(0, Math.min(1, reached / lcRingCount()));
+      };
+
+      /* Walk order for the pop-out's next arrow and its progress dots: the hub
+         first, because it is the thing the other six serve, then the ring
+         clockwise — the same path the orbit draws. Held apart from
+         LIFECYCLE_MODULES so that array stays index-aligned with the guided
+         tour's step list and with the PDF module capture. */
+      /* Pop-out nav follows the guided tour's order exactly, so autoplay and
+         click-through walk the same sequence. */
+      const LC_NAV = LIFECYCLE_MODULES;
+
       /* ── The Recast Approach diagram ────────────────────────────────────
          Static markup, held here rather than inline in renderSolution so the
          Executive Summary PDF can mount the identical nodes off-screen and
@@ -8676,6 +9439,14 @@
          reads its labels straight back out of these nodes. ── */
       const RWS_DIAGRAM_HTML = `
               <div class="rws">
+                <div class="rws-slab rws-quiet">
+                <div class="rws-head">
+                  <span class="rws-head-mk" aria-hidden="true">Re</span>
+                  <div class="rws-slab-t">Recast Application Workspace</div>
+                  <!--LC_TOUR_BTN-->
+                </div>
+
+                <div class="rws-rail rws-rail-in">
                 <div class="rws-rail-lab">What you already run</div>
                 <div class="rws-chips">
                   <span class="rws-chip"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="rwsIn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00BFFF"/><stop offset="1" stop-color="#0078D4"/></linearGradient></defs><path fill="url(#rwsIn)" d="M22.5 12.5a6.5 6.5 0 0 0-12.7-1.7A5 5 0 0 0 10 21h12a4.5 4.5 0 0 0 .5-8.5z"/></svg>Intune</span>
@@ -8684,33 +9455,24 @@
                   <span class="rws-chip"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="4" width="11.5" height="11.5" fill="#F25022"/><rect x="16.5" y="4" width="11.5" height="11.5" fill="#7FBA00"/><rect x="4" y="16.5" width="11.5" height="11.5" fill="#00A4EF"/><rect x="16.5" y="16.5" width="11.5" height="11.5" fill="#FFB900"/></svg>AVD / W365</span>
                   <span class="rws-chip"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#1168ED" d="M22.5 4.5c.6 0 1 .5 1 1.1V18c0 5-4 9-9 9-2.4 0-4.5-.9-6.1-2.4-.4-.4-.4-1 0-1.4l2.1-2.1c.4-.4 1-.4 1.4-.1.7.6 1.6 1 2.6 1 2.2 0 4-1.8 4-4V5.6c0-.6.5-1.1 1.1-1.1h2.9z"/></svg>Jamf</span>
                 </div>
+                </div>
                 <div class="rws-brk rws-brk-t" aria-hidden="true"><span class="rws-flow"></span><span class="rws-flow"></span><span class="rws-flow"></span></div>
 
-                <div class="rws-slab rws-quiet">
-                  <div class="rws-head">
-                    <div class="rws-slab-t">Recast Application Delivery Software</div>
-                  </div>
-
-                  <div class="rws-io">
+                  <div class="rws-io rws-io-orbit">
                     <div class="rws-col">
                       <span class="rws-lab">What goes in</span>
                       <div class="rws-pills">
                         <div class="rws-pill rws-pill-store">
                           <span class="rws-store-mk">Re</span>
-                          <b>Recast Setup Store</b>
-                          <em>8,000+ apps</em>
+                          <b>8,000+ maintained apps</b>
                         </div>
                         <div class="rws-pill"><i data-lucide="wrench"></i>Your own apps</div>
-                        <p class="rws-inote">Store titles arrive sourced, packaged, tested and patched by Recast. Your own apps run the same pipeline.</p>
-                        <div class="rws-pill"><i data-lucide="users"></i>Users and groups <span style="color:#6A6A7A;font-weight:500">&middot; Entra ID, LDAP</span></div>
+                        <div class="rws-pill rws-pill-users"><i data-lucide="users"></i><span class="rws-pill-2l">Users and groups <em>Entra ID &middot; LDAP</em></span></div>
                       </div>
                     </div>
-                    <div class="rws-stages">
-                      <div class="rws-stage"><span class="rws-stage-ic"><i data-lucide="box"></i></span><b>Package</b><span>Ready made, or built from your installer</span></div>
-                      <div class="rws-stage"><span class="rws-stage-ic"><i data-lucide="send"></i></span><b>Deploy / Update</b><span>To the right person and device &mdash; new versions ship the same way</span></div>
-                      <div class="rws-stage"><span class="rws-stage-ic"><i data-lucide="clipboard-check"></i></span><b>Govern</b><span>Entitlements, compliance, audit trail</span></div>
-                      <div class="rws-stage"><span class="rws-stage-ic"><i data-lucide="archive"></i></span><b>Retire</b><span>Removed cleanly, everywhere it landed</span></div>
-                    </div>
+                    <div class="rws-hbrk rws-hbrk-l" aria-hidden="true"><span class="rws-hflow"></span><span class="rws-hflow"></span></div>
+                    <!--LC_ORBIT-->
+                    <div class="rws-hbrk rws-hbrk-r" aria-hidden="true"><span class="rws-hflow"></span><span class="rws-hflow"></span></div>
                     <div class="rws-col">
                       <span class="rws-lab">What comes out</span>
                       <div class="rws-pills">
@@ -8721,9 +9483,8 @@
                     </div>
                   </div>
 
-                </div>
-
                 <div class="rws-brk rws-brk-b" aria-hidden="true"><span class="rws-flow"></span><span class="rws-flow"></span><span class="rws-flow"></span></div>
+                <div class="rws-rail rws-rail-out">
                 <div class="rws-rail-lab">Everyone you support</div>
                 <div class="rws-chips rws-chips-sm">
                   <span class="rws-chip"><i data-lucide="monitor"></i>Windows</span>
@@ -8734,17 +9495,19 @@
                   <span class="rws-chip"><i data-lucide="laptop"></i>BYOD / Remote</span>
                   <span class="rws-chip"><i data-lucide="globe"></i>Browser-Based</span>
                 </div>
+                </div>
 
+                </div>
               </div>`;
 
       const SCENARIOS = [
         {
           id: 'catalog', label: 'Self-service', subtitle: 'User gets an app -  no ticket',
-          scenarioDesc: "A user needs Microsoft Teams. Instead of filing a ticket and waiting days, they browse the self-service catalog, click Get, and the app is delivered -  approved, configured -  in seconds.",
-          userMsg: 'Adding Teams...', successMsg: 'Teams added to workspace', appName: 'Microsoft Teams', appIcon: {letter: 'T', color: '#5B53D6'},
-          checks: [{q:'User identity?',a:'Verified -  entitled to app'},{q:'Approval?',a:'Auto-approved (catalog policy)'},{q:'Best delivery?',a:'Local install (corporate)'},{q:'Config?',a:'Applying MFA + collaboration defaults'}],
+          scenarioDesc: "A designer needs Adobe Creative Cloud -  licensed, and normally a ticket and a wait. Instead they browse the self-service catalog, click Get, and the app is delivered -  approved, licensed, configured -  in seconds.",
+          userMsg: 'Adding Creative Cloud...', successMsg: 'Creative Cloud added to workspace', appName: 'Adobe Creative Cloud', appIcon: {letter: 'Cc', color: '#DA1F26'},
+          checks: [{q:'User identity?',a:'Verified -  entitled to app'},{q:'Approval?',a:'Auto-approved (catalog policy)'},{q:'Best delivery?',a:'Local install (corporate)'},{q:'Config?',a:'Assigning license + SSO defaults'}],
           activePath: 'local', pathLabel: 'Install + Configure',
-          configBundle: [{icon:'shield',label:'MFA Policy',status:'applied'},{icon:'video',label:'Meeting defaults',status:'applied'},{icon:'folder',label:'OneDrive sync plugin',status:'installed'}],
+          configBundle: [{icon:'key',label:'License assigned',status:'applied'},{icon:'shield',label:'SSO policy',status:'applied'},{icon:'folder',label:'Asset library sync',status:'installed'}],
           configNote: 'App + policies delivered -  zero tickets created',
           bannerMsg: 'Users get what they need instantly. IT stays in control. Tickets drop.', dtap: null,
           scenarioCaption: 'Browse. Click Get. Done.',
@@ -8785,6 +9548,9 @@
         },
       ];
 
+      /* First access opens the story; self-service follows. */
+      SCENARIOS.unshift(SCENARIOS.splice(SCENARIOS.findIndex(s => s.id === 'access'), 1)[0]);
+
       const ALL_PATHS = [
         { id: 'local', icon: 'hard-drive', label: 'Install to Device' },
         { id: 'vdi', icon: 'monitor', label: 'Stream via VDI' },
@@ -8793,6 +9559,7 @@
       ];
 
       const PHASE_CAPTIONS = {
+        approach: { default: 'User goes to the app...', catalog: 'User goes to the catalog...' },
         clicking: { default: 'Opening app...', catalog: 'User clicks Get...' },
         checking: { default: 'Verifying access & policy...' },
         routing:  { default: 'Selecting delivery path...' },
@@ -8817,7 +9584,7 @@
 
         const stageState = (stagePhases) => {
           if (!scenario) return '';
-          const idx = ['launch','catalog','clicking','checking','routing','config','done','final'];
+          const idx = ['launch','catalog','approach','clicking','checking','routing','config','done','final'];
           const currentIdx = idx.indexOf(phase);
           if (currentIdx < 0) return '';
           const lastIdx = idx.indexOf(stagePhases[stagePhases.length - 1]);
@@ -8827,7 +9594,7 @@
         };
 
         const progressPct = !scenario ? 0 :
-          phase === 'clicking' ? 8 : phase === 'checking' ? 28 :
+          phase === 'approach' ? 4 : phase === 'clicking' ? 8 : phase === 'checking' ? 28 :
           phase === 'routing' ? 48 : phase === 'config' ? 68 :
           phase === 'done' ? 88 : phase === 'final' ? 100 : 0;
 
@@ -8903,7 +9670,7 @@
                     </div>
                   </div>
                   ${[
-                    {l:'T',c:'#5B53D6',n:'Microsoft Teams',d:'Chat & collaboration',target:true},
+                    {l:'Cc',c:'#DA1F26',n:'Adobe Creative Cloud',d:'Design & video suite',target:true},
                     {l:'WD',c:'#1F5BFF',n:'Workday',d:'HR & finance platform',target:false},
                     {l:'SF',c:'#00A1E0',n:'Salesforce',d:'CRM platform',target:false},
                   ].map(a=>`
@@ -9099,7 +9866,7 @@
 
         const stageState = (stagePhases) => {
           if (!scenario) return '';
-          const idx = ['launch','catalog','clicking','checking','routing','config','done','final'];
+          const idx = ['launch','catalog','approach','clicking','checking','routing','config','done','final'];
           const currentIdx = idx.indexOf(phase);
           if (currentIdx < 0) return '';
           const lastIdx = idx.indexOf(stagePhases[stagePhases.length - 1]);
@@ -9108,7 +9875,7 @@
           return '';
         };
         const progressPct = !scenario ? 0 :
-          phase === 'clicking' ? 8 : phase === 'checking' ? 28 :
+          phase === 'approach' ? 4 : phase === 'clicking' ? 8 : phase === 'checking' ? 28 :
           phase === 'routing' ? 48 : phase === 'config' ? 68 :
           phase === 'done' ? 88 : phase === 'final' ? 100 : 0;
         const checkDone = ['routing','config','done','final'].includes(phase);
@@ -9161,6 +9928,13 @@
                     <div class="stage-content">
                       <div class="stage-title"><i data-lucide="route" class="w-3.5 h-3.5 text-[#0000CC]"></i> Route to delivery path</div>
                       <div class="stage-detail mb-1.5">One path activates. The rest stay dormant.</div>
+                      <div class="route-why ${['routing','config','done','final'].includes(phase) ? 'is-on' : ''}">
+                        <span class="route-chip"><i data-lucide="monitor"></i>${STATE.ctx.device}</span>
+                        <span class="route-chip"><i data-lucide="wifi"></i>${STATE.ctx.network} network</span>
+                        <span class="route-chip"><i data-lucide="shield-check"></i>${STATE.ctx.compliant ? 'Compliant' : 'Non-compliant'}</span>
+                        <span class="route-why-arrow" aria-hidden="true">&rarr;</span>
+                        <span class="route-why-out">${scenario.pathLabel}</span>
+                      </div>
                       <div class="flex flex-wrap gap-1.5">
                         ${ALL_PATHS.map(p => {
                           const isActive = p.id === scenario.activePath && ['routing','config','done','final'].includes(phase);
@@ -9244,18 +10018,29 @@
         const idx = (typeof STATE.uxScenarioIdx === 'number' && STATE.uxScenarioIdx >= 0 && STATE.uxScenarioIdx < SCENARIOS.length)
           ? STATE.uxScenarioIdx : 0;
         const isCatalog = SCENARIOS[idx] && SCENARIOS[idx].id === 'catalog';
-        // Launch phase: user opens Application Workspace on their device
-        queue.push({ delay: 350, fn(){ STATE.flowScenarioIdx = idx; STATE.flowPhase = 'launch'; STATE.flowAppOpened = false; updateFlowDOM(); } });
-        // Catalog phase: workspace opens, user sees all their apps
-        queue.push({ delay: 600, fn(){ STATE.flowPhase = 'catalog'; updateFlowDOM(); } });
-        // Clicking phase: user selects an app from the catalog
-        queue.push({ delay: 600, fn(){ STATE.flowPhase = 'clicking'; updateFlowDOM(); } });
-        queue.push({ delay: 600, fn(){ STATE.flowPhase = 'checking'; updateFlowDOM(); animateChecks(); } });
-        queue.push({ delay: 750, fn(){ STATE.flowPhase = 'routing'; updateFlowDOM(); } });
-        queue.push({ delay: 650, fn(){ STATE.flowPhase = 'config'; updateFlowDOM(); } });
-        queue.push({ delay: 700, fn(){ STATE.flowPhase = 'done'; if (isCatalog) { STATE._firstOpenDone = false; STATE.flowAppOpened = true; } updateFlowDOM(); } });
-        queue.push({ delay: 800, fn(){ STATE.flowPhase = 'final'; updateFlowDOM(); } });
-        queue.push({ delay: 700, fn(){ STATE.flowRunning = false; STATE.flowPaused = false; refreshDemoControls(); } });
+        // Cinematic scene holds — keynote pacing for the user-story module;
+        // 'approach' is the cursor-travel beat between catalog and click.
+        const BEATS = [
+          ['launch',   2200],
+          ['catalog',  900],
+          ['approach', 1500],
+          ['clicking', 1500],
+          ['checking', 2200],
+          ['routing',  600],
+          ['config',   500],
+          ['done',     2400],
+          ['final',    3400],
+        ];
+        queue.push({ delay: 400, fn(){ STATE.flowScenarioIdx = idx; STATE.flowPhase = 'launch'; STATE.flowAppOpened = false; updateFlowDOM(); } });
+        BEATS.slice(1).forEach((b, i) => {
+          queue.push({ delay: BEATS[i][1], fn(){
+            STATE.flowPhase = b[0];
+            if (b[0] === 'done' && isCatalog) { STATE._firstOpenDone = false; STATE.flowAppOpened = true; }
+            updateFlowDOM();
+            if (b[0] === 'checking') animateChecks();
+          } });
+        });
+        queue.push({ delay: BEATS[BEATS.length - 1][1], fn(){ STATE.flowRunning = false; STATE.flowPaused = false; refreshDemoControls(); } });
         return queue;
       }
 
@@ -11118,9 +11903,311 @@
 
       /* ========== USER EXPERIENCE VIEW ==========
          Three-frame synchronized story: Windows · macOS · Cloud PC.
-         Same Application Workspace catalog inside each. Same Teams click,
-         pulse, and chat — all driven by STATE.flowPhase so the three
+         Microsoft Teams is open in every frame, with Application Workspace
+         embedded as a Teams tab. Same entitled catalog, same Salesforce
+         click, pulse, and open — all driven by STATE.flowPhase so the three
          frames advance in lockstep. Synchronicity IS the message. */
+      /* ========== USER STORY — cinematic end-user experience ==========
+         One person's morning, told scene by scene on a single large, legible
+         stage — keynote pacing, keynote type. The flow queue drives the same
+         phase list; scenes map onto it: launch=meet the user, catalog=their
+         workspace, approach/clicking=the Catalog + one tap, checking=the app
+         opens, routing/config=same workspace on Mac + Cloud PC, done=a
+         different persona signs in, final=the payoff. */
+      function renderUserStory(){
+        const live = STATE.flowRunning && STATE.flowScenarioIdx >= 0;
+        const ph = live ? STATE.flowPhase : 'idle';
+        const isMaya = STATE.uxPersona !== 1;
+        const reqOn = isMaya || STATE.uxReqManual;
+        const SCENE_OF = { idle:0, launch:1, catalog:1, approach:2, clicking:3, checking:4, routing:4, config:4, done: reqOn ? 5 : 4, final: reqOn ? 6 : 4 };
+        const scene = SCENE_OF[ph] !== undefined ? SCENE_OF[ph] : 0;
+        const ended = reqOn ? ph === 'final' : ['done','final'].includes(ph);
+
+        // Real, recognizable app logos (icons8 CDN) with lettered-tile
+        // fallback if any icon fails to load offline.
+        const APPS = {
+          excel:      { n:'Excel',      l:'X',   c:'#107C41', s:'microsoft-excel-2019' },
+          word:       { n:'Word',       l:'W',   c:'#185ABD', s:'microsoft-word-2019' },
+          outlook:    { n:'Outlook',    l:'O',   c:'#106EBE', s:'microsoft-outlook-2019' },
+          teams:      { n:'Teams',      l:'T',   c:'#5B53D6', s:'microsoft-teams' },
+          sap:        { n:'SAP',        l:'SAP', c:'#0A6ED1', s:'sap' },
+          zoom:       { n:'Zoom',       l:'Z',   c:'#0B5CFF', s:'zoom' },
+          salesforce: { n:'Salesforce', l:'SF',  c:'#00A1E0', s:'salesforce' },
+          slack:      { n:'Slack',      l:'S',   c:'#E01E5A', s:'slack-new' },
+          chrome:     { n:'Chrome',     l:'C',   c:'#4285F4', s:'chrome' },
+          edge:       { n:'Edge',       l:'E',   c:'#0C8EC5', s:'ms-edge-new' },
+          onedrive:   { n:'OneDrive',   l:'OD',  c:'#0A5BD5', s:'microsoft-onedrive-2019' },
+          github:     { n:'GitHub',     l:'GH',  c:'#1A1A2E', s:'github' },
+          jira:       { n:'Jira',       l:'J',   c:'#2684FF', s:'jira' },
+          docker:     { n:'Docker',     l:'D',   c:'#2496ED', s:'docker' },
+          figma:      { n:'Figma',      l:'F',   c:'#A259FF', s:'figma' },
+          trello:     { n:'Trello',     l:'Tr',  c:'#0079BF', s:'trello' },
+          dropbox:    { n:'Dropbox',    l:'Db',  c:'#0061FF', s:'dropbox' },
+        };
+        const PERSONAS = [
+          { name:'Maya Chen', initials:'MC', role:'Finance', roleIcon:'calculator', accent:'#0F7A3F', wall:'#12123E', desk:'#16266B',
+            apps:['excel','word','outlook','zoom','sap','dropbox','teams','salesforce'], target:'teams' },
+          { name:'Alex Rivera', initials:'AR', role:'Sales', roleIcon:'briefcase', accent:'#0000CC', wall:'#301345', desk:'#3B1E5E',
+            apps:['outlook','excel','teams','zoom','slack','chrome','salesforce','dropbox'], target:'salesforce' },
+        ];
+        const baseIdx = STATE.uxPersona === 1 ? 1 : 0;
+        const p = PERSONAS[baseIdx];
+        const A = (id) => { const o = APPS[id] || { n:id, l:'?', c:'#8A8A9A' }; return { name:o.n, letter:o.l, color:o.c, img:o.s ? `https://img.icons8.com/color/96/${o.s}.png` : '' }; };
+        const target = A(p.target);
+        const first = p.name.split(' ')[0];
+
+        // Persistent story rail — the whole arc visible at once, the active
+        // chapter highlighted. Replaces the caption slideshow.
+        const CHAPTERS = [
+          [`${PERSONAS[baseIdx].name.split(' ')[0]} signs in`, `Sees every app ${PERSONAS[baseIdx].role} is entitled to \u2014 ready to go, nothing to install.`],
+          [`Clicks ${A(PERSONAS[baseIdx].target).name}`, 'One click. No install prompts, no license keys, no ticket.'],
+          ['It opens and runs', `Signed in automatically. Click ${PERSONAS[1 - baseIdx].name.split(' ')[0]} above \u2014 a different list, same one click.`],
+          ...(reqOn ? [['Requests an app', 'One click in the Catalog \u2014 the approval workflow runs automatically. No ticket, no waiting.']] : []),
+        ];
+        const chap = ({ 0:-1, 1:0, 2:1, 3:1, 4:2, 5:3, 6:3 })[scene];
+        const MICRO = [
+          '',
+          `${p.apps.length} apps \u2014 everything ${p.role} can access`,
+          `One click \u2014 ${target.name}`,
+          'Opening\u2026',
+          'Running \u2014 signed in automatically',
+          'Requesting Slack \u2014 one click',
+          'Approved \u2014 automation did the rest',
+        ];
+
+        const plus = `<span class="us-plus" style="left:8%;top:16%">+</span><span class="us-plus" style="right:12%;top:64%">+</span><span class="us-plus" style="left:22%;bottom:10%">+</span>`;
+
+        const tile = (app, o = {}) => `
+          <div class="us-app ${o.pop ? 'us-in' : ''} ${o.clicked ? 'us-clicked' : ''}" style="--d:${o.d || 0}ms">
+            <div class="us-app-ico ${o.glow ? 'us-glow' : ''}" style="background:${app.color}">${app.letter}
+              ${app.img ? `<img src="${app.img}" alt="" loading="lazy" onerror="this.remove()">` : ''}
+              ${o.pulse ? '<span class="us-pulse"></span>' : ''}
+            </div>
+            <span class="us-app-name">${app.name}</span>
+            ${o.tag ? `<span class="us-get ${o.tag !== 'Get' ? 'is-ok' : ''}">${o.tag}</span>` : ''}
+          </div>`;
+
+        const win = (tab, inner, o = {}) => `
+          <div class="us-win ${o.cls || ''}" style="--acc:${(o.p || p).accent}">
+            <div class="us-win-head" style="background:${(o.p || p).accent}">
+              <span class="us-win-mark">A</span><span class="us-win-brand">Acme Workspace</span>
+              <span class="us-win-user">${(o.p || p).initials}</span>
+            </div>
+            <div class="us-win-tabs">
+              <span class="us-tab ${tab === 'ws' ? 'is-on' : ''}">My workspace</span>
+              <button type="button" class="us-tab us-tab-btn ${tab === 'cat' ? 'is-on' : ''}" data-action="ux-request" title="Click to request an app">Catalog</button>
+            </div>
+            <div class="us-win-body">${inner}</div>
+          </div>`;
+
+        const wsInner = (pp, pop) => `
+          <div class="us-greet">Good morning, ${pp.name.split(' ')[0]}</div>
+          <div class="us-greet-sub">${pp.apps.length} apps \u2014 everything ${pp.role} has access to</div>
+          <div class="us-grid" style="grid-template-columns:repeat(4,1fr)">${pp.apps.map((id, i) => {
+            const isT = id === pp.target;
+            return tile(A(id), {
+              pop, d: 100 + i * 70,
+              glow: isT && ph === 'approach',
+              clicked: isT && ph === 'clicking',
+              pulse: isT && ph === 'clicking',
+            });
+          }).join('')}</div>`;
+
+        // Realistic app-open views — animate in ONCE (on 'checking'); later
+        // phase ticks re-render statically so nothing replays or flickers.
+        // Maya opens a Teams chat; Alex opens a Salesforce opportunity and
+        // scrolls through it.
+        const appInner = (anim) => {
+          const io = (d) => anim ? `us-in" style="--d:${d}ms` : 'us-still';
+          if (target.name === 'Salesforce') return `
+          <div class="us-appwin ${anim ? 'us-zoom' : ''}">
+            <div class="us-appwin-bar" style="background:${target.color}">
+              <span class="us-appwin-ico">${target.letter}${target.img ? `<img src="${target.img}" alt="" onerror="this.remove()">` : ''}</span><span>Salesforce</span>
+              <span class="us-appwin-dots"><i></i><i></i><i></i></span>
+            </div>
+            <div class="us-sf-clip">
+              <div class="us-sf-scroll ${anim ? 'us-sfanim' : 'us-sfdone'}">
+                <div class="us-sf-opp ${io(250)}">
+                  <span class="us-sf-opp-ico"><i data-lucide="trophy"></i></span>
+                  <div class="us-sf-opp-t"><span>Opportunity</span><b>Northwind Corp \u2014 Enterprise Renewal</b></div>
+                  <span class="us-sf-amt">$240,000</span>
+                </div>
+                <div class="us-sf-path ${io(450)}">
+                  ${['Qualify','Proposal','Negotiation','Closed Won'].map((s, i) => `<span class="us-sf-step ${i < 2 ? 'is-done' : i === 2 ? 'is-cur' : ''}">${i < 2 ? '\u2713 ' : ''}${s}</span>`).join('')}
+                </div>
+                <div class="us-sf-rows ${io(650)}">
+                  <div class="us-sf-row"><span>Close date</span><b>Sep 30, 2026</b></div>
+                  <div class="us-sf-row"><span>Owner</span><b>${p.name}</b></div>
+                  <div class="us-sf-row"><span>Next step</span><b>Pricing review with CFO \u00b7 Thu</b></div>
+                </div>
+                <div class="us-sf-act ${io(850)}">
+                  <span class="us-sf-act-t">Recent activity</span>
+                  <div class="us-sf-row"><span>Call \u00b7 yesterday</span><b>Renewal terms discussed</b></div>
+                  <div class="us-sf-row"><span>Email \u00b7 Mon</span><b>Proposal v2 sent</b></div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+          const mate = ['Priya Patel','PP','#B4009E'];
+          return `
+          <div class="us-appwin ${anim ? 'us-zoom' : ''}">
+            <div class="us-appwin-bar" style="background:${target.color}">
+              <span class="us-appwin-ico">${target.letter}${target.img ? `<img src="${target.img}" alt="" onerror="this.remove()">` : ''}</span><span>Microsoft Teams</span>
+              <span class="us-appwin-dots"><i></i><i></i><i></i></span>
+            </div>
+            <div class="us-chat">
+              <div class="us-chat-top"><span class="us-chat-ch"># finance-team</span><span class="us-chat-day">Today</span></div>
+              <div class="us-msg ${io(300)}">
+                <span class="us-msg-ava" style="background:${mate[2]}">${mate[1]}</span>
+                <div class="us-msg-body"><span class="us-msg-name">${mate[0]} <i>9:58 AM</i></span><span class="us-msg-bubble">Morning ${first}! Standup moved to 10:30 today.</span></div>
+              </div>
+              <div class="us-msg us-msg-me ${io(650)}">
+                <div class="us-msg-body"><span class="us-msg-name">You <i>9:59 AM</i></span><span class="us-msg-bubble us-msg-bubble-me">Perfect \u2014 just signed in, everything was already set up.</span></div>
+                <span class="us-msg-ava" style="background:${p.accent}">${p.initials}</span>
+              </div>
+              <div class="us-chat-input ${io(900)}"><i data-lucide="plus"></i><span>Type a message</span><i data-lucide="send"></i></div>
+            </div>
+          </div>`;
+        };
+
+        // Persistent "signed in as" chip — anchors every scene to a person,
+        // and makes the persona hand-off unmistakable when it changes.
+        const who = (scene > 0) ? `
+          <div class="us-who">
+            <span class="us-who-ava" style="background:${p.accent}">${p.initials}</span>
+            <span class="us-who-txt">${p.name} \u00b7 ${p.role}</span>
+          </div>` : '';
+
+        // One device-chrome shell used by the picker, the live journey, and
+        // the any-device scene: 'win' laptop, 'mac' MacBook, 'vdi' browser.
+        const shell = (kind, inner, cls) => {
+          if (kind === 'vdi') return `
+            <div class="us-browser ${cls || ''}">
+              <div class="us-btabs"><span class="us-btab"><i data-lucide="cloud"></i>Virtual Desktop</span><span class="us-btab-ghost"></span></div>
+              <div class="us-burl"><span class="us-bdot"></span><span class="us-bdot"></span><span class="us-bdot"></span><span class="us-burl-bar"><i data-lucide="lock"></i>desktop.acme.com</span></div>
+              <div class="us-screen" style="background:${p.desk}">${inner}</div>
+            </div>`;
+          return `
+            <div class="us-lap ${cls || ''}">
+              <div class="us-screen" style="background:${p.desk}">
+                ${kind === 'mac' ? '<span class="us-notch"></span>' : '<span class="us-cam"></span>'}
+                ${kind === 'mac' ? `<div class="us-macbar"><i data-lucide="apple"></i><span class="us-macbar-r"><i data-lucide="wifi"></i><i data-lucide="battery"></i><span>Tue 10:24</span></span></div>` : ''}
+                ${inner}
+                ${kind === 'mac'
+                  ? `<div class="us-dock"><i style="background:#185ABD"></i><i style="background:#107C41"></i><i style="background:${p.accent}"></i><i style="background:#E01E5A"></i></div>`
+                  : `<div class="us-taskbar"><span class="us-tb-center"><span class="us-start"><i></i><i></i><i></i><i></i></span><span class="us-tb-dot" style="background:#185ABD"></span><span class="us-tb-dot" style="background:#107C41"></span><span class="us-tb-dot" style="background:${p.accent}"></span></span><span class="us-tb-clock">10:24</span></div>`}
+              </div>
+              <div class="us-lap-base ${kind === 'mac' ? 'us-lap-base-mac' : ''}"><i></i></div>
+            </div>`;
+        };
+        const dev = ['win','mac','vdi'].includes(STATE.uxDevice) ? STATE.uxDevice : 'win';
+
+        // Maya's Catalog request — anim=true on the request beat (cursor
+        // click), static afterwards with the tag flipped to Requested.
+        const catReq = (anim) => `
+          <div class="us-greet">Catalog</div>
+          <div class="us-greet-sub">Request anything \u2014 approval runs automatically</div>
+          <div class="us-grid" style="grid-template-columns:repeat(4,1fr)">${['trello','figma','slack','jira'].map((id, i) => {
+            const isT = id === 'slack';
+            return tile(A(id), {
+              pop: anim, d: 80 + i * 70,
+              clicked: isT && anim,
+              pulse: isT && anim,
+              tag: isT ? (anim ? 'Request' : 'Requested \u2713') : '',
+            });
+          }).join('')}</div>`;
+
+        let stage = '';
+        if (scene === 0) {
+          // Device picker — click any of the three; the journey plays inside
+          // that device and the experience is identical on every one.
+          const DEVS = [['win','Windows','monitor'],['mac','Mac','laptop'],['vdi','Virtual Desktop','cloud']];
+          stage = `<div class="us-pickwrap">
+              <div class="us-pick-hero us-in">
+                <span class="us-ava" style="background:${p.accent}">${p.initials}</span>
+                <div class="us-pick-hero-id">
+                  <div class="us-pick-hero-name">${p.name}</div>
+                  <span class="us-pick-hero-role"><i data-lucide="${p.roleIcon}"></i>${p.role} department</span>
+                </div>
+              </div>
+              <div class="us-pick-t">Where does ${first} sign in?</div>
+              <div class="us-pick-sub">Click a device \u2014 the experience is identical on all three</div>
+              <div class="us-devrow us-pickrow">
+                ${DEVS.map(([k, nm, ic], i) => `
+                  <button type="button" class="us-pick us-in focus-ring" style="--d:${i * 120}ms" data-action="pick-ux-device" data-dev="${k}">
+                    ${shell(k, `<div class="us-pick-inner"><span class="us-pick-mark" style="background:${p.accent}">A</span><span class="us-pick-name">Acme Workspace</span><span class="us-pick-go"><i data-lucide="play"></i>Start here</span></div>`)}
+                    <div class="us-dev-tag us-pick-tag"><i data-lucide="${ic}"></i><b>${nm}</b></div>
+                  </button>`).join('')}
+              </div>
+            </div>`;
+        } else if (scene >= 1 && scene <= 3) {
+          stage = shell(dev, win('ws', wsInner(p, ph === 'launch'), { cls: ph === 'launch' ? 'us-rise' : '' }), 'us-frame-lg');
+        } else {
+          const anim = ph === 'checking';
+          stage = `<div class="us-openwrap">
+              <div class="us-added ${anim ? 'us-in' : 'us-still'}" style="--d:700ms"><i data-lucide="check"></i>Open \u00b7 signed in automatically</div>
+              ${shell(dev, win('ws', appInner(anim)), 'us-frame-lg')}
+            </div>`;
+        }
+        // The us-added pill and us-flowcard are absolutely positioned overlays,
+        // so the device never moves between scenes 4→5→6 — no layout jumps.
+        const anim6 = ph === 'final';
+        if (scene === 5) {
+          stage = shell(dev, win('cat', catReq(true)), 'us-frame-lg');
+        } else if (scene === 6) {
+          stage = `<div class="us-openwrap us-openwrap-flow">
+              <div class="us-flowcard ${anim6 ? 'us-zoom' : ''}">
+                <div class="us-flowcard-t"><i data-lucide="workflow"></i>Approval workflow \u00b7 running automatically</div>
+                <div class="us-flowstep us-in" style="--d:200ms"><i data-lucide="send"></i><span>Request submitted</span><b>\u2713</b></div>
+                <div class="us-flowstep us-in" style="--d:1000ms"><i data-lucide="shield-check"></i><span>Policy check \u00b7 ${p.role} \u00b7 license available</span><b>\u2713</b></div>
+                <div class="us-flowstep us-flowstep-ok us-in" style="--d:1900ms"><i data-lucide="check-circle-2"></i><span>Approved \u2014 added to My workspace</span><b>\u2713</b></div>
+              </div>
+              <div class="us-flowdev">${shell(dev, win('cat', catReq(false)), 'us-frame-lg')}</div>
+            </div>`;
+        }
+
+        const cursor = (scene === 2 || scene === 3 || scene === 5) ? `<svg class="us-cursor ${scene === 2 ? 'us-cursor-travel' : scene === 5 ? 'us-cursor-click us-cursor-cat' : 'us-cursor-click'}" viewBox="0 0 24 24" fill="#1A1A2E" stroke="#fff" stroke-width="1.5" aria-hidden="true"><path d="M5 3l14 8-6 1.5L9.5 19z"/></svg>` : '';
+
+        return `
+          <div class="section-card p-4 us-card">
+            <div class="flex items-center justify-between mb-2 gap-2 flex-wrap">
+              ${ended
+                ? `<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200" style="white-space:nowrap"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500" style="flex-shrink:0"></i><span class="text-xs font-semibold text-emerald-700">Done \u2014 try ${PERSONAS[1 - baseIdx].name.split(' ')[0]} \u00b7 ${PERSONAS[1 - baseIdx].role}</span></div>`
+                : '<div class="bts-label bts-label-user"><i data-lucide="user" class="w-3 h-3"></i> What the user sees</div>'}
+              <div class="us-personas">
+                <span class="us-personas-lab">User</span>
+                ${PERSONAS.map((pp, i) => `
+                  <button type="button" class="ux-scenario-pill ux-persona-pill ${baseIdx === i ? 'is-active' : ''}" data-action="pick-ux-persona" data-idx="${i}">
+                    <span class="ux-persona-dot" style="background:${pp.accent}"></span><span>${pp.name.split(' ')[0]} \u00b7 ${pp.role}</span>
+                  </button>`).join('')}
+              </div>
+              <div class="us-personas">
+                <span class="us-personas-lab">Device</span>
+                ${[['win','Windows'],['mac','Mac'],['vdi','Virtual desktop']].map(([k, nm]) => `
+                  <button type="button" class="ux-scenario-pill ux-persona-pill ${dev === k ? 'is-active' : ''}" data-action="pick-ux-device" data-dev="${k}"><span>${nm}</span></button>`).join('')}
+              </div>
+            </div>
+            <div style="display:none" aria-hidden="true">${Object.keys(APPS).map(k => `<img src="${A(k).img}" alt="">`).join('')}</div>
+            <div class="us-body2">
+              <div class="us-stage" style="background:#FFFFFF;border:1px solid #DDDDEE">
+                ${who}
+                ${cursor}
+                ${stage}
+                ${MICRO[scene] ? `<div class="us-substrip" role="status" aria-live="polite" aria-atomic="true">${MICRO[scene]}</div>` : ''}
+              </div>
+              <aside class="us-rail" aria-label="Journey steps">
+                <div class="us-rail-t">The journey</div>
+                ${CHAPTERS.map((c, i) => `
+                  <div class="us-step ${chap > i ? 'is-done' : ''} ${chap === i ? 'is-on' : ''}">
+                    <span class="us-step-n">${chap > i ? '\u2713' : i + 1}</span>
+                    <div class="us-step-tx"><b>${c[0]}</b><span>${c[1]}</span></div>
+                  </div>`).join('')}
+              </aside>
+            </div>
+          </div>
+        `;
+      }
+
       function renderUserView(){
         const sc = STATE.flowScenarioIdx;
         const phase = STATE.flowPhase;
@@ -11150,20 +12237,23 @@
         if (!showDeliveryBadge) STATE._firstDeliveryBadgeDone = false;
         const deliveryBadgeClass = showDeliveryBadge ? (firstDeliveryBadge ? 'show' : 'show-instant') : '';
 
-        // Tighter catalog: 6 apps, 2 rows of 3. The viewer's eye lands on Teams.
-        const TEAMS_APP = (CATALOG_APPS.find(a => a.id === 'teams')) || { id:'teams', letter:'T', name:'Teams', color:'#5B53D6' };
-        const otherApps = CATALOG_APPS.filter(a => a.id !== 'teams').slice(0, 5);
-        const triCatalog = [otherApps[0], otherApps[1], TEAMS_APP, otherApps[2], otherApps[3], otherApps[4]].filter(Boolean);
+        // Tighter catalog: 6 apps, 2 rows of 3, rendered inside the
+        // Application Workspace tab embedded in Microsoft Teams. Every
+        // scenario clicks the same target app — Salesforce — so the
+        // cross-device sameness reads instantly.
+        const TARGET_APP = (CATALOG_APPS.find(a => a.id === 'salesforce')) || { id:'salesforce', letter:'SF', name:'Salesforce', color:'#00A1E0' };
+        const otherApps = CATALOG_APPS.filter(a => a.id !== 'salesforce').slice(0, 5);
+        const triCatalog = [otherApps[0], otherApps[1], TARGET_APP, otherApps[2], otherApps[3], otherApps[4]].filter(Boolean);
         const catalogGrid = () => `
           <div class="ux-catalog-grid" style="grid-template-columns:repeat(3,1fr);">
             ${triCatalog.map(app => {
-              const isTeams = app.id === 'teams';
+              const isTarget = app.id === TARGET_APP.id;
               // Glow holds during catalog only; on clicking we freeze the glow and let the louder pulse + icon bump carry the moment.
-              const teamsCls = isTeams && effectivePhase === 'catalog' ? 'ux-cat-teams-glow' : '';
+              const targetCls = isTarget && effectivePhase === 'catalog' ? 'ux-cat-teams-glow' : '';
               return `
-                <div class="ux-cat-app ${isTeams && effectivePhase === 'clicking' ? 'clicked' : ''}">
-                  <div class="ux-cat-icon ${teamsCls}" style="background:${app.color}">${app.letter}
-                    ${isTeams && effectivePhase === 'clicking' ? '<span class="ux-click-pulse"></span>' : ''}
+                <div class="ux-cat-app ${isTarget && effectivePhase === 'clicking' ? 'clicked' : ''}">
+                  <div class="ux-cat-icon ${targetCls}" style="background:${app.color}">${app.letter}
+                    ${isTarget && effectivePhase === 'clicking' ? '<span class="ux-click-pulse"></span>' : ''}
                   </div>
                   <span class="ux-cat-name">${app.name}</span>
                 </div>
@@ -11172,46 +12262,56 @@
           </div>
         `;
 
-        // Teams chat that fills each frame's content area. Messages are tied
-        // to the three device personas so the chat content reinforces the
-        // visual claim ("opened on Windows / Cloud PC / Mac — works") instead
-        // of being decorative.
-        const teamsContent = () => `
+        // Microsoft Teams shell — persistent chrome across the catalog and
+        // app-open beats, so every phase visibly happens INSIDE Teams. The
+        // left rail and tab header stay put; only the tab content switches.
+        const teamsShell = (tabIcon, tabTitle, inner) => `
           <div class="ux-teams">
             <div class="ux-teams-side">
-              <div class="ux-teams-side-dot active"><i data-lucide="message-square" class="w-3 h-3"></i></div>
-              <div class="ux-teams-side-dot"><i data-lucide="users" class="w-3 h-3"></i></div>
+              <div class="ux-teams-side-dot"><i data-lucide="bell" class="w-3 h-3"></i></div>
+              <div class="ux-teams-side-dot"><i data-lucide="message-square" class="w-3 h-3"></i></div>
               <div class="ux-teams-side-dot"><i data-lucide="calendar" class="w-3 h-3"></i></div>
-              <div class="ux-teams-side-dot"><i data-lucide="phone" class="w-3 h-3"></i></div>
+              <div class="ux-teams-side-dot active"><i data-lucide="layout-grid" class="w-3 h-3"></i></div>
             </div>
             <div class="ux-teams-main">
-              <div class="ux-teams-header"><i data-lucide="hash" class="w-3 h-3 text-slate-400"></i> Project Atlas</div>
-              <div class="ux-teams-body">
-                <div class="ux-teams-msg ${msgClass}" style="transition-delay:${firstOpen ? '0.3s' : '0s'}">
-                  <div class="ux-teams-avatar" style="background:#0000CC">SM</div>
-                  <div class="ux-teams-bubble">Just opened Teams on my laptop &mdash; works.</div>
-                </div>
-                <div class="ux-teams-msg ${msgClass}" style="transition-delay:${firstOpen ? '0.65s' : '0s'}">
-                  <div class="ux-teams-avatar" style="background:#0F7A3F">JR</div>
-                  <div class="ux-teams-bubble">Same here from my Cloud PC.</div>
-                </div>
-                <div class="ux-teams-msg ${msgClass}" style="transition-delay:${firstOpen ? '1.0s' : '0s'}">
-                  <div class="ux-teams-bubble self">On the Mac too. 👍</div>
-                </div>
-              </div>
+              <div class="ux-teams-header"><i data-lucide="${tabIcon}" class="w-3 h-3 text-slate-400"></i> ${tabTitle}</div>
+              ${inner}
             </div>
           </div>
         `;
 
-        // Cross-device persona for the catalog header — same user, same workspace,
-        // appearing identically on each device. The "47 apps available" line gives
-        // the catalog a narrative reason to look identical in all three frames.
-        const workspaceLabel = `
-          <div class="ux-workspace-label">
-            <i data-lucide="layout-grid"></i>
-            <span>Sarah's workspace</span>
-            <span class="ux-workspace-meta">&middot; 47 apps</span>
-          </div>`;
+        // Application Workspace as a Teams tab: entitlement strip + catalog.
+        // The strip carries the product claim — the user sees only what
+        // identity, device, role, and policy entitle them to.
+        const embeddedCatalog = () => teamsShell('layout-grid', 'Application Workspace', `
+          <div class="ux-entitle ${effectivePhase === 'catalog' ? 'is-in' : 'is-in-instant'}">
+            <span class="ux-entitle-count"><b>6</b> of 47 apps</span>
+            <span class="ux-entitle-sep">&middot;</span>
+            <span class="ux-entitle-note">entitled via</span>
+            ${['identity','device','role','policy'].map(c => `<span class="ux-entitle-chip">${c}</span>`).join('')}
+          </div>
+          <div class="ux-teams-body" style="justify-content:center">${catalogGrid()}</div>
+        `);
+
+        // Salesforce open as a tab inside the same Teams shell — identical
+        // content in all three frames; the sameness IS the message.
+        const salesforceContent = () => teamsShell('briefcase', 'Salesforce', `
+          <div class="ux-teams-body">
+            <div class="ux-teams-msg ux-sf-row ${msgClass}" style="animation-delay:${firstOpen ? '0.25s' : '0s'}">
+              <span class="ux-sf-ava">SM</span>
+              <div class="ux-sf-line"><b>Sarah Mitchell</b><span>Signed in via SSO &mdash; no setup</span></div>
+              <i data-lucide="badge-check" class="w-3 h-3" style="color:#0F7A3F;flex-shrink:0"></i>
+            </div>
+            <div class="ux-teams-msg ux-sf-row ${msgClass}" style="animation-delay:${firstOpen ? '0.55s' : '0s'}">
+              <span class="ux-sf-ava" style="background:#00A1E0">SF</span>
+              <div class="ux-sf-line"><b>Q3 Pipeline</b><span>18 open opportunities</span></div>
+              <span class="ux-sf-fig">$2.4M</span>
+            </div>
+            <div class="ux-teams-msg ux-sf-bars ${msgClass}" style="animation-delay:${firstOpen ? '0.85s' : '0s'}" aria-hidden="true">
+              ${[38,64,52,80,46,70].map(h => `<i style="height:${h}%"></i>`).join('')}
+            </div>
+          </div>
+        `);
 
         // The body of one frame switches with the global phase.
         const frameBody = () => {
@@ -11220,22 +12320,22 @@
           }
           if (showLaunch) {
             return `<div class="ux-frame-launch">
-              <div class="ux-frame-aw-mark"><i data-lucide="layout-grid" class="w-4 h-4 text-white"></i></div>
-              <div class="ux-frame-launch-text">Application Workspace</div>
+              <div class="ux-frame-aw-mark ux-frame-teams-mark">T</div>
+              <div class="ux-frame-launch-text">Microsoft Teams</div>
               <div class="ux-frame-launch-sub">Opening\u2026</div>
             </div>`;
           }
           if (showCatalog) {
-            return `<div class="ux-frame-catalog">${workspaceLabel}${catalogGrid()}</div>`;
+            return `<div class="ux-frame-inteams">${embeddedCatalog()}</div>`;
           }
-          // checking / routing / config / done / final → Teams open
-          return `<div class="ux-frame-app ${appWindowClass}">${teamsContent()}</div>`;
+          // checking / routing / config / done / final → Salesforce open in Teams
+          return `<div class="ux-frame-app ${appWindowClass}">${salesforceContent()}</div>`;
         };
 
         // Build one device frame. Each frame surfaces a divergent delivery
         // path during routing/config — the actual product truth (same click,
         // three different backend paths, identical outcome). The badge fades
-        // out as the three frames converge on identical Teams chat.
+        // out as the three frames converge on the same Salesforce tab in Teams.
         const deviceFrame = (variant) => {
           const badge = variant.deliveryMethod ? `
             <div class="ux-delivery-badge ${deliveryBadgeClass}">
@@ -11260,21 +12360,21 @@
 
         const winChromeTop = `
           <div class="ux-chrome-win-titlebar">
-            <span class="ux-titlebar-text">${appOpen ? 'Microsoft Teams' : 'Application Workspace'}</span>
+            <span class="ux-titlebar-text">Microsoft Teams${appOpen ? ' \u2014 Salesforce' : ''}</span>
             <div class="ux-win-controls"><span></span><span></span><span class="ux-win-close"></span></div>
           </div>`;
         const winChromeBottom = `
           <div class="ux-chrome-win-taskbar">
             <div class="ux-win-start"><span></span><span></span><span></span><span></span></div>
             ${['#185ABD','#107C41','#4285F4','#106EBE'].map(c=>`<div class="ux-win-tb-icon" style="background:${c}"></div>`).join('')}
-            <div class="ux-win-tb-icon ux-win-tb-aw ${showLaunch ? 'pulse' : ''}"><i data-lucide="layout-grid" class="w-2.5 h-2.5 text-white"></i></div>
+            <div class="ux-win-tb-icon ux-win-tb-aw ${showLaunch ? 'pulse' : ''}" style="background:#5B53D6;color:#fff;font-size:7px;font-weight:800;display:grid;place-items:center">T</div>
             <div class="ux-win-tb-spacer"></div>
             <div class="ux-win-tb-clock">10:24</div>
           </div>`;
         const macChromeTop = `
           <div class="ux-chrome-mac-menubar">
             <i data-lucide="apple" class="w-3 h-3"></i>
-            <span class="ux-mac-app">${appOpen ? 'Teams' : 'Workspace'}</span>
+            <span class="ux-mac-app">Teams</span>
             <span class="ux-mac-menu">File</span><span class="ux-mac-menu">Edit</span><span class="ux-mac-menu">View</span>
             <div class="ux-mac-spacer"></div>
             <i data-lucide="wifi" class="w-3 h-3"></i>
@@ -11285,7 +12385,7 @@
           <div class="ux-chrome-mac-dock">
             <div class="ux-mac-dock-inner">
               ${['#185ABD','#107C41','#4285F4','#106EBE'].map(c=>`<div class="ux-mac-dock-icon" style="background:${c}"></div>`).join('')}
-              <div class="ux-mac-dock-icon ux-mac-dock-aw ${showLaunch ? 'pulse' : ''}"><i data-lucide="layout-grid" class="w-2.5 h-2.5 text-white"></i></div>
+              <div class="ux-mac-dock-icon ux-mac-dock-aw ${showLaunch ? 'pulse' : ''}" style="background:#5B53D6;color:#fff;font-size:7px;font-weight:800;display:grid;place-items:center">T</div>
             </div>
           </div>`;
         const cloudChromeTop = `
@@ -11302,7 +12402,7 @@
         const cloudChromeBottom = `
           <div class="ux-chrome-cloud-status">
             <span class="ux-cloud-dot"></span>
-            <span>Connected \u2014 Windows 365 Cloud PC \u00b7 ${appOpen ? 'Teams running' : 'Workspace ready'}</span>
+            <span>Connected \u2014 Windows 365 Cloud PC \u00b7 ${appOpen ? 'Salesforce open in Teams' : 'Teams running'}</span>
           </div>`;
 
         // Per-device divergent delivery method. This is the product truth:
@@ -11364,6 +12464,14 @@
 
             ${scenarioRow}
 
+            <div class="route-why ${live && ['routing','config','done','final'].includes(effectivePhase) ? 'is-on' : ''}" style="justify-content:center;margin:0 0 8px">
+              <span class="route-chip"><i data-lucide="monitor"></i>${STATE.ctx.device}</span>
+              <span class="route-chip"><i data-lucide="wifi"></i>${STATE.ctx.network} network</span>
+              <span class="route-chip"><i data-lucide="shield-check"></i>${STATE.ctx.compliant ? 'Compliant' : 'Non-compliant'}</span>
+              <span class="route-why-arrow" aria-hidden="true">&rarr;</span>
+              <span class="route-why-out">${scenario ? scenario.pathLabel : ''}</span>
+            </div>
+
             <div class="ux-tri ${idle ? '' : 'is-running'} ${appOpen ? 'is-app-open' : ''} ${showThread ? 'is-final' : ''}">
               ${variants.map(deviceFrame).join('')}
               <!-- Cyan unifying thread (visible only on 'final') -->
@@ -11390,7 +12498,7 @@
          visible, then the devices below carry the value: one setup, and the
          same package installs itself on whatever people work on. */
       function renderAdminConsole(){
-        const PHASE_ORDER = ['idle','launch','catalog','clicking','checking','routing','config','done','final'];
+        const PHASE_ORDER = ['idle','launch','catalog','approach','clicking','checking','routing','config','done','final'];
         const at = (n) => PHASE_ORDER.indexOf(n);
         const sc = STATE.flowScenarioIdx;
         const scenario = sc >= 0 && sc < SCENARIOS.length ? SCENARIOS[sc] : null;
@@ -14467,6 +15575,105 @@
         const activeViewCount = [STATE.solutionViewUser, STATE.solutionViewAdmin, STATE.solutionViewSetupStore, STATE.solutionViewMultiTenant, STATE.solutionViewDashboard, STATE.solutionViewAi, STATE.solutionViewOnboarding, STATE.solutionViewUpdate].filter(Boolean).length;
         const multiCol = activeViewCount >= 2;
 
+        /* The live lifecycle orbit fills the circle slot inside the
+           architecture diagram (the old static wheel and the separate
+           "What's inside" section are gone — one circle, same animations). */
+        const lcOrbitHtml = (() => {
+                  /* One pass builds the tour state for all seven modules, then the
+                     hub and the six satellites are drawn from it. Play / Step /
+                     Reset live only in the pop-out header: the rail's copy used to
+                     render under exactly the same condition as the modal, so both
+                     clusters were always on screen at once. */
+                  const HUB   = lcHubIndex();
+                  const total = LIFECYCLE_MODULES.length;
+                  const items = LIFECYCLE_MODULES.map((m, idx) => ({
+                    ...m, idx,
+                    active:    STATE[lifecycleViewFlag(m.view)],
+                    isDone:    STATE.lifecyclePlaying && idx < STATE.lcStep,
+                    isCurrent: STATE.lifecyclePlaying && idx === STATE.lcStep,
+                    hub:       idx === HUB,
+                    slot:      idx === HUB ? -1 : lcSlot(idx),
+                  }));
+                  const elapsed = Math.max(0, Date.now() - (STATE.lcStepStart || Date.now()));
+                  const TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+                  /* Spokes stop short of both ends so the ring reads as convergence,
+                     not as a wheel welded to its axle. */
+                  const spokes = items.filter(it => !it.hub).map(it => {
+                    const p  = lcPoint(it.slot);
+                    const dx = p.x - LC_ORBIT.cx, dy = p.y - LC_ORBIT.cy;
+                    const len = Math.hypot(dx, dy) || 1;
+                    const ux = dx / len, uy = dy / len;
+                    const st = it.isDone ? 'is-done' : ((it.isCurrent || it.active) ? 'is-live' : '');
+                    return `<line class="lc-spoke ${st}" style="--lc-slot:${it.slot}"
+                      x1="${(LC_ORBIT.cx + ux * (LC_ORBIT.hubR + 9)).toFixed(1)}" y1="${(LC_ORBIT.cy + uy * (LC_ORBIT.hubR + 9)).toFixed(1)}"
+                      x2="${(p.x - ux * 27).toFixed(1)}" y2="${(p.y - uy * 27).toFixed(1)}"/>`;
+                  }).join('');
+
+                  const node = (it) => {
+                    const dotClass = it.isDone ? 'lifecycle-dot-done' : (it.isCurrent ? 'lifecycle-dot-active lifecycle-dot-playing' : (it.active ? 'lifecycle-dot-active' : ''));
+                    const lblClass = it.isDone ? 'lc-done' : (it.isCurrent ? 'lc-active' : '');
+                    const count    = it.isCurrent ? `<em class="lc-count">${it.idx + 1}/${total}</em>` : '';
+                    const stateCls = `${it.isCurrent ? 'lc-item-current' : ''} ${it.isDone ? 'lc-item-done' : ''}`;
+
+                    if (it.hub) {
+                      /* The hub carries the step timer as a ring rather than the
+                         satellites' underline, because a circle has no bottom edge. */
+                      return `
+                      <div class="lifecycle-item lc-hub ${stateCls}" style="--lc:${it.idx}">
+                        <span class="lc-hub-halo" aria-hidden="true"></span>
+                        ${it.isCurrent ? `<svg class="lc-hub-prog" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle class="lc-hub-prog-c" cx="50" cy="50" r="49" pathLength="100" style="animation-duration:${LC_DWELL[it.idx] || 9000}ms;animation-delay:-${elapsed}ms"/></svg>` : ''}
+                        <button type="button" data-action="toggle-solution-view" data-view="${it.view}" class="lc-hub-btn ${it.active ? 'active' : ''}" aria-label="${it.stage}: ${it.name}">
+                          <span class="lifecycle-label lc-hub-stage ${lblClass}">${it.stage}${count}</span>
+                          <span class="lc-hub-ico"><i data-lucide="${it.icon}"></i></span>
+                          <span class="lc-hub-name">${it.name}</span>
+                          <span class="lc-hub-sub">Everything here serves this</span>
+                        </button>
+                        ${it.isDone ? `<span class="lc-hub-tick" aria-hidden="true">${TICK}</span>` : ''}
+                      </div>`;
+                    }
+
+                    const p = lcPoint(it.slot);
+                    return `
+                    <div class="lifecycle-item lc-sat ${p.y > LC_ORBIT.cy ? 'lc-out-b' : 'lc-out-t'} ${stateCls}"
+                         style="--lc:${it.idx};--lc-slot:${it.slot};left:${(p.x / LC_ORBIT.w * 100).toFixed(3)}%;top:${(p.y / LC_ORBIT.h * 100).toFixed(3)}%">
+                      <span class="lifecycle-label ${lblClass}">${it.stage}${count}</span>
+                      <div class="lifecycle-dot ${dotClass}">${it.isDone ? TICK : ''}</div>
+                      <button type="button" data-action="toggle-solution-view" data-view="${it.view}" class="view-toggle ${it.active ? 'active' : ''}"><i data-lucide="${it.icon}" class="w-3.5 h-3.5"></i> ${it.name}${it.isCurrent ? `<span class="lc-fill" style="animation-duration:${LC_DWELL[it.idx] || 9000}ms;animation-delay:-${elapsed}ms"></span>` : ''}</button>
+                    </div>`;
+                  };
+
+                  /* The ring splits cleanly in half: the three modules on the
+                     right of it run before anyone asks, the three on the left
+                     run for as long as the app is installed. Naming the halves
+                     fills the gutters either side of the circle and gives the
+                     loop a plot, rather than leaving it a ring of seven names. */
+                  const arcNote = (slots, side, title, copy) => {
+                    const on = slots.map(sl => items.find(it => it.slot === sl)).filter(Boolean);
+                    const st = on.some(it => it.isCurrent || it.active) ? 'is-live'
+                             : (on.every(it => it.isDone) && on.length ? 'is-done' : '');
+                    return `<div class="lc-arc lc-arc-${side} ${st}">
+                      <span class="lc-arc-t">${title}</span>
+                      <span class="lc-arc-c">${copy}</span>
+                    </div>`;
+                  };
+
+                  return `
+                  <div class="lc-orbit-wrap lc-in-diagram">
+                  <div class="lc-orbit">
+                    <svg class="lc-orbit-svg" viewBox="0 0 ${LC_ORBIT.w} ${LC_ORBIT.h}" aria-hidden="true" focusable="false">
+                      <path class="lc-ring-base" d="${LC_RING_PATH}"/>
+                      ${spokes}
+                      <path class="lc-orbit-trail" d="${LC_RING_PATH}" pathLength="100"/>
+                      <path class="lc-ring-prog" d="${LC_RING_PATH}" pathLength="100" style="stroke-dashoffset:${(100 - lcRingProgress() * 100).toFixed(2)}"/>
+                      <circle class="lc-orbit-mark" r="4.5" style="offset-path:path('${LC_RING_PATH}')"/>
+                    </svg>
+                    ${items.map(node).join('')}
+                  </div>
+                  </div>
+                  <p class="lc-orbit-hint">Select any module to open it</p>`;
+                })();
+
         return `
           <section id="panel-solution" class="space-y-3">
 
@@ -14477,40 +15684,10 @@
 
 
             ${STATE.activeCard === 'core' ? `
-            <!-- ARCHITECTURE DIAGRAM (the centerpiece) -->
+            <!-- ARCHITECTURE DIAGRAM (the centerpiece) — its circle is the live module orbit -->
             <div class="section-card p-4 arch-fit-card">
-              ${RWS_DIAGRAM_HTML}
-
-            </div>
-
-            <!-- What's inside: its own section. The diagram above answers how it
-                 fits; this answers what you get, and each pill opens the real
-                 screen. Separated because they are two different questions. -->
-            <div class="section-card p-4">
               <div class="arch-lifecycle-strip ${STATE.lifecyclePlaying ? 'lc-live' : ''}">
-                <div class="arch-inside-h">
-                  <h3 class="arch-inside-t">What&rsquo;s inside Application Workspace</h3>
-                </div>
-                <div class="flex items-end gap-1.5 flex-wrap">
-                  ${LIFECYCLE_MODULES.map((m) => ({...m, active: STATE[lifecycleViewFlag(m.view)]}))
-                    .map((item, idx, arr) => {
-                    const isDone    = STATE.lifecyclePlaying && idx < STATE.lcStep;
-                    const isCurrent = STATE.lifecyclePlaying && idx === STATE.lcStep;
-                    const dotClass  = isDone ? 'lifecycle-dot-done' : (isCurrent ? 'lifecycle-dot-active lifecycle-dot-playing' : (item.active ? 'lifecycle-dot-active' : ''));
-                    const lblClass  = isDone ? 'lc-done' : (isCurrent ? 'lc-active' : '');
-                    const connClass = isDone ? 'lc-done' : '';
-                    return `
-                    <div class="lifecycle-item ${isCurrent ? 'lc-item-current' : ''} ${isDone ? 'lc-item-done' : ''}" style="--lc:${idx}">
-                      <span class="lifecycle-label ${lblClass}">${item.stage}${isCurrent ? `<em class="lc-count">${idx + 1}/${arr.length}</em>` : ''}</span>
-                      <div class="lifecycle-dot ${dotClass}">${isDone ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : ''}</div>
-                      <button type="button" data-action="toggle-solution-view" data-view="${item.view}" class="view-toggle ${item.active ? 'active' : ''}"><i data-lucide="${item.icon}" class="w-3.5 h-3.5"></i> ${item.name}${isCurrent ? `<span class="lc-fill" style="animation-duration:${LC_DWELL[idx] || 9000}ms;animation-delay:-${Math.max(0, Date.now() - (STATE.lcStepStart || Date.now()))}ms"></span>` : ''}</button>
-                    </div>
-                    ${idx < arr.length - 1 ? '<div class="lifecycle-connector ' + connClass + '"></div>' : ''}
-                  `;}).join('')}
-                  <!-- Play / Step / Reset live only in the pop-out header. The rail's
-                       copy rendered under exactly the same condition as the modal, so
-                       both clusters were always on screen at once. -->
-                </div>
+                ${RWS_DIAGRAM_HTML.split('<!--LC_ORBIT-->').join(lcOrbitHtml).split('<!--LC_TOUR_BTN-->').join(`<button type="button" class="lc-tour-btn focus-ring" data-action="play-lifecycle" aria-label="${STATE.lifecyclePlaying ? 'Stop the tour' : 'Play a guided tour of every module'}"><i data-lucide="${STATE.lifecyclePlaying ? 'square' : 'play'}"></i>${STATE.lifecyclePlaying ? 'Stop tour' : 'Play all'}</button>`)}
               </div>
             </div>
 
@@ -14522,9 +15699,9 @@
             ${(() => {
               const activeView = activeLifecycleView();
               if (!activeView) return '';
-              const idx = LIFECYCLE_MODULES.findIndex(m => m.view === activeView);
-              const mod = LIFECYCLE_MODULES[idx];
-              const nextMod = idx < LIFECYCLE_MODULES.length - 1 ? LIFECYCLE_MODULES[idx + 1] : null;
+              const idx = LC_NAV.findIndex(m => m.view === activeView);
+              const mod = LC_NAV[idx];
+              const nextMod = idx >= 0 && idx < LC_NAV.length - 1 ? LC_NAV[idx + 1] : null;
               return `
               <div class="demo-modal-backdrop ${STATE._modalFresh ? 'is-fresh' : ''}" data-action="close-demo-modal">
                 <div class="demo-modal-panel" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" onclick="var a=event.target.closest('[data-action]');if(!a||!this.contains(a))event.stopPropagation()">
@@ -14534,8 +15711,8 @@
                       <i data-lucide="${mod.icon}"></i>
                       <span>${mod.name}</span>
                     </span>
-                    <span class="demo-modal-progress" aria-label="Step ${idx + 1} of ${LIFECYCLE_MODULES.length}">
-                      ${LIFECYCLE_MODULES.map((m, i) => `<button type="button" class="demo-modal-progress-dot ${i === idx ? 'is-active' : ''}" data-action="next-demo-module" data-view="${m.view}" title="${m.name}" aria-label="Jump to ${m.name}"></button>`).join('')}
+                    <span class="demo-modal-progress" aria-label="Step ${idx + 1} of ${LC_NAV.length}">
+                      ${LC_NAV.map((m, i) => `<button type="button" class="demo-modal-progress-dot ${i === idx ? 'is-active' : ''}" data-action="next-demo-module" data-view="${m.view}" title="${m.name}" aria-label="Jump to ${m.name}"></button>`).join('')}
                     </span>
                     <span class="demo-modal-controls">
                       ${(() => {
@@ -14571,7 +15748,7 @@
                       ${STATE.solutionViewAdmin ? renderConsoleModule() : ''}
                       ${STATE.solutionViewUpdate ? renderUpdateView() : ''}
                       ${STATE.solutionViewOnboarding ? renderOnboardingView() : ''}
-                      ${STATE.solutionViewUser ? renderUserView() : ''}
+                      ${STATE.solutionViewUser ? renderUserStory() : ''}
                       ${STATE.solutionViewDashboard ? renderDashboardView() : ''}
                       ${STATE.solutionViewAi ? renderAiView() : ''}
                       ${STATE.solutionViewMultiTenant ? renderMultiTenantView() : ''}
@@ -14592,7 +15769,7 @@
          panes with a switch: "Set it up" and "What it ships". The tour walks
          both; a viewer can click either. */
       function renderAutomationHub(){
-        const PHASE_ORDER = ['idle','launch','catalog','clicking','checking','routing','config','done','final'];
+        const PHASE_ORDER = ['idle','launch','catalog','approach','clicking','checking','routing','config','done','final'];
         const i = Math.max(0, PHASE_ORDER.indexOf(STATE.flowPhase));
         const started = i >= PHASE_ORDER.indexOf('launch');
         const shown = Math.max(0, Math.min(4, i - 1));
@@ -15213,10 +16390,15 @@
           downstream: { label: txt(rails[1]), items: all(chips[1], '.rws-chip') },
           input:  col(0),
           output: col(1),
-          stages: Array.prototype.map.call(root.querySelectorAll('.rws-stage'), (el) => ({
-            name:   txt(el.querySelector('b')),
-            detail: txt(el.querySelector('span:not(.rws-stage-ic)'))
-          }))
+          stages: (() => {
+            const els = root.querySelectorAll('.rws-stage');
+            if (els.length) return Array.prototype.map.call(els, (el) => ({
+              name:   txt(el.querySelector('b')),
+              detail: txt(el.querySelector('span:not(.rws-stage-ic)'))
+            }));
+            /* The circle is now the module orbit — report the modules. */
+            return LIFECYCLE_MODULES.map((m) => ({ name: m.name, detail: m.stage }));
+          })()
         };
       }
 
@@ -15228,7 +16410,8 @@
         const host = document.createElement('div');
         host.className = 'rws-shot-host';
         host.setAttribute('aria-hidden', 'true');
-        host.innerHTML = `<div class="rws-shot" style="width:${RWS_SHOT_W}px">${RWS_DIAGRAM_HTML}</div>`;
+        const liveOrbit = document.querySelector('#panel-solution .lc-orbit-wrap')?.outerHTML || '';
+        host.innerHTML = `<div class="rws-shot" style="width:${RWS_SHOT_W}px">${RWS_DIAGRAM_HTML.split('<!--LC_ORBIT-->').join(liveOrbit)}</div>`;
         document.body.appendChild(host);
         const target = host.firstElementChild;
         let model = null;
@@ -17983,7 +19166,8 @@
               else if (view === 'admin' && !STATE.flowRunning) startFlow();
               else if (view === 'update' && !STATE.updRunning) startUpd();
               else if (view === 'onboarding' && !STATE.obRunning) startOb();
-              else if (view === 'user' && !STATE.flowRunning) startFlow();
+              /* 'user' intentionally does NOT auto-start — the device picker
+                 is the first beat; the animation begins on device click. */
               else if (view === 'dashboard' && !STATE.drRunning) startDr();
               else if (view === 'ai' && !STATE.aiRunning) startAi();
               else if (view === 'multitenant' && !STATE.mtRunning) startMt();
@@ -18042,7 +19226,8 @@
             // kept in sync with the delays in buildXxQueue:
             // SS ~13.2s · flow (admin/user) ~10.8s · UPD ~9s · OB ~9.6s · DR/MT ~7.4s · AI ~6s
             const lcSteps = [
-              { key: 'solutionViewSetupStore', start: () => startSs(),   dwell: LC_DWELL[0] },
+              { key: 'solutionViewUser',        start: () => startFlow(), dwell: LC_DWELL[0] },
+              { key: 'solutionViewSetupStore', start: () => startSs(),   dwell: LC_DWELL[1] },
               { key: 'solutionViewAdmin',       start: () => {
                   STATE.adminPane = 'console'; startFlow();
                   const t = setTimeout(() => {
@@ -18050,9 +19235,8 @@
                     STATE.adminPane = 'ship'; scrollPreserveRender(); startUpd();
                   }, 5600);
                   STATE.lcTimers.push(t);
-                }, dwell: LC_DWELL[1] },
-              { key: 'solutionViewOnboarding',  start: () => startOb(),   dwell: LC_DWELL[2] },
-              { key: 'solutionViewUser',        start: () => startFlow(), dwell: LC_DWELL[3] },
+                }, dwell: LC_DWELL[2] },
+              { key: 'solutionViewOnboarding',  start: () => startOb(),   dwell: LC_DWELL[3] },
               { key: 'solutionViewDashboard',   start: () => startDr(),   dwell: LC_DWELL[4] },
               { key: 'solutionViewAi',          start: () => startAi(),   dwell: LC_DWELL[5] },
               { key: 'solutionViewMultiTenant', start: () => startMt(),   dwell: LC_DWELL[6] },
@@ -18237,6 +19421,37 @@
               STATE.aiQueueIdx = 0;
               startAi();
             }
+            return;
+          }
+          if (action === 'ux-request') {
+            // Click the Catalog tab → run the request-an-app workflow now.
+            STATE.flowTimers.timeouts.forEach(id => clearTimeout(id)); STATE.flowTimers.timeouts = [];
+            STATE.uxReqManual = true;
+            STATE.flowRunning = true;
+            if (STATE.flowScenarioIdx < 0) STATE.flowScenarioIdx = STATE.uxScenarioIdx >= 0 ? STATE.uxScenarioIdx : 0;
+            STATE.flowPhase = 'done';
+            scrollPreserveRender();
+            const t = setTimeout(() => { STATE.flowPhase = 'final'; updateFlowDOM(); }, 2600);
+            STATE.flowTimers.timeouts.push(t);
+            return;
+          }
+          if (action === 'pick-ux-device') {
+            const dv = act.getAttribute('data-dev');
+            STATE.uxDevice = ['win','mac','vdi'].includes(dv) ? dv : 'win';
+            STATE.uxReqManual = false;
+            const fromStage = !!act.closest('.us-stage');
+            scrollPreserveRender();
+            if (fromStage && !STATE.flowRunning) startFlow();
+            return;
+          }
+          if (action === 'pick-ux-persona') {
+            const pi = parseInt(act.getAttribute('data-idx'), 10);
+            STATE.uxPersona = pi === 1 ? 1 : 0;
+            STATE.uxReqManual = false;
+            // Replay as this user when a run is underway or just finished —
+            // different permissions, different apps.
+            if (STATE.solutionViewUser && (STATE.flowRunning || STATE.flowScenarioIdx >= 0)) { resetFlow(); startFlow(); }
+            else scrollPreserveRender();
             return;
           }
           if (action === 'pick-ux-scenario') {
